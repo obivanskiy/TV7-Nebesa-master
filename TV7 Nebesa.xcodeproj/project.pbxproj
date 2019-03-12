@@ -14,9 +14,9 @@
 		110F9D9D2237A6320020BABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 110F9D9C2237A6320020BABC /* Assets.xcassets */; };
 		110F9DA02237A6320020BABC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110F9D9E2237A6320020BABC /* LaunchScreen.storyboard */; };
 		110F9DA82237A6A50020BABC /* BroadcastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DA72237A6A50020BABC /* BroadcastVC.swift */; };
-		110F9DAA2237A7090020BABC /* BroadcastSketchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DA92237A7090020BABC /* BroadcastSketchVC.swift */; };
 		110F9DAC2237A74E0020BABC /* ArchiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAB2237A74E0020BABC /* ArchiveVC.swift */; };
 		110F9DAE2237A7610020BABC /* HighlightsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAD2237A7610020BABC /* HighlightsVC.swift */; };
+		15CF8F712237BE25008424E9 /* ParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CF8F702237BE25008424E9 /* ParsingService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +29,9 @@
 		110F9D9F2237A6320020BABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		110F9DA12237A6320020BABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		110F9DA72237A6A50020BABC /* BroadcastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastVC.swift; sourceTree = "<group>"; };
-		110F9DA92237A7090020BABC /* BroadcastSketchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BroadcastSketchVC.swift; path = ../BroadcastSketchVC.swift; sourceTree = "<group>"; };
 		110F9DAB2237A74E0020BABC /* ArchiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveVC.swift; sourceTree = "<group>"; };
 		110F9DAD2237A7610020BABC /* HighlightsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsVC.swift; sourceTree = "<group>"; };
+		15CF8F702237BE25008424E9 /* ParsingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +86,7 @@
 		15CF8F6D2237BCE8008424E9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				15CF8F702237BE25008424E9 /* ParsingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -96,7 +97,6 @@
 				110F9D942237A6310020BABC /* ViewController.swift */,
 				110F9DA72237A6A50020BABC /* BroadcastVC.swift */,
 				110F9DAB2237A74E0020BABC /* ArchiveVC.swift */,
-				110F9DA92237A7090020BABC /* BroadcastSketchVC.swift */,
 				110F9DAD2237A7610020BABC /* HighlightsVC.swift */,
 			);
 			path = Controllers;
@@ -182,9 +182,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15CF8F712237BE25008424E9 /* ParsingService.swift in Sources */,
 				110F9DA82237A6A50020BABC /* BroadcastVC.swift in Sources */,
 				110F9D952237A6310020BABC /* ViewController.swift in Sources */,
-				110F9DAA2237A7090020BABC /* BroadcastSketchVC.swift in Sources */,
 				110F9DAE2237A7610020BABC /* HighlightsVC.swift in Sources */,
 				110F9D9B2237A6310020BABC /* TV7_Nebesa.xcdatamodeld in Sources */,
 				110F9D932237A6310020BABC /* AppDelegate.swift in Sources */,
