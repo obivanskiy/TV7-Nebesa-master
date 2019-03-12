@@ -1,0 +1,406 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		110F9D932237A6310020BABC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9D922237A6310020BABC /* AppDelegate.swift */; };
+		110F9D952237A6310020BABC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9D942237A6310020BABC /* ViewController.swift */; };
+		110F9D982237A6310020BABC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110F9D962237A6310020BABC /* Main.storyboard */; };
+		110F9D9B2237A6310020BABC /* TV7_Nebesa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 110F9D992237A6310020BABC /* TV7_Nebesa.xcdatamodeld */; };
+		110F9D9D2237A6320020BABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 110F9D9C2237A6320020BABC /* Assets.xcassets */; };
+		110F9DA02237A6320020BABC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110F9D9E2237A6320020BABC /* LaunchScreen.storyboard */; };
+		110F9DA82237A6A50020BABC /* BroadcastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DA72237A6A50020BABC /* BroadcastVC.swift */; };
+		110F9DAA2237A7090020BABC /* BroadcastSketchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DA92237A7090020BABC /* BroadcastSketchVC.swift */; };
+		110F9DAC2237A74E0020BABC /* ArchiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAB2237A74E0020BABC /* ArchiveVC.swift */; };
+		110F9DAE2237A7610020BABC /* HighlightsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAD2237A7610020BABC /* HighlightsVC.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		110F9D8F2237A6310020BABC /* TV7 Nebesa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV7 Nebesa.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		110F9D922237A6310020BABC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		110F9D942237A6310020BABC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		110F9D972237A6310020BABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		110F9D9A2237A6310020BABC /* TV7_Nebesa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TV7_Nebesa.xcdatamodel; sourceTree = "<group>"; };
+		110F9D9C2237A6320020BABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		110F9D9F2237A6320020BABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		110F9DA12237A6320020BABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		110F9DA72237A6A50020BABC /* BroadcastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastVC.swift; sourceTree = "<group>"; };
+		110F9DA92237A7090020BABC /* BroadcastSketchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BroadcastSketchVC.swift; path = ../BroadcastSketchVC.swift; sourceTree = "<group>"; };
+		110F9DAB2237A74E0020BABC /* ArchiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveVC.swift; sourceTree = "<group>"; };
+		110F9DAD2237A7610020BABC /* HighlightsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsVC.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		110F9D8C2237A6310020BABC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		110F9D862237A6310020BABC = {
+			isa = PBXGroup;
+			children = (
+				110F9D912237A6310020BABC /* TV7 Nebesa */,
+				110F9D902237A6310020BABC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		110F9D902237A6310020BABC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				110F9D8F2237A6310020BABC /* TV7 Nebesa.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		110F9D912237A6310020BABC /* TV7 Nebesa */ = {
+			isa = PBXGroup;
+			children = (
+				110F9D922237A6310020BABC /* AppDelegate.swift */,
+				15CF8F6F2237BD24008424E9 /* Storyboards */,
+				15CF8F6E2237BD0B008424E9 /* Controllers */,
+				15CF8F6D2237BCE8008424E9 /* Services */,
+				15CF8F6C2237BCDD008424E9 /* Models */,
+				110F9D9C2237A6320020BABC /* Assets.xcassets */,
+				110F9DA12237A6320020BABC /* Info.plist */,
+				110F9D992237A6310020BABC /* TV7_Nebesa.xcdatamodeld */,
+			);
+			path = "TV7 Nebesa";
+			sourceTree = "<group>";
+		};
+		15CF8F6C2237BCDD008424E9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		15CF8F6D2237BCE8008424E9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		15CF8F6E2237BD0B008424E9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				110F9D942237A6310020BABC /* ViewController.swift */,
+				110F9DA72237A6A50020BABC /* BroadcastVC.swift */,
+				110F9DAB2237A74E0020BABC /* ArchiveVC.swift */,
+				110F9DA92237A7090020BABC /* BroadcastSketchVC.swift */,
+				110F9DAD2237A7610020BABC /* HighlightsVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		15CF8F6F2237BD24008424E9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				110F9D962237A6310020BABC /* Main.storyboard */,
+				110F9D9E2237A6320020BABC /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		110F9D8E2237A6310020BABC /* TV7 Nebesa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 110F9DA42237A6320020BABC /* Build configuration list for PBXNativeTarget "TV7 Nebesa" */;
+			buildPhases = (
+				110F9D8B2237A6310020BABC /* Sources */,
+				110F9D8C2237A6310020BABC /* Frameworks */,
+				110F9D8D2237A6310020BABC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TV7 Nebesa";
+			productName = "TV7 Nebesa";
+			productReference = 110F9D8F2237A6310020BABC /* TV7 Nebesa.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		110F9D872237A6310020BABC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Богдан Воробйовський";
+				TargetAttributes = {
+					110F9D8E2237A6310020BABC = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 110F9D8A2237A6310020BABC /* Build configuration list for PBXProject "TV7 Nebesa" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 110F9D862237A6310020BABC;
+			productRefGroup = 110F9D902237A6310020BABC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				110F9D8E2237A6310020BABC /* TV7 Nebesa */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		110F9D8D2237A6310020BABC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				110F9DA02237A6320020BABC /* LaunchScreen.storyboard in Resources */,
+				110F9D9D2237A6320020BABC /* Assets.xcassets in Resources */,
+				110F9D982237A6310020BABC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		110F9D8B2237A6310020BABC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				110F9DA82237A6A50020BABC /* BroadcastVC.swift in Sources */,
+				110F9D952237A6310020BABC /* ViewController.swift in Sources */,
+				110F9DAA2237A7090020BABC /* BroadcastSketchVC.swift in Sources */,
+				110F9DAE2237A7610020BABC /* HighlightsVC.swift in Sources */,
+				110F9D9B2237A6310020BABC /* TV7_Nebesa.xcdatamodeld in Sources */,
+				110F9D932237A6310020BABC /* AppDelegate.swift in Sources */,
+				110F9DAC2237A74E0020BABC /* ArchiveVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		110F9D962237A6310020BABC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				110F9D972237A6310020BABC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		110F9D9E2237A6320020BABC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				110F9D9F2237A6320020BABC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		110F9DA22237A6320020BABC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		110F9DA32237A6320020BABC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		110F9DA52237A6320020BABC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 27SYK7U5JH;
+				INFOPLIST_FILE = "TV7 Nebesa/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vorobiovskyi.TV7-Nebesa";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		110F9DA62237A6320020BABC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 27SYK7U5JH;
+				INFOPLIST_FILE = "TV7 Nebesa/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vorobiovskyi.TV7-Nebesa";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		110F9D8A2237A6310020BABC /* Build configuration list for PBXProject "TV7 Nebesa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				110F9DA22237A6320020BABC /* Debug */,
+				110F9DA32237A6320020BABC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		110F9DA42237A6320020BABC /* Build configuration list for PBXNativeTarget "TV7 Nebesa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				110F9DA52237A6320020BABC /* Debug */,
+				110F9DA62237A6320020BABC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		110F9D992237A6310020BABC /* TV7_Nebesa.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				110F9D9A2237A6310020BABC /* TV7_Nebesa.xcdatamodel */,
+			);
+			currentVersion = 110F9D9A2237A6310020BABC /* TV7_Nebesa.xcdatamodel */;
+			path = TV7_Nebesa.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 110F9D872237A6310020BABC /* Project object */;
+}
