@@ -92,7 +92,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="archivaCategoryLabel" destination="45c-Ur-AGI" id="gkZ-DX-eKD"/>
+                                            <outlet property="categoryNameLabel" destination="45c-Ur-AGI" id="gkZ-DX-eKD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -140,8 +140,8 @@
                                                 <constraint firstAttribute="height" constant="100" id="3SS-6d-EL2"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXG-d1-zHo">
-                                            <rect key="frame" x="172" y="51" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXG-d1-zHo">
+                                            <rect key="frame" x="172" y="51" width="167" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -151,11 +151,11 @@
                                         <constraint firstItem="JCj-pa-xSd" firstAttribute="bottom" secondItem="lar-1X-KZT" secondAttribute="bottomMargin" id="4Cr-ba-6tj"/>
                                         <constraint firstItem="JCj-pa-xSd" firstAttribute="top" secondItem="lar-1X-KZT" secondAttribute="topMargin" id="7xX-PL-WFQ"/>
                                         <constraint firstItem="JCj-pa-xSd" firstAttribute="leading" secondItem="lar-1X-KZT" secondAttribute="leadingMargin" id="BzQ-UC-n97"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="SXG-d1-zHo" secondAttribute="trailing" constant="20" id="Egn-yL-YcP"/>
                                         <constraint firstItem="SXG-d1-zHo" firstAttribute="leading" secondItem="JCj-pa-xSd" secondAttribute="trailing" constant="6" id="QKh-UH-tsW"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="SXG-d1-zHo" secondAttribute="bottom" constant="39" id="Z0A-7L-Agt"/>
+                                        <constraint firstAttribute="bottomMargin" relation="lessThanOrEqual" secondItem="SXG-d1-zHo" secondAttribute="bottom" constant="39" id="Z0A-7L-Agt"/>
                                         <constraint firstItem="JCj-pa-xSd" firstAttribute="leading" secondItem="lar-1X-KZT" secondAttribute="leadingMargin" id="cTW-rb-5Ux"/>
-                                        <constraint firstItem="SXG-d1-zHo" firstAttribute="top" secondItem="lar-1X-KZT" secondAttribute="topMargin" constant="40" id="tSV-mg-JXX"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="SXG-d1-zHo" secondAttribute="trailing" constant="145" id="wAA-ZB-i1n"/>
+                                        <constraint firstItem="SXG-d1-zHo" firstAttribute="top" relation="lessThanOrEqual" secondItem="lar-1X-KZT" secondAttribute="topMargin" constant="40" id="tSV-mg-JXX"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -173,7 +173,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OAs-rn-NYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1465" y="2490"/>
+            <point key="canvasLocation" x="1464.8" y="2489.5052473763121"/>
         </scene>
         <!--ЛУЧШЕЕ-->
         <scene sceneID="Zvq-ul-bRr">

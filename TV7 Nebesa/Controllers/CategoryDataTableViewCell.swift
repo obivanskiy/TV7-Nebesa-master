@@ -14,17 +14,28 @@ class CategoryDataTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryPreviewImageOutlet: UIImageView!
     @IBOutlet weak var categoryVideoNameOutlet: UILabel!
     
-    
+    var previewImagePath: String = ""
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        categoryVideoNameOutlet.sizeToFit()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func fetchImage() {
+        if let url = URL(string: previewImagePath) {
+            do{
+                let data = try Data(contentsOf: url)
+                categoryPreviewImageOutlet.image = UIImage(data: data)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
     }
 
 }

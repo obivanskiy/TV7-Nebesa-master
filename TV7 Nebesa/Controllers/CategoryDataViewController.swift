@@ -15,11 +15,16 @@ class CategoryDataTableViewController: UITableViewController {
     private(set) var categoryData: CategoryProgrammes = CategoryProgrammes() {
         didSet {
             let _ = categoryData
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
     override func viewDidLoad() {
         archiveCategoriesDownloadService()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 122
     }
     
     func archiveCategoriesDownloadService() {
@@ -30,15 +35,24 @@ class CategoryDataTableViewController: UITableViewController {
             guard let responseData = data else { return }
             do {
                 self.categoryData = try JSONDecoder().decode(CategoryProgrammes.self, from: responseData)
-                print(self.categoryData)
             } catch let error {
                 print(error.localizedDescription)
             }
         }
         urlSessionTask.resume()
     }
-
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categoryData.categoryProgrammes.count
+    }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryDataCell", for: indexPath) as? CategoryDataTableViewCell else {return UITableViewCell()}
+        cell.categoryVideoNameOutlet.text = categoryData.categoryProgrammes[indexPath.row].name
+        cell.previewImagePath = categoryData.categoryProgrammes[indexPath.row].imagePath
+        cell.fetchImage()
+        
+        return cell
+    }
 }
 

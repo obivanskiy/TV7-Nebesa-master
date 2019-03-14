@@ -63,7 +63,7 @@ final class ArchiveViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArchiveTableViewCell", for: indexPath) as? ArchiveViewControllerTableViewCell else { return UITableViewCell()}
-        cell.archivaCategoryLabel.text = categoriesData.parentCategories[indexPath.row].name
+        cell.categoryNameLabel.text = categoriesData.parentCategories[indexPath.row].name
       
         return cell
     }

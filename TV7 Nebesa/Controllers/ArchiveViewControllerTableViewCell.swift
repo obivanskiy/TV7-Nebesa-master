@@ -10,6 +10,6 @@ import UIKit
 
 class ArchiveViewControllerTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var archivaCategoryLabel: UILabel!
+    @IBOutlet weak var categoryNameLabel: UILabel!
     
 }
