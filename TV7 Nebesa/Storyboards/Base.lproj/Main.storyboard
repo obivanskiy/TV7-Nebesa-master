@@ -110,7 +110,7 @@
                     <navigationItem key="navigationItem" id="E70-rB-76P"/>
                     <connections>
                         <outlet property="archiveTableView" destination="JFS-vd-gFA" id="HPO-ci-tld"/>
-                        <segue destination="vQl-5u-p1y" kind="push" identifier="CategoryDataSegue" id="iyp-zj-D7H"/>
+                        <segue destination="vQl-5u-p1y" kind="show" identifier="CategoryDataSegue" id="iyp-zj-D7H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3pU-Hd-Bmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -140,9 +140,9 @@
                                                 <constraint firstAttribute="height" constant="100" id="3SS-6d-EL2"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXG-d1-zHo">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXG-d1-zHo">
                                             <rect key="frame" x="172" y="51" width="167" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
