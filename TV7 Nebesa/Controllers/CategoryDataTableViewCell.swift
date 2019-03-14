@@ -7,35 +7,28 @@
 //
 
 import UIKit
+import Kingfisher
 
-class CategoryDataTableViewCell: UITableViewCell {
+final class CategoryDataTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
-    @IBOutlet weak var categoryPreviewImageOutlet: UIImageView!
-    @IBOutlet weak var categoryVideoNameOutlet: UILabel!
+    @IBOutlet weak var videoPreviewImageView: UIImageView!
+    @IBOutlet weak var categoryVideoNameLabel: UILabel!
     
-    var previewImagePath: String = ""
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        categoryVideoNameOutlet.sizeToFit()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    func fetchImage() {
-        if let url = URL(string: previewImagePath) {
-            do{
-                let data = try Data(contentsOf: url)
-                categoryPreviewImageOutlet.image = UIImage(data: data)
-            } catch let error {
-                print(error.localizedDescription)
-            }
+    var cellModel: CategoryProgrammesData? {
+        didSet {
+            guard let cellModel = cellModel else { return }
+            setupUI(cellModel: cellModel)
         }
+    }
+
+    private func setupUI(cellModel: CategoryProgrammesData) {
+        categoryVideoNameLabel.sizeToFit()
+        categoryVideoNameLabel.text = cellModel.name
+        guard let previewImageURL = URL.init(string: cellModel.videoPreviewImageURLString) else {
+            return
+        }
+        videoPreviewImageView.kf.setImage(with: previewImageURL)
     }
 
 }

@@ -36,7 +36,7 @@ struct CategoryProgrammesData: Codable {
     let id: Identifier
     let name: String
     let caption: String
-    let imagePath: String
+    let videoPreviewImageURLString: String
     let sid: String?
     let language: String
     let visibleOnVodSince: String
@@ -67,7 +67,7 @@ struct CategoryProgrammesData: Codable {
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(caption, forKey: .caption)
-        try container.encode(imagePath, forKey: .imagePath)
+        try container.encode(videoPreviewImageURLString, forKey: .imagePath)
         try container.encode(sid, forKey: .sid)
         try container.encode(language, forKey: .language)
         try container.encode(visibleOnVodSince, forKey: .visibleOnVodSince)
@@ -82,7 +82,7 @@ struct CategoryProgrammesData: Codable {
         self.id = ""
         self.name = ""
         self.caption = ""
-        self.imagePath = ""
+        self.videoPreviewImageURLString = ""
         self.sid = ""
         self.language = ""
         self.visibleOnVodSince = ""
@@ -98,7 +98,7 @@ struct CategoryProgrammesData: Codable {
         id = try container.decodeIfPresent(Identifier.self, forKey: .id) ?? ""
         name = try container.decodeIfPresent(String.self, forKey: .name) ?? ""
         caption = try container.decodeIfPresent(String.self, forKey: .caption) ?? ""
-        imagePath = try container.decodeIfPresent(String.self, forKey: .imagePath) ?? ""
+        videoPreviewImageURLString = try container.decodeIfPresent(String.self, forKey: .imagePath) ?? ""
         sid = try container.decodeIfPresent(String.self, forKey: .sid) ?? ""
         language = try container.decodeIfPresent(String.self, forKey: .language) ?? ""
         visibleOnVodSince = try container.decodeIfPresent(String.self, forKey: .visibleOnVodSince) ?? ""

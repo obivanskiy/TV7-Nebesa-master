@@ -15,7 +15,6 @@ final class ArchiveViewController: UIViewController, UITableViewDelegate, UITabl
     
     private(set) var categoriesData: ParentCategories = ParentCategories() {
         didSet {
-            let _ = categoriesData
             DispatchQueue.main.async {
                 self.archiveTableView.reloadData()
             }
@@ -50,21 +49,36 @@ final class ArchiveViewController: UIViewController, UITableViewDelegate, UITabl
         }
         urlSessionTask.resume()
     }
+    
     //MARK: - Table View Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfCells = categoriesData.parentCategories.count
-        return numberOfCells
+        return categoriesData.parentCategories.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        archiveTableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: "CategoryDataSegue", sender: self)
+        archiveTableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArchiveTableViewCell", for: indexPath) as? ArchiveViewControllerTableViewCell else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArchiveTableViewCell", for: indexPath) as? ArchiveViewControllerTableViewCell else {
+            return UITableViewCell()
+        }
         cell.categoryNameLabel.text = categoriesData.parentCategories[indexPath.row].name
       
         return cell
+    }
+    
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CategoryDataSegue" {
+            guard let viewController = segue.destination as? CategoryDataTableViewController else {
+                return
+            }
+            guard let indexPath = self.archiveTableView.indexPathForSelectedRow else {
+                return
+            }
+            viewController.category = categoriesData.parentCategories[indexPath.row]
+        }
     }
 }

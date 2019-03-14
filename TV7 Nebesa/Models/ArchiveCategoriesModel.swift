@@ -40,7 +40,7 @@ struct CategoriesDetails: Codable {
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
-        case description = ""
+        case description = "description"
     }
     
     func encode(to encoder: Encoder) throws {
@@ -61,5 +61,4 @@ struct CategoriesDetails: Codable {
         name = try container.decodeIfPresent(String.self, forKey: .name) ?? ""
         description = try container.decodeIfPresent(String.self, forKey: .description) ?? nil
     }
-
 }

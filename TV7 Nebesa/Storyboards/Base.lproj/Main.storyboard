@@ -70,7 +70,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArchiveTableViewCell" id="p62-gP-wwj" customClass="ArchiveViewControllerTableViewCell" customModule="TV7_Nebesa" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArchiveTableViewCell" id="p62-gP-wwj" customClass="ArchiveViewControllerTableViewCell" customModule="TV7_Nebesa" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p62-gP-wwj" id="chl-vu-VKp">
@@ -126,7 +126,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryDataCell" rowHeight="122" id="Hz7-h2-3w2" customClass="CategoryDataTableViewCell" customModule="TV7_Nebesa" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryDataTableViewCell" rowHeight="122" id="Hz7-h2-3w2" customClass="CategoryDataTableViewCell" customModule="TV7_Nebesa" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="122"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hz7-h2-3w2" id="lar-1X-KZT">
@@ -159,8 +159,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="categoryPreviewImageOutlet" destination="JCj-pa-xSd" id="oU7-VV-l2X"/>
-                                    <outlet property="categoryVideoNameOutlet" destination="SXG-d1-zHo" id="6Cn-M5-VGS"/>
+                                    <outlet property="categoryVideoNameLabel" destination="SXG-d1-zHo" id="lYD-64-7Aw"/>
+                                    <outlet property="videoPreviewImageView" destination="JCj-pa-xSd" id="oU7-VV-l2X"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
