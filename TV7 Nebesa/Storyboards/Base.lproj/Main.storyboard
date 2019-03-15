@@ -137,10 +137,10 @@
             </objects>
             <point key="canvasLocation" x="-961" y="901"/>
         </scene>
-        <!--NebesaTV7Screen-->
+        <!--HomeScreen-->
         <scene sceneID="snj-b8-FqH">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="NebesaTV7Screen" storyboardName="NebesaTV7Screen" id="ZgL-vl-8gm" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="NebesaTV7Screen" storyboardName="HomeScreen" id="ZgL-vl-8gm" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="o3G-fe-DJB"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jlz-pk-MRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -174,7 +174,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x8m-3o-1bI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="172" y="1401"/>
+            <point key="canvasLocation" x="137" y="1399"/>
         </scene>
     </scenes>
 </document>

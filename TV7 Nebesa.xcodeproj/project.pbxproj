@@ -19,7 +19,7 @@
 		153E4DD7223BC143005255B5 /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DD6223BC143005255B5 /* ProgrammeScreen.storyboard */; };
 		153E4DDA223BD928005255B5 /* BestScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DD9223BD928005255B5 /* BestScreen.storyboard */; };
 		153E4DDC223BDB7A005255B5 /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DDB223BDB7A005255B5 /* WebTVScreen.storyboard */; };
-		153E4DDE223BDBCC005255B5 /* NebesaTV7Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DDD223BDBCC005255B5 /* NebesaTV7Screen.storyboard */; };
+		153E4DDE223BDBCC005255B5 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DDD223BDBCC005255B5 /* HomeScreen.storyboard */; };
 		154B7F53223ADAE40020A4E4 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */; };
 		154B7F55223ADCA90020A4E4 /* NetworkEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */; };
 		15B0816C223A4F6A00826057 /* CategoriesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */; };
@@ -45,7 +45,7 @@
 		153E4DD6223BC143005255B5 /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
 		153E4DD9223BD928005255B5 /* BestScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BestScreen.storyboard; sourceTree = "<group>"; };
 		153E4DDB223BDB7A005255B5 /* WebTVScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
-		153E4DDD223BDBCC005255B5 /* NebesaTV7Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NebesaTV7Screen.storyboard; sourceTree = "<group>"; };
+		153E4DDD223BDBCC005255B5 /* HomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
 		154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoints.swift; sourceTree = "<group>"; };
 		15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDataModel.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 				153E4DD1223BA83D005255B5 /* TableViewCells */,
 				15CF8F6D2237BCE8008424E9 /* Network */,
 				15CF8F6C2237BCDD008424E9 /* Models */,
-				154B7F56223AE41F0020A4E4 /* Views */,
+				154B7F56223AE41F0020A4E4 /* PlayerViews */,
 				154B7F51223ADAAC0020A4E4 /* Extensions */,
 				110F9D9C2237A6320020BABC /* Assets.xcassets */,
 				110F9DA12237A6320020BABC /* Info.plist */,
@@ -122,11 +122,11 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		154B7F56223AE41F0020A4E4 /* Views */ = {
+		154B7F56223AE41F0020A4E4 /* PlayerViews */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Views;
+			path = PlayerViews;
 			sourceTree = "<group>";
 		};
 		15CF8F6C2237BCDD008424E9 /* Models */ = {
@@ -163,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				110F9D962237A6310020BABC /* Main.storyboard */,
-				153E4DDD223BDBCC005255B5 /* NebesaTV7Screen.storyboard */,
+				153E4DDD223BDBCC005255B5 /* HomeScreen.storyboard */,
 				153E4DDB223BDB7A005255B5 /* WebTVScreen.storyboard */,
 				153E4DD9223BD928005255B5 /* BestScreen.storyboard */,
 				153E4DD6223BC143005255B5 /* ProgrammeScreen.storyboard */,
@@ -249,7 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				153E4DDE223BDBCC005255B5 /* NebesaTV7Screen.storyboard in Resources */,
+				153E4DDE223BDBCC005255B5 /* HomeScreen.storyboard in Resources */,
 				153E4DD5223BBF08005255B5 /* CategoriesScreen.storyboard in Resources */,
 				153E4DDA223BD928005255B5 /* BestScreen.storyboard in Resources */,
 				110F9D9D2237A6320020BABC /* Assets.xcassets in Resources */,
