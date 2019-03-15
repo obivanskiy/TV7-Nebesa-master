@@ -34,7 +34,7 @@ final class CategoryDataTableViewController: UITableViewController {
     }
     
     func archiveCategoriesDownloadService(category: CategoriesDetails) {
-        let urlToParse = NetworkEndpoints.baseURL + "/nebesa/api/jed/get_tv7_category_programs/?category_id=\(category.id)"
+        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.categoryDataURL + category.id
         guard let url = URL(string: urlToParse) else {
             return
         }

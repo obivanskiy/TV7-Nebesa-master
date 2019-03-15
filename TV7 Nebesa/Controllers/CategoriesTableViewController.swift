@@ -40,7 +40,7 @@ final class CategoriesTableViewController: UITableViewController {
     
     // MARK: - Categories Names Download Service
     func archiveCategoriesDownloadService() {
-        let urlToParse = "https://sandbox.tv7.fi/nebesa/api/jed/get_tv7_parent_categories/"
+        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.categoryNameURL
         guard let url = URL(string: urlToParse) else { return }
         let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
             guard error == nil else { return }
