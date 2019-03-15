@@ -8,25 +8,23 @@
 
 import UIKit
 
-final class ArchiveViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class CategoriesTableViewController: UITableViewController {
     
-    //MARK: - Oulets
-    @IBOutlet weak var archiveTableView: UITableView!
     
     private(set) var categoriesData: ParentCategories = ParentCategories() {
         didSet {
             DispatchQueue.main.async {
-                self.archiveTableView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }
+    
     //MARK: - View Controller Life Cycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        archiveTableView.delegate = self
-        archiveTableView.dataSource = self
         archiveCategoriesDownloadService()
     }
+    
     // MARK: - Finish error handling
     enum RequestError: Error {
         case serverError(error: Error)
@@ -34,6 +32,7 @@ final class ArchiveViewController: UIViewController, UITableViewDelegate, UITabl
         case decodingError
         case wrongUrlString
     }
+    
     // MARK: - Categories Names Download Service
     func archiveCategoriesDownloadService() {
         let urlToParse = "https://sandbox.tv7.fi/nebesa/api/jed/get_tv7_parent_categories/"
@@ -51,17 +50,17 @@ final class ArchiveViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     //MARK: - Table View Data Source
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoriesData.parentCategories.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "CategoryDataSegue", sender: self)
-        archiveTableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArchiveTableViewCell", for: indexPath) as? ArchiveViewControllerTableViewCell else {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryNameTableViewCell.identifier, for: indexPath) as? CategoryNameTableViewCell else {
             return UITableViewCell()
         }
         cell.categoryNameLabel.text = categoriesData.parentCategories[indexPath.row].name
@@ -75,7 +74,7 @@ final class ArchiveViewController: UIViewController, UITableViewDelegate, UITabl
             guard let viewController = segue.destination as? CategoryDataTableViewController else {
                 return
             }
-            guard let indexPath = self.archiveTableView.indexPathForSelectedRow else {
+            guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
             viewController.category = categoriesData.parentCategories[indexPath.row]

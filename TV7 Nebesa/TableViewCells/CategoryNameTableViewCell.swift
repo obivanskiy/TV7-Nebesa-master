@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArchiveViewControllerTableViewCell: UITableViewCell {
+final class CategoryNameTableViewCell: UITableViewCell {
 
     @IBOutlet weak var categoryNameLabel: UILabel!
     

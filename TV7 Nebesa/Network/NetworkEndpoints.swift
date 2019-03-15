@@ -9,6 +9,5 @@
 import Foundation
 
 struct NetworkEndpoints {
-    
     static var baseURL: String = "https://sandbox.tv7.fi"
 }

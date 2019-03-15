@@ -30,5 +30,4 @@ final class CategoryDataTableViewCell: UITableViewCell {
         }
         videoPreviewImageView.kf.setImage(with: previewImageURL)
     }
-
 }

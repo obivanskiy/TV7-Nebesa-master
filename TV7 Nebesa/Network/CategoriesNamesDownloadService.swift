@@ -9,7 +9,7 @@
 import Foundation
 
 
-class ArchiveCategoriesDownloadService {
+class CategoriesNamesDownloadService {
     
     static var categoriesNames: [ParentCategories] = []
     

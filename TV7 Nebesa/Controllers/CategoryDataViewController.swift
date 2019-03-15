@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryDataTableViewController: UITableViewController {
+final class CategoryDataTableViewController: UITableViewController {
     
     private(set) var categoryData: CategoryProgrammes = CategoryProgrammes() {
         didSet {
@@ -47,6 +47,7 @@ class CategoryDataTableViewController: UITableViewController {
             }
             do {
                 self.categoryData = try JSONDecoder().decode(CategoryProgrammes.self, from: responseData)
+                print(self.categoryData)
             } catch let error {
                 print(error.localizedDescription)
             }
