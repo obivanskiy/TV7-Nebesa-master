@@ -11,11 +11,15 @@
 		110F9D952237A6310020BABC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9D942237A6310020BABC /* ViewController.swift */; };
 		110F9D982237A6310020BABC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110F9D962237A6310020BABC /* Main.storyboard */; };
 		110F9D9D2237A6320020BABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 110F9D9C2237A6320020BABC /* Assets.xcassets */; };
-		110F9DA02237A6320020BABC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110F9D9E2237A6320020BABC /* LaunchScreen.storyboard */; };
 		110F9DA82237A6A50020BABC /* BroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DA72237A6A50020BABC /* BroadcastViewController.swift */; };
 		110F9DAC2237A74E0020BABC /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAB2237A74E0020BABC /* CategoriesTableViewController.swift */; };
 		110F9DAE2237A7610020BABC /* HighlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAD2237A7610020BABC /* HighlightsViewController.swift */; };
 		153E4DD3223BB451005255B5 /* CategoriesNamesDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153E4DD2223BB451005255B5 /* CategoriesNamesDownloadService.swift */; };
+		153E4DD5223BBF08005255B5 /* CategoriesScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DD4223BBF08005255B5 /* CategoriesScreen.storyboard */; };
+		153E4DD7223BC143005255B5 /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DD6223BC143005255B5 /* ProgrammeScreen.storyboard */; };
+		153E4DDA223BD928005255B5 /* BestScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DD9223BD928005255B5 /* BestScreen.storyboard */; };
+		153E4DDC223BDB7A005255B5 /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DDB223BDB7A005255B5 /* WebTVScreen.storyboard */; };
+		153E4DDE223BDBCC005255B5 /* NebesaTV7Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DDD223BDBCC005255B5 /* NebesaTV7Screen.storyboard */; };
 		154B7F53223ADAE40020A4E4 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */; };
 		154B7F55223ADCA90020A4E4 /* NetworkEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */; };
 		15B0816C223A4F6A00826057 /* CategoriesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */; };
@@ -32,12 +36,16 @@
 		110F9D942237A6310020BABC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		110F9D972237A6310020BABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		110F9D9C2237A6320020BABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		110F9D9F2237A6320020BABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		110F9DA12237A6320020BABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		110F9DA72237A6A50020BABC /* BroadcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewController.swift; sourceTree = "<group>"; };
 		110F9DAB2237A74E0020BABC /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
 		110F9DAD2237A7610020BABC /* HighlightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsViewController.swift; sourceTree = "<group>"; };
 		153E4DD2223BB451005255B5 /* CategoriesNamesDownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesNamesDownloadService.swift; sourceTree = "<group>"; };
+		153E4DD4223BBF08005255B5 /* CategoriesScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoriesScreen.storyboard; sourceTree = "<group>"; };
+		153E4DD6223BC143005255B5 /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
+		153E4DD9223BD928005255B5 /* BestScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BestScreen.storyboard; sourceTree = "<group>"; };
+		153E4DDB223BDB7A005255B5 /* WebTVScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
+		153E4DDD223BDBCC005255B5 /* NebesaTV7Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NebesaTV7Screen.storyboard; sourceTree = "<group>"; };
 		154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoints.swift; sourceTree = "<group>"; };
 		15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDataModel.swift; sourceTree = "<group>"; };
@@ -155,7 +163,11 @@
 			isa = PBXGroup;
 			children = (
 				110F9D962237A6310020BABC /* Main.storyboard */,
-				110F9D9E2237A6320020BABC /* LaunchScreen.storyboard */,
+				153E4DDD223BDBCC005255B5 /* NebesaTV7Screen.storyboard */,
+				153E4DDB223BDB7A005255B5 /* WebTVScreen.storyboard */,
+				153E4DD9223BD928005255B5 /* BestScreen.storyboard */,
+				153E4DD6223BC143005255B5 /* ProgrammeScreen.storyboard */,
+				153E4DD4223BBF08005255B5 /* CategoriesScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -237,9 +249,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				110F9DA02237A6320020BABC /* LaunchScreen.storyboard in Resources */,
+				153E4DDE223BDBCC005255B5 /* NebesaTV7Screen.storyboard in Resources */,
+				153E4DD5223BBF08005255B5 /* CategoriesScreen.storyboard in Resources */,
+				153E4DDA223BD928005255B5 /* BestScreen.storyboard in Resources */,
 				110F9D9D2237A6320020BABC /* Assets.xcassets in Resources */,
+				153E4DD7223BC143005255B5 /* ProgrammeScreen.storyboard in Resources */,
 				110F9D982237A6310020BABC /* Main.storyboard in Resources */,
+				153E4DDC223BDB7A005255B5 /* WebTVScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,14 +338,6 @@
 				110F9D972237A6310020BABC /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		110F9D9E2237A6320020BABC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				110F9D9F2237A6320020BABC /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -456,8 +464,9 @@
 			baseConfigurationReference = 80A01670E8FE1B6304A067FA /* Pods-TV7 Nebesa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27SYK7U5JH;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "TV7 Nebesa/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -465,6 +474,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vorobiovskyi.TV7-Nebesa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -475,8 +485,9 @@
 			baseConfigurationReference = 2831A2EA4C6801B61AA13941 /* Pods-TV7 Nebesa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27SYK7U5JH;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "TV7 Nebesa/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -484,6 +495,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vorobiovskyi.TV7-Nebesa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
