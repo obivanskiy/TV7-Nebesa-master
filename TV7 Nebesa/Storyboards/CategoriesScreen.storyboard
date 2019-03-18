@@ -65,7 +65,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3e-6J-sGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1464.8" y="2489.5052473763121"/>
+            <point key="canvasLocation" x="2274" y="1672"/>
         </scene>
         <!--Categories Table View Controller-->
         <scene sceneID="mQY-1u-YvM">
@@ -84,15 +84,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jP-ei-woQ">
-                                            <rect key="frame" x="21" y="15.5" width="42" height="20.5"/>
+                                            <rect key="frame" x="21" y="13.5" width="42" height="24.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="9jP-ei-woQ" firstAttribute="centerY" secondItem="i0c-41-3ny" secondAttribute="centerY" id="ie6-cw-7Ta"/>
-                                        <constraint firstItem="9jP-ei-woQ" firstAttribute="leading" secondItem="i0c-41-3ny" secondAttribute="leadingMargin" constant="5" id="qCL-xC-5PO"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="9jP-ei-woQ" secondAttribute="bottom" constant="3" id="bYR-5A-Z6x"/>
+                                        <constraint firstItem="9jP-ei-woQ" firstAttribute="centerY" secondItem="i0c-41-3ny" secondAttribute="centerY" id="pgY-73-8Y6"/>
+                                        <constraint firstItem="9jP-ei-woQ" firstAttribute="leading" secondItem="i0c-41-3ny" secondAttribute="leadingMargin" constant="5" id="zR9-Vf-R1m"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
