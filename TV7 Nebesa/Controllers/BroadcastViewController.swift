@@ -11,6 +11,7 @@ class BroadcastViewController: UIViewController {
 
     override func viewDidLoad() {
         print("Hello")
+        print("Hello world!")
     }
 
 }
