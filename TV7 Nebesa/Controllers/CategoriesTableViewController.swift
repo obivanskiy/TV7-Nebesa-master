@@ -22,7 +22,6 @@ final class CategoriesTableViewController: UITableViewController {
     //MARK: - View Controller Life Cycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.estimatedRowHeight = 50
         archiveCategoriesDownloadService()
     }
     
