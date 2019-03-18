@@ -10,7 +10,6 @@ import UIKit
 
 final class ParentCategoriesTableViewController: UITableViewController {
     
-    
     private(set) var categoriesData: ParentCategories = ParentCategories() {
         didSet {
             DispatchQueue.main.async {
@@ -23,6 +22,7 @@ final class ParentCategoriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         archiveCategoriesDownloadService()
+        self.tableView.sizeToFit()
     }
     
     override func viewWillAppear(_ animated: Bool) {
