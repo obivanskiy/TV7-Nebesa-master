@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CategoriesTableViewController: UITableViewController {
+final class ParentCategoriesTableViewController: UITableViewController {
     
     
     private(set) var categoriesData: ParentCategories = ParentCategories() {
@@ -39,7 +39,7 @@ final class CategoriesTableViewController: UITableViewController {
     
     // MARK: - Categories Names Download Service
     func archiveCategoriesDownloadService() {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.categoryNameURL
+        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL
         guard let url = URL(string: urlToParse) else { return }
         let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
             guard error == nil else { return }
@@ -59,12 +59,12 @@ final class CategoriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "CategoryDataSegue", sender: self)
+        self.performSegue(withIdentifier: "SubCategoriesSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryNameTableViewCell.identifier, for: indexPath) as? CategoryNameTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ParentCategoryNameTableViewCell.identifier, for: indexPath) as? ParentCategoryNameTableViewCell else {
             return UITableViewCell()
         }
         cell.categoryNameLabel.text = categoriesData.parentCategories[indexPath.row].name
@@ -74,14 +74,14 @@ final class CategoriesTableViewController: UITableViewController {
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "CategoryDataSegue" {
-            guard let viewController = segue.destination as? CategoryDataTableViewController else {
+        if segue.identifier == "SubCategoriesSegue" {
+            guard let viewController = segue.destination as? SubCategoriesTableViewController else {
                 return
             }
             guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
-            viewController.category = categoriesData.parentCategories[indexPath.row]
+            viewController.subCategories = categoriesData.parentCategories[indexPath.row]
         }
     }
 }

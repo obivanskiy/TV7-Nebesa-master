@@ -18,7 +18,7 @@ final class CategoryDataTableViewController: UITableViewController {
         }
     }
     
-    var category: CategoriesDetails?
+    var category: SubCategoriesDetails?
     
     override func viewDidLoad() {
         tableView.rowHeight = UITableView.automaticDimension
@@ -30,11 +30,11 @@ final class CategoryDataTableViewController: UITableViewController {
             return
         }
         archiveCategoriesDownloadService(category: category)
-        self.title = category.name
+        self.title = category.categoryName
     }
     
-    func archiveCategoriesDownloadService(category: CategoriesDetails) {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.categoryDataURL + category.id
+    func archiveCategoriesDownloadService(category: SubCategoriesDetails) {
+        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.categoryDataURL + category.categoryID
         guard let url = URL(string: urlToParse) else {
             return
         }
