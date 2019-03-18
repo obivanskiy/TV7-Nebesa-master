@@ -31,6 +31,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ejc-2z-wbW"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9h6-mp-ALO" sceneMemberID="firstResponder"/>
             </objects>
