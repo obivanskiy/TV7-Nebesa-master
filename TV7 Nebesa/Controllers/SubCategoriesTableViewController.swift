@@ -33,13 +33,14 @@ final class SubCategoriesTableViewController: UITableViewController {
     }
 
     func subCategoriesDownloadService(subCategory: CategoriesDetails) {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.subCategoriesURL + subCategory.id
+        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.subCategories + subCategory.id
         guard let url = URL(string: urlToParse) else { return }
         let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
             guard error == nil else { return }
             guard let responseData = data else { return }
             do {
                 self.subCategoriesData = try JSONDecoder().decode(SubCategories.self, from: responseData)
+                print(self.subCategoriesData)
             } catch let error {
                 print(error.localizedDescription)
             }

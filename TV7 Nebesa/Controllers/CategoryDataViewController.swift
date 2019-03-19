@@ -47,6 +47,7 @@ final class CategoryDataTableViewController: UITableViewController {
             }
             do {
                 self.categoryData = try JSONDecoder().decode(CategoryProgrammes.self, from: responseData)
+                print(self.categoryData)
             } catch let error {
                 print(error.localizedDescription)
             }
@@ -65,19 +66,6 @@ final class CategoryDataTableViewController: UITableViewController {
         cell.cellModel = categoryData.categoryProgrammes[indexPath.row]
         
         return cell
-    }
-    
-    //MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SeriesDataSegue" {
-            guard let viewController = segue.destination as? CategorySeriesTableViewController else {
-                return
-            }
-            guard let indexPath = self.tableView.indexPathForSelectedRow else {
-                return
-            }
-            viewController.categoryData = categoryData.categoryProgrammes[indexPath.row]
-        }
     }
 }
 
