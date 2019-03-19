@@ -8,8 +8,8 @@
 
 import UIKit
 
-class CategoryNameTableViewCell: UITableViewCell {
-
+class ParentCategoryNameTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var categoryNameLabel: UILabel!
     
 }
