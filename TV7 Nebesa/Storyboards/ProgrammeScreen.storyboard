@@ -31,14 +31,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="d47-dI-3Uq"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-<<<<<<< HEAD
                     <connections>
                         <outlet property="dateCollectioView" destination="3pB-HL-9rT" id="mDJ-Gc-tCw"/>
                         <outlet property="tvGuideTableView" destination="dDA-3h-DrZ" id="Yz1-V7-cHR"/>
                     </connections>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-=======
->>>>>>> parent of 6a2af07... 1) TVGuide parse. 2)DateCollection UI
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH7-jP-GdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
