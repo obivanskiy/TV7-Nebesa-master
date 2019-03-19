@@ -23,42 +23,13 @@
                         <segue destination="M18-wO-nNE" kind="relationship" relationship="viewControllers" id="1mF-k7-lvu"/>
                         <segue destination="DO7-xK-h7N" kind="relationship" relationship="viewControllers" id="Pwy-7S-FYt"/>
                         <segue destination="9Q2-da-OBB" kind="relationship" relationship="viewControllers" id="8bE-nF-upT"/>
-                        <segue destination="i7o-y0-un0" kind="relationship" relationship="viewControllers" id="SJE-av-m0g"/>
+                        <segue destination="9fw-JR-uzW" kind="relationship" relationship="viewControllers" id="SJE-av-m0g"/>
                         <segue destination="aNa-mw-ji6" kind="relationship" relationship="viewControllers" id="jjr-Ge-Q6o"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIE-Nw-C9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
-        </scene>
-        <!--Categories-->
-        <scene sceneID="uXd-4I-N38">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i7o-y0-un0" userLabel="Categories" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="АРХИВ" id="d35-Sl-Nfd"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eMH-X1-Pt1">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="H5W-yP-ThW" kind="relationship" relationship="rootViewController" id="DI2-Nn-lMO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mx4-n2-Nit" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2404" y="901"/>
-        </scene>
-        <!--CategoriesScreen-->
-        <scene sceneID="j8Y-ar-Izy">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CategoriesStoryboard" storyboardName="CategoriesScreen" id="H5W-yP-ThW" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="nqc-qz-9vh"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q5y-cx-Fok" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2404" y="1399"/>
         </scene>
         <!--Programme-->
         <scene sceneID="Ma8-je-aTr">
@@ -175,6 +146,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x8m-3o-1bI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137" y="1399"/>
+        </scene>
+        <!--Categories-->
+        <scene sceneID="GI6-Ff-h7e">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Categories" id="9fw-JR-uzW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="rdR-8x-LlN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sh7-Jp-8Kc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2404" y="901"/>
         </scene>
     </scenes>
 </document>
