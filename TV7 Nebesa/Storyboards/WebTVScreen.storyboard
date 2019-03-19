@@ -13,7 +13,7 @@
         <!--Web-TV-->
         <scene sceneID="yo3-79-vBh">
             <objects>
-                <viewController storyboardIdentifier="WebTVScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MdV-Xa-wyb" userLabel="Web-TV" customClass="BroadcastViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebTVScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MdV-Xa-wyb" userLabel="Web-TV" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aAu-AB-f7s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
