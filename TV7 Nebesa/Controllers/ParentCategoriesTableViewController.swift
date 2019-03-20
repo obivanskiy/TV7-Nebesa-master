@@ -39,7 +39,7 @@ final class ParentCategoriesTableViewController: UITableViewController {
     
     // MARK: - Categories Names Download Service
     func archiveCategoriesDownloadService() {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL
+        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.categoryNameURL
         guard let url = URL(string: urlToParse) else { return }
         let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
             guard error == nil else { return }
