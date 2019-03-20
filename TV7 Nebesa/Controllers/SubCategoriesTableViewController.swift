@@ -40,6 +40,7 @@ final class SubCategoriesTableViewController: UITableViewController {
             guard let responseData = data else { return }
             do {
                 self.subCategoriesData = try JSONDecoder().decode(SubCategories.self, from: responseData)
+                print(self.subCategoriesData)
             } catch let error {
                 print(error.localizedDescription)
             }
