@@ -15,18 +15,8 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
 
 
     //MARK: - Private properties
-    private (set) var tvGuideSeries: [String]? = [] {
+    private (set) var tvGuideSeries: TVGuideDates = TVGuideDates() {
         didSet {
-            guard let _ = tvGuideSeries else { return }
-            DispatchQueue.main.async {
-                self.tvGuideTableView.reloadData()
-            }
-        }
-    }
-
-    private (set) var tvGuideDate: [String]? = [] {
-        didSet {
-            guard let _ = tvGuideDate else { return }
             DispatchQueue.main.async {
                 self.tvGuideTableView.reloadData()
             }
@@ -40,6 +30,8 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tvGuideTableView.rowHeight = UITableView.automaticDimension
+        self.tvGuideTableView.estimatedRowHeight = 70
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,16 +50,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
             guard error == nil else { return }
             guard let responseData = data else { return }
             do {
-                let entity = try JSONDecoder().decode(TVGuideDates.self, from: responseData)
-                for key in entity.tvGuideDates {
-                    if key.name != "" {
-                        self.tvGuideSeries?.append(key.series + ": " + key.name)
-                    } else {
-                        self.tvGuideSeries?.append(key.series)
-                    }
-                    let date = self.dateFormatter(key.date)
-                    self.tvGuideDate?.append(date)
-                }
+                self.tvGuideSeries = try JSONDecoder().decode(TVGuideDates.self, from: responseData)
             } catch let error {
                 print("Error is \(error)")
             }
@@ -77,15 +60,13 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
 
     //MARK: - Table View Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let numberOfRowsInSection = tvGuideSeries?.count else { return 1 }
-
-        return numberOfRowsInSection
+        return tvGuideSeries.tvGuideDates.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "tvGuideCell", for: indexPath) as? TVGuideCell else { return UITableViewCell()}
-        cell.seriesTVGuide.text = tvGuideSeries?[indexPath.row]
-        cell.timeTVGuide.text = tvGuideDate?[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TVGuideCell.identifier, for: indexPath) as? TVGuideCell else { return UITableViewCell()}
+        cell.seriesTVGuide.text = tvGuideSeries.tvGuideDates[indexPath.row].series
+        cell.timeTVGuide.text = dateFormatter(tvGuideSeries.tvGuideDates[indexPath.row].date)
         return cell
     }
 
@@ -129,7 +110,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
     func setupTVGuideTableView() {
         tvGuideTableView.dataSource = self
         //Register for TVGuideCell.xib
-        tvGuideTableView.register(UINib(nibName: "TVGuideCell", bundle: .none), forCellReuseIdentifier: "tvGuideCell")
+        tvGuideTableView.register(UINib(nibName: "TVGuideCell", bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
         tvGuideTableView.allowsSelection = false
 
     }
