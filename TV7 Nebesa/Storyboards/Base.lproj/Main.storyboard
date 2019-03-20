@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="1880" y="721"/>
         </scene>
-        <!--NavigationHomeScreen-->
+        <!--HomeScreen-->
         <scene sceneID="W7b-Vo-RO7">
             <objects>
-                <viewControllerPlaceholder storyboardName="HomeScreen" referencedIdentifier="NavigationHomeScreen" id="xXA-OF-CVk" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="HomeScreen" id="xXA-OF-CVk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="zH5-e4-s1w"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lpH-gP-WWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
