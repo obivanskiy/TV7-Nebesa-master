@@ -14,11 +14,11 @@
 		110F9DA82237A6A50020BABC /* BroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DA72237A6A50020BABC /* BroadcastViewController.swift */; };
 		110F9DAC2237A74E0020BABC /* ParentCategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAB2237A74E0020BABC /* ParentCategoriesTableViewController.swift */; };
 		110F9DAE2237A7610020BABC /* HighlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAD2237A7610020BABC /* HighlightsViewController.swift */; };
+		152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */; };
+		152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */; };
+		152DF3B6224271E400BDC90B /* BestScenesScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */; };
+		152DF3B82242725800BDC90B /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B72242725800BDC90B /* HomeScreen.storyboard */; };
 		153E4DD3223BB451005255B5 /* CategoriesNamesDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153E4DD2223BB451005255B5 /* CategoriesNamesDownloadService.swift */; };
-		153E4DD7223BC143005255B5 /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DD6223BC143005255B5 /* ProgrammeScreen.storyboard */; };
-		153E4DDA223BD928005255B5 /* BestScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DD9223BD928005255B5 /* BestScreen.storyboard */; };
-		153E4DDC223BDB7A005255B5 /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DDB223BDB7A005255B5 /* WebTVScreen.storyboard */; };
-		153E4DDE223BDBCC005255B5 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153E4DDD223BDBCC005255B5 /* HomeScreen.storyboard */; };
 		154B7F53223ADAE40020A4E4 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */; };
 		154B7F55223ADCA90020A4E4 /* NetworkEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */; };
 		15B0816C223A4F6A00826057 /* CategoriesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */; };
@@ -51,11 +51,11 @@
 		110F9DA72237A6A50020BABC /* BroadcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewController.swift; sourceTree = "<group>"; };
 		110F9DAB2237A74E0020BABC /* ParentCategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCategoriesTableViewController.swift; sourceTree = "<group>"; };
 		110F9DAD2237A7610020BABC /* HighlightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsViewController.swift; sourceTree = "<group>"; };
+		152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
+		152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
+		152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BestScenesScreen.storyboard; sourceTree = "<group>"; };
+		152DF3B72242725800BDC90B /* HomeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
 		153E4DD2223BB451005255B5 /* CategoriesNamesDownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesNamesDownloadService.swift; sourceTree = "<group>"; };
-		153E4DD6223BC143005255B5 /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
-		153E4DD9223BD928005255B5 /* BestScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BestScreen.storyboard; sourceTree = "<group>"; };
-		153E4DDB223BDB7A005255B5 /* WebTVScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
-		153E4DDD223BDBCC005255B5 /* HomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
 		154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoints.swift; sourceTree = "<group>"; };
 		15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDataModel.swift; sourceTree = "<group>"; };
@@ -194,12 +194,12 @@
 		15CF8F6F2237BD24008424E9 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				152DF3B72242725800BDC90B /* HomeScreen.storyboard */,
+				152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */,
+				152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */,
+				152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */,
 				15D626F2224142B900449F8B /* Categories.storyboard */,
 				110F9D962237A6310020BABC /* Main.storyboard */,
-				153E4DDD223BDBCC005255B5 /* HomeScreen.storyboard */,
-				153E4DDB223BDB7A005255B5 /* WebTVScreen.storyboard */,
-				153E4DD9223BD928005255B5 /* BestScreen.storyboard */,
-				153E4DD6223BC143005255B5 /* ProgrammeScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -299,13 +299,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAFDE801223FC69A00006FEE /* TVGuideCell.xib in Resources */,
-				153E4DDE223BDBCC005255B5 /* HomeScreen.storyboard in Resources */,
-				153E4DDA223BD928005255B5 /* BestScreen.storyboard in Resources */,
 				110F9D9D2237A6320020BABC /* Assets.xcassets in Resources */,
-				153E4DD7223BC143005255B5 /* ProgrammeScreen.storyboard in Resources */,
 				15D626F3224142B900449F8B /* Categories.storyboard in Resources */,
+				152DF3B6224271E400BDC90B /* BestScenesScreen.storyboard in Resources */,
+				152DF3B82242725800BDC90B /* HomeScreen.storyboard in Resources */,
+				152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */,
 				110F9D982237A6310020BABC /* Main.storyboard in Resources */,
-				153E4DDC223BDB7A005255B5 /* WebTVScreen.storyboard in Resources */,
+				152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
