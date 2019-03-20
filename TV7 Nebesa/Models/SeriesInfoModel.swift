@@ -83,7 +83,6 @@ struct SeriesInfo: Codable {
         imagePath = try container.decodeIfPresent(String.self, forKey: .imagePath) ?? ""
         cid = try container.decodeIfPresent(String.self, forKey: .cid) ?? ""
     }
-    
 }
 
 

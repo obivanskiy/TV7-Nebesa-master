@@ -26,7 +26,7 @@ final class ParentCategoriesTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = "Архив"
+        
     }
     
     // MARK: - Finish error handling

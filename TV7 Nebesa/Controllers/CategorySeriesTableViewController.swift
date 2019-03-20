@@ -27,6 +27,8 @@ class CategorySeriesTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tableView.estimatedRowHeight = 300
+        tableView.rowHeight = UITableView.automaticDimension
         fetchSeriesData(categoryData: categoryData ?? CategoryProgrammesData())
     }
     
@@ -59,14 +61,22 @@ class CategorySeriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 {
         return seriesData.programmeInfo.count
+        } else {
+        return 0
+        }
     }
+    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//
+//        return UITableView.automaticDimension
+//    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SeriesInfoTableViewCell.identifier, for: indexPath) as? SeriesInfoTableViewCell else { return UITableViewCell() }
                 cell.cellModel = seriesData.programmeInfo[indexPath.row]
-            
                 return cell
 }
 //        else if indexPath.section == 1 {

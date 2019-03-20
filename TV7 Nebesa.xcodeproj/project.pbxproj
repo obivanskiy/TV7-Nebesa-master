@@ -18,6 +18,7 @@
 		152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */; };
 		152DF3B6224271E400BDC90B /* BestScenesScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */; };
 		152DF3B82242725800BDC90B /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B72242725800BDC90B /* HomeScreen.storyboard */; };
+		152DF3BA22428B2900BDC90B /* SeriesProgrammesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152DF3B922428B2900BDC90B /* SeriesProgrammesModel.swift */; };
 		153E4DD3223BB451005255B5 /* CategoriesNamesDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153E4DD2223BB451005255B5 /* CategoriesNamesDownloadService.swift */; };
 		154B7F53223ADAE40020A4E4 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */; };
 		154B7F55223ADCA90020A4E4 /* NetworkEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */; };
@@ -55,6 +56,7 @@
 		152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BestScenesScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B72242725800BDC90B /* HomeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
+		152DF3B922428B2900BDC90B /* SeriesProgrammesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesProgrammesModel.swift; sourceTree = "<group>"; };
 		153E4DD2223BB451005255B5 /* CategoriesNamesDownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesNamesDownloadService.swift; sourceTree = "<group>"; };
 		154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoints.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				15F1580C223FD4C9005047CD /* SubCategoriesModel.swift */,
 				15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */,
 				15D626EF224125B200449F8B /* SeriesInfoModel.swift */,
+				152DF3B922428B2900BDC90B /* SeriesProgrammesModel.swift */,
 				FAFDE802223FCAA100006FEE /* TVGuideModel.swift */,
 			);
 			path = Models;
@@ -386,6 +389,7 @@
 				154B7F53223ADAE40020A4E4 /* UITableViewCell+Extension.swift in Sources */,
 				15CF8F732237E03D008424E9 /* ParentCategoriesModel.swift in Sources */,
 				110F9DAC2237A74E0020BABC /* ParentCategoriesTableViewController.swift in Sources */,
+				152DF3BA22428B2900BDC90B /* SeriesProgrammesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
