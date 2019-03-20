@@ -13,29 +13,99 @@
         <!--Programme-->
         <scene sceneID="Zvw-W8-fe4">
             <objects>
-                <viewController storyboardIdentifier="ProgrammeScreen" id="rer-Rx-8Yd" userLabel="Programme" customClass="BroadcastSketchVC" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProgrammeScreen" id="rer-Rx-8Yd" userLabel="Programme" customClass="BroadcastViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XW9-9Z-3tx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Passed to programme VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKp-04-XxT">
-                                <rect key="frame" x="90" y="323" width="195" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dDA-3h-DrZ">
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tvGuideCell" id="cxA-G2-MEj">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cxA-G2-MEj" id="SlY-Ef-axW">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-pw-WVt" userLabel="Date Stack View">
+                                <rect key="frame" x="8" y="64" width="359" height="36"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3pB-HL-9rT">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="36"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bmB-3L-2MS">
+                                            <size key="itemSize" width="50" height="34"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DateCell" id="oHI-Rh-Vfq" customClass="DateCollectionViewCell" customModule="TV7_Nebesa" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="1" width="50" height="34"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6S2-tW-1zH">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="34"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="6S2-tW-1zH" secondAttribute="bottom" id="Mgh-cn-m4D"/>
+                                                    <constraint firstItem="6S2-tW-1zH" firstAttribute="top" secondItem="oHI-Rh-Vfq" secondAttribute="top" id="NSo-Ng-bNn"/>
+                                                    <constraint firstItem="6S2-tW-1zH" firstAttribute="leading" secondItem="oHI-Rh-Vfq" secondAttribute="leading" id="non-ZJ-ATc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="6S2-tW-1zH" secondAttribute="trailing" id="tz1-LT-i8d"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dateLabel" destination="6S2-tW-1zH" id="X3P-eD-bbv"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="3pB-HL-9rT" firstAttribute="top" secondItem="2vs-pw-WVt" secondAttribute="top" id="AbT-3C-lWB"/>
+                                    <constraint firstAttribute="bottom" secondItem="3pB-HL-9rT" secondAttribute="bottom" id="Dp1-uz-W15"/>
+                                    <constraint firstAttribute="trailing" secondItem="3pB-HL-9rT" secondAttribute="trailing" id="i6Z-6W-T9A"/>
+                                    <constraint firstItem="3pB-HL-9rT" firstAttribute="leading" secondItem="2vs-pw-WVt" secondAttribute="leading" id="ijD-3a-3xH"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dDA-3h-DrZ" firstAttribute="bottom" secondItem="QXW-Bn-GkE" secondAttribute="bottom" id="6K7-Iw-zax"/>
+                            <constraint firstItem="dDA-3h-DrZ" firstAttribute="trailing" secondItem="QXW-Bn-GkE" secondAttribute="trailing" id="AYM-e8-D0c"/>
+                            <constraint firstItem="dDA-3h-DrZ" firstAttribute="top" secondItem="QXW-Bn-GkE" secondAttribute="top" constant="36" id="QUa-rH-mx2"/>
+                            <constraint firstItem="2vs-pw-WVt" firstAttribute="leading" secondItem="QXW-Bn-GkE" secondAttribute="leading" constant="8" id="RJr-zK-MbJ"/>
+                            <constraint firstItem="dDA-3h-DrZ" firstAttribute="leading" secondItem="QXW-Bn-GkE" secondAttribute="leading" id="a7x-DN-jnZ"/>
+                            <constraint firstItem="QXW-Bn-GkE" firstAttribute="trailing" secondItem="2vs-pw-WVt" secondAttribute="trailing" constant="8" id="hhP-cS-0P3"/>
+                            <constraint firstItem="2vs-pw-WVt" firstAttribute="centerX" secondItem="XW9-9Z-3tx" secondAttribute="centerX" id="iHd-Op-fGP"/>
+                            <constraint firstItem="dDA-3h-DrZ" firstAttribute="top" secondItem="2vs-pw-WVt" secondAttribute="bottom" id="lv9-Ay-lgN"/>
+                            <constraint firstItem="2vs-pw-WVt" firstAttribute="top" secondItem="QXW-Bn-GkE" secondAttribute="top" id="oZE-oy-a0N"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QXW-Bn-GkE"/>
                     </view>
-                    <navigationItem key="navigationItem" id="d47-dI-3Uq"/>
+                    <navigationItem key="navigationItem" title="Программа" id="d47-dI-3Uq"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="dateCollectioView" destination="3pB-HL-9rT" id="mDJ-Gc-tCw"/>
+                        <outlet property="tvGuideTableView" destination="dDA-3h-DrZ" id="Yz1-V7-cHR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH7-jP-GdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1121" y="633"/>
+            <point key="canvasLocation" x="-1122.4000000000001" y="632.83358320839591"/>
         </scene>
     </scenes>
 </document>
