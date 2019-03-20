@@ -120,6 +120,9 @@
 				FAFDE7FD223FC67500006FEE /* TVGuideCell */,
 				15D626EB22411C1E00449F8B /* SeriesInfoTableViewCell.swift */,
 				15D626ED22411C2C00449F8B /* EpisodeInfoTableViewCell.swift */,
+				15D626EB22411C1E00449F8B /* SeriesInfoTableViewCell.swift */,
+				15D626ED22411C2C00449F8B /* EpisodeInfoTableViewCell.swift */,
+				FAFDE7FD223FC67500006FEE /* TVGuideCell */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -147,6 +150,8 @@
 				15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */,
 				FAFDE802223FCAA100006FEE /* TVGuideModel.swift */,
 				15D626EF224125B200449F8B /* SeriesInfoModel.swift */,
+				15D626EF224125B200449F8B /* SeriesInfoModel.swift */,
+				FAFDE802223FCAA100006FEE /* TVGuideModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
