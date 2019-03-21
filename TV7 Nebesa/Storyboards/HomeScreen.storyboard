@@ -18,13 +18,68 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="LEV-LH-qOI">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeScreenCell" rowHeight="130" id="LEV-LH-qOI" customClass="HomeScreenTableViewCell" customModule="TV7_Nebesa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LEV-LH-qOI" id="E8U-Du-6nc">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Q0-xG-Rxb">
+                                            <rect key="frame" x="5" y="10.5" width="176" height="108.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="6Q0-xG-Rxb" secondAttribute="height" multiplier="16:9" constant="-16.666666666666657" id="6TQ-Ru-B0e"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мессия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qR2-A3-FbY">
+                                            <rect key="frame" x="191" y="10.5" width="179" height="19"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="19" id="gm9-pW-xXr"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.01.2001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEh-Ko-773">
+                                            <rect key="frame" x="191" y="31.5" width="163" height="11"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="11" id="PrV-Yi-0ny"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание к серии" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJz-ht-e4P">
+                                            <rect key="frame" x="191" y="46.5" width="163" height="62"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="uJz-ht-e4P" firstAttribute="leading" secondItem="EEh-Ko-773" secondAttribute="leading" id="3ob-Xv-7jQ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="EEh-Ko-773" secondAttribute="trailing" constant="5" id="4fW-MN-PdS"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="uJz-ht-e4P" secondAttribute="bottom" constant="10.5" id="AVA-V3-HXh"/>
+                                        <constraint firstItem="EEh-Ko-773" firstAttribute="top" secondItem="qR2-A3-FbY" secondAttribute="bottom" constant="2" id="ElE-Fg-RrD"/>
+                                        <constraint firstAttribute="trailing" secondItem="qR2-A3-FbY" secondAttribute="trailing" constant="5" id="JBM-uQ-2wU"/>
+                                        <constraint firstItem="6Q0-xG-Rxb" firstAttribute="centerY" secondItem="E8U-Du-6nc" secondAttribute="centerY" id="Old-0h-ILb"/>
+                                        <constraint firstItem="qR2-A3-FbY" firstAttribute="leading" secondItem="EEh-Ko-773" secondAttribute="leading" id="PY4-tC-3Yy"/>
+                                        <constraint firstItem="qR2-A3-FbY" firstAttribute="leading" secondItem="6Q0-xG-Rxb" secondAttribute="trailing" constant="10" id="RPv-OU-KVq"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="uJz-ht-e4P" secondAttribute="trailing" constant="5" id="Tyl-TI-eVE"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="uJz-ht-e4P" secondAttribute="trailing" constant="5" id="Wja-1f-9Xg"/>
+                                        <constraint firstItem="6Q0-xG-Rxb" firstAttribute="bottom" secondItem="E8U-Du-6nc" secondAttribute="bottomMargin" id="Wp6-Ll-QuL"/>
+                                        <constraint firstItem="uJz-ht-e4P" firstAttribute="top" secondItem="EEh-Ko-773" secondAttribute="bottom" constant="4" id="Xah-O0-Qbz"/>
+                                        <constraint firstItem="6Q0-xG-Rxb" firstAttribute="leading" secondItem="E8U-Du-6nc" secondAttribute="leading" constant="5" id="iVh-ob-I0I"/>
+                                        <constraint firstItem="qR2-A3-FbY" firstAttribute="top" secondItem="6Q0-xG-Rxb" secondAttribute="top" id="we3-0h-deA"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="HomeScreenCell"/>
+                                <connections>
+                                    <outlet property="HomeScreenDateLabel" destination="EEh-Ko-773" id="0ir-CS-Mwt"/>
+                                    <outlet property="HomeScreenDescriptionLabel" destination="uJz-ht-e4P" id="mdn-e5-MPC"/>
+                                    <outlet property="HomeScreenPreviewImage" destination="6Q0-xG-Rxb" id="5nc-zb-j2i"/>
+                                    <outlet property="HomeScreenTitleLabel" destination="qR2-A3-FbY" id="J0L-SU-VTm"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -42,11 +97,11 @@
         <!--Navigation Controller-->
         <scene sceneID="G5Z-08-2bd">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iec-Fm-Eo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6KC-fv-2tl" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="XG9-6N-RXd">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XG9-6N-RXd">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -54,7 +109,6 @@
                         <segue destination="KWE-tW-DUC" kind="relationship" relationship="rootViewController" id="7Ud-HL-kzs"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iec-Fm-Eo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="978.39999999999998" y="1172.5637181409297"/>
         </scene>

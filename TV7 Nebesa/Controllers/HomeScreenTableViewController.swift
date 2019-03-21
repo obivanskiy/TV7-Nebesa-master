@@ -8,37 +8,74 @@
 
 import UIKit
 
-class HomeScreenTableViewController: UITableViewController {
+final class HomeScreenTableViewController: UITableViewController {
 
-    
-    
+    private(set) var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        tableView.rowHeight = UITableView.automaticDimension
+    tableView.estimatedRowHeight = 122
+        print("1")
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
-        
-    
+        homeScreenDownloadService(homeScreenData: HomeScreenData())
         self.title = "Небеса"
+        setupSearchController()
     }
+    
+    //MARK: - Setup Search Controller
+    func setupSearchController() {
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+    }
+    
+    func homeScreenDownloadService(homeScreenData: HomeScreenData) {
+        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL + homeScreenData.id
+        guard let url = URL(string: urlToParse) else {
+            return
+        }
+        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
+            guard error == nil else {
+                return
+            }
+            guard let responseData = data else {
+                return
+            }
+            do {
+                self.homeScreenData = try JSONDecoder().decode(HomeScreenProgrammes.self, from: responseData)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        urlSessionTask.resume()
+    }
+    
+    
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return homeScreenData.homeScreenProgrammes.count
     }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeScreenCell", for: indexPath) as? HomeScreenTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.cellModel = homeScreenData.homeScreenProgrammes[indexPath.row]
+        
+        return cell
+    }
+    
+    
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

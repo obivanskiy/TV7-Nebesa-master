@@ -21,6 +21,7 @@ final class CategoryDataTableViewController: UITableViewController {
     var category: SubCategoriesDetails?
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 122
     }
