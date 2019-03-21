@@ -27,9 +27,9 @@ final class HomeScreenTableViewCell: UITableViewCell {
     }
     
     private func setupUI(cellModel: HomeScreenData) {
-//        HomeScreenTitleLabel.sizeToFit()
+        HomeScreenTitleLabel.sizeToFit()
         HomeScreenTitleLabel.text = cellModel.seriesName
-        HomeScreenDateLabel.text? = cellModel.visibleOnVodSince
+        HomeScreenDateLabel.text? = cellModel.firstBroadcast
         HomeScreenDescriptionLabel.text = cellModel.caption
         
         guard let previewImageURL = URL.init(string: cellModel.homeScreenVideoPreviewImageURLString) else {
