@@ -15,7 +15,8 @@ final class HomeScreenTableViewCell: UITableViewCell {
     @IBOutlet weak var HomeScreenPreviewImage: UIImageView!
     @IBOutlet weak var HomeScreenTitleLabel: UILabel!
     @IBOutlet weak var HomeScreenDateLabel: UILabel!
-    @IBOutlet weak var HomeScreenDescriptionLabel: UILabel!
+    @IBOutlet weak var HomeScreenDescriptionLabel: UITextView!
+    
     
     var cellModel: HomeScreenData? {
         didSet {
@@ -27,9 +28,9 @@ final class HomeScreenTableViewCell: UITableViewCell {
     
     private func setupUI(cellModel: HomeScreenData) {
 //        HomeScreenTitleLabel.sizeToFit()
-        HomeScreenTitleLabel.text = cellModel.name
-        HomeScreenDateLabel.text = cellModel.visibleOnVodSince
-        HomeScreenDescriptionLabel.text = cellModel.description
+        HomeScreenTitleLabel.text = cellModel.seriesName
+        HomeScreenDateLabel.text? = cellModel.visibleOnVodSince
+        HomeScreenDescriptionLabel.text = cellModel.caption
         
         guard let previewImageURL = URL.init(string: cellModel.homeScreenVideoPreviewImageURLString) else {
             return

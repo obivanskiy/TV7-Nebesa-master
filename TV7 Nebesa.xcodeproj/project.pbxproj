@@ -16,6 +16,7 @@
 		1138EEEB2242CE7F00E687ED /* HomeScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138EEE92242CE7F00E687ED /* HomeScreenTableViewCell.swift */; };
 		1138EEEF2242ECCE00E687ED /* HomeScreenDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138EEEE2242ECCE00E687ED /* HomeScreenDataModel.swift */; };
 		11ACAE372242C1410003CDD0 /* HomeScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACAE362242C1410003CDD0 /* HomeScreenTableViewController.swift */; };
+		11E11F3322439CF800483859 /* 9651.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11E11F3222439CF800483859 /* 9651.ttf */; };
 		152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */; };
 		152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */; };
 		152DF3B6224271E400BDC90B /* BestScenesScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */; };
@@ -55,6 +56,7 @@
 		1138EEE92242CE7F00E687ED /* HomeScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenTableViewCell.swift; sourceTree = "<group>"; };
 		1138EEEE2242ECCE00E687ED /* HomeScreenDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenDataModel.swift; sourceTree = "<group>"; };
 		11ACAE362242C1410003CDD0 /* HomeScreenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenTableViewController.swift; sourceTree = "<group>"; };
+		11E11F3222439CF800483859 /* 9651.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9651.ttf; sourceTree = "<group>"; };
 		152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BestScenesScreen.storyboard; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		110F9D912237A6310020BABC /* TV7 Nebesa */ = {
 			isa = PBXGroup;
 			children = (
+				11E11F3122439CE000483859 /* Fonts */,
 				110F9D922237A6310020BABC /* AppDelegate.swift */,
 				15CF8F6F2237BD24008424E9 /* Storyboards */,
 				15CF8F6E2237BD0B008424E9 /* Controllers */,
@@ -130,6 +133,14 @@
 				110F9DA12237A6320020BABC /* Info.plist */,
 			);
 			path = "TV7 Nebesa";
+			sourceTree = "<group>";
+		};
+		11E11F3122439CE000483859 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				11E11F3222439CF800483859 /* 9651.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		153E4DD1223BA83D005255B5 /* TableViewCells */ = {
@@ -310,6 +321,7 @@
 				152DF3B6224271E400BDC90B /* BestScenesScreen.storyboard in Resources */,
 				152DF3B82242725800BDC90B /* HomeScreen.storyboard in Resources */,
 				152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */,
+				11E11F3322439CF800483859 /* 9651.ttf in Resources */,
 				110F9D982237A6310020BABC /* Main.storyboard in Resources */,
 				152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */,
 			);

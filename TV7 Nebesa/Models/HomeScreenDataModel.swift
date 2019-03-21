@@ -44,6 +44,7 @@ struct HomeScreenProgrammes: Codable {
         let fcname: String?
         let linkPath: String
         let homeScreenVideoPreviewImageURLString: String
+        let seriesName: String
         let visibleOnVodSince: String
        
         
@@ -60,6 +61,7 @@ struct HomeScreenProgrammes: Codable {
             case fcname = "fcname"
             case linkPath = "link_path"
             case imagePath = "image_path"
+            case seriesName = "series_name"
             case visibleOnVodSince = "visible_on_vod_since"
        
         }
@@ -79,6 +81,7 @@ struct HomeScreenProgrammes: Codable {
             try container.encode(fcname, forKey: .fcname)
             try container.encode(linkPath, forKey: .linkPath)
             try container.encode(homeScreenVideoPreviewImageURLString, forKey: .imagePath)
+            try container.encode(seriesName, forKey: .seriesName)
             try container.encode(visibleOnVodSince, forKey: .visibleOnVodSince)
            
         
@@ -96,6 +99,7 @@ struct HomeScreenProgrammes: Codable {
             self.fcname = ""
             self.linkPath = ""
             self.homeScreenVideoPreviewImageURLString = ""
+            self.seriesName = ""
             self.visibleOnVodSince = ""
         
         }
@@ -104,17 +108,16 @@ struct HomeScreenProgrammes: Codable {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             id = try container.decodeIfPresent(Identifier.self, forKey: .id) ?? ""
             sid = try container.decodeIfPresent(String.self, forKey: .sid) ?? ""
-           
             name = try container.decodeIfPresent(String.self, forKey: .name) ?? ""
             caption = try container.decodeIfPresent(String.self, forKey: .caption) ?? ""
             firstBroadcast = try container.decodeIfPresent(String.self, forKey: .firstBroadcast) ?? ""
-            
             episodeNumber = try container.decodeIfPresent(String.self, forKey: .episodeNumber) ?? ""
             duration = try container.decodeIfPresent(String.self, forKey: .duration) ?? ""
             description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
             fcname = try container.decodeIfPresent(String.self, forKey: .fcname) ?? ""
             linkPath = try container.decodeIfPresent(String.self, forKey: .linkPath) ?? ""
             homeScreenVideoPreviewImageURLString = try container.decodeIfPresent(String.self, forKey: .imagePath) ?? ""
+            seriesName = try container.decodeIfPresent(String.self, forKey: .seriesName) ?? ""
             visibleOnVodSince = try container.decodeIfPresent(String.self, forKey: .visibleOnVodSince) ?? ""
             
         }

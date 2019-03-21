@@ -20,9 +20,9 @@ final class HomeScreenTableViewController: UITableViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = UITableView.automaticDimension
-    tableView.estimatedRowHeight = 122
-        print("1")
+        navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.rowHeight = 130
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
