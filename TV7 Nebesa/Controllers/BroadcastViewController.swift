@@ -32,20 +32,21 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
 
         self.tvGuideTableView.rowHeight = UITableView.automaticDimension
         self.tvGuideTableView.estimatedRowHeight = 70
+        downloadServiceForChosenDate(currentDate(Date()))
+        setupTVGuideTableView()
+        setupDateCollectionView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        setupTVGuideTableView()
-        setupDateCollectionView()
-        tvGuideDownloadService()
+
         generateDates()
     }
 
 
     //MARK: - TV Guide Series Download
-    func tvGuideDownloadService() {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide + current(Date())
+    func downloadServiceForChosenDate(_ date: String) {
+        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide + date
         guard let url = URL(string: urlToParse) else { return }
         let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else { return }
@@ -88,10 +89,8 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCell: UICollectionViewCell = dateCollectioView.cellForItem(at: indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(red: 124/256, green: 77/256, blue: 255/256, alpha: 0.7)
-
-        //Fix it
-        print(current(arrayOfDates[indexPath.row]))
-
+        downloadServiceForChosenDate(currentDate(arrayOfDates[indexPath.row]))
+        tvGuideTableView.reloadData()
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -99,9 +98,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         cellToDeselect.contentView.backgroundColor = UIColor.clear
     }
 
-    //MARK: Actions
-
-    // MARK: - Private Methods
+    //MARK: - Private Methods
     private func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }
         let date = Date(timeIntervalSince1970: unixDate)
@@ -117,7 +114,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         //Register for TVGuideCell.xib
         tvGuideTableView.register(UINib(nibName: "TVGuideCell", bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
         tvGuideTableView.allowsSelection = false
-
     }
 
     func setupDateCollectionView() {
@@ -127,7 +123,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         dateCollectioView.reloadData()
     }
 
-    private func current(_ date: Date) -> String {
+    private func currentDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let currentDateFormat = dateFormatter.string(from: date)
