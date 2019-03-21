@@ -22,8 +22,8 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
             }
         }
     }
-
-    let dates = [10.02, 11.01, 18.10, 13.02, 14.05, 12.01, 13.01, 14.02, 15.06]
+    private var arrayOfDates = [Date]()
+    private var arrayOfDatesStrings = [String]()
 
 
     //MARK: - Lifecycle methods
@@ -39,12 +39,13 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         setupTVGuideTableView()
         setupDateCollectionView()
         tvGuideDownloadService()
+        generateDates()
     }
 
 
     //MARK: - TV Guide Series Download
     func tvGuideDownloadService() {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide
+        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide + current(Date())
         guard let url = URL(string: urlToParse) else { return }
         let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else { return }
@@ -72,14 +73,14 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
 
     //MARK: - Collection View Data Source Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let numberOfItemsInSection = dates.count
+        let numberOfItemsInSection = arrayOfDatesStrings.count
         return numberOfItemsInSection
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DateCell", for: indexPath) as! DateCollectionViewCell
-        let dates = self.dates[indexPath.row]
-        cell.dateLabel.text = String(dates)
+        let dates = self.arrayOfDatesStrings[indexPath.row]
+        cell.dateLabel.text = dates
         return cell
     }
 
@@ -87,6 +88,10 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCell: UICollectionViewCell = dateCollectioView.cellForItem(at: indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(red: 124/256, green: 77/256, blue: 255/256, alpha: 0.7)
+
+        //Fix it
+        print(current(arrayOfDates[indexPath.row]))
+
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -120,6 +125,24 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         dateCollectioView.delegate = self
         dateCollectioView.allowsSelection = true
         dateCollectioView.reloadData()
+    }
+
+    private func current(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDateFormat = dateFormatter.string(from: date)
+        return currentDateFormat
+    }
+
+    private func generateDates() {
+        for number in -10...10 {
+            guard let newDate = NSCalendar.current.date(byAdding: .day, value: number, to: Date()) else { continue }
+            arrayOfDates.append(newDate)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM"
+            let formattedDate = dateFormatter.string(from: newDate)
+            arrayOfDatesStrings.append(formattedDate)
+        }
     }
 
 }
