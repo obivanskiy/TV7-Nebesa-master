@@ -24,6 +24,8 @@ class SeriesInfoTableViewCell: UITableViewCell {
     func setupUI(cellModel: SeriesInfo) {
         seriesNameLabel.text = cellModel.name
         seriesDescriptionLabel.text = cellModel.caption
+        self.isUserInteractionEnabled = false
+        
         guard let previewImageURL = URL.init(string: cellModel.imagePath) else {
             return
         }

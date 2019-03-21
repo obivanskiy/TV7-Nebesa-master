@@ -15,7 +15,11 @@ class EpisodeInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var episodeNameLabel: UILabel!
     @IBOutlet weak var episodeNumberLabel: UILabel!
     @IBOutlet weak var episodeLenghtLabel: UILabel!
-    @IBOutlet weak var episodeDescriptionLabel: UILabel!
+    @IBOutlet weak var episodeDescriptionLabel: UILabel! {
+        didSet {
+            episodeDescriptionLabel.numberOfLines = 2
+        }
+    }
     
     var cellModel: ProgrammesData? {
         didSet {
@@ -29,6 +33,7 @@ class EpisodeInfoTableViewCell: UITableViewCell {
         episodeLenghtLabel.text = "Длительность: \(dateFormatter(cellModel.duration))"
         episodeNumberLabel.text = "Эпизод: \(cellModel.episodeNumber)"
         episodeDescriptionLabel.text = cellModel.caption
+        self.selectionStyle = .none
         guard let previewImageURL = URL.init(string: cellModel.imagePath) else {
             return
         }

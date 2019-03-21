@@ -9,7 +9,6 @@
 import Foundation
 
 struct NetworkEndpoints {
-
     static var baseURL: String = "https://www.nebesatv7.com/api/jed/"
     static var categoryDataURL: String = "get_tv7_category_programs?category_id="
     static var parentCategoriesURL: String = "get_tv7_parent_categories/"

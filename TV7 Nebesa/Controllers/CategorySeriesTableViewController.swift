@@ -116,4 +116,14 @@ class CategorySeriesTableViewController: UITableViewController {
         }
         return UITableViewCell()
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath) as! EpisodeInfoTableViewCell
+        tableView.beginUpdates()
+        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
+        tableView.endUpdates()
+    }
+
+
 }
