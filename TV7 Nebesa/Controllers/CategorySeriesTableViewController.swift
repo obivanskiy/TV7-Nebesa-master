@@ -60,6 +60,7 @@ class CategorySeriesTableViewController: UITableViewController {
         }
         urlSessionTask.resume()
     }
+    
     //MARK: - Programme series call
     func fetchSeriesProgrammes() {
         let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.seriesProgrammesURL + seriesID
@@ -124,6 +125,4 @@ class CategorySeriesTableViewController: UITableViewController {
         cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
         tableView.endUpdates()
     }
-
-
 }

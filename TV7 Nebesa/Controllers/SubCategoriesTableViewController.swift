@@ -75,7 +75,7 @@ final class SubCategoriesTableViewController: UITableViewController {
             guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
-            viewController.category = subCategoriesData.subCategories[indexPath.row]
+            viewController.subCategoryData = subCategoriesData.subCategories[indexPath.row]
         }
     }
 }

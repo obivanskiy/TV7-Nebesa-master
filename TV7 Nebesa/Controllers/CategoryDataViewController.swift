@@ -18,7 +18,9 @@ final class CategoryDataTableViewController: UITableViewController {
         }
     }
     
-    var category: SubCategoriesDetails?
+    var parentCategoryData: CategoriesDetails? 
+    var subCategoryData: SubCategoriesDetails?
+    
     
     override func viewDidLoad() {
         tableView.rowHeight = UITableView.automaticDimension
@@ -26,7 +28,7 @@ final class CategoryDataTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let category = category else {
+        guard let category = subCategoryData else {
             return
         }
         archiveCategoriesDownloadService(category: category)

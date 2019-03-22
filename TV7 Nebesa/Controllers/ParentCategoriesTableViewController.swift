@@ -22,7 +22,6 @@ final class ParentCategoriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         archiveCategoriesDownloadService()
-        self.tableView.sizeToFit()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +37,7 @@ final class ParentCategoriesTableViewController: UITableViewController {
     }
     
     // MARK: - Categories Names Download Service
-    func archiveCategoriesDownloadService() {
+    func archiveCategoriesDownloadService()  {
         let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL
         guard let url = URL(string: urlToParse) else { return }
         let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
@@ -59,8 +58,12 @@ final class ParentCategoriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "SubCategoriesSegue", sender: self)
-        tableView.deselectRow(at: indexPath, animated: true)
+        if (["2", "5", "4", "9", "10"].contains(categoriesData.parentCategories[indexPath.row].id)) {
+            self.performSegue(withIdentifier: "SubCategoriesSegue", sender: self)
+            tableView.deselectRow(at: indexPath, animated: true)
+        } else {
+            self.performSegue(withIdentifier: "ProgrammeSegue", sender: self)
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,20 +71,35 @@ final class ParentCategoriesTableViewController: UITableViewController {
             return UITableViewCell()
         }
         cell.categoryNameLabel.text = categoriesData.parentCategories[indexPath.row].name
-      
+        
         return cell
     }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SubCategoriesSegue" {
-            guard let viewController = segue.destination as? SubCategoriesTableViewController else {
+        guard let identifier = segue.identifier else {
+            assertionFailure("Identifier not found!")
+            return
+        }
+        switch identifier {
+        case "SubCategoriesSegue":
+            guard let subCategoriesViewController = segue.destination as? SubCategoriesTableViewController else {
                 return
             }
             guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
-            viewController.subCategories = categoriesData.parentCategories[indexPath.row]
+            subCategoriesViewController.subCategories = categoriesData.parentCategories[indexPath.row]
+        case "ProgrammeSegue":
+            guard let categoryDataController = segue.destination as? CategoryDataTableViewController else {
+                return
+            }
+            guard let indexPath = self.tableView.indexPathForSelectedRow else {
+                return
+            }
+            categoryDataController.parentCategoryData = categoriesData.parentCategories[indexPath.row]
+        default:
+            assertionFailure("Identifier was not recognized")
         }
     }
 }

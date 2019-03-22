@@ -25,6 +25,7 @@
 		15B0816C223A4F6A00826057 /* CategoriesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */; };
 		15B0816E223A6C5900826057 /* CategoryDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0816D223A6C5900826057 /* CategoryDataViewController.swift */; };
 		15B08172223A90A200826057 /* CategoryDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B08171223A90A200826057 /* CategoryDataTableViewCell.swift */; };
+		15CE9DC52244DF2F00362B40 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CE9DC42244DF2F00362B40 /* URL+Extension.swift */; };
 		15CF8F732237E03D008424E9 /* ParentCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CF8F722237E03D008424E9 /* ParentCategoriesModel.swift */; };
 		15D626EA22411BD100449F8B /* CategorySeriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D626E922411BD100449F8B /* CategorySeriesTableViewController.swift */; };
 		15D626EC22411C1E00449F8B /* SeriesInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D626EB22411C1E00449F8B /* SeriesInfoTableViewCell.swift */; };
@@ -63,6 +64,7 @@
 		15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDataModel.swift; sourceTree = "<group>"; };
 		15B0816D223A6C5900826057 /* CategoryDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataViewController.swift; sourceTree = "<group>"; };
 		15B08171223A90A200826057 /* CategoryDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataTableViewCell.swift; sourceTree = "<group>"; };
+		15CE9DC42244DF2F00362B40 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		15CF8F722237E03D008424E9 /* ParentCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCategoriesModel.swift; sourceTree = "<group>"; };
 		15D626E922411BD100449F8B /* CategorySeriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySeriesTableViewController.swift; sourceTree = "<group>"; };
 		15D626EB22411C1E00449F8B /* SeriesInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		154B7F51223ADAAC0020A4E4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				15CE9DC42244DF2F00362B40 /* URL+Extension.swift */,
 				154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */,
 			);
 			path = Extensions;
@@ -374,6 +377,7 @@
 				15B0816C223A4F6A00826057 /* CategoriesDataModel.swift in Sources */,
 				110F9DA82237A6A50020BABC /* BroadcastViewController.swift in Sources */,
 				15D626EC22411C1E00449F8B /* SeriesInfoTableViewCell.swift in Sources */,
+				15CE9DC52244DF2F00362B40 /* URL+Extension.swift in Sources */,
 				110F9D952237A6310020BABC /* ViewController.swift in Sources */,
 				15E0FD162238F851005A41DD /* ParentCategoryNameTableViewCell.swift in Sources */,
 				15F1580B223FD39C005047CD /* SubCategoryTableViewCell.swift in Sources */,
