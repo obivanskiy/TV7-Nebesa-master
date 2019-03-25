@@ -77,7 +77,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         let numberOfItemsInSection = arrayOfDatesStrings.count
         return numberOfItemsInSection
     }
-
+   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DateCell", for: indexPath) as! DateCollectionViewCell
         let dates = self.arrayOfDatesStrings[indexPath.row]
@@ -87,15 +87,8 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
 
     //MARK: - Collection View Delegate Methods
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCell: UICollectionViewCell = dateCollectioView.cellForItem(at: indexPath)!
-        selectedCell.contentView.backgroundColor = UIColor(red: 124/256, green: 77/256, blue: 255/256, alpha: 0.7)
         downloadServiceForChosenDate(currentDate(arrayOfDates[indexPath.row]))
         tvGuideTableView.reloadData()
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cellToDeselect: UICollectionViewCell = dateCollectioView.cellForItem(at: indexPath) else { return }
-        cellToDeselect.contentView.backgroundColor = UIColor.clear
     }
 
     //MARK: - Private Methods

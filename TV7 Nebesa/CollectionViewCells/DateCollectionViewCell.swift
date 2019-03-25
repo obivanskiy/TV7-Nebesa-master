@@ -21,6 +21,7 @@ class DateCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             dateLabel.textColor = isSelected ? UIColor.white : UIColor.black
+            dateLabel.backgroundColor = isSelected ? UIColor(red: 124/256, green: 77/256, blue: 255/256, alpha: 0.7) : UIColor.clear
         }
     }
 
