@@ -21,7 +21,7 @@ final class ParentCategoriesTableViewController: UITableViewController {
     //MARK: - View Controller Life Cycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        archiveCategoriesDownloadService()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,21 +37,7 @@ final class ParentCategoriesTableViewController: UITableViewController {
     }
     
     // MARK: - Categories Names Download Service
-    func archiveCategoriesDownloadService()  {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL
-        guard let url = URL(string: urlToParse) else { return }
-        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
-            guard error == nil else { return }
-            guard let responseData = data else { return }
-            do {
-                self.categoriesData = try JSONDecoder().decode(ParentCategories.self, from: responseData)
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
-        urlSessionTask.resume()
-    }
-    
+        
     //MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoriesData.parentCategories.count
