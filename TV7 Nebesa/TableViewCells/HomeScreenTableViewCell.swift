@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-final class HomeScreenTableViewCell: UITableViewCell {
+class HomeScreenTableViewCell: UITableViewCell {
 
    
     @IBOutlet weak var HomeScreenPreviewImage: UIImageView!

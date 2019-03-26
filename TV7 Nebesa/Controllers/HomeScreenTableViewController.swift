@@ -10,6 +10,9 @@ import UIKit
 
 final class HomeScreenTableViewController: UITableViewController {
 
+    
+    var menuVC: MenuTableViewController!
+    
     private(set) var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes() {
         didSet {
             DispatchQueue.main.async {
@@ -22,6 +25,30 @@ final class HomeScreenTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.rowHeight = 130
+        menuVC = self.storyboard?.instantiateViewController(withIdentifier: "MenuTableViewController") as! MenuTableViewController
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture))
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+        
+        self.view.addGestureRecognizer(swipeRight)
+        self.view.addGestureRecognizer(swipeLeft)
+    }
+    
+    @objc func respondToGesture(gesture: UISwipeGestureRecognizer) {
+        
+        switch gesture.direction {
+        case UISwipeGestureRecognizer.Direction.right:
+            print("Show Menu")
+            showMenu()
+        case UISwipeGestureRecognizer.Direction.left:
+            print("Close Menu")
+            closeOnSwipe()
+        default:
+            break
+        }
         
     }
 
@@ -38,7 +65,7 @@ final class HomeScreenTableViewController: UITableViewController {
     }
     
     func homeScreenDownloadService(homeScreenData: HomeScreenData) {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL + homeScreenData.id
+        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL
         guard let url = URL(string: urlToParse) else {
             return
         }
@@ -76,7 +103,61 @@ final class HomeScreenTableViewController: UITableViewController {
     }
     
     
-
+    @IBAction func menuAction(_ sender: UIBarButtonItem) {
+        
+        if AppDelegate.menuIsOpen {
+            showMenu()
+        } else {
+            closeMenu()
+        }
+        
+    }
+    
+    func closeOnSwipe() {
+        if AppDelegate.menuIsOpen {
+//            showMenu()
+        } else {
+            closeMenu()
+        }
+    }
+    
+    func showMenu() {
+        
+        UIView.animate(withDuration: 0.5) { ()->Void in
+            self.menuVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width
+                , height: UIScreen.main.bounds.size.height)
+            self.menuVC.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+            self.addChild(self.menuVC)
+            self.view.addSubview(self.menuVC.view)
+            AppDelegate.menuIsOpen = false
+        }
+        
+    }
+    
+    func closeMenu() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.menuVC.view.frame = CGRect(x: -UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width
+                , height: UIScreen.main.bounds.size.height)
+        }) { (finished) in
+             self.menuVC.view.removeFromSuperview()
+        }
+       
+        AppDelegate.menuIsOpen = true
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
