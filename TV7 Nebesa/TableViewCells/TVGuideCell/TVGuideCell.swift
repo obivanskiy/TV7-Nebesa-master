@@ -23,11 +23,10 @@ class TVGuideCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-
     }
 
     func setupUI() {
-        seriesTVGuide.numberOfLines = 2
+        seriesTVGuide.numberOfLines = 3
         seriesTVGuide.lineBreakMode = .byWordWrapping
         seriesTVGuide.font = UIFont.systemFont(ofSize: 14.0)
     }

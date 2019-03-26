@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class BroadcastViewController: UIViewController, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
+class BroadcastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 
     //MARK: - Outlets
     @IBOutlet weak var tvGuideTableView: UITableView!
@@ -35,12 +35,8 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         downloadServiceForChosenDate(currentDate(Date()))
         setupTVGuideTableView()
         setupDateCollectionView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-
         generateDates()
+        firstAppearSelectedItem()
     }
 
 
@@ -67,7 +63,14 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TVGuideCell.identifier, for: indexPath) as? TVGuideCell else { return UITableViewCell()}
-        cell.seriesTVGuide.text = tvGuideSeries.tvGuideDates[indexPath.row].series
+
+        if tvGuideSeries.tvGuideDates[indexPath.row].series == "" {
+            cell.seriesTVGuide.text = tvGuideSeries.tvGuideDates[indexPath.row].name
+        } else if tvGuideSeries.tvGuideDates[indexPath.row].name != "" {
+            cell.seriesTVGuide.text = "\(tvGuideSeries.tvGuideDates[indexPath.row].series): " + "\(tvGuideSeries.tvGuideDates[indexPath.row].name)"
+        } else {
+            cell.seriesTVGuide.text = tvGuideSeries.tvGuideDates[indexPath.row].series
+        }
         cell.timeTVGuide.text = dateFormatter(tvGuideSeries.tvGuideDates[indexPath.row].date)
         return cell
     }
@@ -102,14 +105,16 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         return newDate
     }
 
-    func setupTVGuideTableView() {
+    private func setupTVGuideTableView() {
         tvGuideTableView.dataSource = self
+        tvGuideTableView.delegate = self
+
         //Register for TVGuideCell.xib
         tvGuideTableView.register(UINib(nibName: "TVGuideCell", bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
         tvGuideTableView.allowsSelection = false
     }
 
-    func setupDateCollectionView() {
+   private func setupDateCollectionView() {
         dateCollectioView.dataSource = self
         dateCollectioView.delegate = self
         dateCollectioView.allowsSelection = true
@@ -124,7 +129,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
     }
 
     private func generateDates() {
-        for number in -10...10 {
+        for number in -15...15 {
             guard let newDate = NSCalendar.current.date(byAdding: .day, value: number, to: Date()) else { continue }
             arrayOfDates.append(newDate)
             let dateFormatter = DateFormatter()
@@ -132,6 +137,12 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
             let formattedDate = dateFormatter.string(from: newDate)
             arrayOfDatesStrings.append(formattedDate)
         }
+    }
+
+    private func firstAppearSelectedItem() {
+        let firstAppearSelectedItem = arrayOfDatesStrings.count/2
+        let selectedIndexPath = IndexPath(item: firstAppearSelectedItem, section: 0)
+        dateCollectioView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .centeredHorizontally)
     }
 
 }
