@@ -56,6 +56,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         urlSessionTask.resume()
     }
 
+
     //MARK: - Table View Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tvGuideSeries.tvGuideDates.count
@@ -75,6 +76,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
 
+
     //MARK: - Collection View Data Source Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numberOfItemsInSection = arrayOfDatesStrings.count
@@ -88,11 +90,13 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
 
+
     //MARK: - Collection View Delegate Methods
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         downloadServiceForChosenDate(currentDate(arrayOfDates[indexPath.row]))
         tvGuideTableView.reloadData()
     }
+
 
     //MARK: - Private Methods
     private func dateFormatter(_ dateIn: String) -> String {
@@ -142,7 +146,17 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     private func firstAppearSelectedItem() {
         let firstAppearSelectedItem = arrayOfDatesStrings.count/2
         let selectedIndexPath = IndexPath(item: firstAppearSelectedItem, section: 0)
-        dateCollectioView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .centeredHorizontally)
+        dateCollectioView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
     }
+
+    //Need to think about this
+    private func scrollToCurrentTime() {
+//        let numberOfRows = tvGuideTableView.numberOfRows(inSection: 0)
+//        print(numberOfRows)
+        let selectedIndexPath = IndexPath(item: 12, section: 0)
+        self.tvGuideTableView.scrollToRow(at: selectedIndexPath, at: .top, animated: true)
+    }
+
+    
 
 }
