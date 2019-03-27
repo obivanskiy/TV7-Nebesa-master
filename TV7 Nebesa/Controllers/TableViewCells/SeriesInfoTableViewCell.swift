@@ -31,5 +31,4 @@ class SeriesInfoTableViewCell: UITableViewCell {
         }
         seriesPreviewImage.kf.setImage(with: previewImageURL)
     }
-
 }

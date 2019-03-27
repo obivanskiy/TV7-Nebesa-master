@@ -113,6 +113,5 @@ struct TVGuideDatesData: Decodable {
         cid = try container.decodeIfPresent(String.self, forKey: .cid) ?? ""
         series = try container.decodeIfPresent(String.self, forKey: .series) ?? ""
         isLive = try container.decodeIfPresent(String.self, forKey: .isLive) ?? ""
-
     }
 }

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class CategorySeriesTableViewController: UITableViewController {
+final class CategorySeriesTableViewController: UITableViewController {
+    
+    private var presenter: ParentCategoriesPresenter?
     
     // MARK: - Stored properties
     var seriesData: ProgrammeInformation = ProgrammeInformation() {
@@ -36,7 +38,7 @@ class CategorySeriesTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchSeriesProgrammes()
+        
     }
     
     // MARK: - Programme information call

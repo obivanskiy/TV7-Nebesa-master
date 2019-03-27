@@ -9,7 +9,5 @@
 import UIKit
 
 class SubCategoryTableViewCell: UITableViewCell {
-
     @IBOutlet weak var subCategoryNameLabel: UILabel!
-    
 }

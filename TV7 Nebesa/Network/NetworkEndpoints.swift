@@ -14,6 +14,6 @@ struct NetworkEndpoints {
     static var parentCategoriesURL: String = "get_tv7_parent_categories/"
     static var subCategoriesURL: String = "get_tv7_sub_categories/?parent_id="
     static var seriesInfoURL: String = "get_tv7_series_info?series_id="
-    static var tvGuide: String = "get_tv7_tv_guide_date/?date=2019-03-18"
+    static var tvGuide: String = "get_tv7_tv_guide_date/?date=2019-03-18" //should not be like that, date is a parameter
     static var seriesProgrammesURL: String = "get_tv7_series_programs?series_id="
 }
