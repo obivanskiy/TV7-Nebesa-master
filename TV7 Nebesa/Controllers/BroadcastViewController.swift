@@ -24,14 +24,15 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     }
     private var arrayOfDates = [Date]()
     private var arrayOfDatesStrings = [String]()
+    private var expandedRows = Set<Int>()
 
 
     //MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tvGuideTableView.rowHeight = UITableView.automaticDimension
-        self.tvGuideTableView.estimatedRowHeight = 70
+//        self.tvGuideTableView.rowHeight = UITableView.automaticDimension
+//        self.tvGuideTableView.estimatedRowHeight = 57
         downloadServiceForChosenDate(currentDate(Date()))
         setupTVGuideTableView()
         setupDateCollectionView()
@@ -73,7 +74,36 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
             cell.seriesTVGuide.text = tvGuideSeries.tvGuideDates[indexPath.row].series
         }
         cell.timeTVGuide.text = dateFormatter(tvGuideSeries.tvGuideDates[indexPath.row].date)
+
+        cell.captionLabel.text = tvGuideSeries.tvGuideDates[indexPath.row].caption
+        cell.isExpanded = self.expandedRows.contains(indexPath.row)
+
         return cell
+    }
+
+
+    //MARK: - Table View Delegate Methods
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
+
+        switch cell.isExpanded {
+        case true:
+            self.expandedRows.remove(indexPath.row)
+        case false:
+            self.expandedRows.insert(indexPath.row)
+        }
+        cell.isExpanded = !cell.isExpanded
+        self.tvGuideTableView.beginUpdates()
+        self.tvGuideTableView.endUpdates()
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
+
+        self.expandedRows.remove(indexPath.row)
+        cell.isExpanded = false
+        self.tvGuideTableView.beginUpdates()
+        self.tvGuideTableView.endUpdates()
     }
 
 
@@ -115,7 +145,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
         //Register for TVGuideCell.xib
         tvGuideTableView.register(UINib(nibName: "TVGuideCell", bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
-        tvGuideTableView.allowsSelection = false
+        tvGuideTableView.allowsSelection = true
     }
 
    private func setupDateCollectionView() {
@@ -149,7 +179,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         dateCollectioView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
     }
 
-    //Need to think about this
+    //Need to think about this. Isn't working now
     private func scrollToCurrentTime() {
 //        let numberOfRows = tvGuideTableView.numberOfRows(inSection: 0)
 //        print(numberOfRows)
@@ -157,6 +187,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         self.tvGuideTableView.scrollToRow(at: selectedIndexPath, at: .top, animated: true)
     }
 
-    
+
 
 }
