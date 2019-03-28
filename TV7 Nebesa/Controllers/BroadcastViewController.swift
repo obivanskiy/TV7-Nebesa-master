@@ -31,13 +31,12 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        self.tvGuideTableView.rowHeight = UITableView.automaticDimension
-//        self.tvGuideTableView.estimatedRowHeight = 57
         downloadServiceForChosenDate(currentDate(Date()))
         setupTVGuideTableView()
         setupDateCollectionView()
         generateDates()
         firstAppearSelectedItem()
+        tvGuideTableView.rowHeight = UITableView.automaticDimension
     }
 
 
@@ -77,7 +76,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
         cell.captionLabel.text = tvGuideSeries.tvGuideDates[indexPath.row].caption
         cell.isExpanded = self.expandedRows.contains(indexPath.row)
-
         return cell
     }
 
@@ -86,6 +84,10 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
 
+        if cell.captionLabel.text == "" {
+            cell.isExpanded = true
+        }
+
         switch cell.isExpanded {
         case true:
             self.expandedRows.remove(indexPath.row)
@@ -93,6 +95,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
             self.expandedRows.insert(indexPath.row)
         }
         cell.isExpanded = !cell.isExpanded
+
         self.tvGuideTableView.beginUpdates()
         self.tvGuideTableView.endUpdates()
     }

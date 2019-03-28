@@ -27,7 +27,7 @@ class TVGuideCell: UITableViewCell {
             if !isExpanded {
                 self.captionHeight.constant = 0.0
             } else {
-                self.captionHeight.constant = 20
+                self.captionHeight.constant = 100
             }
         }
     }
@@ -36,7 +36,7 @@ class TVGuideCell: UITableViewCell {
         seriesTVGuide.numberOfLines = 3
         seriesTVGuide.lineBreakMode = .byWordWrapping
         seriesTVGuide.font = UIFont.systemFont(ofSize: 15.0)
-        captionLabel.numberOfLines = 3
+        captionLabel.numberOfLines = 4
         captionLabel.lineBreakMode = .byWordWrapping
     }
     
