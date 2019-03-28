@@ -9,37 +9,34 @@
 import UIKit
 
 final class ParentCategoriesTableViewController: UITableViewController {
-    
-    private var presenter: ParentCategoriesPresenter?
+    //MARK: - Private properties
+    private var parentCategoriespresenter: ParentCategoriesPresenter?
     private let quickNavigationSections = ["2", "5", "4", "9", "10"]
     private let subCategoriesSegue = "SubCategoriesSegue"
     private let programmeSegue = "ProgrammeSegue"
+    
     var parentCategories: ParentCategories = ParentCategories() {
         didSet {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
-}
-    
     
     //MARK: - View Controller Life Cycle Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter = ParentCategoriesPresenter(with: self)
+        
+        self.parentCategoriespresenter = ParentCategoriesPresenter(with: self)
     }
-        
-    //MAR(K: - Table View Data Source
+    
+    //MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let numOfRows = presenter?.parentCategories.parentCategories.count else { return 0 }
-        
         return parentCategories.parentCategories.count
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if (quickNavigationSections.contains(parentCategories.parentCategories[indexPath.row].id)) {
             self.performSegue(withIdentifier: subCategoriesSegue, sender: self)
             tableView.deselectRow(at: indexPath, animated: true)
@@ -64,21 +61,16 @@ final class ParentCategoriesTableViewController: UITableViewController {
         }
         switch identifier {
         case subCategoriesSegue:
-            guard let subCategoriesViewController = segue.destination as? SubCategoriesTableViewController else {
-                return
-            }
             guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
-            subCategoriesViewController.subCategories = parentCategories.parentCategories[indexPath.row]
+            print("came through subcatsegue")
+            NetworkService.requestURL[.fetchSubCategories] = NetworkEndpoints.baseURL + NetworkEndpoints.subCategoriesURL + parentCategories.parentCategories[indexPath.row].id
         case programmeSegue:
-            guard let categoryDataController = segue.destination as? CategoryDataTableViewController else {
-                return
-            }
             guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
-            categoryDataController.parentCategoryData = parentCategories.parentCategories[indexPath.row]
+            NetworkService.requestURL[.fetchSubCategories] = NetworkEndpoints.baseURL + NetworkEndpoints.subCategoriesURL + parentCategories.parentCategories[indexPath.row].id
         default:
             assertionFailure("Identifier was not recognized")
         }

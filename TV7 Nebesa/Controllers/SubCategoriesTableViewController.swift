@@ -10,6 +10,8 @@ import UIKit
 
 final class SubCategoriesTableViewController: UITableViewController {
     
+    private var categoryDataSegue: String = "CategoryDataSegue"
+    var subCategoriesPresenter: SubCategoriesPresenter?
     var subCategoriesData: SubCategories = SubCategories() {
         didSet {
             DispatchQueue.main.async {
@@ -17,34 +19,19 @@ final class SubCategoriesTableViewController: UITableViewController {
             }
         }
     }
-    
-    var subCategories: CategoriesDetails?
 
+    //MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.subCategoriesPresenter = SubCategoriesPresenter(with: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let subCategory = subCategories else {
-            return
-        }
-        subCategoriesDownloadService(subCategory: subCategory)
+        
     }
-
-    func subCategoriesDownloadService(subCategory: CategoriesDetails) {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.subCategoriesURL + subCategory.id
-        guard let url = URL(string: urlToParse) else { return }
-        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
-            guard error == nil else { return }
-            guard let responseData = data else { return }
-            do {
-                self.subCategoriesData = try JSONDecoder().decode(SubCategories.self, from: responseData)
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
-        urlSessionTask.resume()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
     //MARK: - Table View Data Source
@@ -53,7 +40,7 @@ final class SubCategoriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "CategoryDataSegue", sender: self)
+        self.performSegue(withIdentifier: categoryDataSegue, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -68,7 +55,7 @@ final class SubCategoriesTableViewController: UITableViewController {
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "CategoryDataSegue" {
+        if segue.identifier == categoryDataSegue {
             guard let viewController = segue.destination as? CategoryDataTableViewController else {
                 return
             }

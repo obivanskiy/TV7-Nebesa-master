@@ -1,25 +1,28 @@
 //
-//  ParentCategoriesPresenter.swift
+//  SubCategoriesPresenter.swift
 //  TV7 Nebesa
 //
-//  Created by Ivan Obodovskyi on 3/26/19.
+//  Created by Ivan Obodovskyi on 3/28/19.
 //  Copyright © 2019 Богдан Воробйовський. All rights reserved.
 //
 
 import Foundation
 
-final class ParentCategoriesPresenter {
 
-    let viewController: ParentCategoriesTableViewController!
+final class SubCategoriesPresenter {
     
-    init(with viewController: ParentCategoriesTableViewController) {
+    //MARK: - Stored properties
+    let viewController: SubCategoriesTableViewController!
+    
+    //MARK: - Initializers
+    init(with viewController: SubCategoriesTableViewController){
         self.viewController = viewController
         request()
-        
     }
     
+    //MARK: - Private functions
     private func request() {
-        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchParentCategories) { result in
+        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchSubCategories) { (result) in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -31,9 +34,10 @@ final class ParentCategoriesPresenter {
     
     private func serializeData(requestData: (Data)) {
         do {
-            viewController.self.parentCategories  = try JSONDecoder().decode(ParentCategories.self, from: requestData)
+            viewController.self.subCategoriesData  = try JSONDecoder().decode(SubCategories.self, from: requestData)
         } catch let error {
             print(error.localizedDescription)
         }
     }
+
 }

@@ -9,27 +9,32 @@
 import Foundation
 
 
-enum RequestFor {
-    case fetchParentCategories
-}
 
-private var requestURL: [RequestFor: String] = [
-    .fetchParentCategories: NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL
-]
-
-class NetworkServiceByIvan {
+class NetworkService {
+    public enum NetworkRequestType: Hashable {
+        case fetchParentCategories
+        case fetchSubCategories
+    }
     
+    static var requestURL: [NetworkRequestType : String] = [
+        .fetchParentCategories : NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL,
+    ]
+
     enum networkResult: Swift.Error {
         case noValidUrl
         case wrongPath
         case noData
         case errorOccured
+        case unknownError
     }
-    static func performRequest(request: RequestFor, completion: @escaping (Result<Data, Error>) -> Void)  {
-        guard let urlString = requestURL[.fetchParentCategories] else {
+    
+    static func performRequest(requestType: NetworkRequestType, completion: @escaping (Result<Data, Error>) -> Void)  {
+        
+        guard let urlString = requestURL[requestType] else {
             completion(.failure(networkResult.wrongPath))
             return
         }
+        print(urlString)
         guard let url = URL(string: urlString) else {
             completion(.failure(networkResult.noValidUrl))
             return
@@ -38,14 +43,14 @@ class NetworkServiceByIvan {
         let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
-            }
-            if let data = data {
+            }  else if let data = data {
                 completion(.success(data))
                 print(data)
+            } else {
+                completion(.failure(networkResult.unknownError))
             }
         }
         urlSessionTask.resume()
-        
     }
 }
 

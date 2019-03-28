@@ -22,7 +22,7 @@
 		154B7F53223ADAE40020A4E4 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */; };
 		154B7F55223ADCA90020A4E4 /* NetworkEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */; };
 		154F6D5C224A637A00043BBD /* ParentCategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154F6D5B224A637A00043BBD /* ParentCategoriesPresenter.swift */; };
-		154F6D62224AA61100043BBD /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154F6D61224AA61100043BBD /* NetworkServices.swift */; };
+		1593B35F224CC915002E08AC /* SubCategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1593B35E224CC915002E08AC /* SubCategoriesPresenter.swift */; };
 		15B0816C223A4F6A00826057 /* CategoriesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */; };
 		15B0816E223A6C5900826057 /* CategoryDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0816D223A6C5900826057 /* CategoryDataViewController.swift */; };
 		15B08172223A90A200826057 /* CategoryDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B08171223A90A200826057 /* CategoryDataTableViewCell.swift */; };
@@ -34,7 +34,7 @@
 		15D626F0224125B200449F8B /* SeriesInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D626EF224125B200449F8B /* SeriesInfoModel.swift */; };
 		15D626F3224142B900449F8B /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D626F2224142B900449F8B /* Categories.storyboard */; };
 		15E0FD162238F851005A41DD /* ParentCategoryNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E0FD152238F851005A41DD /* ParentCategoryNameTableViewCell.swift */; };
-		15EF79AE224B757A003C9BEF /* NetworkServiceByIvan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF79AD224B757A003C9BEF /* NetworkServiceByIvan.swift */; };
+		15EF79AE224B757A003C9BEF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF79AD224B757A003C9BEF /* NetworkService.swift */; };
 		15F1580B223FD39C005047CD /* SubCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1580A223FD39C005047CD /* SubCategoryTableViewCell.swift */; };
 		15F1580D223FD4C9005047CD /* SubCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1580C223FD4C9005047CD /* SubCategoriesModel.swift */; };
 		15F1580F223FDA6B005047CD /* SubCategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1580E223FDA6B005047CD /* SubCategoriesTableViewController.swift */; };
@@ -63,7 +63,7 @@
 		154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoints.swift; sourceTree = "<group>"; };
 		154F6D5B224A637A00043BBD /* ParentCategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCategoriesPresenter.swift; sourceTree = "<group>"; };
-		154F6D61224AA61100043BBD /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
+		1593B35E224CC915002E08AC /* SubCategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubCategoriesPresenter.swift; path = "TV7 Nebesa/Presenters/SubCategoriesPresenter.swift"; sourceTree = SOURCE_ROOT; };
 		15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDataModel.swift; sourceTree = "<group>"; };
 		15B0816D223A6C5900826057 /* CategoryDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataViewController.swift; sourceTree = "<group>"; };
 		15B08171223A90A200826057 /* CategoryDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataTableViewCell.swift; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 		15D626EF224125B200449F8B /* SeriesInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesInfoModel.swift; sourceTree = "<group>"; };
 		15D626F2224142B900449F8B /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
 		15E0FD152238F851005A41DD /* ParentCategoryNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCategoryNameTableViewCell.swift; sourceTree = "<group>"; };
-		15EF79AD224B757A003C9BEF /* NetworkServiceByIvan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceByIvan.swift; sourceTree = "<group>"; };
+		15EF79AD224B757A003C9BEF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		15F1580A223FD39C005047CD /* SubCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		15F1580C223FD4C9005047CD /* SubCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesModel.swift; sourceTree = "<group>"; };
 		15F1580E223FDA6B005047CD /* SubCategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesTableViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				154F6D5B224A637A00043BBD /* ParentCategoriesPresenter.swift */,
+				1593B35E224CC915002E08AC /* SubCategoriesPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -177,8 +178,7 @@
 		154F6D60224AA60200043BBD /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				154F6D61224AA61100043BBD /* NetworkServices.swift */,
-				15EF79AD224B757A003C9BEF /* NetworkServiceByIvan.swift */,
+				15EF79AD224B757A003C9BEF /* NetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -394,6 +394,7 @@
 			files = (
 				15B0816E223A6C5900826057 /* CategoryDataViewController.swift in Sources */,
 				15B08172223A90A200826057 /* CategoryDataTableViewCell.swift in Sources */,
+				1593B35F224CC915002E08AC /* SubCategoriesPresenter.swift in Sources */,
 				15D626EA22411BD100449F8B /* CategorySeriesTableViewController.swift in Sources */,
 				15F1580D223FD4C9005047CD /* SubCategoriesModel.swift in Sources */,
 				15D626F0224125B200449F8B /* SeriesInfoModel.swift in Sources */,
@@ -413,10 +414,9 @@
 				110F9D932237A6310020BABC /* AppDelegate.swift in Sources */,
 				FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */,
 				FAFDE80B2241289700006FEE /* DateCollectionViewCell.swift in Sources */,
-				15EF79AE224B757A003C9BEF /* NetworkServiceByIvan.swift in Sources */,
+				15EF79AE224B757A003C9BEF /* NetworkService.swift in Sources */,
 				154B7F53223ADAE40020A4E4 /* UITableViewCell+Extension.swift in Sources */,
 				15CF8F732237E03D008424E9 /* ParentCategoriesModel.swift in Sources */,
-				154F6D62224AA61100043BBD /* NetworkServices.swift in Sources */,
 				110F9DAC2237A74E0020BABC /* ParentCategoriesTableViewController.swift in Sources */,
 				152DF3BA22428B2900BDC90B /* SeriesProgrammesModel.swift in Sources */,
 			);
