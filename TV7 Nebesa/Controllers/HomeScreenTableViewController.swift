@@ -23,8 +23,14 @@ final class HomeScreenTableViewController: UITableViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        setupNavigationController()
+        
+//        setupSearchController()
+        
         tableView.rowHeight = 130
+        
+        
         menuVC = self.storyboard?.instantiateViewController(withIdentifier: "MenuTableViewController") as! MenuTableViewController
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture))
@@ -55,13 +61,44 @@ final class HomeScreenTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         homeScreenDownloadService(homeScreenData: HomeScreenData())
         self.title = "Небеса"
-        setupSearchController()
+
     }
     
-    //MARK: - Setup Search Controller
+    
+    
+//    //MARK: - Setup Search Controller
     func setupSearchController() {
+       
         let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.isTranslucent = false
         navigationItem.searchController = searchController
+    
+        definesPresentationContext = true
+        
+    }
+    
+    func setupNavigationController() {
+        let nav = navigationController!
+        let bar = nav.navigationBar
+        bar.prefersLargeTitles = true
+        
+        let item = navigationItem
+        item.title = "First View"
+        let button = UIBarButtonItem()
+        button.title = "Close"
+        item.rightBarButtonItem = button
+        
+        
+//
+//        let image: UIImage = UIImage(named: "Bitmap.png")!
+//        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 30))
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.image = image
+//        self.navigationItem.titleView = imageView
+//
+
     }
     
     func homeScreenDownloadService(homeScreenData: HomeScreenData) {
@@ -123,7 +160,7 @@ final class HomeScreenTableViewController: UITableViewController {
     
     func showMenu() {
         
-        UIView.animate(withDuration: 0.5) { ()->Void in
+        UIView.animate(withDuration: 0.3) { ()->Void in
             self.menuVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width
                 , height: UIScreen.main.bounds.size.height)
             self.menuVC.view.backgroundColor = UIColor.black.withAlphaComponent(0)

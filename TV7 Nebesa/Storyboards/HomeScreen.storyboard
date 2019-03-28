@@ -15,7 +15,7 @@
             <objects>
                 <tableViewController id="KWE-tW-DUC" customClass="HomeScreenTableViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ooY-UX-zMb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -100,9 +100,9 @@
                             <outlet property="delegate" destination="KWE-tW-DUC" id="bPf-Ub-XVR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="qf0-7u-54s">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="qjV-lW-6cp">
-                            <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="qf0-7u-54s">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" image="logoButton" id="qjV-lW-6cp">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="menuAction:" destination="KWE-tW-DUC" id="yN5-1R-w8C"/>
                             </connections>
@@ -114,12 +114,12 @@
             </objects>
             <point key="canvasLocation" x="1917.5999999999999" y="1172.5637181409297"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Custom Navigation Controller-->
         <scene sceneID="G5Z-08-2bd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6KC-fv-2tl" sceneMemberID="viewController">
+                <navigationController id="6KC-fv-2tl" customClass="CustomNavigationController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XG9-6N-RXd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="XG9-6N-RXd">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -135,7 +135,7 @@
         <!--Menu Table View Controller-->
         <scene sceneID="wGp-kB-1M4">
             <objects>
-                <viewController storyboardIdentifier="MenuTableViewController" id="hZf-5i-Ule" customClass="MenuTableViewController" customModule="aaaaa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuTableViewController" id="hZf-5i-Ule" customClass="MenuTableViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XW6-an-1Zn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,7 +144,7 @@
                                 <rect key="frame" x="0.0" y="64" width="225" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderMenuCell" rowHeight="65" id="G0Z-yo-cUL" customClass="HeaderMenuTableViewCell" customModule="aaaaa" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderMenuCell" rowHeight="65" id="G0Z-yo-cUL" customClass="HeaderMenuTableViewCell" customModule="TV7_Nebesa" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="225" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G0Z-yo-cUL" id="ZuK-Dg-2xe">
@@ -152,7 +152,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FXn-66-DNY">
-                                                    <rect key="frame" x="15" y="5" width="210" height="55"/>
+                                                    <rect key="frame" x="15" y="5" width="210" height="54.5"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -166,7 +166,7 @@
                                             <outlet property="HeaderMenuItemImage" destination="FXn-66-DNY" id="W6p-2g-rDm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="60" id="7Ol-jz-tl1" customClass="MenuTableViewCell" customModule="aaaaa" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="60" id="7Ol-jz-tl1" customClass="MenuTableViewCell" customModule="TV7_Nebesa" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="93" width="225" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Ol-jz-tl1" id="hyK-R2-l8u">
@@ -229,4 +229,7 @@
             <point key="canvasLocation" x="2941.5999999999999" y="1172.5637181409297"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logoButton" width="43" height="42"/>
+    </resources>
 </document>

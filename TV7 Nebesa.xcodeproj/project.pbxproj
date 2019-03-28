@@ -19,6 +19,7 @@
 		11BF07B4224A7A5D00947B7E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF07B3224A7A5D00947B7E /* MenuTableViewCell.swift */; };
 		11BF07B6224A7A7700947B7E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF07B5224A7A7700947B7E /* MenuTableViewController.swift */; };
 		11BF07B8224A7A9000947B7E /* HeaderMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF07B7224A7A9000947B7E /* HeaderMenuTableViewCell.swift */; };
+		11BF07BC224CD1DC00947B7E /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF07BB224CD1DC00947B7E /* CustomNavigationController.swift */; };
 		11E11F3322439CF800483859 /* 9651.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11E11F3222439CF800483859 /* 9651.ttf */; };
 		152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */; };
 		152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */; };
@@ -62,6 +63,7 @@
 		11BF07B3224A7A5D00947B7E /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		11BF07B5224A7A7700947B7E /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		11BF07B7224A7A9000947B7E /* HeaderMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMenuTableViewCell.swift; sourceTree = "<group>"; };
+		11BF07BB224CD1DC00947B7E /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		11E11F3222439CF800483859 /* 9651.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9651.ttf; sourceTree = "<group>"; };
 		152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				11BF07B3224A7A5D00947B7E /* MenuTableViewCell.swift */,
 				11BF07B5224A7A7700947B7E /* MenuTableViewController.swift */,
 				11BF07B7224A7A9000947B7E /* HeaderMenuTableViewCell.swift */,
+				11BF07BB224CD1DC00947B7E /* CustomNavigationController.swift */,
 			);
 			path = "SideMenu+NavBar";
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				11BF07B6224A7A7700947B7E /* MenuTableViewController.swift in Sources */,
 				15B0816C223A4F6A00826057 /* CategoriesDataModel.swift in Sources */,
 				11ACAE372242C1410003CDD0 /* HomeScreenTableViewController.swift in Sources */,
+				11BF07BC224CD1DC00947B7E /* CustomNavigationController.swift in Sources */,
 				110F9DA82237A6A50020BABC /* BroadcastViewController.swift in Sources */,
 				15D626EC22411C1E00449F8B /* SeriesInfoTableViewCell.swift in Sources */,
 				15E0FD162238F851005A41DD /* ParentCategoryNameTableViewCell.swift in Sources */,
