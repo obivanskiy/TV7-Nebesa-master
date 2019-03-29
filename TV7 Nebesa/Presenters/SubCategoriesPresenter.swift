@@ -39,5 +39,4 @@ final class SubCategoriesPresenter {
             print(error.localizedDescription)
         }
     }
-
 }

@@ -11,7 +11,7 @@ import UIKit
 final class ParentCategoriesTableViewController: UITableViewController {
     //MARK: - Private properties
     private var parentCategoriespresenter: ParentCategoriesPresenter?
-    private let quickNavigationSections = ["2", "5", "4", "9", "10"]
+    private let quickNavigationSections = ["5", "4", "9", "10"]
     private let subCategoriesSegue = "SubCategoriesSegue"
     private let programmeSegue = "ProgrammeSegue"
     
@@ -24,10 +24,8 @@ final class ParentCategoriesTableViewController: UITableViewController {
     }
     
     //MARK: - View Controller Life Cycle Functions
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.parentCategoriespresenter = ParentCategoriesPresenter(with: self)
     }
     
@@ -64,13 +62,13 @@ final class ParentCategoriesTableViewController: UITableViewController {
             guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
-            print("came through subcatsegue")
             NetworkService.requestURL[.fetchSubCategories] = NetworkEndpoints.baseURL + NetworkEndpoints.subCategoriesURL + parentCategories.parentCategories[indexPath.row].id
         case programmeSegue:
             guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
             NetworkService.requestURL[.fetchSubCategories] = NetworkEndpoints.baseURL + NetworkEndpoints.subCategoriesURL + parentCategories.parentCategories[indexPath.row].id
+            CategoryDataPresenter.parentCategoryID = parentCategories.parentCategories[indexPath.row].id
         default:
             assertionFailure("Identifier was not recognized")
         }

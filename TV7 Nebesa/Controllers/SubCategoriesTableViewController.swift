@@ -11,7 +11,7 @@ import UIKit
 final class SubCategoriesTableViewController: UITableViewController {
     
     private var categoryDataSegue: String = "CategoryDataSegue"
-    var subCategoriesPresenter: SubCategoriesPresenter?
+   private  var subCategoriesPresenter: SubCategoriesPresenter?
     var subCategoriesData: SubCategories = SubCategories() {
         didSet {
             DispatchQueue.main.async {
@@ -24,14 +24,6 @@ final class SubCategoriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.subCategoriesPresenter = SubCategoriesPresenter(with: self)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
     }
     
     //MARK: - Table View Data Source
@@ -56,13 +48,11 @@ final class SubCategoriesTableViewController: UITableViewController {
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == categoryDataSegue {
-            guard let viewController = segue.destination as? CategoryDataTableViewController else {
-                return
-            }
             guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
-            viewController.subCategoryData = subCategoriesData.subCategories[indexPath.row]
+            NetworkService.requestURL[.fetchCategoryData] = NetworkEndpoints.baseURL + NetworkEndpoints.categoryDataURL + subCategoriesData.subCategories[indexPath.row].categoryID
+            CategoryDataPresenter.parentCategoryID = ""
         }
     }
 }

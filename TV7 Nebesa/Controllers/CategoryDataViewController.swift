@@ -10,7 +10,9 @@ import UIKit
 
 final class CategoryDataTableViewController: UITableViewController {
     
-    private(set) var categoryData: CategoryProgrammes = CategoryProgrammes() {
+    private var seriesDataSegue: String = "SeriesDataSegue"
+    private var categoryDataPresenter: CategoryDataPresenter?
+    var categoryData: CategoryProgrammes = CategoryProgrammes() {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -18,45 +20,14 @@ final class CategoryDataTableViewController: UITableViewController {
         }
     }
     
-    var parentCategoryData: CategoriesDetails? 
-    var subCategoryData: SubCategoriesDetails?
-    
-    
     override func viewDidLoad() {
+        self.categoryDataPresenter = CategoryDataPresenter(with: self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 122
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        guard let category = subCategoryData else {
-            return
-        }
-        archiveCategoriesDownloadService(category: category)
-        self.title = category.categoryName
-    }
-    
-    func archiveCategoriesDownloadService(category: SubCategoriesDetails) {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.categoryDataURL + category.categoryID
-        guard let url = URL(string: urlToParse) else {
-            return
-        }
-        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
-            guard error == nil else {
-                return
-            }
-            guard let responseData = data else {
-                return
-            }
-            do {
-                self.categoryData = try JSONDecoder().decode(CategoryProgrammes.self, from: responseData)
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
-        urlSessionTask.resume()
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("num \(categoryData.categoryProgrammes.count)")
         return categoryData.categoryProgrammes.count
     }
     
@@ -65,21 +36,21 @@ final class CategoryDataTableViewController: UITableViewController {
             return UITableViewCell()
         }
         cell.cellModel = categoryData.categoryProgrammes[indexPath.row]
+        print(indexPath.row)
         
         return cell
     }
     
     //MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SeriesDataSegue" {
-            guard let viewController = segue.destination as? CategorySeriesTableViewController else {
-                return
-            }
-            guard let indexPath = self.tableView.indexPathForSelectedRow else {
-                return
-            }
-            viewController.categoryData = categoryData.categoryProgrammes[indexPath.row]
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == seriesDataSegue {
+//            guard let viewController = segue.destination as? CategorySeriesTableViewController else {
+//                return
+//            }
+//            guard let indexPath = self.tableView.indexPathForSelectedRow else {
+//                return
+//            }
+//        }
+//    }
 }
 

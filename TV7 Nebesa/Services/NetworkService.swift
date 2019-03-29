@@ -14,6 +14,7 @@ class NetworkService {
     public enum NetworkRequestType: Hashable {
         case fetchParentCategories
         case fetchSubCategories
+        case fetchCategoryData
     }
     
     static var requestURL: [NetworkRequestType : String] = [
