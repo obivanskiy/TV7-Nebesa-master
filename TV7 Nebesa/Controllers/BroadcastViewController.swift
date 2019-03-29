@@ -36,7 +36,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         setupDateCollectionView()
         generateDates()
         firstAppearSelectedItem()
-        tvGuideTableView.rowHeight = UITableView.automaticDimension
     }
 
 
@@ -65,16 +64,21 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TVGuideCell.identifier, for: indexPath) as? TVGuideCell else { return UITableViewCell()}
 
-        if tvGuideSeries.tvGuideDates[indexPath.row].series == "" {
-            cell.seriesTVGuide.text = tvGuideSeries.tvGuideDates[indexPath.row].name
-        } else if tvGuideSeries.tvGuideDates[indexPath.row].name != "" {
-            cell.seriesTVGuide.text = "\(tvGuideSeries.tvGuideDates[indexPath.row].series): " + "\(tvGuideSeries.tvGuideDates[indexPath.row].name)"
-        } else {
-            cell.seriesTVGuide.text = tvGuideSeries.tvGuideDates[indexPath.row].series
-        }
-        cell.timeTVGuide.text = dateFormatter(tvGuideSeries.tvGuideDates[indexPath.row].date)
+        let data = tvGuideSeries.tvGuideDates
 
-        cell.captionLabel.text = tvGuideSeries.tvGuideDates[indexPath.row].caption
+        if !data.isEmpty {
+            if tvGuideSeries.tvGuideDates[indexPath.row].series == "" {
+                cell.seriesTVGuide.text = tvGuideSeries.tvGuideDates[indexPath.row].name
+            } else if tvGuideSeries.tvGuideDates[indexPath.row].name != "" {
+                cell.seriesTVGuide.text = "\(tvGuideSeries.tvGuideDates[indexPath.row].series): " + "\(tvGuideSeries.tvGuideDates[indexPath.row].name)"
+            } else {
+                cell.seriesTVGuide.text = tvGuideSeries.tvGuideDates[indexPath.row].series
+            }
+            cell.timeTVGuide.text = dateFormatter(tvGuideSeries.tvGuideDates[indexPath.row].date)
+            cell.captionLabel.text = tvGuideSeries.tvGuideDates[indexPath.row].caption
+        } else {
+            displayMessage("Sorry, we have no data on this date")
+        }
         cell.isExpanded = self.expandedRows.contains(indexPath.row)
         return cell
     }
@@ -128,6 +132,10 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         downloadServiceForChosenDate(currentDate(arrayOfDates[indexPath.row]))
         tvGuideTableView.reloadData()
+        
+        if tvGuideSeries.tvGuideDates.isEmpty {
+            displayMessage("Sorry, we have no data on this date")
+        }
     }
 
 
@@ -149,6 +157,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         //Register for TVGuideCell.xib
         tvGuideTableView.register(UINib(nibName: "TVGuideCell", bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
         tvGuideTableView.allowsSelection = true
+        tvGuideTableView.rowHeight = UITableView.automaticDimension
     }
 
    private func setupDateCollectionView() {
@@ -188,6 +197,13 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 //        print(numberOfRows)
         let selectedIndexPath = IndexPath(item: 12, section: 0)
         self.tvGuideTableView.scrollToRow(at: selectedIndexPath, at: .top, animated: true)
+    }
+
+    private func displayMessage(_ userMessage: String) -> Void {
+        let alertController = UIAlertController(title: "Error", message: userMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 
 
