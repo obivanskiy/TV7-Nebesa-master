@@ -11,7 +11,8 @@ import Foundation
 
 
 class NetworkService {
-    public enum NetworkRequestType: Hashable {
+    
+    public enum NetworkRequestType {
         case fetchParentCategories
         case fetchSubCategories
         case fetchCategoryData

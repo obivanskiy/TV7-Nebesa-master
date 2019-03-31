@@ -24,6 +24,7 @@ final class CategoryDataTableViewController: UITableViewController {
         self.categoryDataPresenter = CategoryDataPresenter(with: self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 122
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,8 +37,6 @@ final class CategoryDataTableViewController: UITableViewController {
             return UITableViewCell()
         }
         cell.cellModel = categoryData.categoryProgrammes[indexPath.row]
-        print(indexPath.row)
-        
         return cell
     }
     

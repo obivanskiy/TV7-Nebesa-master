@@ -15,6 +15,7 @@ final class CategoryDataPresenter {
     static var parentCategoryID: String?
     var parenCategoryData: SubCategories = SubCategories()
     var categoryID: String  =  ""
+    static var categoryTitle: String?
     
     init(with viewController: CategoryDataTableViewController){
         self.viewController = viewController
@@ -65,6 +66,7 @@ final class CategoryDataPresenter {
     private func serializeCategoryData(requestData: (Data)) {
         do {
             viewController.self.categoryData  = try JSONDecoder().decode(CategoryProgrammes.self, from: requestData)
+            viewController.self.title = CategoryDataPresenter.categoryTitle ?? ""
             print(viewController.self.categoryData)
         } catch let error {
             print(error.localizedDescription)

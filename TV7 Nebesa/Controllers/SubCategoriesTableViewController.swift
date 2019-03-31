@@ -12,6 +12,8 @@ final class SubCategoriesTableViewController: UITableViewController {
     
     private var categoryDataSegue: String = "CategoryDataSegue"
    private  var subCategoriesPresenter: SubCategoriesPresenter?
+    static var subCategoryTitle: String?
+    
     var subCategoriesData: SubCategories = SubCategories() {
         didSet {
             DispatchQueue.main.async {
@@ -24,6 +26,7 @@ final class SubCategoriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.subCategoriesPresenter = SubCategoriesPresenter(with: self)
+        self.title = SubCategoriesTableViewController.subCategoryTitle
     }
     
     //MARK: - Table View Data Source
@@ -53,6 +56,7 @@ final class SubCategoriesTableViewController: UITableViewController {
             }
             NetworkService.requestURL[.fetchCategoryData] = NetworkEndpoints.baseURL + NetworkEndpoints.categoryDataURL + subCategoriesData.subCategories[indexPath.row].categoryID
             CategoryDataPresenter.parentCategoryID = ""
+            CategoryDataPresenter.categoryTitle = subCategoriesData.subCategories[indexPath.row].categoryName
         }
     }
 }

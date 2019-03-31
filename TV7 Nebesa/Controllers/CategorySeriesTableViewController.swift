@@ -10,7 +10,7 @@ import UIKit
 
 final class CategorySeriesTableViewController: UITableViewController {
     
-    private var presenter: ParentCategoriesPresenter?
+    private var presenter: CategorySeriesPresenter?
     
     // MARK: - Stored properties
     var seriesData: ProgrammeInformation = ProgrammeInformation() {

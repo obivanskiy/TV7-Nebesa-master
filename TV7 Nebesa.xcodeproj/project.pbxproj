@@ -39,6 +39,7 @@
 		15F1580B223FD39C005047CD /* SubCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1580A223FD39C005047CD /* SubCategoryTableViewCell.swift */; };
 		15F1580D223FD4C9005047CD /* SubCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1580C223FD4C9005047CD /* SubCategoriesModel.swift */; };
 		15F1580F223FDA6B005047CD /* SubCategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1580E223FDA6B005047CD /* SubCategoriesTableViewController.swift */; };
+		15F68BB122511AEE006F3BFB /* CategorySeriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F68BB022511AEE006F3BFB /* CategorySeriesPresenter.swift */; };
 		C0B38F8033B235E335AED466 /* Pods_TV7_Nebesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */; };
 		FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDE7FE223FC69A00006FEE /* TVGuideCell.swift */; };
 		FAFDE801223FC69A00006FEE /* TVGuideCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFDE7FF223FC69A00006FEE /* TVGuideCell.xib */; };
@@ -81,6 +82,7 @@
 		15F1580A223FD39C005047CD /* SubCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		15F1580C223FD4C9005047CD /* SubCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesModel.swift; sourceTree = "<group>"; };
 		15F1580E223FDA6B005047CD /* SubCategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesTableViewController.swift; sourceTree = "<group>"; };
+		15F68BB022511AEE006F3BFB /* CategorySeriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySeriesPresenter.swift; sourceTree = "<group>"; };
 		2831A2EA4C6801B61AA13941 /* Pods-TV7 Nebesa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV7 Nebesa.release.xcconfig"; path = "Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa.release.xcconfig"; sourceTree = "<group>"; };
 		5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV7_Nebesa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A01670E8FE1B6304A067FA /* Pods-TV7 Nebesa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV7 Nebesa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa.debug.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				154F6D5B224A637A00043BBD /* ParentCategoriesPresenter.swift */,
 				1593B35E224CC915002E08AC /* SubCategoriesPresenter.swift */,
 				157E83CC224D19E700993933 /* CategoryDataPresenter.swift */,
+				15F68BB022511AEE006F3BFB /* CategorySeriesPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */,
 				FAFDE80B2241289700006FEE /* DateCollectionViewCell.swift in Sources */,
 				15EF79AE224B757A003C9BEF /* NetworkService.swift in Sources */,
+				15F68BB122511AEE006F3BFB /* CategorySeriesPresenter.swift in Sources */,
 				154B7F53223ADAE40020A4E4 /* UITableViewCell+Extension.swift in Sources */,
 				15CF8F732237E03D008424E9 /* ParentCategoriesModel.swift in Sources */,
 				110F9DAC2237A74E0020BABC /* ParentCategoriesTableViewController.swift in Sources */,

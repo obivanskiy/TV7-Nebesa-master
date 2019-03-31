@@ -63,12 +63,14 @@ final class ParentCategoriesTableViewController: UITableViewController {
                 return
             }
             NetworkService.requestURL[.fetchSubCategories] = NetworkEndpoints.baseURL + NetworkEndpoints.subCategoriesURL + parentCategories.parentCategories[indexPath.row].id
+            SubCategoriesTableViewController.subCategoryTitle = parentCategories.parentCategories[indexPath.row].name
         case programmeSegue:
             guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
             NetworkService.requestURL[.fetchSubCategories] = NetworkEndpoints.baseURL + NetworkEndpoints.subCategoriesURL + parentCategories.parentCategories[indexPath.row].id
             CategoryDataPresenter.parentCategoryID = parentCategories.parentCategories[indexPath.row].id
+            CategoryDataPresenter.categoryTitle = parentCategories.parentCategories[indexPath.row].name
         default:
             assertionFailure("Identifier was not recognized")
         }
