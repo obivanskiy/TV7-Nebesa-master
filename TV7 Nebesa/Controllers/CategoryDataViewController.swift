@@ -40,16 +40,18 @@ final class CategoryDataTableViewController: UITableViewController {
         return cell
     }
     
-    //MARK: - Navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == seriesDataSegue {
-//            guard let viewController = segue.destination as? CategorySeriesTableViewController else {
-//                return
-//            }
-//            guard let indexPath = self.tableView.indexPathForSelectedRow else {
-//                return
-//            }
-//        }
-//    }
+//    MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == seriesDataSegue {
+            guard let viewController = segue.destination as? CategorySeriesTableViewController else {
+                return
+            }
+            guard let indexPath = self.tableView.indexPathForSelectedRow else {
+                return
+            }
+            NetworkService.requestURL[.fetchSeriesMainData] = NetworkEndpoints.baseURL + NetworkEndpoints.seriesInfoURL + categoryData.categoryProgrammes[indexPath.row].id
+            NetworkService.requestURL[.fetchSeriesProgrammes] = NetworkEndpoints.baseURL + NetworkEndpoints.seriesProgrammesURL + categoryData.categoryProgrammes[indexPath.row].id
+        }
+    }
 }
 

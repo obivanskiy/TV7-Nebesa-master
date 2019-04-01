@@ -16,6 +16,8 @@ class NetworkService {
         case fetchParentCategories
         case fetchSubCategories
         case fetchCategoryData
+        case fetchSeriesMainData
+        case fetchSeriesProgrammes
     }
     
     static var requestURL: [NetworkRequestType : String] = [
