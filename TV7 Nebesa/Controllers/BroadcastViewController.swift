@@ -36,6 +36,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         setupDateCollectionView()
         generateDates()
         firstAppearSelectedItem()
+
     }
 
 
@@ -65,17 +66,17 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TVGuideCell.identifier, for: indexPath) as? TVGuideCell else { return UITableViewCell()}
 
         let data = tvGuideSeries.tvGuideDates
-
         if !data.isEmpty {
-            if tvGuideSeries.tvGuideDates[indexPath.row].series == "" {
-                cell.seriesTVGuide.text = tvGuideSeries.tvGuideDates[indexPath.row].name
-            } else if tvGuideSeries.tvGuideDates[indexPath.row].name != "" {
-                cell.seriesTVGuide.text = "\(tvGuideSeries.tvGuideDates[indexPath.row].series): " + "\(tvGuideSeries.tvGuideDates[indexPath.row].name)"
-            } else {
-                cell.seriesTVGuide.text = tvGuideSeries.tvGuideDates[indexPath.row].series
+            switch data[indexPath.row] {
+            case let (x) where x.series == "":
+                cell.seriesTVGuide.text = data[indexPath.row].name
+            case let (x) where x.name != "":
+                cell.seriesTVGuide.text = "\(data[indexPath.row].series): " + "\(data[indexPath.row].name)"
+            default:
+                cell.seriesTVGuide.text = data[indexPath.row].series
             }
-            cell.timeTVGuide.text = dateFormatter(tvGuideSeries.tvGuideDates[indexPath.row].date)
-            cell.captionLabel.text = tvGuideSeries.tvGuideDates[indexPath.row].caption
+            cell.timeTVGuide.text = dateFormatter(data[indexPath.row].date)
+            cell.captionLabel.text = data[indexPath.row].caption
         } else {
             displayMessage("Sorry, we have no data on this date")
         }
@@ -140,7 +141,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
 
     //MARK: - Private Methods
-    private func dateFormatter(_ dateIn: String) -> String {
+    fileprivate func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }
         let date = Date(timeIntervalSince1970: unixDate)
         let dateFormatter = DateFormatter()
@@ -200,7 +201,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     private func displayMessage(_ userMessage: String) -> Void {
-        let alertController = UIAlertController(title: "Error", message: userMessage, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Oops", message: userMessage, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
