@@ -28,7 +28,6 @@ final class CategoryDataTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("num \(categoryData.categoryProgrammes.count)")
         return categoryData.categoryProgrammes.count
     }
     
@@ -43,7 +42,7 @@ final class CategoryDataTableViewController: UITableViewController {
 //    MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == seriesDataSegue {
-            guard let viewController = segue.destination as? CategorySeriesTableViewController else {
+            guard segue.destination is CategorySeriesTableViewController else {
                 return
             }
             guard let indexPath = self.tableView.indexPathForSelectedRow else {

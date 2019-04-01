@@ -44,7 +44,6 @@ final class SubCategoriesTableViewController: UITableViewController {
             return UITableViewCell()
         }
         cell.subCategoryNameLabel.text = subCategoriesData.subCategories[indexPath.row].categoryName
-        
         return cell
     }
     

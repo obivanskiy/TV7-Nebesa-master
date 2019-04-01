@@ -30,7 +30,6 @@ final class CategorySeriesPresenter {
     private func serializeSeriesMainInformation(requestData: (Data)) {
         do {
             viewController.self.seriesData  = try JSONDecoder().decode(ProgrammeInformation.self, from: requestData)
-            print(viewController.self.seriesData)
             self.requestSeriesProgrammes()
         } catch let error {
             print(error.localizedDescription)
@@ -51,15 +50,8 @@ final class CategorySeriesPresenter {
     private func serializeSeriesProgrammes(requestData: (Data)) {
         do {
             viewController.self.seriesProgrammes  = try JSONDecoder().decode(SeriesProgrammes.self, from: requestData)
-            print(NetworkService.requestURL[.fetchSeriesProgrammes])
-            print("**********************")
-            print(viewController.self.seriesProgrammes)
         } catch let error {
             print(error.localizedDescription)
         }
     }
-
-
-
-
 }

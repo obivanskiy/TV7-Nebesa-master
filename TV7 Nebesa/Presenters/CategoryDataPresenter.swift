@@ -36,7 +36,6 @@ final class CategoryDataPresenter {
                 self.serializeParentCategoryData(requestData: data)
                 for obj in self.parenCategoryData.subCategories {
                     NetworkService.requestURL[.fetchCategoryData] = NetworkEndpoints.baseURL + NetworkEndpoints.categoryDataURL + obj.categoryID
-                    print(obj.categoryID)
                 }
                 self.requestForGettingParentData()
             }
@@ -46,7 +45,6 @@ final class CategoryDataPresenter {
     private func serializeParentCategoryData(requestData: (Data)) {
         do {
             self.parenCategoryData  = try JSONDecoder().decode(SubCategories.self, from: requestData)
-            print(parenCategoryData)
         } catch let error {
             print(error.localizedDescription)
         }
@@ -67,7 +65,6 @@ final class CategoryDataPresenter {
         do {
             viewController.self.categoryData  = try JSONDecoder().decode(CategoryProgrammes.self, from: requestData)
             viewController.self.title = CategoryDataPresenter.categoryTitle ?? ""
-            print(viewController.self.categoryData)
         } catch let error {
             print(error.localizedDescription)
         }
