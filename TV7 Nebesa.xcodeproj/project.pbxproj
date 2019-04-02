@@ -28,7 +28,6 @@
 		15B0816E223A6C5900826057 /* CategoryDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0816D223A6C5900826057 /* CategoryDataViewController.swift */; };
 		15B08172223A90A200826057 /* CategoryDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B08171223A90A200826057 /* CategoryDataTableViewCell.swift */; };
 		15CD9CD8225217FD0014E326 /* ProgrammeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CD7225217FD0014E326 /* ProgrammeScreenViewController.swift */; };
-		15CD9CDA225243D10014E326 /* ProgrammeScreenVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CD9225243D10014E326 /* ProgrammeScreenVideoPlayer.swift */; };
 		15CD9CDE22534BAE0014E326 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CDD22534BAE0014E326 /* String+Extension.swift */; };
 		15CE9DC52244DF2F00362B40 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CE9DC42244DF2F00362B40 /* URL+Extension.swift */; };
 		15CF8F732237E03D008424E9 /* ParentCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CF8F722237E03D008424E9 /* ParentCategoriesModel.swift */; };
@@ -74,7 +73,6 @@
 		15B0816D223A6C5900826057 /* CategoryDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataViewController.swift; sourceTree = "<group>"; };
 		15B08171223A90A200826057 /* CategoryDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataTableViewCell.swift; sourceTree = "<group>"; };
 		15CD9CD7225217FD0014E326 /* ProgrammeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammeScreenViewController.swift; sourceTree = "<group>"; };
-		15CD9CD9225243D10014E326 /* ProgrammeScreenVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgrammeScreenVideoPlayer.swift; path = "TV7 Nebesa/Controllers/ProgrammeScreenVideoPlayer.swift"; sourceTree = SOURCE_ROOT; };
 		15CD9CDD22534BAE0014E326 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		15CE9DC42244DF2F00362B40 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		15CF8F722237E03D008424E9 /* ParentCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCategoriesModel.swift; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 				FAFDE8092241281200006FEE /* CollectionViewCells */,
 				15CF8F6D2237BCE8008424E9 /* Network */,
 				15CF8F6C2237BCDD008424E9 /* Models */,
-				154B7F56223AE41F0020A4E4 /* Player  */,
 				154F6D60224AA60200043BBD /* Services */,
 				154B7F51223ADAAC0020A4E4 /* Extensions */,
 				110F9D9C2237A6320020BABC /* Assets.xcassets */,
@@ -168,14 +165,6 @@
 				154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		154B7F56223AE41F0020A4E4 /* Player  */ = {
-			isa = PBXGroup;
-			children = (
-				15CD9CD9225243D10014E326 /* ProgrammeScreenVideoPlayer.swift */,
-			);
-			path = "Player ";
 			sourceTree = "<group>";
 		};
 		154F6D5D224A638300043BBD /* Presenters */ = {
@@ -438,7 +427,6 @@
 				15CF8F732237E03D008424E9 /* ParentCategoriesModel.swift in Sources */,
 				110F9DAC2237A74E0020BABC /* ParentCategoriesTableViewController.swift in Sources */,
 				152DF3BA22428B2900BDC90B /* SeriesProgrammesModel.swift in Sources */,
-				15CD9CDA225243D10014E326 /* ProgrammeScreenVideoPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
