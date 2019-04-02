@@ -17,4 +17,5 @@ struct NetworkEndpoints {
     static var seriesInfoURL: String = "get_tv7_series_info?series_id="
     static var tvGuide: String = "get_tv7_tv_guide_date/?date=2019-03-18" 
     static var seriesProgrammesURL: String = "get_tv7_series_programs?series_id="
+    static var playlistEndpoint: String = "/chunklist.m3u8" 
 }

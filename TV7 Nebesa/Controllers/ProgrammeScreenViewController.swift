@@ -11,14 +11,14 @@ import AVFoundation
 import AVKit
 
 
-class ProgrammeScreenViewController: UIViewController {
+final class ProgrammeScreenViewController: UIViewController {
     
-    var player: AVPlayer?
+    //MARK: - Stored properties
+    private var player: AVPlayer?
     private var playerViewController = AVPlayerViewController()
     static var programmeData: ProgrammesData = ProgrammesData()
     private var videoURLString: String = ""
-    
-    
+    private var screenTitle: String = "ВИДЕО"
     
     //MARK: - Outlets
     @IBOutlet weak var programmeView: UIView!
@@ -35,21 +35,19 @@ class ProgrammeScreenViewController: UIViewController {
         player(urlString: videoURLString)
     }
     
-    override func viewDidLayoutSubviews() {
-        print(videoURLString)
-    }
     //MARK: -Set up the UI
-    func setUpUI() {
+    private func setUpUI() {
         seriesNameLabel.text = ProgrammeScreenViewController.programmeData.seriesName
         seriesProgrammeName.text = ProgrammeScreenViewController.programmeData.name
         programmeCaption.text = ProgrammeScreenViewController.programmeData.caption
         programmeNumberLabel.text = "Эпизод: \(ProgrammeScreenViewController.programmeData.episodeNumber)"
         programmeLenghtLabel.text = "Длительность: \(dateFormatter(ProgrammeScreenViewController.programmeData.duration))"
-        self.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + ProgrammeScreenViewController.programmeData.linkPath + "/chunklist.m3u8"
-//        self.videoURLString = "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8"
-        self.title = "ВИДЕО"
+        // set up url from the data source
+        self.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + ProgrammeScreenViewController.programmeData.linkPath + NetworkEndpoints.playlistEndpoint
+        self.title = self.screenTitle
     }
     
+    //MARK: - Player function
     private func player(urlString: String) {
         if let  videoURL = URL(string: urlString.encodeUrl()!) {
             self.player = AVPlayer(url: videoURL)
@@ -58,10 +56,11 @@ class ProgrammeScreenViewController: UIViewController {
             self.addChild(playerViewController)
             programmeView.addSubview(playerViewController.view)
             playerViewController.didMove(toParent: self)
-            playerViewController.player?.pause()
+            playerViewController.player?.play()
         }
     }
     
+    //MARK: - Date formatter
     private func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }
         let date = Date(timeIntervalSince1970: unixDate)
@@ -71,19 +70,4 @@ class ProgrammeScreenViewController: UIViewController {
         let newDate = dateFormatter.string(from: date)
         return newDate
     }
-    
-    
-    
-    // MARK: - Navigation
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        if segue.identifier == programmeDataSegue {
-    //            guard let viewController = segue.destination as? CategorySeriesTableViewController else {
-    //                return
-    //            }
-    //            guard let indexPath = self.tableView.indexPathForSelectedRow else {
-    //                return
-    //            }
-    //    }
-    ////
-    //}
 }
