@@ -15,9 +15,8 @@ public class CustomNavigationController: UINavigationController {
     super.viewDidLoad()
     
         let bar = navigationBar
-        bar.barStyle = UIBarStyle.blackOpaque
-        bar.barTintColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
-        bar.isTranslucent = false
+
+        
         
         
 }

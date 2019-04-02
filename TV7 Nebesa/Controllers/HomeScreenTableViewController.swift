@@ -10,7 +10,7 @@ import UIKit
 
 final class HomeScreenTableViewController: UITableViewController {
 
-    
+    var myNavBar: HomeScreenNavigationBar!
     var menuVC: MenuTableViewController!
     
     private(set) var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes() {
@@ -25,9 +25,7 @@ final class HomeScreenTableViewController: UITableViewController {
         super.viewDidLoad()
         
         setupNavigationController()
-        
 //        setupSearchController()
-        
         tableView.rowHeight = 130
         
         
@@ -61,6 +59,7 @@ final class HomeScreenTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         homeScreenDownloadService(homeScreenData: HomeScreenData())
         self.title = "Небеса"
+        
 
     }
     
@@ -78,26 +77,40 @@ final class HomeScreenTableViewController: UITableViewController {
         definesPresentationContext = true
         
     }
-    
+    // Navigation Bar and Controller setup
     func setupNavigationController() {
-        let nav = navigationController!
-        let bar = nav.navigationBar
-        bar.prefersLargeTitles = true
+         
+        if let navController = navigationController {
+            System.clearNavigationBar(forBar: navController.navigationBar)
+            navController.view.backgroundColor = .clear
+            
+        }
+
+        let image = UIImage(named: "NavigationBar.png")
+        self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
         
-        let item = navigationItem
-        item.title = "First View"
-        let button = UIBarButtonItem()
-        button.title = "Close"
-        item.rightBarButtonItem = button
         
         
+        
+        
+        
+//        let nav = navigationController!
+//        let bar = nav.navigationBar
+//
+//
+//
+//
+//        let item = navigationItem
+//        item.title = "First View"
+//        let button = UIBarButtonItem()
+////        button.title = "Close"
+////        item.rightBarButtonItem = button
 //
 //        let image: UIImage = UIImage(named: "Bitmap.png")!
 //        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 30))
 //        imageView.contentMode = .scaleAspectFit
 //        imageView.image = image
 //        self.navigationItem.titleView = imageView
-//
 
     }
     
@@ -159,7 +172,8 @@ final class HomeScreenTableViewController: UITableViewController {
     }
     
     func showMenu() {
-        
+        self.menuVC.view.frame = CGRect(x: -UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width
+            , height: UIScreen.main.bounds.size.height)
         UIView.animate(withDuration: 0.3) { ()->Void in
             self.menuVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width
                 , height: UIScreen.main.bounds.size.height)
@@ -250,4 +264,26 @@ final class HomeScreenTableViewController: UITableViewController {
     }
     */
 
+}
+
+final class NavigationBar: UINavigationBar {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUp()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setUp()
+    }
+    
+    private func setUp() {
+        prefersLargeTitles = true
+        barStyle = .blackOpaque
+        barTintColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
+        isTranslucent = false
+        //frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width , height: 200)
+    }
+    
 }
