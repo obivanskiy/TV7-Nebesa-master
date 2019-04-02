@@ -32,6 +32,9 @@ final class ProgrammeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         player(urlString: videoURLString)
     }
     

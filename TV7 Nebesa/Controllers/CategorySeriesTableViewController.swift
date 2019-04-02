@@ -10,10 +10,9 @@ import UIKit
 
 final class CategorySeriesTableViewController: UITableViewController {
     
+    // MARK: - Stored properties
     private var presenter: CategorySeriesPresenter?
     private var programmeDataSegue: String = "ProgrammeScreenSegue"
-    
-    // MARK: - Stored properties
     var seriesData: ProgrammeInformation = ProgrammeInformation() {
         didSet {
             DispatchQueue.main.async {
