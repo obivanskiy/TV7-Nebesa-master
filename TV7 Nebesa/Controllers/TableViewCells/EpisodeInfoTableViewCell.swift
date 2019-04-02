@@ -38,7 +38,6 @@ class EpisodeInfoTableViewCell: UITableViewCell {
             return
         }
         episodeInfoImage.kf.setImage(with: previewImageURL)
-        passData()
     }
     
     private func dateFormatter(_ dateIn: String) -> String {
@@ -49,9 +48,5 @@ class EpisodeInfoTableViewCell: UITableViewCell {
         
         let newDate = dateFormatter.string(from: date)
         return newDate
-    }
-    
-    private func passData() {
-        ProgrammeScreenViewController.programmeData = self.cellModel ?? ProgrammesData()
     }
 }

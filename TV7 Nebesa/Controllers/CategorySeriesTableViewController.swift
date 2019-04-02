@@ -67,7 +67,7 @@ final class CategorySeriesTableViewController: UITableViewController {
                 return UITableViewCell()
             }
             cell.cellModel = seriesProgrammes.seriesProgrammes[indexPath.row]
-            print(cell.cellModel)
+            
             return cell
         }
         return UITableViewCell()
@@ -79,6 +79,7 @@ final class CategorySeriesTableViewController: UITableViewController {
         tableView.beginUpdates()
         cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
         tableView.endUpdates()
+        ProgrammeScreenViewController.programmeData = cell.cellModel ?? ProgrammesData()
         performSegue(withIdentifier: programmeDataSegue, sender: self)
     }
     
