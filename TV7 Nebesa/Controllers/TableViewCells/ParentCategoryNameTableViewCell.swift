@@ -10,4 +10,5 @@ import UIKit
 
 class ParentCategoryNameTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryNameLabel: UILabel!
+    
 }
