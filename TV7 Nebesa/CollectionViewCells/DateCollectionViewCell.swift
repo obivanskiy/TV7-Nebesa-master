@@ -23,10 +23,9 @@ class DateCollectionViewCell: UICollectionViewCell {
             dateLabel.textColor = isSelected ? UIColor.white : UIColor.black
         }
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         self.date = ""
         super.init(coder: aDecoder)
     }
-
 }

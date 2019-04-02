@@ -8,11 +8,10 @@
 
 import Foundation
 
-
 struct SeriesProgrammes: Codable {
     let seriesProgrammes: [ProgrammesData]
     
-    enum CodingKeys: String, CodingKey{
+    enum CodingKeys: String, CodingKey {
         case seriesProgrammes = "tv7_series_programs"
     }
     
@@ -68,8 +67,6 @@ struct ProgrammesData: Codable {
         case imagePath = "image_path"
         case onVODSince = "visible_on_vod_since"
         case isVisibleOnVOD = "is_visible_on_vod"
-
-        
         }
     
     init() {

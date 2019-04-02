@@ -6,7 +6,6 @@
 //  Copyright © 2019 Богдан Воробйовський. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
 
 final class CategoryDataTableViewCell: UITableViewCell {

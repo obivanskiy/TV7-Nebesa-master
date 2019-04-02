@@ -8,8 +8,12 @@
 
 import UIKit
 
-class CategorySeriesTableViewController: UITableViewController {
+final class CategorySeriesTableViewController: UITableViewController {
     
+    private var presenter: CategorySeriesPresenter?
+    private var programmeDataSegue: String = "ProgrammeScreenSegue"
+    
+    // MARK: - Stored properties
     var seriesData: ProgrammeInformation = ProgrammeInformation() {
         didSet {
             DispatchQueue.main.async {
@@ -18,69 +22,76 @@ class CategorySeriesTableViewController: UITableViewController {
         }
     }
     
+    var seriesProgrammes: SeriesProgrammes = SeriesProgrammes() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    var seriesID: String = ""
     var categoryData: CategoryProgrammesData?
     
+    //MARK: - View lifecycle functions
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.estimatedRowHeight = 300
-        tableView.rowHeight = UITableView.automaticDimension
-        fetchSeriesData(categoryData: categoryData ?? CategoryProgrammesData())
-    }
-    
-    func fetchSeriesData(categoryData: CategoryProgrammesData) {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.seriesInfoURL + categoryData.id
-        guard let url = URL(string: urlToParse) else {
-            return
-        }
-        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
-            guard error == nil else {
-                return
-            }
-            guard let responseData = data else {
-                return
-            }
-            do {
-                self.seriesData = try JSONDecoder().decode(ProgrammeInformation.self, from: responseData)
-                print(self.seriesData)
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
-        urlSessionTask.resume()
+        self.presenter = CategorySeriesPresenter(with: self)
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-        return seriesData.programmeInfo.count
-        } else {
-        return 0
+            tableView.estimatedRowHeight = 300
+            tableView.rowHeight = UITableView.automaticDimension
+            return seriesData.programmeInfo.count
         }
+        tableView.estimatedRowHeight = 116
+        tableView.rowHeight = UITableView.automaticDimension
+        return seriesProgrammes.seriesProgrammes.count
     }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//        return UITableView.automaticDimension
-//    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SeriesInfoTableViewCell.identifier, for: indexPath) as? SeriesInfoTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.cellModel = seriesData.programmeInfo[indexPath.row]
+            
+            return cell
+        } else if indexPath.row >= 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeInfoTableViewCell.identifier, for: indexPath) as? EpisodeInfoTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.cellModel = seriesProgrammes.seriesProgrammes[indexPath.row]
+            
+            return cell
+        }
+        return UITableViewCell()
+    }
     
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SeriesInfoTableViewCell.identifier, for: indexPath) as? SeriesInfoTableViewCell else { return UITableViewCell() }
-                cell.cellModel = seriesData.programmeInfo[indexPath.row]
-                return cell
-}
-//        else if indexPath.section == 1 {
-//                guard let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeInfoTableViewCell.identifier, for: indexPath) as? EpisodeInfoTableViewCell else { return UITableViewCell() }
-//                cell.cellModel = seriesData.programmeInfo[indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath) as! EpisodeInfoTableViewCell
+        tableView.beginUpdates()
+        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
+        tableView.endUpdates()
+        ProgrammeScreenViewController.programmeData = cell.cellModel ?? ProgrammesData()
+        performSegue(withIdentifier: programmeDataSegue, sender: self)
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == programmeDataSegue {
+//            guard  segue.destination is ProgrammeScreenViewController else {
+//                return
 //            }
+//            guard let indexPath = self.tableView.indexPathForSelectedRow else {
+//                return
+//            }
+//            ProgrammeScreenViewController.programmeData = seriesProgrammes.seriesProgrammes[indexPath.row]
+//        }
+//    }
 }
