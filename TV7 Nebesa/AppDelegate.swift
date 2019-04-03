@@ -42,13 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
 //        navigationBarAppearace.tintColor = UIColor.init(red: 0/255 , green: 136/255, blue: 200/255, alpha: 1)
 //        navigationBarAppearace.barTintColor = UIColor.init(red: 0/255 , green: 136/255, blue: 200/255, alpha: 1)
-//        navigationBarAppearace.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-//        //MARK: - change navigation item title color
-//        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-//        
-        
-        //MARK: - Light content status bar
-        
+
         
         return true
     }

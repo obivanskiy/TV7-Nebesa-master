@@ -13,12 +13,7 @@ public class CustomNavigationController: UINavigationController {
     
     public override func viewDidLoad() {
     super.viewDidLoad()
-    
-        let bar = navigationBar
-
-        
-        
-        
+       
 }
 
 }

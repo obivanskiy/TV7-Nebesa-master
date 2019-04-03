@@ -22,9 +22,32 @@ class HomeScreenVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
         navigationItem.titleView = titleLabel
         collectionView.backgroundColor = UIColor.white
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "cellID")
+        
+        collectionView?.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        
         setupMenuBar()
+        setupNavBarButtons()
         
     }
+    
+    func setupNavBarButtons() {
+        let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
+        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
+        
+        let moreButton = UIBarButtonItem(image: UIImage(named: "tvIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMore))
+        
+        navigationItem.rightBarButtonItems = [moreButton, searchBarButtonItem]
+    }
+    
+    @objc func handleMore() {
+        
+    }
+    
+    @objc func handleSearch() {
+        print("Search")
+    }
+    
     
     //computed
     let menuBar: MenuBar = {
@@ -40,7 +63,7 @@ class HomeScreenVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
