@@ -11,7 +11,9 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
     //MARK: - Outlets
     @IBOutlet weak var tvGuideTableView: UITableView!
-    @IBOutlet weak var dateCollectioView: UICollectionView!
+    @IBOutlet weak var dateCollectionView: UICollectionView!
+    @IBOutlet weak var dateStackView: UIStackView!
+    @IBOutlet weak var tvGuideTableViewConstraint: NSLayoutConstraint!
 
 
     //MARK: - Private properties
@@ -40,23 +42,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
 
-    //MARK: - TV Guide Series Download
-    func downloadServiceForChosenDate(_ date: String) {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide + date
-        guard let url = URL(string: urlToParse) else { return }
-        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard error == nil else { return }
-            guard let responseData = data else { return }
-            do {
-                self.tvGuideSeries = try JSONDecoder().decode(TVGuideDates.self, from: responseData)
-            } catch let error {
-                print("Error is \(error)")
-            }
-        }
-        urlSessionTask.resume()
-    }
-
-
     //MARK: - Table View Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tvGuideSeries.tvGuideDates.count
@@ -81,6 +66,9 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
             displayMessage("Sorry, we have no data on this date")
         }
         cell.isExpanded = self.expandedRows.contains(indexPath.row)
+
+        hideDateCollectionWhileScrolling()
+
         return cell
     }
 
@@ -99,6 +87,20 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         case false:
             self.expandedRows.insert(indexPath.row)
         }
+
+        // ******** Expanded cells haven't work yet *********
+        switch cell.captionLabel.calculateMaxLines() {
+        case 1:
+            print("1")
+        case 2:
+            print("2")
+        case 3:
+            print("3")
+        default:
+            print("default")
+        }
+
+
         cell.isExpanded = !cell.isExpanded
 
         self.tvGuideTableView.beginUpdates()
@@ -141,6 +143,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
 
     //MARK: - Private Methods
+    // Formates Unix date into the normal format
     fileprivate func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }
         let date = Date(timeIntervalSince1970: unixDate)
@@ -162,12 +165,13 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
    private func setupDateCollectionView() {
-        dateCollectioView.dataSource = self
-        dateCollectioView.delegate = self
-        dateCollectioView.allowsSelection = true
-        dateCollectioView.reloadData()
+        dateCollectionView.dataSource = self
+        dateCollectionView.delegate = self
+        dateCollectionView.allowsSelection = true
+        dateCollectionView.reloadData()
     }
 
+    // Modify current date into the needed format request
     private func currentDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -175,6 +179,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         return currentDateFormat
     }
 
+    // Generate Dates from the current date +- 15 days for requests to server
     private func generateDates() {
         for number in -15...15 {
             guard let newDate = NSCalendar.current.date(byAdding: .day, value: number, to: Date()) else { continue }
@@ -186,20 +191,20 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
 
+    // Select and display the current day in DateCollection
     private func firstAppearSelectedItem() {
         let firstAppearSelectedItem = arrayOfDatesStrings.count/2
         let selectedIndexPath = IndexPath(item: firstAppearSelectedItem, section: 0)
-        dateCollectioView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
+        dateCollectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
     }
 
     //Need to think about this. Isn't working now
     private func scrollToCurrentTime() {
-//        let numberOfRows = tvGuideTableView.numberOfRows(inSection: 0)
-//        print(numberOfRows)
         let selectedIndexPath = IndexPath(item: 12, section: 0)
         self.tvGuideTableView.scrollToRow(at: selectedIndexPath, at: .top, animated: true)
     }
 
+    // Display Alert Message
     private func displayMessage(_ userMessage: String) -> Void {
         let alertController = UIAlertController(title: "Oops", message: userMessage, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)
@@ -207,6 +212,48 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         self.present(alertController, animated: true, completion: nil)
     }
 
+    private func hideDateCollectionWhileScrolling() {
+        UIView.animate(withDuration: 0, animations: {
+            if self.tvGuideTableView.isDragging && self.tvGuideTableView.isDecelerating {
+                self.dateStackView.isHidden = true
+                self.tvGuideTableViewConstraint.constant = 0
+            } else if self.tvGuideTableView.scrollsToTop {
+                self.dateStackView.isHidden = false
+                self.tvGuideTableViewConstraint.constant = 36
+            }
+        })
+    }
 
+
+    //MARK: - TV Guide Series Download
+    private func downloadServiceForChosenDate(_ date: String) {
+        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide + date
+        guard let url = URL(string: urlToParse) else { return }
+        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard error == nil else { return }
+            guard let responseData = data else { return }
+            do {
+                self.tvGuideSeries = try JSONDecoder().decode(TVGuideDates.self, from: responseData)
+            } catch let error {
+                print("Error is \(error)")
+            }
+        }
+        urlSessionTask.resume()
+    }
+
+
+}
+
+
+// Calculates number of lines that needed for label content
+extension UILabel {
+    func calculateMaxLines() -> Int {
+        let maxSize = CGSize(width: frame.size.width, height: CGFloat(Float.infinity))
+        let charSize = font.lineHeight
+        let text = (self.text ?? "") as NSString
+        let textSize = text.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font as Any], context: nil)
+        let linesRoundedUp = Int(ceil(textSize.height/charSize))
+        return linesRoundedUp
+    }
 
 }

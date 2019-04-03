@@ -36,8 +36,9 @@ class TVGuideCell: UITableViewCell {
         seriesTVGuide.numberOfLines = 3
         seriesTVGuide.lineBreakMode = .byWordWrapping
         seriesTVGuide.font = UIFont.systemFont(ofSize: 15.0)
-        captionLabel.numberOfLines = 4
+        captionLabel.numberOfLines = 0
         captionLabel.lineBreakMode = .byWordWrapping
     }
     
 }
+
