@@ -27,6 +27,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     private var arrayOfDates = [Date]()
     private var arrayOfDatesStrings = [String]()
     private var expandedRows = Set<Int>()
+    private var lastContentOffset: CGFloat = 0
 
 
     //MARK: - Lifecycle methods
@@ -66,8 +67,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
             displayMessage("Sorry, we have no data on this date")
         }
         cell.isExpanded = self.expandedRows.contains(indexPath.row)
-
-        hideDateCollectionWhileScrolling()
 
         return cell
     }
@@ -114,6 +113,26 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         cell.isExpanded = false
         self.tvGuideTableView.beginUpdates()
         self.tvGuideTableView.endUpdates()
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if scrollView == tvGuideTableView {
+            self.lastContentOffset = scrollView.contentOffset.y
+        }
+    }
+
+    // Hide DateCollection when scrolling down
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == tvGuideTableView {
+            if (self.lastContentOffset < scrollView.contentOffset.y) {
+                dateStackView.isHidden = true
+                tvGuideTableViewConstraint.constant = 0
+            } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+                dateStackView.isHidden = false
+                tvGuideTableViewConstraint.constant = 36
+            }
+        }
+
     }
 
 
@@ -210,18 +229,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         let okAction = UIAlertAction(title: "OK", style: .default)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
-    }
-
-    private func hideDateCollectionWhileScrolling() {
-        UIView.animate(withDuration: 0, animations: {
-            if self.tvGuideTableView.isDragging && self.tvGuideTableView.isDecelerating {
-                self.dateStackView.isHidden = true
-                self.tvGuideTableViewConstraint.constant = 0
-            } else if self.tvGuideTableView.scrollsToTop {
-                self.dateStackView.isHidden = false
-                self.tvGuideTableViewConstraint.constant = 36
-            }
-        })
     }
 
 
