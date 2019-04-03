@@ -22,6 +22,7 @@
 		117C3A422253B0E300B1E91F /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C3A412253B0E300B1E91F /* MenuBar.swift */; };
 		11ACAE372242C1410003CDD0 /* HomeScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACAE362242C1410003CDD0 /* HomeScreenTableViewController.swift */; };
 		11AED3512254D50D00647B97 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AED3502254D50D00647B97 /* StackView.swift */; };
+		11AED3542255026B00647B97 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AED3532255026B00647B97 /* Video.swift */; };
 		11BF07B4224A7A5D00947B7E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF07B3224A7A5D00947B7E /* MenuTableViewCell.swift */; };
 		11BF07B6224A7A7700947B7E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF07B5224A7A7700947B7E /* MenuTableViewController.swift */; };
 		11BF07B8224A7A9000947B7E /* HeaderMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF07B7224A7A9000947B7E /* HeaderMenuTableViewCell.swift */; };
@@ -75,6 +76,7 @@
 		117C3A412253B0E300B1E91F /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		11ACAE362242C1410003CDD0 /* HomeScreenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenTableViewController.swift; sourceTree = "<group>"; };
 		11AED3502254D50D00647B97 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		11AED3532255026B00647B97 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		11BF07B3224A7A5D00947B7E /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		11BF07B5224A7A7700947B7E /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		11BF07B7224A7A9000947B7E /* HeaderMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		110F9D912237A6310020BABC /* TV7 Nebesa */ = {
 			isa = PBXGroup;
 			children = (
+				11AED3522255023800647B97 /* Model */,
 				117C3A3E2253AEBD00B1E91F /* View */,
 				117C3A3B2253ADEB00B1E91F /* Helpers */,
 				11BF07BF224E57C700947B7E /* TestHSVC */,
@@ -181,6 +184,14 @@
 				11AED3502254D50D00647B97 /* StackView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		11AED3522255023800647B97 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11AED3532255026B00647B97 /* Video.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		11BF07B2224A7A2200947B7E /* SideMenu+NavBar */ = {
@@ -469,6 +480,7 @@
 				11BF07BC224CD1DC00947B7E /* CustomNavigationController.swift in Sources */,
 				11AED3512254D50D00647B97 /* StackView.swift in Sources */,
 				110F9DA82237A6A50020BABC /* BroadcastViewController.swift in Sources */,
+				11AED3542255026B00647B97 /* Video.swift in Sources */,
 				117C3A422253B0E300B1E91F /* MenuBar.swift in Sources */,
 				15D626EC22411C1E00449F8B /* SeriesInfoTableViewCell.swift in Sources */,
 				117C3A402253AEFC00B1E91F /* VideoCell.swift in Sources */,

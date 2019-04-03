@@ -10,11 +10,14 @@ import UIKit
 
 class HomeScreenVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    
-    
+    var videos = [Videos]
+            
+            
+            
     override func viewDidLoad() {
         super.viewDidLoad()
         
+     
         
         
 //        navigationItem.title = "Home"
@@ -67,7 +70,7 @@ class HomeScreenVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 10
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
