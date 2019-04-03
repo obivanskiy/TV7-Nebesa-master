@@ -13,8 +13,12 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
     @IBOutlet weak var tvGuideTableView: UITableView!
     @IBOutlet weak var dateCollectioView: UICollectionView!
 
-
+    @IBOutlet weak var dateSteckView: UIStackView!
+    
+    
+  
     //MARK: - Private properties
+    
     private (set) var tvGuideSeries: [String]? = [] {
         didSet {
             guard let _ = tvGuideSeries else { return }
@@ -47,6 +51,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         setupTVGuideTableView()
         setupDateCollectionView()
         tvGuideDownloadService()
+        
     }
 
 
