@@ -119,6 +119,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dateCollectioView" destination="DhY-S2-OZW" id="39Q-bW-ff7"/>
+                        <outlet property="dateSteckView" destination="1Uc-Or-hdv" id="Tc8-zm-p9P"/>
                         <outlet property="tvGuideTableView" destination="soC-NK-l0s" id="Mgm-nP-eQz"/>
                     </connections>
                 </viewController>

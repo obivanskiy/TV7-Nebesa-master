@@ -10,10 +10,17 @@ import UIKit
 
 class HomeScreenVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    func fetchVideos() {
+        let url = NSURL(string: "http://www.tv7.fi/api/jed/get_tv7_vod_recommendations/?date=2019-04-02")
+        NSURLSession
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Home"
+        
+        
+//        navigationItem.title = "Home"
         navigationController?.navigationBar.isTranslucent = false
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "Home"
