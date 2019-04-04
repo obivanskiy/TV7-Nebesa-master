@@ -9,16 +9,12 @@
 import UIKit
 
 class WebTVMainTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var programmeTimeLabel: UILabel!
+    @IBOutlet weak var programmeNameLabel: UILabel!
+    
     override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+        self.isUserInteractionEnabled = false
+        programmeNameLabel.sizeToFit()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
+

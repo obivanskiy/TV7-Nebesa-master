@@ -12,17 +12,11 @@ class TVGuideCell: UITableViewCell {
 
     //MARK: - Outlets
     @IBOutlet weak var timeTVGuide: UILabel!
-    @IBOutlet weak var seriesTVGuide: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        setupUI()
-    }
-
-    func setupUI() {
-        seriesTVGuide.numberOfLines = 2
-        seriesTVGuide.lineBreakMode = .byWordWrapping
-        seriesTVGuide.font = UIFont.systemFont(ofSize: 14.0)
+    @IBOutlet weak var seriesTVGuide: UILabel! {
+        didSet {
+            seriesTVGuide.numberOfLines = 2
+            seriesTVGuide.lineBreakMode = .byWordWrapping
+            seriesTVGuide.font = UIFont.systemFont(ofSize: 14.0)
+        }
     }
 }

@@ -53,7 +53,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="745-gb-jEF">
-                                            <rect key="frame" x="144" y="39" width="35.5" height="16.5"/>
+                                            <rect key="frame" x="144" y="39" width="219" height="16.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="745-gb-jEF" firstAttribute="centerY" secondItem="4y8-3E-H5g" secondAttribute="centerY" id="8zv-5t-K0K"/>
-                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="745-gb-jEF" secondAttribute="trailing" constant="195.5" id="DKh-1A-Itf"/>
+                                        <constraint firstAttribute="trailing" secondItem="745-gb-jEF" secondAttribute="trailing" constant="12" id="DKh-1A-Itf"/>
                                         <constraint firstItem="745-gb-jEF" firstAttribute="leading" secondItem="LMz-q7-ush" secondAttribute="trailing" constant="8" id="WgX-BE-0Hm"/>
                                         <constraint firstItem="745-gb-jEF" firstAttribute="top" secondItem="4y8-3E-H5g" secondAttribute="top" constant="39" id="a2B-bq-sH3"/>
                                         <constraint firstItem="LMz-q7-ush" firstAttribute="centerY" secondItem="4y8-3E-H5g" secondAttribute="centerY" id="cQG-Yl-9ly"/>
@@ -249,7 +249,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" text="EpisodeName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6Z-fV-AFU">
-                                <rect key="frame" x="5" y="310" width="155" height="21"/>
+                                <rect key="frame" x="5" y="310" width="358" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="AXd-Ca-8eu"/>
                                 </constraints>
@@ -258,7 +258,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="SeriesNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emR-dB-bS7">
-                                <rect key="frame" x="5" y="283" width="310" height="20.5"/>
+                                <rect key="frame" x="5" y="283" width="358" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -270,7 +270,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="xeX-VD-1Q0">
-                                <rect key="frame" x="5" y="368" width="164.5" height="43"/>
+                                <rect key="frame" x="5" y="368" width="358" height="43"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EpisodeNumberLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pZ-MN-cdx">
                                         <rect key="frame" x="0.0" y="0.0" width="164.5" height="20.5"/>
@@ -291,7 +291,7 @@
                         <constraints>
                             <constraint firstItem="j6Z-fV-AFU" firstAttribute="leading" secondItem="emR-dB-bS7" secondAttribute="leading" id="6QA-bY-QgW"/>
                             <constraint firstItem="1zM-Oi-ONN" firstAttribute="trailing" secondItem="CSP-Yp-Aod" secondAttribute="trailing" constant="5" id="EPr-DT-R0f"/>
-                            <constraint firstItem="1zM-Oi-ONN" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="xeX-VD-1Q0" secondAttribute="trailing" constant="205.5" id="Hze-eV-dO7"/>
+                            <constraint firstItem="1zM-Oi-ONN" firstAttribute="trailing" secondItem="xeX-VD-1Q0" secondAttribute="trailing" constant="12" id="Hze-eV-dO7"/>
                             <constraint firstItem="cuT-nd-RyU" firstAttribute="trailing" secondItem="1zM-Oi-ONN" secondAttribute="trailing" id="JgD-1y-zT8"/>
                             <constraint firstItem="CSP-Yp-Aod" firstAttribute="top" secondItem="j6Z-fV-AFU" secondAttribute="bottom" constant="8.5" id="KpM-lC-1Ck"/>
                             <constraint firstItem="emR-dB-bS7" firstAttribute="top" secondItem="cuT-nd-RyU" secondAttribute="bottom" constant="8" id="Oug-AE-cFb"/>
@@ -300,9 +300,9 @@
                             <constraint firstItem="1zM-Oi-ONN" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="xeX-VD-1Q0" secondAttribute="bottom" constant="207" id="f0B-mJ-g8t"/>
                             <constraint firstItem="cuT-nd-RyU" firstAttribute="top" secondItem="1zM-Oi-ONN" secondAttribute="top" id="gap-0Q-Kpg"/>
                             <constraint firstItem="xeX-VD-1Q0" firstAttribute="leading" secondItem="1zM-Oi-ONN" secondAttribute="leading" constant="5" id="kHn-KY-KAl"/>
-                            <constraint firstItem="1zM-Oi-ONN" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="j6Z-fV-AFU" secondAttribute="trailing" constant="215" id="ljP-It-qVc"/>
+                            <constraint firstItem="1zM-Oi-ONN" firstAttribute="trailing" secondItem="j6Z-fV-AFU" secondAttribute="trailing" constant="12" id="ljP-It-qVc"/>
                             <constraint firstItem="xeX-VD-1Q0" firstAttribute="top" secondItem="CSP-Yp-Aod" secondAttribute="bottom" constant="8" id="noy-9y-m54"/>
-                            <constraint firstItem="1zM-Oi-ONN" firstAttribute="trailing" secondItem="emR-dB-bS7" secondAttribute="trailing" constant="60" id="rKl-io-gsV"/>
+                            <constraint firstItem="1zM-Oi-ONN" firstAttribute="trailing" secondItem="emR-dB-bS7" secondAttribute="trailing" constant="12" id="rKl-io-gsV"/>
                             <constraint firstItem="CSP-Yp-Aod" firstAttribute="leading" secondItem="1zM-Oi-ONN" secondAttribute="leading" constant="5" id="sCe-zQ-XEI"/>
                             <constraint firstItem="cuT-nd-RyU" firstAttribute="leading" secondItem="1zM-Oi-ONN" secondAttribute="leading" id="vo3-F4-QMQ"/>
                             <constraint firstItem="j6Z-fV-AFU" firstAttribute="top" secondItem="s6n-6j-4AS" secondAttribute="top" constant="310" id="wfB-2n-LZs"/>
@@ -392,7 +392,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7R-JZ-HAE">
-                                            <rect key="frame" x="21" y="11.5" width="42" height="21"/>
+                                            <rect key="frame" x="21" y="11.5" width="338" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -401,7 +401,7 @@
                                     <constraints>
                                         <constraint firstItem="X7R-JZ-HAE" firstAttribute="leading" secondItem="5m6-Ri-DRj" secondAttribute="leadingMargin" constant="5" id="ARO-SC-QcU"/>
                                         <constraint firstItem="X7R-JZ-HAE" firstAttribute="centerY" secondItem="5m6-Ri-DRj" secondAttribute="centerY" id="PBU-y0-xVU"/>
-                                        <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="X7R-JZ-HAE" secondAttribute="trailing" constant="301" id="bX7-Hy-nFK"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="X7R-JZ-HAE" secondAttribute="trailing" id="bX7-Hy-nFK"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -426,6 +426,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8mz-sP-MYK"/>
+        <segue reference="K9b-GK-uNn"/>
     </inferredMetricsTieBreakers>
 </document>

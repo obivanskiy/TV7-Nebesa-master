@@ -18,10 +18,12 @@ class NetworkService {
         case fetchCategoryData
         case fetchSeriesMainData
         case fetchSeriesProgrammes
+        case fetchWebTVProgrammesList
     }
     
     static var requestURL: [NetworkRequestType : String] = [
         .fetchParentCategories : NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL,
+        .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL
     ]
 
     enum networkResult: Swift.Error {
@@ -33,7 +35,6 @@ class NetworkService {
     }
     
     static func performRequest(requestType: NetworkRequestType, completion: @escaping (Result<Data, Error>) -> Void)  {
-        
         guard let urlString = requestURL[requestType] else {
             completion(.failure(networkResult.wrongPath))
             return

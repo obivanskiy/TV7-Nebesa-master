@@ -9,6 +9,7 @@
 import UIKit
 
 final class ParentCategoriesTableViewController: UITableViewController {
+    
     //MARK: - Private properties
     private var parentCategoriespresenter: ParentCategoriesPresenter?
     private let quickNavigationSections = ["5", "4", "9", "10"]

@@ -46,34 +46,34 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         super.viewWillAppear(true)
         setupTVGuideTableView()
         setupDateCollectionView()
-        tvGuideDownloadService()
+//        tvGuideDownloadService()
     }
 
 
     //MARK: - TV Guide Series Download
-    func tvGuideDownloadService() {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide
-        guard let url = URL(string: urlToParse) else { return }
-        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard error == nil else { return }
-            guard let responseData = data else { return }
-            do {
-                let entity = try JSONDecoder().decode(TVGuideDates.self, from: responseData)
-                for key in entity.tvGuideDates {
-                    if key.name != "" {
-                        self.tvGuideSeries?.append(key.series + ": " + key.name)
-                    } else {
-                        self.tvGuideSeries?.append(key.series)
-                    }
-                    let date = self.dateFormatter(key.date)
-                    self.tvGuideDate?.append(date)
-                }
-            } catch let error {
-                print("Error is \(error)")
-            }
-        }
-        urlSessionTask.resume()
-    }
+//    func tvGuideDownloadService() {
+//        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide
+//        guard let url = URL(string: urlToParse) else { return }
+//        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error in
+//            guard error == nil else { return }
+//            guard let responseData = data else { return }
+//            do {
+//                let entity = try JSONDecoder().decode(TVGuideDates.self, from: responseData)
+//                for key in entity.tvGuideDates {
+//                    if key.name != "" {
+//                        self.tvGuideSeries?.append(key.series + ": " + key.name)
+//                    } else {
+//                        self.tvGuideSeries?.append(key.series)
+//                    }
+//                    let date = self.dateFormatter(key.date)
+//                    self.tvGuideDate?.append(date)
+//                }
+//            } catch let error {
+//                print("Error is \(error)")
+//            }
+//        }
+//        urlSessionTask.resume()
+//    }
 
     //MARK: - Table View Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

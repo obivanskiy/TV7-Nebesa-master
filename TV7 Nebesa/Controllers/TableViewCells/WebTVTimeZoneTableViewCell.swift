@@ -10,17 +10,26 @@ import UIKit
 
 class WebTVTimeZoneTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var userTimeZoneLabel: UILabel!
+    var currentTimeZone: String =  ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        getCurrentTimeZone()
+        print(currentTimeZone)
+       setupCell()
+    }
+    
+    private func setupCell() {
         self.layer.borderWidth = 0.5
         self.backgroundColor = .lightGray
         self.layer.borderColor = UIColor.darkGray.cgColor
+
+        userTimeZoneLabel.text = currentTimeZone
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    private func getCurrentTimeZone() {
+        var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
+        self.currentTimeZone = "\(String(TimeZone.current.identifier)): \(localTimeZoneAbbreviation)"
     }
-
 }

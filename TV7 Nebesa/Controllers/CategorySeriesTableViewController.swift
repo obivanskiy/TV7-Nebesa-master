@@ -29,6 +29,11 @@ final class CategorySeriesTableViewController: UITableViewController {
         }
     }
     
+    enum CellIndex: Int {
+        case mainInformation = 0
+        case seriesList
+    }
+    
     var seriesID: String = ""
     var categoryData: CategoryProgrammesData?
     
@@ -38,10 +43,6 @@ final class CategorySeriesTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
             tableView.estimatedRowHeight = 300
@@ -54,14 +55,16 @@ final class CategorySeriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        guard let row = CellIndex.init(rawValue: indexPath.row) else { return UITableViewCell() }
+        switch row {
+        case .mainInformation:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SeriesInfoTableViewCell.identifier, for: indexPath) as? SeriesInfoTableViewCell else {
                 return UITableViewCell()
             }
             cell.cellModel = seriesData.programmeInfo[indexPath.row]
             
             return cell
-        } else if indexPath.row >= 1 {
+        case .seriesList:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeInfoTableViewCell.identifier, for: indexPath) as? EpisodeInfoTableViewCell else {
                 return UITableViewCell()
             }
@@ -69,7 +72,6 @@ final class CategorySeriesTableViewController: UITableViewController {
             
             return cell
         }
-        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
