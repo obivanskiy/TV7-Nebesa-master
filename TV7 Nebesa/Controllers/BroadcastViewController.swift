@@ -99,7 +99,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
             print("default")
         }
 
-
         cell.isExpanded = !cell.isExpanded
 
         self.tvGuideTableView.beginUpdates()
@@ -132,7 +131,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
                 tvGuideTableViewConstraint.constant = 36
             }
         }
-
     }
 
 
@@ -154,10 +152,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         downloadServiceForChosenDate(currentDate(arrayOfDates[indexPath.row]))
         tvGuideTableView.reloadData()
-        
-        if tvGuideSeries.tvGuideDates.isEmpty {
-            displayMessage("Sorry, we have no data on this date")
-        }
     }
 
 
@@ -262,5 +256,4 @@ extension UILabel {
         let linesRoundedUp = Int(ceil(textSize.height/charSize))
         return linesRoundedUp
     }
-
 }
