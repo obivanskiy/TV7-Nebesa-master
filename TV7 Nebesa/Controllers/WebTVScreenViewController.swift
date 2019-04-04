@@ -76,7 +76,7 @@ class WebTVScreenViewController: UIViewController, UITableViewDelegate, UITableV
             guard let cell = tableView.dequeueReusableCell(withIdentifier: WebTVMainTableViewCell.identifier, for: indexPath) as? WebTVMainTableViewCell else {
                 return UITableViewCell()
             }
-            tableView.estimatedRowHeight = 100
+            tableView.estimatedRowHeight = 70
             cell.programmeNameLabel.text = webTVProgrammesList.tvGuideDates[indexPath.row].name
             cell.programmeTimeLabel.text = dateFormatter(webTVProgrammesList.tvGuideDates[indexPath.row].date)
             return cell
