@@ -22,8 +22,8 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }()
     //8
     let cellId = "cellId"
-    let imageNames = ["home", "trending", "subscriptions", "account","logoButton"]
-    let numberOfItemsInMenu = 5
+    let imageNames = ["subscriptions", "logoButton","trending"]
+    let numberOfItemsInMenu = 3
     
     //1) init frame
     override init(frame: CGRect) {
@@ -58,7 +58,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     // size of cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width / 5 , height: frame.height)
+        return CGSize(width: frame.width / 3 , height: frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

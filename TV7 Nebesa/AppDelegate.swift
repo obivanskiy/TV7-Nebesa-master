@@ -17,25 +17,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        window = UIWindow()
-        window?.makeKeyAndVisible()
-        
-        let layout = UICollectionViewFlowLayout()
-        window?.rootViewController = CustomNavigationController(rootViewController: HomeScreenVC(collectionViewLayout: layout))
-        
-        
-        UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 12, green: 100, blue: 194)
-        //Clear shadow underneath navBar
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-
+//        window = UIWindow()
+//        window?.makeKeyAndVisible()
+//
+//        let layout = UICollectionViewFlowLayout()
+//        window?.rootViewController = CustomNavigationController(rootViewController: HomeScreenVC(collectionViewLayout: layout))
+//
+//
+//        UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 12, green: 100, blue: 194)
+//        //Clear shadow underneath navBar
+//        UINavigationBar.appearance().shadowImage = UIImage()
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+//
         application.statusBarStyle = .lightContent
-        let statusBarBackgroundView = UIView()
-        statusBarBackgroundView.backgroundColor = UIColor.rgb(red: 11, green: 90, blue: 193)
+//
         
-        window?.addSubview(statusBarBackgroundView)
-        window?.addConstraintsWithFormat(withVisualFormat: "H:|[v0]|", views: statusBarBackgroundView)
-        window?.addConstraintsWithFormat(withVisualFormat: "V:|[v0(40)]|", views: statusBarBackgroundView)
+//        let statusBarBackgroundView = UIView()
+//        statusBarBackgroundView.backgroundColor = UIColor.rgb(red: 11, green: 90, blue: 193)
+////
+//        window?.addSubview(statusBarBackgroundView)
+//        window?.addConstraintsWithFormat(withVisualFormat: "H:|[v0]|", views: statusBarBackgroundView)
+//        window?.addConstraintsWithFormat(withVisualFormat: "V:|[v0(40)]|", views: statusBarBackgroundView)
        
         //MARK: - Setup navigation bar color
 //        let navigationBarAppearace = UINavigationBar.appearance()

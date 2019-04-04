@@ -10,21 +10,21 @@ import UIKit
 
 final class HomeScreenTableViewController: UITableViewController {
 
-    var myNavBar: HomeScreenNavigationBar!
+   
     var menuVC: MenuTableViewController!
     
-    private(set) var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes() {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
-  
+//    private(set) var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes() {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
+//    }
+//
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationController()
+        
 //        setupSearchController()
         tableView.rowHeight = 130
         
@@ -46,24 +46,24 @@ final class HomeScreenTableViewController: UITableViewController {
         switch gesture.direction {
         case UISwipeGestureRecognizer.Direction.right:
             print("Show Menu")
-            showMenu()
+//            showMenu()
         case UISwipeGestureRecognizer.Direction.left:
             print("Close Menu")
-            closeOnSwipe()
+//            closeOnSwipe()
         default:
             break
         }
         
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        homeScreenDownloadService(homeScreenData: HomeScreenData())
-        self.title = "Небеса"
-        
-
-    }
-    
-    
+//    override func viewWillAppear(_ animated: Bool) {
+//        homeScreenDownloadService(homeScreenData: HomeScreenData())
+//        self.title = "Небеса"
+//        
+//
+//    }
+//    
+//    
     
 //    //MARK: - Setup Search Controller
     func setupSearchController() {
@@ -77,23 +77,8 @@ final class HomeScreenTableViewController: UITableViewController {
         definesPresentationContext = true
         
     }
-    // Navigation Bar and Controller setup
-    func setupNavigationController() {
-         
-        if let navController = navigationController {
-            System.clearNavigationBar(forBar: navController.navigationBar)
-            navController.view.backgroundColor = .clear
-            
-        }
-
-        let image = UIImage(named: "NavigationBar.png")
-        self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
         
-        
-        
-        
-        
-        
+    
 //        let nav = navigationController!
 //        let bar = nav.navigationBar
 //
@@ -114,90 +99,89 @@ final class HomeScreenTableViewController: UITableViewController {
 
     }
     
-    func homeScreenDownloadService(homeScreenData: HomeScreenData) {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL
-        guard let url = URL(string: urlToParse) else {
-            return
-        }
-        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
-            guard error == nil else {
-                return
-            }
-            guard let responseData = data else {
-                return
-            }
-            do {
-                self.homeScreenData = try JSONDecoder().decode(HomeScreenProgrammes.self, from: responseData)
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
-        urlSessionTask.resume()
-    }
-    
+//    func homeScreenDownloadService(homeScreenData: HomeScreenData) {
+//        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL
+//        guard let url = URL(string: urlToParse) else {
+//            return
+//        }
+//        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
+//            guard error == nil else {
+//                return
+//            }
+//            guard let responseData = data else {
+//                return
+//            }
+//            do {
+//                self.homeScreenData = try JSONDecoder().decode(HomeScreenProgrammes.self, from: responseData)
+//            } catch let error {
+//                print(error.localizedDescription)
+//            }
+//        }
+//        urlSessionTask.resume()
+//    }
+//
     
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return homeScreenData.homeScreenProgrammes.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeScreenCell", for: indexPath) as? HomeScreenTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.cellModel = homeScreenData.homeScreenProgrammes[indexPath.row]
-        
-        return cell
-    }
-    
-    
-    @IBAction func menuAction(_ sender: UIBarButtonItem) {
-        
-        if AppDelegate.menuIsOpen {
-            showMenu()
-        } else {
-            closeMenu()
-        }
-        
-    }
-    
-    func closeOnSwipe() {
-        if AppDelegate.menuIsOpen {
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return homeScreenData.homeScreenProgrammes.count
+//    }
+//    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeScreenCell", for: indexPath) as? HomeScreenTableViewCell else {
+//            return UITableViewCell()
+//        }
+//        cell.cellModel = homeScreenData.homeScreenProgrammes[indexPath.row]
+//        
+//        return cell
+//    }
+//    
+//
+//    @IBAction func menuAction(_ sender: UIBarButtonItem) {
+//
+//        if AppDelegate.menuIsOpen {
 //            showMenu()
-        } else {
-            closeMenu()
-        }
-    }
-    
-    func showMenu() {
-        self.menuVC.view.frame = CGRect(x: -UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width
-            , height: UIScreen.main.bounds.size.height)
-        UIView.animate(withDuration: 0.3) { ()->Void in
-            self.menuVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width
-                , height: UIScreen.main.bounds.size.height)
-            self.menuVC.view.backgroundColor = UIColor.black.withAlphaComponent(0)
-            self.addChild(self.menuVC)
-            self.view.addSubview(self.menuVC.view)
-            AppDelegate.menuIsOpen = false
-        }
-        
-    }
-    
-    func closeMenu() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.menuVC.view.frame = CGRect(x: -UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width
-                , height: UIScreen.main.bounds.size.height)
-        }) { (finished) in
-             self.menuVC.view.removeFromSuperview()
-        }
-       
-        AppDelegate.menuIsOpen = true
-    }
-    
-    
-    
+//        } else {
+//            closeMenu()
+//        }
+//
+//    }
+//
+//    func closeOnSwipe() {
+//        if AppDelegate.menuIsOpen {
+////            showMenu()
+//        } else {
+//            closeMenu()
+//        }
+//    }
+//
+//    func showMenu() {
+//        self.menuVC.view.frame = CGRect(x: -UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width
+//            , height: UIScreen.main.bounds.size.height)
+//        UIView.animate(withDuration: 0.3) { ()->Void in
+//            self.menuVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width
+//                , height: UIScreen.main.bounds.size.height)
+//            self.menuVC.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+//            self.addChild(self.menuVC)
+//            self.view.addSubview(self.menuVC.view)
+//            AppDelegate.menuIsOpen = false
+//        }
+//
+//    }
+//
+//    func closeMenu() {
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.menuVC.view.frame = CGRect(x: -UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width
+//                , height: UIScreen.main.bounds.size.height)
+//        }) { (finished) in
+//             self.menuVC.view.removeFromSuperview()
+//        }
+//
+//        AppDelegate.menuIsOpen = true
+//    }
+
+
     
     
     
@@ -264,26 +248,4 @@ final class HomeScreenTableViewController: UITableViewController {
     }
     */
 
-}
 
-final class NavigationBar: UINavigationBar {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUp()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setUp()
-    }
-    
-    private func setUp() {
-        prefersLargeTitles = true
-        barStyle = .blackOpaque
-        barTintColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
-        isTranslucent = false
-        //frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width , height: 200)
-    }
-    
-}

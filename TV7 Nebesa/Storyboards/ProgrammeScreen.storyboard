@@ -16,7 +16,7 @@
                 <navigationController storyboardIdentifier="NavigationProgrammeScreen" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Q2-da-OBB" userLabel="Programme" customClass="CustomNavigationController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="ПРОГРАММА" id="o2f-CQ-ODh"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6fM-b0-YNj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6fM-b0-YNj" customClass="CustomNavigationBar" customModule="TV7_Nebesa" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

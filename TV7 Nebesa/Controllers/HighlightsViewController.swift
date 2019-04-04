@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HighlightsViewController: UIViewController {
+class HighlightsViewController: BaseHomeController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

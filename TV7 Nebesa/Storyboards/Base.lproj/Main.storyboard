@@ -24,7 +24,7 @@
                         <segue destination="Yc0-Wz-hfy" kind="relationship" relationship="viewControllers" id="Pwy-7S-FYt"/>
                         <segue destination="r5N-ag-sXO" kind="relationship" relationship="viewControllers" id="8bE-nF-upT"/>
                         <segue destination="9fw-JR-uzW" kind="relationship" relationship="viewControllers" id="SJE-av-m0g"/>
-                        <segue destination="3qt-jv-Lfv" kind="relationship" relationship="viewControllers" id="qJU-uO-cRC"/>
+                        <segue destination="RUU-1b-uQa" kind="relationship" relationship="viewControllers" id="nlj-Sq-des"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIE-Nw-C9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -49,7 +49,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dYD-AC-sgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="730" y="721"/>
+            <point key="canvasLocation" x="137" y="721"/>
         </scene>
         <!--NavigationWebTVScreen-->
         <scene sceneID="hJY-zR-3cd">
@@ -59,7 +59,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vr-4A-ozc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="721"/>
+            <point key="canvasLocation" x="-962" y="721"/>
         </scene>
         <!--NavigationBestScenes-->
         <scene sceneID="VXY-0w-27d">
@@ -71,25 +71,18 @@
             </objects>
             <point key="canvasLocation" x="1880" y="721"/>
         </scene>
-        <!--Nebessa-->
-        <scene sceneID="WlD-B1-mCe">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Nebessa" id="3qt-jv-Lfv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="PYd-TT-yRk"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sfq-CZ-Asq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1600" y="762"/>
-        </scene>
         <!--HomeScreen-->
         <scene sceneID="W7b-Vo-RO7">
             <objects>
                 <viewControllerPlaceholder storyboardName="HomeScreen" id="xXA-OF-CVk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="zH5-e4-s1w"/>
+                    <tabBarItem key="tabBarItem" title="" image="home" largeContentSizeImage="home" id="zH5-e4-s1w"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lpH-gP-WWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-986" y="777"/>
+            <point key="canvasLocation" x="-1453" y="721"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="home" width="40" height="40"/>
+    </resources>
 </document>

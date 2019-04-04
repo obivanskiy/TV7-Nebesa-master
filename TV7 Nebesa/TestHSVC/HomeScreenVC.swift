@@ -10,10 +10,6 @@ import UIKit
 
 class HomeScreenVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var videos = [Videos]
-            
-            
-            
     override func viewDidLoad() {
         super.viewDidLoad()
         

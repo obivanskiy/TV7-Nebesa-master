@@ -27,6 +27,7 @@ class HomeScreenTableViewCell: UITableViewCell {
     }
     
     private func setupUI(cellModel: HomeScreenData) {
+        HomeScreenPreviewImage.sizeToFit()
         HomeScreenTitleLabel.sizeToFit()
         HomeScreenTitleLabel.text = cellModel.seriesName
         HomeScreenDateLabel.text? = cellModel.firstBroadcast
@@ -37,6 +38,9 @@ class HomeScreenTableViewCell: UITableViewCell {
         }
         HomeScreenPreviewImage.kf.setImage(with: previewImageURL)
     }
+    
+    
+  
 }
     
     

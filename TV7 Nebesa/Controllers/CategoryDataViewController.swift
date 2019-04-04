@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CategoryDataTableViewController: UITableViewController {
+    class CategoryDataTableViewController: UITableViewController {
     
     private(set) var categoryData: CategoryProgrammes = CategoryProgrammes() {
         didSet {

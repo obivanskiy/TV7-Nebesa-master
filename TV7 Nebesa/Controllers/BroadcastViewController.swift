@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class BroadcastViewController: UIViewController, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
+class BroadcastViewController: BaseHomeController, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
 
     //MARK: - Outlets
     @IBOutlet weak var tvGuideTableView: UITableView!

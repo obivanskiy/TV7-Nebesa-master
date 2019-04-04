@@ -15,7 +15,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i7o-y0-un0" userLabel="Categories" customClass="CustomNavigationController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="АРХИВ" id="d35-Sl-Nfd"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="eMH-X1-Pt1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="eMH-X1-Pt1" customClass="CustomNavigationBar" customModule="TV7_Nebesa" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

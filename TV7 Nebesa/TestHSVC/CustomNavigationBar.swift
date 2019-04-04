@@ -11,6 +11,8 @@ import UIKit
 class CustomNavigationBar: UINavigationBar {
 
     
+  let navBar = UINavigationBar()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -21,13 +23,30 @@ class CustomNavigationBar: UINavigationBar {
         setUp()
     }
     
-    private func setUp() {
-        prefersLargeTitles = true
+    
+     func setUp() {
+        prefersLargeTitles = false
+       
         barStyle = .blackOpaque
-        barTintColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
+        barTintColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1) //12
         isTranslucent = false
-        frame = CGRect(x: 0, y: 0, width: frame.width , height: 200)
+        //clear navbar shadow line 
+        shadowImage = UIImage()
+        setBackgroundImage(UIImage(), for: .default)
+        
+        
+        
+//        window?.addConstraintsWithFormat(withVisualFormat: "H:|[v0]|", views: statusBarBackgroundView)
+//        window?.addConstraintsWithFormat(withVisualFormat: "V:|[v0(40)]|", views: statusBarBackgroundView)
+        
+        
+//        frame = CGRect(x: 0, y: 0, width: frame.width , height: 200)
     }
+  
+    
+    
+    
+
     
     /*
     // Only override draw() if you perform custom drawing.
