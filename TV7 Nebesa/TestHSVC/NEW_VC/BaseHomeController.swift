@@ -22,7 +22,6 @@ class BaseHomeController: UIViewController {
    
     
         
-    }
     
     func setupNavBarButtons() {
         

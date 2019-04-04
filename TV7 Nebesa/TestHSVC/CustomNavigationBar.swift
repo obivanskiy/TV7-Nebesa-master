@@ -11,7 +11,7 @@ import UIKit
 class CustomNavigationBar: UINavigationBar {
 
     
-  let navBar = UINavigationBar()
+ 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,9 +22,21 @@ class CustomNavigationBar: UINavigationBar {
         super.init(coder: aDecoder)
         setUp()
     }
-    
-    
+
      func setUp() {
+        let statusBarFrame = UIApplication.shared.statusBarFrame
+        let statusBarMaskFrame = CGRect(
+            origin: CGPoint(
+                x: statusBarFrame.origin.x,
+                y: -statusBarFrame.size.height
+            ),
+            size: statusBarFrame.size
+        )
+        let statusBarMask = UIView(frame: statusBarMaskFrame)
+        statusBarMask.autoresizingMask = .flexibleWidth
+        statusBarMask.backgroundColor = .black
+        addSubview(statusBarMask)
+        
         prefersLargeTitles = false
        
         barStyle = .blackOpaque
