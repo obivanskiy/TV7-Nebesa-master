@@ -31,8 +31,6 @@ final class NebessaScreenController : BaseHomeController, UITableViewDataSource,
         tableView.delegate = self
         homeScreenDownloadService(homeScreenData: HomeScreenData())
     
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,12 +46,14 @@ final class NebessaScreenController : BaseHomeController, UITableViewDataSource,
         return homeScreenData.homeScreenProgrammes.count
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeScreenCell", for: indexPath) as? HomeScreenTableViewCell else {
             return UITableViewCell()
         }
         cell.cellModel = homeScreenData.homeScreenProgrammes[indexPath.row]
-        
+                
         return cell
     }
     

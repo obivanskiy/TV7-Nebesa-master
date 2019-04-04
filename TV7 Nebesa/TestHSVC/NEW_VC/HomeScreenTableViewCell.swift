@@ -11,6 +11,21 @@ import Kingfisher
 
 class HomeScreenTableViewCell: UITableViewCell {
 
+    private let dateFormatter = DateFormatter()
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setUp()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setUp()
+    }
+    
+    func setUp() {
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+    }
    
     @IBOutlet weak var HomeScreenPreviewImage: UIImageView!
     @IBOutlet weak var HomeScreenTitleLabel: UILabel!
@@ -30,7 +45,9 @@ class HomeScreenTableViewCell: UITableViewCell {
         HomeScreenPreviewImage.sizeToFit()
         HomeScreenTitleLabel.sizeToFit()
         HomeScreenTitleLabel.text = cellModel.seriesName
-        HomeScreenDateLabel.text? = cellModel.firstBroadcast
+        
+        HomeScreenDateLabel.text = TimeInterval(cellModel.firstBroadcast).map(Date.init(timeIntervalSince1970:)).map(dateFormatter.string)
+        
         HomeScreenDescriptionLabel.text = cellModel.caption
         
         guard let previewImageURL = URL.init(string: cellModel.homeScreenVideoPreviewImageURLString) else {
@@ -38,9 +55,7 @@ class HomeScreenTableViewCell: UITableViewCell {
         }
         HomeScreenPreviewImage.kf.setImage(with: previewImageURL)
     }
-    
-    
-  
+
 }
     
     
