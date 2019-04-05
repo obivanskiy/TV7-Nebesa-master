@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct SubCategories: Codable {
     
     let subCategories: [SubCategoriesDetails]

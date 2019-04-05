@@ -10,7 +10,6 @@ import UIKit
 import AVFoundation
 import AVKit
 
-
 final class ProgrammeScreenViewController: UIViewController {
     
     //MARK: - Stored properties

@@ -11,7 +11,7 @@ import UIKit
 final class SubCategoriesTableViewController: UITableViewController {
     
     private var categoryDataSegue: String = "CategoryDataSegue"
-   private  var subCategoriesPresenter: SubCategoriesPresenter?
+    private  var subCategoriesPresenter: SubCategoriesPresenter?
     static var subCategoryTitle: String?
     
     var subCategoriesData: SubCategories = SubCategories() {

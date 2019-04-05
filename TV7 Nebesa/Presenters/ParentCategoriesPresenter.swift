@@ -15,7 +15,6 @@ final class ParentCategoriesPresenter {
     init(with viewController: ParentCategoriesTableViewController) {
         self.viewController = viewController
         request()
-        
     }
     
     private func request() {

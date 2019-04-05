@@ -10,7 +10,7 @@ import UIKit
 
 final class CategoryDataTableViewController: UITableViewController {
     
-    private var seriesDataSegue: String = "SeriesDataSegue"
+    private let seriesDataSegue: String = "SeriesDataSegue"
     private var categoryDataPresenter: CategoryDataPresenter?
     var categoryData: CategoryProgrammes = CategoryProgrammes() {
         didSet {
@@ -24,7 +24,6 @@ final class CategoryDataTableViewController: UITableViewController {
         self.categoryDataPresenter = CategoryDataPresenter(with: self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 122
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

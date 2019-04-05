@@ -17,5 +17,15 @@ extension String {
     func decodeUrl() -> String? {
         return self.removingPercentEncoding
     }
+    
+    func timeFormatter(time: String) -> String {
+        guard let unixDate = Double(time) else { return "" }
+        let date = Date(timeIntervalSince1970: unixDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        let newDate = dateFormatter.string(from: date)
+        return newDate
+    }
 }
 

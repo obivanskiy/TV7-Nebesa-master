@@ -38,10 +38,6 @@ final class CategorySeriesTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
             tableView.estimatedRowHeight = 300
@@ -59,38 +55,36 @@ final class CategorySeriesTableViewController: UITableViewController {
                 return UITableViewCell()
             }
             cell.cellModel = seriesData.programmeInfo[indexPath.row]
-            
             return cell
-        } else if indexPath.row >= 1 {
+        }
             guard let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeInfoTableViewCell.identifier, for: indexPath) as? EpisodeInfoTableViewCell else {
                 return UITableViewCell()
             }
-            cell.cellModel = seriesProgrammes.seriesProgrammes[indexPath.row]
-            
-            return cell
+                cell.cellModel = seriesProgrammes.seriesProgrammes[indexPath.row]
+                return cell
         }
-        return UITableViewCell()
-    }
+    
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! EpisodeInfoTableViewCell
-        tableView.beginUpdates()
-        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
-        tableView.endUpdates()
+//        tableView.beginUpdates()
+//        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
+//        tableView.endUpdates()
         ProgrammeScreenViewController.programmeData = cell.cellModel ?? ProgrammesData()
         performSegue(withIdentifier: programmeDataSegue, sender: self)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == programmeDataSegue {
-//            guard  segue.destination is ProgrammeScreenViewController else {
-//                return
-//            }
-//            guard let indexPath = self.tableView.indexPathForSelectedRow else {
-//                return
-//            }
-//            ProgrammeScreenViewController.programmeData = seriesProgrammes.seriesProgrammes[indexPath.row]
-//        }
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if segue.identifier == programmeDataSegue {
+    //            guard  segue.destination is ProgrammeScreenViewController else {
+    //                return
+    //            }
+    //            guard let indexPath = self.tableView.indexPathForSelectedRow else {
+    //                return
+    //            }
+    //            ProgrammeScreenViewController.programmeData = seriesProgrammes.seriesProgrammes[indexPath.row]
+    //        }
+    //    }
 }

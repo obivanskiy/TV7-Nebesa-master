@@ -29,6 +29,10 @@
 		15B08172223A90A200826057 /* CategoryDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B08171223A90A200826057 /* CategoryDataTableViewCell.swift */; };
 		15CD9CD8225217FD0014E326 /* ProgrammeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CD7225217FD0014E326 /* ProgrammeScreenViewController.swift */; };
 		15CD9CDE22534BAE0014E326 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CDD22534BAE0014E326 /* String+Extension.swift */; };
+		15CD9CE0225379980014E326 /* WebTVScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CDF225379980014E326 /* WebTVScreenViewController.swift */; };
+		15CD9CE2225380870014E326 /* WebTVDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CE1225380870014E326 /* WebTVDateTableViewCell.swift */; };
+		15CD9CE4225380BF0014E326 /* WebTVTimeZoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CE3225380BF0014E326 /* WebTVTimeZoneTableViewCell.swift */; };
+		15CD9CE6225380E70014E326 /* WebTVMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CE5225380E70014E326 /* WebTVMainTableViewCell.swift */; };
 		15CE9DC52244DF2F00362B40 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CE9DC42244DF2F00362B40 /* URL+Extension.swift */; };
 		15CF8F732237E03D008424E9 /* ParentCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CF8F722237E03D008424E9 /* ParentCategoriesModel.swift */; };
 		15D626EA22411BD100449F8B /* CategorySeriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D626E922411BD100449F8B /* CategorySeriesTableViewController.swift */; };
@@ -41,6 +45,7 @@
 		15F1580B223FD39C005047CD /* SubCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1580A223FD39C005047CD /* SubCategoryTableViewCell.swift */; };
 		15F1580D223FD4C9005047CD /* SubCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1580C223FD4C9005047CD /* SubCategoriesModel.swift */; };
 		15F1580F223FDA6B005047CD /* SubCategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1580E223FDA6B005047CD /* SubCategoriesTableViewController.swift */; };
+		15F1637E2254DF2E00E2DEFF /* TVGuidePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1637D2254DF2E00E2DEFF /* TVGuidePresenter.swift */; };
 		15F68BB122511AEE006F3BFB /* CategorySeriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F68BB022511AEE006F3BFB /* CategorySeriesPresenter.swift */; };
 		C0B38F8033B235E335AED466 /* Pods_TV7_Nebesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */; };
 		FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDE7FE223FC69A00006FEE /* TVGuideCell.swift */; };
@@ -74,6 +79,10 @@
 		15B08171223A90A200826057 /* CategoryDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataTableViewCell.swift; sourceTree = "<group>"; };
 		15CD9CD7225217FD0014E326 /* ProgrammeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammeScreenViewController.swift; sourceTree = "<group>"; };
 		15CD9CDD22534BAE0014E326 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		15CD9CDF225379980014E326 /* WebTVScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTVScreenViewController.swift; sourceTree = "<group>"; };
+		15CD9CE1225380870014E326 /* WebTVDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTVDateTableViewCell.swift; sourceTree = "<group>"; };
+		15CD9CE3225380BF0014E326 /* WebTVTimeZoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTVTimeZoneTableViewCell.swift; sourceTree = "<group>"; };
+		15CD9CE5225380E70014E326 /* WebTVMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTVMainTableViewCell.swift; sourceTree = "<group>"; };
 		15CE9DC42244DF2F00362B40 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		15CF8F722237E03D008424E9 /* ParentCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCategoriesModel.swift; sourceTree = "<group>"; };
 		15D626E922411BD100449F8B /* CategorySeriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySeriesTableViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +95,7 @@
 		15F1580A223FD39C005047CD /* SubCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		15F1580C223FD4C9005047CD /* SubCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesModel.swift; sourceTree = "<group>"; };
 		15F1580E223FDA6B005047CD /* SubCategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesTableViewController.swift; sourceTree = "<group>"; };
+		15F1637D2254DF2E00E2DEFF /* TVGuidePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGuidePresenter.swift; sourceTree = "<group>"; };
 		15F68BB022511AEE006F3BFB /* CategorySeriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySeriesPresenter.swift; sourceTree = "<group>"; };
 		2831A2EA4C6801B61AA13941 /* Pods-TV7 Nebesa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV7 Nebesa.release.xcconfig"; path = "Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa.release.xcconfig"; sourceTree = "<group>"; };
 		5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV7_Nebesa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +162,9 @@
 				15B08171223A90A200826057 /* CategoryDataTableViewCell.swift */,
 				15D626EB22411C1E00449F8B /* SeriesInfoTableViewCell.swift */,
 				15D626ED22411C2C00449F8B /* EpisodeInfoTableViewCell.swift */,
+				15CD9CE1225380870014E326 /* WebTVDateTableViewCell.swift */,
+				15CD9CE5225380E70014E326 /* WebTVMainTableViewCell.swift */,
+				15CD9CE3225380BF0014E326 /* WebTVTimeZoneTableViewCell.swift */,
 				FAFDE7FD223FC67500006FEE /* TVGuideCell */,
 			);
 			path = TableViewCells;
@@ -174,6 +187,7 @@
 				1593B35E224CC915002E08AC /* SubCategoriesPresenter.swift */,
 				157E83CC224D19E700993933 /* CategoryDataPresenter.swift */,
 				15F68BB022511AEE006F3BFB /* CategorySeriesPresenter.swift */,
+				15F1637D2254DF2E00E2DEFF /* TVGuidePresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -218,6 +232,7 @@
 				15B0816D223A6C5900826057 /* CategoryDataViewController.swift */,
 				15D626E922411BD100449F8B /* CategorySeriesTableViewController.swift */,
 				15CD9CD7225217FD0014E326 /* ProgrammeScreenViewController.swift */,
+				15CD9CDF225379980014E326 /* WebTVScreenViewController.swift */,
 				153E4DD1223BA83D005255B5 /* TableViewCells */,
 			);
 			path = Controllers;
@@ -396,18 +411,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15CD9CE6225380E70014E326 /* WebTVMainTableViewCell.swift in Sources */,
 				15B0816E223A6C5900826057 /* CategoryDataViewController.swift in Sources */,
+				15CD9CE0225379980014E326 /* WebTVScreenViewController.swift in Sources */,
 				15B08172223A90A200826057 /* CategoryDataTableViewCell.swift in Sources */,
 				157E83CD224D19E700993933 /* CategoryDataPresenter.swift in Sources */,
+				15F1637E2254DF2E00E2DEFF /* TVGuidePresenter.swift in Sources */,
 				1593B35F224CC915002E08AC /* SubCategoriesPresenter.swift in Sources */,
 				15D626EA22411BD100449F8B /* CategorySeriesTableViewController.swift in Sources */,
 				15F1580D223FD4C9005047CD /* SubCategoriesModel.swift in Sources */,
 				15D626F0224125B200449F8B /* SeriesInfoModel.swift in Sources */,
+				15CD9CE4225380BF0014E326 /* WebTVTimeZoneTableViewCell.swift in Sources */,
 				15B0816C223A4F6A00826057 /* CategoriesDataModel.swift in Sources */,
 				110F9DA82237A6A50020BABC /* BroadcastViewController.swift in Sources */,
 				15D626EC22411C1E00449F8B /* SeriesInfoTableViewCell.swift in Sources */,
 				15CE9DC52244DF2F00362B40 /* URL+Extension.swift in Sources */,
 				110F9D952237A6310020BABC /* ViewController.swift in Sources */,
+				15CD9CE2225380870014E326 /* WebTVDateTableViewCell.swift in Sources */,
 				15E0FD162238F851005A41DD /* ParentCategoryNameTableViewCell.swift in Sources */,
 				15F1580B223FD39C005047CD /* SubCategoryTableViewCell.swift in Sources */,
 				15F1580F223FDA6B005047CD /* SubCategoriesTableViewController.swift in Sources */,
