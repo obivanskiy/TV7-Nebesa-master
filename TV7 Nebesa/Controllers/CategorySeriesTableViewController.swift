@@ -29,11 +29,6 @@ final class CategorySeriesTableViewController: UITableViewController {
         }
     }
     
-    enum CellIndex: Int {
-        case mainInformation = 0
-        case seriesList
-    }
-    
     var seriesID: String = ""
     var categoryData: CategoryProgrammesData?
     
@@ -55,44 +50,41 @@ final class CategorySeriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let row = CellIndex.init(rawValue: indexPath.row) else { return UITableViewCell() }
-        switch row {
-        case .mainInformation:
+        if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SeriesInfoTableViewCell.identifier, for: indexPath) as? SeriesInfoTableViewCell else {
                 return UITableViewCell()
             }
             cell.cellModel = seriesData.programmeInfo[indexPath.row]
-            
             return cell
-        case .seriesList:
+        }
             guard let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeInfoTableViewCell.identifier, for: indexPath) as? EpisodeInfoTableViewCell else {
                 return UITableViewCell()
             }
-            cell.cellModel = seriesProgrammes.seriesProgrammes[indexPath.row]
-            
-            return cell
+                cell.cellModel = seriesProgrammes.seriesProgrammes[indexPath.row]
+                return cell
         }
-    }
+    
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! EpisodeInfoTableViewCell
-        tableView.beginUpdates()
-        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
-        tableView.endUpdates()
+//        tableView.beginUpdates()
+//        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
+//        tableView.endUpdates()
         ProgrammeScreenViewController.programmeData = cell.cellModel ?? ProgrammesData()
         performSegue(withIdentifier: programmeDataSegue, sender: self)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == programmeDataSegue {
-//            guard  segue.destination is ProgrammeScreenViewController else {
-//                return
-//            }
-//            guard let indexPath = self.tableView.indexPathForSelectedRow else {
-//                return
-//            }
-//            ProgrammeScreenViewController.programmeData = seriesProgrammes.seriesProgrammes[indexPath.row]
-//        }
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if segue.identifier == programmeDataSegue {
+    //            guard  segue.destination is ProgrammeScreenViewController else {
+    //                return
+    //            }
+    //            guard let indexPath = self.tableView.indexPathForSelectedRow else {
+    //                return
+    //            }
+    //            ProgrammeScreenViewController.programmeData = seriesProgrammes.seriesProgrammes[indexPath.row]
+    //        }
+    //    }
 }
