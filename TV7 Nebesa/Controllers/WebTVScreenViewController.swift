@@ -91,9 +91,6 @@ class WebTVScreenViewController: UIViewController, UITableViewDelegate, UITableV
         let newDate = dateFormatter.string(from: date)
         return newDate
     }
-
-    
-
     /*
      // MARK: - Navigation
      
@@ -103,5 +100,4 @@ class WebTVScreenViewController: UIViewController, UITableViewDelegate, UITableV
      // Pass the selected object to the new view controller.
      }
      */
-    
 }
