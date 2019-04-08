@@ -9,7 +9,6 @@
 import Foundation
 
 struct HomeScreenProgrammes: Codable {
-    
     let homeScreenProgrammes: [HomeScreenData]
     
     enum CodingKeys: String, CodingKey {

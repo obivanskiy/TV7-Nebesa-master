@@ -24,7 +24,7 @@ class HomeScreenTableViewCell: UITableViewCell {
     }
     
     func setUp() {
-        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        dateFormatter.dateFormat = "MM-dd-YYYY HH:mm"
     }
    
     @IBOutlet weak var HomeScreenPreviewImage: UIImageView!

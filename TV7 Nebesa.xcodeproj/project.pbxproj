@@ -31,6 +31,17 @@
 		11BF07C3224E60E700947B7E /* Nebessa.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11BF07C2224E60E700947B7E /* Nebessa.storyboard */; };
 		11BF07C5224E715200947B7E /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF07C4224E715200947B7E /* CustomNavigationBar.swift */; };
 		11E11F3322439CF800483859 /* 9651.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11E11F3222439CF800483859 /* 9651.ttf */; };
+		11F4FF0422576AA4007359C4 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF0322576AA4007359C4 /* CustomNavigationController.swift */; };
+		11F4FF0622577CBC007359C4 /* ConteinerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF0522577CBC007359C4 /* ConteinerViewController.swift */; };
+		11F4FF0822579554007359C4 /* VideoPageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF0722579554007359C4 /* VideoPageCellTableViewCell.swift */; };
+		11F4FF0A22579CBF007359C4 /* HomeVideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF0922579CBF007359C4 /* HomeVideoTableViewController.swift */; };
+		11F4FF0C225B371F007359C4 /* ProgramInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF0B225B371F007359C4 /* ProgramInfoModel.swift */; };
+		11F4FF0E225B450A007359C4 /* HomeVideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF0D225B450A007359C4 /* HomeVideoPlayerController.swift */; };
+		11F4FF10225B49F4007359C4 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF0F225B49F4007359C4 /* URL+Extension.swift */; };
+		11F4FF12225B4ACC007359C4 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF11225B4ACC007359C4 /* String+Extension.swift */; };
+		11F4FF14225B7682007359C4 /* HomeProgrammePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF13225B7682007359C4 /* HomeProgrammePresenter.swift */; };
+		11F4FF17225B778B007359C4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF16225B778B007359C4 /* NetworkService.swift */; };
+		11F4FF19225B885D007359C4 /* HomeScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF18225B885D007359C4 /* HomeScreenPresenter.swift */; };
 		152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */; };
 		152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */; };
 		152DF3B6224271E400BDC90B /* BestScenesScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */; };
@@ -85,6 +96,17 @@
 		11BF07C2224E60E700947B7E /* Nebessa.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Nebessa.storyboard; sourceTree = "<group>"; };
 		11BF07C4224E715200947B7E /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		11E11F3222439CF800483859 /* 9651.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9651.ttf; sourceTree = "<group>"; };
+		11F4FF0322576AA4007359C4 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		11F4FF0522577CBC007359C4 /* ConteinerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConteinerViewController.swift; sourceTree = "<group>"; };
+		11F4FF0722579554007359C4 /* VideoPageCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPageCellTableViewCell.swift; sourceTree = "<group>"; };
+		11F4FF0922579CBF007359C4 /* HomeVideoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVideoTableViewController.swift; sourceTree = "<group>"; };
+		11F4FF0B225B371F007359C4 /* ProgramInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramInfoModel.swift; sourceTree = "<group>"; };
+		11F4FF0D225B450A007359C4 /* HomeVideoPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVideoPlayerController.swift; sourceTree = "<group>"; };
+		11F4FF0F225B49F4007359C4 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		11F4FF11225B4ACC007359C4 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		11F4FF13225B7682007359C4 /* HomeProgrammePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProgrammePresenter.swift; sourceTree = "<group>"; };
+		11F4FF16225B778B007359C4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		11F4FF18225B885D007359C4 /* HomeScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenPresenter.swift; sourceTree = "<group>"; };
 		152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BestScenesScreen.storyboard; sourceTree = "<group>"; };
@@ -196,10 +218,13 @@
 		11AED35F2255F42F00647B97 /* NEW_VC */ = {
 			isa = PBXGroup;
 			children = (
+				11F4FF15225B768C007359C4 /* HomeScreenPresenters */,
 				117C3A412253B0E300B1E91F /* MenuBar.swift */,
 				1138EEE92242CE7F00E687ED /* HomeScreenTableViewCell.swift */,
 				11AED3602255F48100647B97 /* BaseHomeController.swift */,
 				11AED362225605FB00647B97 /* NebessaScreenController.swift */,
+				11F4FF0722579554007359C4 /* VideoPageCellTableViewCell.swift */,
+				11F4FF0D225B450A007359C4 /* HomeVideoPlayerController.swift */,
 			);
 			path = NEW_VC;
 			sourceTree = "<group>";
@@ -220,6 +245,8 @@
 				11BF07C0224E57EC00947B7E /* HomeScreenVC.swift */,
 				11AED35F2255F42F00647B97 /* NEW_VC */,
 				11BF07C4224E715200947B7E /* CustomNavigationBar.swift */,
+				11F4FF0522577CBC007359C4 /* ConteinerViewController.swift */,
+				11F4FF0322576AA4007359C4 /* CustomNavigationController.swift */,
 				117C3A3B2253ADEB00B1E91F /* Helpers */,
 			);
 			path = TestHSVC;
@@ -231,6 +258,15 @@
 				11E11F3222439CF800483859 /* 9651.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		11F4FF15225B768C007359C4 /* HomeScreenPresenters */ = {
+			isa = PBXGroup;
+			children = (
+				11F4FF13225B7682007359C4 /* HomeProgrammePresenter.swift */,
+				11F4FF18225B885D007359C4 /* HomeScreenPresenter.swift */,
+			);
+			path = HomeScreenPresenters;
 			sourceTree = "<group>";
 		};
 		153E4DD1223BA83D005255B5 /* TableViewCells */ = {
@@ -250,6 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */,
+				11F4FF0F225B49F4007359C4 /* URL+Extension.swift */,
+				11F4FF11225B4ACC007359C4 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -270,6 +308,7 @@
 				1138EEEE2242ECCE00E687ED /* HomeScreenDataModel.swift */,
 				15D626EF224125B200449F8B /* SeriesInfoModel.swift */,
 				FAFDE802223FCAA100006FEE /* TVGuideModel.swift */,
+				11F4FF0B225B371F007359C4 /* ProgramInfoModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -279,6 +318,7 @@
 			children = (
 				153E4DD2223BB451005255B5 /* CategoriesNamesDownloadService.swift */,
 				154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */,
+				11F4FF16225B778B007359C4 /* NetworkService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -293,6 +333,7 @@
 				15B0816D223A6C5900826057 /* CategoryDataViewController.swift */,
 				15D626E922411BD100449F8B /* CategorySeriesTableViewController.swift */,
 				11ACAE362242C1410003CDD0 /* HomeScreenTableViewController.swift */,
+				11F4FF0922579CBF007359C4 /* HomeVideoTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -477,21 +518,30 @@
 				15B0816E223A6C5900826057 /* CategoryDataViewController.swift in Sources */,
 				15B08172223A90A200826057 /* CategoryDataTableViewCell.swift in Sources */,
 				15D626EA22411BD100449F8B /* CategorySeriesTableViewController.swift in Sources */,
+				11F4FF0822579554007359C4 /* VideoPageCellTableViewCell.swift in Sources */,
 				15F1580D223FD4C9005047CD /* SubCategoriesModel.swift in Sources */,
 				11BF07C5224E715200947B7E /* CustomNavigationBar.swift in Sources */,
 				15D626F0224125B200449F8B /* SeriesInfoModel.swift in Sources */,
 				11BF07B6224A7A7700947B7E /* MenuTableViewController.swift in Sources */,
+				11F4FF0E225B450A007359C4 /* HomeVideoPlayerController.swift in Sources */,
+				11F4FF19225B885D007359C4 /* HomeScreenPresenter.swift in Sources */,
+				11F4FF17225B778B007359C4 /* NetworkService.swift in Sources */,
 				15B0816C223A4F6A00826057 /* CategoriesDataModel.swift in Sources */,
 				117C3A3A2252ABC500B1E91F /* System.swift in Sources */,
+				11F4FF12225B4ACC007359C4 /* String+Extension.swift in Sources */,
 				11ACAE372242C1410003CDD0 /* HomeScreenTableViewController.swift in Sources */,
 				11AED3512254D50D00647B97 /* StackView.swift in Sources */,
+				11F4FF0422576AA4007359C4 /* CustomNavigationController.swift in Sources */,
 				110F9DA82237A6A50020BABC /* BroadcastViewController.swift in Sources */,
 				11AED3542255026B00647B97 /* Video.swift in Sources */,
 				117C3A422253B0E300B1E91F /* MenuBar.swift in Sources */,
+				11F4FF14225B7682007359C4 /* HomeProgrammePresenter.swift in Sources */,
 				15D626EC22411C1E00449F8B /* SeriesInfoTableViewCell.swift in Sources */,
+				11F4FF0C225B371F007359C4 /* ProgramInfoModel.swift in Sources */,
 				117C3A402253AEFC00B1E91F /* VideoCell.swift in Sources */,
 				15E0FD162238F851005A41DD /* ParentCategoryNameTableViewCell.swift in Sources */,
 				15F1580B223FD39C005047CD /* SubCategoryTableViewCell.swift in Sources */,
+				11F4FF10225B49F4007359C4 /* URL+Extension.swift in Sources */,
 				1138EEEF2242ECCE00E687ED /* HomeScreenDataModel.swift in Sources */,
 				1138EEEB2242CE7F00E687ED /* HomeScreenTableViewCell.swift in Sources */,
 				15F1580F223FDA6B005047CD /* SubCategoriesTableViewController.swift in Sources */,
@@ -501,6 +551,7 @@
 				153E4DD3223BB451005255B5 /* CategoriesNamesDownloadService.swift in Sources */,
 				110F9DAE2237A7610020BABC /* HighlightsViewController.swift in Sources */,
 				11AED363225605FB00647B97 /* NebessaScreenController.swift in Sources */,
+				11F4FF0A22579CBF007359C4 /* HomeVideoTableViewController.swift in Sources */,
 				11AED3612255F48100647B97 /* BaseHomeController.swift in Sources */,
 				FAFDE803223FCAA100006FEE /* TVGuideModel.swift in Sources */,
 				110F9D932237A6310020BABC /* AppDelegate.swift in Sources */,
@@ -510,6 +561,7 @@
 				154B7F53223ADAE40020A4E4 /* UITableViewCell+Extension.swift in Sources */,
 				117C3A3D2253AE0900B1E91F /* Extensions.swift in Sources */,
 				15CF8F732237E03D008424E9 /* ParentCategoriesModel.swift in Sources */,
+				11F4FF0622577CBC007359C4 /* ConteinerViewController.swift in Sources */,
 				110F9DAC2237A74E0020BABC /* ParentCategoriesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

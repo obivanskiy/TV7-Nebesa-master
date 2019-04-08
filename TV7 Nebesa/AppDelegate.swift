@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
 //
         application.statusBarStyle = .lightContent
-//
+        UIApplication.shared.isStatusBarHidden = false
         
 //        let statusBarBackgroundView = UIView()
 //        statusBarBackgroundView.backgroundColor = UIColor.rgb(red: 11, green: 90, blue: 193)

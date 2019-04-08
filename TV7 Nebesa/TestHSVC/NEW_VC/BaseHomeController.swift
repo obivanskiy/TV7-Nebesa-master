@@ -11,19 +11,35 @@ import UIKit
 class BaseHomeController: UIViewController {
 
     
-    let navigationBar = CustomNavigationBar()
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBarButtons()
+        navigationController?.hidesBarsOnSwipe = true
+        setUpStatusBar()
 
     }
    
     
-        
+    func setUpStatusBar() {
+        let statusBarFrame = UIApplication.shared.statusBarFrame
+        let statusBarMaskFrame = CGRect(
+            origin: CGPoint(
+                x: statusBarFrame.origin.x,
+                y: -statusBarFrame.size.height
+            ),
+            size: statusBarFrame.size
+        )
+        let statusBarMask = UIView(frame: statusBarMaskFrame)
+        statusBarMask.autoresizingMask = .flexibleWidth
+        statusBarMask.backgroundColor =  UIColor.rgb(red: 11, green: 90, blue: 193)
+        view.addSubview(statusBarMask)
+    }
     
     func setupNavBarButtons() {
+
         
 //        _ = UIImage(named: "nav_more_icon")?.withRenderingMode(.alwaysOriginal)
         let slideBottomMenuButton = UIBarButtonItem(image: UIImage(named: "nav_more_icon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(slideBottomMenu))
