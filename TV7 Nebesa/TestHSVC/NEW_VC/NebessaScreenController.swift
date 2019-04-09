@@ -33,15 +33,7 @@ final class NebessaScreenController : BaseHomeController, UITableViewDataSource,
     let tableView = UITableView()
     let titleItem = "Небеса"
     
-        // Data for VideoPlayer Screen
-//    var homeScreenProgrammeInformation: HomeScreenProgrammeInformation = HomeScreenProgrammeInformation() {
-//        didSet {
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
-//    }
-//    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter = HomeScreenPresenter(with: self)
@@ -98,9 +90,20 @@ final class NebessaScreenController : BaseHomeController, UITableViewDataSource,
     
     //:MARK - SETUP PRIVATE MENUBAR
     private func setupMenuBar() {
+        
+        navigationController?.hidesBarsOnSwipe = true
+        
+        let redView = UIView()
+        redView.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)
+        view.addSubview(redView)
+        view.addConstraintsWithFormat(withVisualFormat: "H:|[v0]|", views: redView)
+        view.addConstraintsWithFormat(withVisualFormat: "V:[v0(50)]", views: redView)
+        
         view.addSubview(menuBar)
         view.addConstraintsWithFormat(withVisualFormat: "H:|[v0]|", views: menuBar)
-        view.addConstraintsWithFormat(withVisualFormat: "V:|[v0(50)]", views: menuBar)
+        view.addConstraintsWithFormat(withVisualFormat: "V:[v0(50)]", views: menuBar)
+        
+        menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

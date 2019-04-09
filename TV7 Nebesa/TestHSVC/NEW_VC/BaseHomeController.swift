@@ -16,8 +16,8 @@ class BaseHomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupNavBarButtons()
-        navigationController?.hidesBarsOnSwipe = true
         setUpStatusBar()
 
     }
