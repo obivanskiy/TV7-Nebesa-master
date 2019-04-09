@@ -17,15 +17,24 @@ class NetworkService {
         case fetchSeriesMainData
         case fetchSeriesProgrammes
         case fetchWebTVProgrammesList
+        //
         case fetchHomeScreenMainData
         case fetchHomeScreenProgrammeData
+        //
+        case fetchHomeScreenNewestProgrammes
+        case fetchHomeScreenMostViewedProgrammes
     }
     
     static var requestURL: [NetworkRequestType : String] = [
         
         .fetchParentCategories : NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL,
+       
         //Home Screen data 
-        .fetchHomeScreenMainData : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL
+        .fetchHomeScreenMainData : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL,
+       
+        //Most Viewed/ Newest programmes URL's on the homeScreen
+        .fetchHomeScreenNewestProgrammes : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenNewestProgrammesURL,
+        .fetchHomeScreenMostViewedProgrammes : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenMostViewedProgrammesURL
         
 //        .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL
     ]

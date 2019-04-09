@@ -11,8 +11,6 @@ import UIKit
 class CustomNavigationBar: UINavigationBar {
 
     
- 
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -35,10 +33,6 @@ class CustomNavigationBar: UINavigationBar {
         //clear navbar shadow line 
         shadowImage = UIImage()
         setBackgroundImage(UIImage(), for: .default)
-        
-        
-        
-        
         
         
         
