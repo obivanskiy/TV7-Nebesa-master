@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class NebessaScreenController : BaseHomeController, UITableViewDataSource, UITableViewDelegate {
+final class NebessaScreenController : UIViewController, UITableViewDataSource, UITableViewDelegate {
   
     private var presenter: HomeScreenPresenter?
     private var homeScreenProgrammeDataSegue: String = "HomeScreenProgrammePageSegue"
@@ -39,6 +39,7 @@ final class NebessaScreenController : BaseHomeController, UITableViewDataSource,
         self.presenter = HomeScreenPresenter(with: self)
         
         setupMenuBar()
+        setupNavBarButtons()
         setupNavigationItems()
         title = titleItem
         tableView.dataSource = self
@@ -50,8 +51,10 @@ final class NebessaScreenController : BaseHomeController, UITableViewDataSource,
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       
-    }
+        setUpStatusBar()
+
+        
+          }
     
    
 
@@ -72,6 +75,46 @@ final class NebessaScreenController : BaseHomeController, UITableViewDataSource,
                 
         return cell
     }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        if(velocity.y>0) {
+            //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
+//                self.navigationController?.setToolbarHidden(true, animated: true)
+                print("Hide")
+            }, completion: nil)
+            
+        } else {
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+//                self.navigationController?.setToolbarHidden(false, animated: true)
+                print("Unhide")
+            }, completion: nil)
+        }
+    }
+    func setUpStatusBar() {
+        
+        
+        let statusBarFrame = UIApplication.shared.statusBarFrame
+        let statusBarMaskFrame = CGRect(
+            origin: CGPoint(
+                x: statusBarFrame.origin.x,
+                y: -statusBarFrame.size.height
+            ),
+            size: statusBarFrame.size
+        )
+        let statusBarMask = UIView(frame: statusBarMaskFrame)
+        statusBarMask.autoresizingMask = .flexibleWidth
+        statusBarMask.backgroundColor =  UIColor.rgb(red: 11, green: 90, blue: 193)
+//        menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        
+        view.addSubview(statusBarMask)
+        
+        statusBarMask.topAnchor.constraint(equalTo: view.topAnchor)
+    }
+    
+    
     
     func setupNavigationItems() {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
@@ -79,6 +122,29 @@ final class NebessaScreenController : BaseHomeController, UITableViewDataSource,
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
+    }
+    
+    func setupNavBarButtons() {
+        
+        
+        //        _ = UIImage(named: "nav_more_icon")?.withRenderingMode(.alwaysOriginal)
+        let slideBottomMenuButton = UIBarButtonItem(image: UIImage(named: "nav_more_icon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(slideBottomMenu))
+        let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
+        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
+        //        let moreButton = UIBarButtonItem(image: UIImage(named: "tvIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMore))
+        
+        navigationItem.rightBarButtonItems = [slideBottomMenuButton, searchBarButtonItem]
+    }
+    //    @objc func handleMore() {
+    //
+    //    }
+    
+    @objc func slideBottomMenu() {
+        print("menu")
+    }
+    
+    @objc func handleSearch() {
+        print("Search")
     }
     
     
@@ -91,10 +157,10 @@ final class NebessaScreenController : BaseHomeController, UITableViewDataSource,
     //:MARK - SETUP PRIVATE MENUBAR
     private func setupMenuBar() {
         
-        navigationController?.hidesBarsOnSwipe = true
+        
         
         let redView = UIView()
-        redView.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)
+        redView.backgroundColor = UIColor.rgb(red: 12, green: 100, blue: 194)
         view.addSubview(redView)
         view.addConstraintsWithFormat(withVisualFormat: "H:|[v0]|", views: redView)
         view.addConstraintsWithFormat(withVisualFormat: "V:[v0(50)]", views: redView)
@@ -103,7 +169,7 @@ final class NebessaScreenController : BaseHomeController, UITableViewDataSource,
         view.addConstraintsWithFormat(withVisualFormat: "H:|[v0]|", views: menuBar)
         view.addConstraintsWithFormat(withVisualFormat: "V:[v0(50)]", views: menuBar)
         
-        menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
