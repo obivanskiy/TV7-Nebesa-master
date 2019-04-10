@@ -24,8 +24,9 @@ class WebTVTimeZoneTableViewCell: UITableViewCell {
         self.layer.borderWidth = 0.5
         self.backgroundColor = .lightGray
         self.layer.borderColor = UIColor.darkGray.cgColor
-
+        
         userTimeZoneLabel.text = currentTimeZone
+        print("Priint \(currentTimeZone)")
     }
     
     private func getCurrentTimeZone() {

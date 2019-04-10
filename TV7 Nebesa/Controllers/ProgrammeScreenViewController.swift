@@ -58,7 +58,7 @@ final class ProgrammeScreenViewController: UIViewController {
             self.addChild(playerViewController)
             programmeView.addSubview(playerViewController.view)
             playerViewController.didMove(toParent: self)
-            playerViewController.player?.play()
+            playerViewController.player?.pause()
         }
     }
     
