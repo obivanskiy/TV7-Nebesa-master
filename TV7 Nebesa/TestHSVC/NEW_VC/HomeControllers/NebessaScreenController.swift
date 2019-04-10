@@ -10,7 +10,6 @@ import UIKit
 
 final class NebessaScreenController : UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
   
     private var presenter: HomeScreenPresenter?
     
