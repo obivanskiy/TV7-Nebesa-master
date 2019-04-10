@@ -29,7 +29,7 @@ final class HomeScreenTableViewController: UITableViewController {
         tableView.rowHeight = 130
         
         
-        menuVC = self.storyboard?.instantiateViewController(withIdentifier: "MenuTableViewController") as! MenuTableViewController
+        menuVC = self.storyboard?.instantiateViewController(withIdentifier: "MenuTableViewController") as? MenuTableViewController
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right

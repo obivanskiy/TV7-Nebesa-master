@@ -9,8 +9,11 @@
 import UIKit
 
 final class NebessaScreenController : UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
   
     private var presenter: HomeScreenPresenter?
+    
     private var homeScreenProgrammeDataSegue: String = "HomeScreenProgrammePageSegue"
     
     var homeScreenProgrammeInfo: HomeScreenProgrammeInformation = HomeScreenProgrammeInformation() {
@@ -58,23 +61,34 @@ final class NebessaScreenController : UIViewController, UITableViewDataSource, U
     
    
 
-    // MARK: - Table view data source
-    
+     //MARK: - Table view data source
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return homeScreenData.homeScreenProgrammes.count
     }
     
     
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeScreenCell", for: indexPath) as? HomeScreenTableViewCell else {
             return UITableViewCell()
         }
         cell.cellModel = homeScreenData.homeScreenProgrammes[indexPath.row]
-                
+
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath) as! HomeScreenTableViewCell
+        //        tableView.beginUpdates()
+        //        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
+        //        tableView.endUpdates()
+        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
+        performSegue(withIdentifier: homeScreenProgrammeDataSegue, sender: self)
+    }
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         if(velocity.y>0) {
@@ -172,15 +186,7 @@ final class NebessaScreenController : UIViewController, UITableViewDataSource, U
         menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let cell = tableView.cellForRow(at: indexPath) as! HomeScreenTableViewCell
-        //        tableView.beginUpdates()
-        //        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
-        //        tableView.endUpdates()
-        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
-        performSegue(withIdentifier: homeScreenProgrammeDataSegue, sender: self)
-    }
+    
     
     
     

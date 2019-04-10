@@ -45,6 +45,7 @@
 		11F4FF20225C91E6007359C4 /* HomeScreenMostViewedProgrammes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF1F225C91E6007359C4 /* HomeScreenMostViewedProgrammes.swift */; };
 		11F4FF23225C9FD8007359C4 /* HomeScreenNewestVideosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF22225C9FD8007359C4 /* HomeScreenNewestVideosPresenter.swift */; };
 		11F4FF25225C9FEE007359C4 /* HomeScreenMostViewedVideosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF24225C9FEE007359C4 /* HomeScreenMostViewedVideosPresenter.swift */; };
+		11F4FF31225CC14F007359C4 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF30225CC14F007359C4 /* FeedCell.swift */; };
 		152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */; };
 		152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */; };
 		152DF3B6224271E400BDC90B /* BestScenesScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */; };
@@ -113,6 +114,7 @@
 		11F4FF1F225C91E6007359C4 /* HomeScreenMostViewedProgrammes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenMostViewedProgrammes.swift; sourceTree = "<group>"; };
 		11F4FF22225C9FD8007359C4 /* HomeScreenNewestVideosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenNewestVideosPresenter.swift; sourceTree = "<group>"; };
 		11F4FF24225C9FEE007359C4 /* HomeScreenMostViewedVideosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenMostViewedVideosPresenter.swift; sourceTree = "<group>"; };
+		11F4FF30225CC14F007359C4 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BestScenesScreen.storyboard; sourceTree = "<group>"; };
@@ -225,12 +227,10 @@
 			isa = PBXGroup;
 			children = (
 				11F4FF15225B768C007359C4 /* HomeScreenPresenters */,
-				117C3A412253B0E300B1E91F /* MenuBar.swift */,
-				1138EEE92242CE7F00E687ED /* HomeScreenTableViewCell.swift */,
-				11AED3602255F48100647B97 /* BaseHomeController.swift */,
-				11AED362225605FB00647B97 /* NebessaScreenController.swift */,
-				11F4FF0722579554007359C4 /* VideoPageCellTableViewCell.swift */,
-				11F4FF0D225B450A007359C4 /* HomeVideoPlayerController.swift */,
+				11F4FF28225CAD1F007359C4 /* MenuBar+NavBar */,
+				11F4FF29225CAD4A007359C4 /* Cells */,
+				11F4FF2B225CAFB3007359C4 /* TestMultiplePageHomeScreen */,
+				11F4FF2A225CAD68007359C4 /* HomeControllers */,
 			);
 			path = NEW_VC;
 			sourceTree = "<group>";
@@ -250,8 +250,6 @@
 			children = (
 				11BF07C0224E57EC00947B7E /* HomeScreenVC.swift */,
 				11AED35F2255F42F00647B97 /* NEW_VC */,
-				11BF07C4224E715200947B7E /* CustomNavigationBar.swift */,
-				11F4FF0322576AA4007359C4 /* CustomNavigationController.swift */,
 				117C3A3B2253ADEB00B1E91F /* Helpers */,
 			);
 			path = TestHSVC;
@@ -285,6 +283,43 @@
 				11F4FF0B225B371F007359C4 /* ProgramInfoModel.swift */,
 			);
 			path = HomeScreenModels;
+			sourceTree = "<group>";
+		};
+		11F4FF28225CAD1F007359C4 /* MenuBar+NavBar */ = {
+			isa = PBXGroup;
+			children = (
+				117C3A412253B0E300B1E91F /* MenuBar.swift */,
+				11BF07C4224E715200947B7E /* CustomNavigationBar.swift */,
+				11F4FF0322576AA4007359C4 /* CustomNavigationController.swift */,
+			);
+			path = "MenuBar+NavBar";
+			sourceTree = "<group>";
+		};
+		11F4FF29225CAD4A007359C4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1138EEE92242CE7F00E687ED /* HomeScreenTableViewCell.swift */,
+				11F4FF0722579554007359C4 /* VideoPageCellTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		11F4FF2A225CAD68007359C4 /* HomeControllers */ = {
+			isa = PBXGroup;
+			children = (
+				11AED3602255F48100647B97 /* BaseHomeController.swift */,
+				11AED362225605FB00647B97 /* NebessaScreenController.swift */,
+				11F4FF0D225B450A007359C4 /* HomeVideoPlayerController.swift */,
+			);
+			path = HomeControllers;
+			sourceTree = "<group>";
+		};
+		11F4FF2B225CAFB3007359C4 /* TestMultiplePageHomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				11F4FF30225CC14F007359C4 /* FeedCell.swift */,
+			);
+			path = TestMultiplePageHomeScreen;
 			sourceTree = "<group>";
 		};
 		153E4DD1223BA83D005255B5 /* TableViewCells */ = {
@@ -580,6 +615,7 @@
 				154B7F53223ADAE40020A4E4 /* UITableViewCell+Extension.swift in Sources */,
 				117C3A3D2253AE0900B1E91F /* Extensions.swift in Sources */,
 				11F4FF23225C9FD8007359C4 /* HomeScreenNewestVideosPresenter.swift in Sources */,
+				11F4FF31225CC14F007359C4 /* FeedCell.swift in Sources */,
 				15CF8F732237E03D008424E9 /* ParentCategoriesModel.swift in Sources */,
 				11F4FF25225C9FEE007359C4 /* HomeScreenMostViewedVideosPresenter.swift in Sources */,
 				110F9DAC2237A74E0020BABC /* ParentCategoriesTableViewController.swift in Sources */,

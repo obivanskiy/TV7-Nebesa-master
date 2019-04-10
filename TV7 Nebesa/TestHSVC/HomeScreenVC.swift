@@ -23,14 +23,18 @@ class HomeScreenVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 20) 
         navigationItem.titleView = titleLabel
+        
+        setupMenuBar()
+        setupNavBarButtons()
+        setupCollectionView()
+        
+    }
+    func setupCollectionView() {
         collectionView.backgroundColor = UIColor.white
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "cellID")
         
         collectionView?.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-        
-        setupMenuBar()
-        setupNavBarButtons()
         
     }
     
