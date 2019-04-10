@@ -36,6 +36,11 @@ class WebTVScreenViewController: UIViewController, UITableViewDelegate, UITableV
         self.presenter = TVGuidePresenter(with: self)
         print(self.webTVProgrammesList)
         player(urlString: ruStreamLink)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
     }
     
     private func player(urlString: String) {
@@ -49,6 +54,8 @@ class WebTVScreenViewController: UIViewController, UITableViewDelegate, UITableV
             webTVPlayerViewController.player?.pause()
         }
     }
+    
+    
     
     
     // MARK: - Table View Data Source
