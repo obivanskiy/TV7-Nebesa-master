@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1106CDF5225F7DC200B67F55 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1106CDF4225F7DC200B67F55 /* CollectionViewController.swift */; };
+		1106CDF7225F804500B67F55 /* HomeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1106CDF6225F804500B67F55 /* HomeBaseViewController.swift */; };
+		1106CDF9225F8D9E00B67F55 /* HomeRecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1106CDF8225F8D9E00B67F55 /* HomeRecommendCell.swift */; };
 		110F9D932237A6310020BABC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9D922237A6310020BABC /* AppDelegate.swift */; };
 		110F9D982237A6310020BABC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110F9D962237A6310020BABC /* Main.storyboard */; };
 		110F9D9D2237A6320020BABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 110F9D9C2237A6320020BABC /* Assets.xcassets */; };
@@ -74,6 +77,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1106CDF4225F7DC200B67F55 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		1106CDF6225F804500B67F55 /* HomeBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseViewController.swift; sourceTree = "<group>"; };
+		1106CDF8225F8D9E00B67F55 /* HomeRecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendCell.swift; sourceTree = "<group>"; };
 		110F9D8F2237A6310020BABC /* TV7 Nebesa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV7 Nebesa.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		110F9D922237A6310020BABC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		110F9D972237A6310020BABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -156,6 +162,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1106CDF3225F7CF800B67F55 /* HomeSreenControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1106CDF4225F7DC200B67F55 /* CollectionViewController.swift */,
+				1106CDF8225F8D9E00B67F55 /* HomeRecommendCell.swift */,
+				1106CDF6225F804500B67F55 /* HomeBaseViewController.swift */,
+			);
+			path = HomeSreenControllers;
+			sourceTree = "<group>";
+		};
 		110F9D862237A6310020BABC = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +242,7 @@
 		11AED35F2255F42F00647B97 /* NEW_VC */ = {
 			isa = PBXGroup;
 			children = (
+				1106CDF3225F7CF800B67F55 /* HomeSreenControllers */,
 				11F4FF15225B768C007359C4 /* HomeScreenPresenters */,
 				11F4FF28225CAD1F007359C4 /* MenuBar+NavBar */,
 				11F4FF29225CAD4A007359C4 /* Cells */,
@@ -566,6 +583,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1106CDF5225F7DC200B67F55 /* CollectionViewController.swift in Sources */,
 				11BF07C1224E57EC00947B7E /* HomeScreenVC.swift in Sources */,
 				15B0816E223A6C5900826057 /* CategoryDataViewController.swift in Sources */,
 				15B08172223A90A200826057 /* CategoryDataTableViewCell.swift in Sources */,
@@ -586,6 +604,7 @@
 				11ACAE372242C1410003CDD0 /* HomeScreenTableViewController.swift in Sources */,
 				11AED3512254D50D00647B97 /* StackView.swift in Sources */,
 				11F4FF0422576AA4007359C4 /* CustomNavigationController.swift in Sources */,
+				1106CDF9225F8D9E00B67F55 /* HomeRecommendCell.swift in Sources */,
 				110F9DA82237A6A50020BABC /* BroadcastViewController.swift in Sources */,
 				11AED3542255026B00647B97 /* Video.swift in Sources */,
 				117C3A422253B0E300B1E91F /* MenuBar.swift in Sources */,
@@ -609,6 +628,7 @@
 				11AED3612255F48100647B97 /* BaseHomeController.swift in Sources */,
 				FAFDE803223FCAA100006FEE /* TVGuideModel.swift in Sources */,
 				110F9D932237A6310020BABC /* AppDelegate.swift in Sources */,
+				1106CDF7225F804500B67F55 /* HomeBaseViewController.swift in Sources */,
 				FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */,
 				FAFDE80B2241289700006FEE /* DateCollectionViewCell.swift in Sources */,
 				11BF07B4224A7A5D00947B7E /* MenuTableViewCell.swift in Sources */,
