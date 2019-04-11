@@ -17,8 +17,9 @@ class WebTVScreenViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     //MARK: - player properties
-    private var webTVPLayer: AVPlayer!
-    private var webTVPlayerViewController = AVPlayerViewController()
+//    private var webTVPLayer: AVPlayer!
+//    private var webTVPlayerViewController = AVPlayerViewController()
+    
     private var presenter: TVGuidePresenter?
     private var ruStreamLink: String = NetworkEndpoints.webTVVideoStreamBaseURL + NetworkEndpoints.webTVStreamRUEndpoint
     var webTVProgrammesList: TVGuideDates = TVGuideDates() {
@@ -35,29 +36,27 @@ class WebTVScreenViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
         self.presenter = TVGuidePresenter(with: self)
         print(self.webTVProgrammesList)
-        player(urlString: ruStreamLink)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        stopPlayback()
+
     }
     
-    private func player(urlString: String) {
-        if let  videoURL = URL(string: urlString.encodeUrl()!) {
-            self.webTVPLayer = AVPlayer(url: videoURL)
-            webTVPlayerViewController.player = self.webTVPLayer
-            webTVPlayerViewController.view.frame = webTVStreamView.bounds
-            self.addChild(webTVPlayerViewController)
-            webTVStreamView.addSubview(webTVPlayerViewController.view)
-            webTVPlayerViewController.didMove(toParent: self)
-            webTVPlayerViewController.player?.pause()
-        }
-    }
+//    private func player(urlString: String) {
+//        if let  videoURL = URL(string: urlString.encodeUrl()!) {
+//            self.webTVPLayer = AVPlayer(url: videoURL)
+//            webTVPlayerViewController.player = self.webTVPLayer
+//            webTVPlayerViewController.view.frame = webTVStreamView.bounds
+//            self.addChild(webTVPlayerViewController)
+//            webTVStreamView.addSubview(webTVPlayerViewController.view)
+//            webTVPlayerViewController.didMove(toParent: self)
+//            webTVPlayerViewController.player?.pause()
+//        }
+//    }
     
-    private func stopPlayback() {
-        webTVPlayerViewController.player?.pause()
-    }
+//    private func stopPlayback() {
+//        webTVPlayerViewController.player?.pause()
+//    }
 
     
     

@@ -7,3 +7,32 @@
 //
 
 import AVKit
+
+
+class NebesaPlayer {
+    let url: String
+    let view: UIView
+    var player: AVPlayer!
+    var playerViewController: AVPlayerViewController!
+    
+    
+    init(url: String, for view: UIView) {
+        self.url = url
+        self.view = view
+        createPlayer()
+    }
+    
+    func createPlayer() {
+        if let videoURL = URL(string: url.encodeUrl() ?? "") {
+            self.player = AVPlayer(url: videoURL)
+            playerViewController.player = player
+            playerViewController.view.frame = view.bounds
+            view.addSubview(playerViewController.view)
+            playerViewController.player?.pause()
+        }
+    }
+    
+    func playerStopPlayback() {
+        playerViewController.player?.pause()
+    }
+}
