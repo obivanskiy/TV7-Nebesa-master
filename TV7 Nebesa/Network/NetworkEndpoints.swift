@@ -15,9 +15,9 @@ struct NetworkEndpoints {
     static var parentCategoriesURL: String = "get_tv7_parent_categories/"
     static var subCategoriesURL: String = "get_tv7_sub_categories/?parent_id="
     static var seriesInfoURL: String = "get_tv7_series_info?series_id="
-//    static var tvGuide: String = "get_tv7_tv_guide_date/?date=2019-03-18"
     static var seriesProgrammesURL: String = "get_tv7_series_programs?series_id="
     static var webTVGuideURL: String = "get_tv7_tv_guide_date?date="
+    static var tvGuide: String = "get_tv7_tv_guide_date/?date="
     
     //MARK: - Video playback endpoints
     static var baseURLForVideoPlayback: String = "https://vod.tv7.fi:443/vod-appletv/_definst_/mp4:"
@@ -25,5 +25,5 @@ struct NetworkEndpoints {
     
     //MARK: - Live streams endpoints
     static var webTVVideoStreamBaseURL: String = "https://vod.tv7.fi:443/"
-    static var webTVStreamRUEndpoint: String = "tv7-ru/_definst_/smil:tv7-ru.smil/playlist.m3u8" 
+    static var webTVStreamRUEndpoint: String = "tv7-ru/_definst_/smil:tv7-ru.smil/playlist.m3u8"
 }

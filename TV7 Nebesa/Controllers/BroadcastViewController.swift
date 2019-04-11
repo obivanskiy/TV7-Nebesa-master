@@ -46,34 +46,9 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         super.viewWillAppear(true)
         setupTVGuideTableView()
         setupDateCollectionView()
-//        tvGuideDownloadService()
+        generateDates()
+        firstAppearSelectedItem()
     }
-
-
-    //MARK: - TV Guide Series Download
-//    func tvGuideDownloadService() {
-//        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide
-//        guard let url = URL(string: urlToParse) else { return }
-//        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error in
-//            guard error == nil else { return }
-//            guard let responseData = data else { return }
-//            do {
-//                let entity = try JSONDecoder().decode(TVGuideDates.self, from: responseData)
-//                for key in entity.tvGuideDates {
-//                    if key.name != "" {
-//                        self.tvGuideSeries?.append(key.series + ": " + key.name)
-//                    } else {
-//                        self.tvGuideSeries?.append(key.series)
-//                    }
-//                    let date = self.dateFormatter(key.date)
-//                    self.tvGuideDate?.append(date)
-//                }
-//            } catch let error {
-//                print("Error is \(error)")
-//            }
-//        }
-//        urlSessionTask.resume()
-//    }
 
     //MARK: - Table View Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -87,6 +62,68 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         cell.seriesTVGuide.text = tvGuideSeries?[indexPath.row]
         cell.timeTVGuide.text = tvGuideDate?[indexPath.row]
         return cell
+    }
+
+
+    //MARK: - Table View Delegate Methods
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
+
+        if cell.captionLabel.text == "" {
+            cell.isExpanded = true
+        }
+
+        switch cell.isExpanded {
+        case true:
+            self.expandedRows.remove(indexPath.row)
+        case false:
+            self.expandedRows.insert(indexPath.row)
+        }
+
+        // ******** Expanded cells haven't work yet *********
+        switch cell.captionLabel.calculateMaxLines() {
+        case 1:
+            print("1")
+        case 2:
+            print("2")
+        case 3:
+            print("3")
+        default:
+            print("default")
+        }
+
+        cell.isExpanded = !cell.isExpanded
+
+        self.tvGuideTableView.beginUpdates()
+        self.tvGuideTableView.endUpdates()
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
+
+        self.expandedRows.remove(indexPath.row)
+        cell.isExpanded = false
+        self.tvGuideTableView.beginUpdates()
+        self.tvGuideTableView.endUpdates()
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if scrollView == tvGuideTableView {
+            self.lastContentOffset = scrollView.contentOffset.y
+        }
+    }
+
+    // Hide DateCollection when scrolling down
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == tvGuideTableView {
+            if (self.lastContentOffset < scrollView.contentOffset.y) {
+                dateStackView.isHidden = true
+                tvGuideTableViewConstraint.constant = 0
+            } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+                dateStackView.isHidden = false
+                tvGuideTableViewConstraint.constant = 36
+            }
+        }
     }
 
     //MARK: - Collection View Data Source Methods
@@ -141,4 +178,54 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UICollec
         dateCollectioView.reloadData()
     }
 
+    // Select and display the current day in DateCollection
+    private func firstAppearSelectedItem() {
+        let firstAppearSelectedItem = arrayOfDatesStrings.count/2
+        let selectedIndexPath = IndexPath(item: firstAppearSelectedItem, section: 0)
+        dateCollectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
+    }
+
+    //Need to think about this. Isn't working now
+    private func scrollToCurrentTime() {
+        let selectedIndexPath = IndexPath(item: 12, section: 0)
+        self.tvGuideTableView.scrollToRow(at: selectedIndexPath, at: .top, animated: true)
+    }
+
+    // Display Alert Message
+    private func displayMessage(_ userMessage: String) -> Void {
+        let alertController = UIAlertController(title: "Oops", message: userMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+
+    //MARK: - TV Guide Series Download
+    private func downloadServiceForChosenDate(_ date: String) {
+        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide + date
+        guard let url = URL(string: urlToParse) else { return }
+        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard error == nil else { return }
+            guard let responseData = data else { return }
+            do {
+                self.tvGuideSeries = try JSONDecoder().decode(TVGuideDates.self, from: responseData)
+            } catch let error {
+                print("Error is \(error)")
+            }
+        }
+        urlSessionTask.resume()
+    }
+}
+
+
+// Calculates number of lines that needed for label content
+extension UILabel {
+    func calculateMaxLines() -> Int {
+        let maxSize = CGSize(width: frame.size.width, height: CGFloat(Float.infinity))
+        let charSize = font.lineHeight
+        let text = (self.text ?? "") as NSString
+        let textSize = text.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font as Any], context: nil)
+        let linesRoundedUp = Int(ceil(textSize.height/charSize))
+        return linesRoundedUp
+    }
 }
