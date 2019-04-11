@@ -239,8 +239,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         }
         urlSessionTask.resume()
     }
-
-
 }
 
 
