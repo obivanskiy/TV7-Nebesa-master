@@ -37,6 +37,10 @@ final class ProgrammeScreenViewController: UIViewController {
         player(urlString: videoURLString)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        stopPlayback()
+    }
+    
     //MARK: -Set up the UI
     private func setUpUI() {
         seriesNameLabel.text = ProgrammeScreenViewController.programmeData.seriesName
@@ -60,6 +64,10 @@ final class ProgrammeScreenViewController: UIViewController {
             playerViewController.didMove(toParent: self)
             playerViewController.player?.pause()
         }
+    }
+    
+    private func stopPlayback() {
+        playerViewController.player?.pause()
     }
     
     //MARK: - Date formatter

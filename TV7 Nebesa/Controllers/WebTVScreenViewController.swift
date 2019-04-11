@@ -40,7 +40,7 @@ class WebTVScreenViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
+        stopPlayback()
     }
     
     private func player(urlString: String) {
@@ -55,7 +55,10 @@ class WebTVScreenViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    
+    private func stopPlayback() {
+        webTVPlayerViewController.player?.pause()
+    }
+
     
     
     // MARK: - Table View Data Source
