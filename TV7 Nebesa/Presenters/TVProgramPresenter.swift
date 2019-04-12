@@ -12,7 +12,7 @@ class TVProgramPresenter {
     let viewController: BroadcastViewController!
     var chosenDate = Date()
 
-    init(with viewController: BroadcastViewController, chosenDate: Date) {
+    init(with viewController: BroadcastViewController, chosenDate: Date = Date()) {
         self.viewController = viewController
         self.chosenDate = chosenDate
         fetchChosenDate(chosenDate)
