@@ -8,10 +8,10 @@
 
 import UIKit
 
- class NebessaScreenController : UIViewController, UITableViewDataSource, UITableViewDelegate {
+final class BaseForHomeViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-  
-    private var presenter: HomeScreenPresenter?
+    
+    private var presenter: BaseRecommendPresenter?
     
     private var homeScreenProgrammeDataSegue: String = "HomeScreenProgrammePageSegue"
     
@@ -30,15 +30,15 @@ import UIKit
             }
         }
     }
-   
+    
     
     let tableView = UITableView()
     let titleItem = "Небеса"
     
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter = HomeScreenPresenter(with: self)
+        self.presenter = BaseRecommendPresenter(with: self)
         
         setupMenuBar()
         setupNavBarButtons()
@@ -48,33 +48,25 @@ import UIKit
         tableView.delegate = self
         
         //late parser
-//        homeScreenDownloadService(homeScreenData: HomeScreenData())
-    
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        setUpStatusBar()
-
+        //        homeScreenDownloadService(homeScreenData: HomeScreenData())
         
-          }
+    }
+
+    //MARK: - Table view data source
     
-   
-
-     //MARK: - Table view data source
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return homeScreenData.homeScreenProgrammes.count
     }
     
     
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeScreenCell", for: indexPath) as? HomeScreenTableViewCell else {
             return UITableViewCell()
         }
         cell.cellModel = homeScreenData.homeScreenProgrammes[indexPath.row]
-
+        
         return cell
     }
     
@@ -94,14 +86,14 @@ import UIKit
             //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
             UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
-//                self.navigationController?.setToolbarHidden(true, animated: true)
+                //                self.navigationController?.setToolbarHidden(true, animated: true)
                 print("Hide")
             }, completion: nil)
             
         } else {
             UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.navigationController?.setNavigationBarHidden(false, animated: true)
-//                self.navigationController?.setToolbarHidden(false, animated: true)
+                //                self.navigationController?.setToolbarHidden(false, animated: true)
                 print("Unhide")
             }, completion: nil)
         }
@@ -120,7 +112,7 @@ import UIKit
         let statusBarMask = UIView(frame: statusBarMaskFrame)
         statusBarMask.autoresizingMask = .flexibleWidth
         statusBarMask.backgroundColor =  UIColor.rgb(red: 11, green: 90, blue: 193)
-//        menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        //        menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         
         view.addSubview(statusBarMask)
         
@@ -191,46 +183,46 @@ import UIKit
     
     
     //late parser
-//    func homeScreenDownloadService(homeScreenData: HomeScreenData) {
-//        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL
-//        guard let url = URL(string: urlToParse) else {
-//            return
-//        }
-//        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
-//            guard error == nil else {
-//                return
-//            }
-//            guard let responseData = data else {
-//                return
-//            }
-//            do {
-//                self.homeScreenData = try JSONDecoder().decode(HomeScreenProgrammes.self, from: responseData)
-//            } catch let error {
-//                print(error.localizedDescription)
-//            }
-//        }
-//        urlSessionTask.resume()
-//    }
+    //    func homeScreenDownloadService(homeScreenData: HomeScreenData) {
+    //        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL
+    //        guard let url = URL(string: urlToParse) else {
+    //            return
+    //        }
+    //        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
+    //            guard error == nil else {
+    //                return
+    //            }
+    //            guard let responseData = data else {
+    //                return
+    //            }
+    //            do {
+    //                self.homeScreenData = try JSONDecoder().decode(HomeScreenProgrammes.self, from: responseData)
+    //            } catch let error {
+    //                print(error.localizedDescription)
+    //            }
+    //        }
+    //        urlSessionTask.resume()
+    //    }
     
     
     
     
     
-//    func setupNavBarButtons() {
-//        let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
-//        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
-//
-//        let moreButton = UIBarButtonItem(image: UIImage(named: "tvIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMore))
-//
-//
-//        navigationItem.rightBarButtonItems = [moreButton, searchBarButtonItem]
-//    }
-//    @objc func handleMore() {
-//
-//    }
-//
-//    @objc func handleSearch() {
-//        print("Search")
-//    }
+    //    func setupNavBarButtons() {
+    //        let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
+    //        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
+    //
+    //        let moreButton = UIBarButtonItem(image: UIImage(named: "tvIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMore))
+    //
+    //
+    //        navigationItem.rightBarButtonItems = [moreButton, searchBarButtonItem]
+    //    }
+    //    @objc func handleMore() {
+    //
+    //    }
+    //
+    //    @objc func handleSearch() {
+    //        print("Search")
+    //    }
     
 }
