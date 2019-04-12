@@ -19,11 +19,13 @@ class NetworkService {
         case fetchSeriesMainData
         case fetchSeriesProgrammes
         case fetchWebTVProgrammesList
+        case fetchTVProgram
     }
     
     static var requestURL: [NetworkRequestType : String] = [
         .fetchParentCategories : NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL,
-        .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL
+        .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL,
+        .fetchTVProgram: NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide
     ]
 
     enum networkResult: Swift.Error {

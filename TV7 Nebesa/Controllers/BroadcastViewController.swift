@@ -15,14 +15,15 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tvGuideTableViewConstraintToTop: NSLayoutConstraint!
 
 
-    //MARK: - Private properties
-    private (set) var tvGuideSeries: TVGuideDates = TVGuideDates() {
+    //MARK: - TVProgram properties
+    var tvGuideSeries: TVGuideDates = TVGuideDates() {
         didSet {
             DispatchQueue.main.async {
                 self.tvGuideTableView.reloadData()
             }
         }
     }
+    private var presenter: TVProgramPresenter?
     private var arrayOfDates = [Date]()
     private var arrayOfDatesStrings = [String]()
     private var expandedRows = Set<Int>()
@@ -31,7 +32,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        downloadServiceForChosenDate(currentDate(Date()))
+        presenter = TVProgramPresenter(with: self, chosenDate: Date())
         setupTVGuideTableView()
         setupDateCollectionView()
         generateDates()
@@ -141,7 +142,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
     //MARK: - Collection View Delegate Methods
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        downloadServiceForChosenDate(currentDate(arrayOfDates[indexPath.row]))
+        presenter = TVProgramPresenter(with: self, chosenDate: arrayOfDates[indexPath.row])
         tvGuideTableView.reloadData()
     }
 
