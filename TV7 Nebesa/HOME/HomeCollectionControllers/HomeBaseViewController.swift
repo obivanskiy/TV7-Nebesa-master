@@ -8,7 +8,7 @@
 
 import UIKit
 
-let reIdentifier = "HomeCell"
+let reIdentifier = "homeCell"
 
 class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -27,12 +27,12 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat
     {
         
-        return 2;
+        return 0;
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat
     {
         
-        return 1;
+        return 0;
     }
     
     
@@ -41,6 +41,23 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         
         return 1
     }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 3
+    }
+  
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let index = Int(targetContentOffset.pointee.x / view.frame.width)
+        let indexPath = IndexPath(item: index, section: 0)
+        menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+        
+    }
+    
+    func scrollToMenuIndex(menuIndex: Int) {
+        let indexPath = IndexPath(item: menuIndex, section: 0)
+        homePageCollectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -50,7 +67,9 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reIdentifier, for: indexPath) as UICollectionViewCell
         
-        cell.backgroundColor = self.randomColor()
+        let colors: [UIColor] = [.blue, .purple, .red]
+        
+        cell.backgroundColor = colors[indexPath.item]
         
         
         return cell
@@ -70,16 +89,14 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     }
     
     //computed
-    let menuBar: MenuBar = {
+    lazy var menuBar: MenuBar = {
         let mb = MenuBar()
+        mb.homeController = self
         return mb
     }()
     
     //:MARK - SETUP PRIVATE MENUBAR
     private func setupMenuBar() {
-        
-        
-        
         let redView = UIView()
         redView.backgroundColor = UIColor.rgb(red: 12, green: 100, blue: 194)
         view.addSubview(redView)
@@ -89,7 +106,6 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         view.addSubview(menuBar)
         view.addConstraintsWithFormat(withVisualFormat: "H:|[v0]|", views: menuBar)
         view.addConstraintsWithFormat(withVisualFormat: "V:[v0(50)]", views: menuBar)
-        
         menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
     

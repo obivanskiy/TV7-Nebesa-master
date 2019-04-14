@@ -10,6 +10,7 @@ import UIKit
 
 class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    var homeController: HomeBaseViewController?
     var horizontalBarLeftAnchorConstraint: NSLayoutConstraint?
     
     func setupHorizontalBar() {
@@ -34,13 +35,15 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
-        let x = CGFloat(indexPath.item) * frame.width / 3
-        horizontalBarLeftAnchorConstraint?.constant = x
-
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.layoutIfNeeded()
-        }, completion: nil)
+//        print(indexPath.item)
+//        let x = CGFloat(indexPath.item) * frame.width / 3
+//        horizontalBarLeftAnchorConstraint?.constant = x
+//
+//        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+//            self.layoutIfNeeded()
+//        }, completion: nil)
+        
+        homeController?.scrollToMenuIndex(menuIndex: indexPath.item)
     }
     
     //3
