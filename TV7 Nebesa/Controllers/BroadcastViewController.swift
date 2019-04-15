@@ -145,7 +145,12 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         tvGuideTableView.reloadData()
     }
 
-    // MARK: - Private Methods
+    //MARK: - Actions
+    @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
+//        performSegue(withIdentifier: "NavigationProgrammeScreen", sender: nil)
+    }
+
+    //MARK: - Private Methods
     // Formates Unix date into the normal format
     fileprivate func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }

@@ -26,4 +26,8 @@ struct NetworkEndpoints {
     //MARK: - Live streams endpoints
     static var webTVVideoStreamBaseURL: String = "https://vod.tv7.fi:443/"
     static var webTVStreamRUEndpoint: String = "tv7-ru/_definst_/smil:tv7-ru.smil/playlist.m3u8"
+
+    //MARK: - Search results endpoints
+    static var searchBaseURL: String = "http://edom.tv7.fi:8084/search1.1/SearchServlet"
+    static var searchResultsURL: String = "?vod=RU1&query="
 }
