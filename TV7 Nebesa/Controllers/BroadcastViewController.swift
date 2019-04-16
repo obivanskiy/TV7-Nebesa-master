@@ -147,7 +147,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
     //MARK: - Actions
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
-//        performSegue(withIdentifier: "NavigationProgrammeScreen", sender: nil)
     }
 
     //MARK: - Private Methods

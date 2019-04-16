@@ -52,6 +52,7 @@
 		C0B38F8033B235E335AED466 /* Pods_TV7_Nebesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */; };
 		FA29D6AD22647DC400B39250 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6AC22647DC400B39250 /* SearchTableViewController.swift */; };
 		FA29D6AF2264B79800B39250 /* SearchResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */; };
+		FA29D6B12264C94E00B39250 /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */; };
 		FA4F347D2260A010000508B9 /* TVProgramPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */; };
 		FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDE7FE223FC69A00006FEE /* TVGuideCell.swift */; };
 		FAFDE801223FC69A00006FEE /* TVGuideCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFDE7FF223FC69A00006FEE /* TVGuideCell.xib */; };
@@ -109,6 +110,7 @@
 		80A01670E8FE1B6304A067FA /* Pods-TV7 Nebesa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV7 Nebesa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa.debug.xcconfig"; sourceTree = "<group>"; };
 		FA29D6AC22647DC400B39250 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsModel.swift; sourceTree = "<group>"; };
+		FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
 		FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProgramPresenter.swift; sourceTree = "<group>"; };
 		FAFDE7FE223FC69A00006FEE /* TVGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGuideCell.swift; sourceTree = "<group>"; };
 		FAFDE7FF223FC69A00006FEE /* TVGuideCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVGuideCell.xib; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				15F68BB022511AEE006F3BFB /* CategorySeriesPresenter.swift */,
 				15F1637D2254DF2E00E2DEFF /* TVGuidePresenter.swift */,
 				FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */,
+				FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -229,10 +232,10 @@
 				15CF8F722237E03D008424E9 /* ParentCategoriesModel.swift */,
 				15F1580C223FD4C9005047CD /* SubCategoriesModel.swift */,
 				15B0816B223A4F6A00826057 /* CategoriesDataModel.swift */,
-				FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */,
 				15D626EF224125B200449F8B /* SeriesInfoModel.swift */,
 				152DF3B922428B2900BDC90B /* SeriesProgrammesModel.swift */,
 				FAFDE802223FCAA100006FEE /* TVGuideModel.swift */,
+				FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				15CD9CD8225217FD0014E326 /* ProgrammeScreenViewController.swift in Sources */,
 				110F9DAE2237A7610020BABC /* HighlightsViewController.swift in Sources */,
 				15F5DA32225F7D1900B989A1 /* NebesaPlayer.swift in Sources */,
+				FA29D6B12264C94E00B39250 /* SearchResultsPresenter.swift in Sources */,
 				FAFDE803223FCAA100006FEE /* TVGuideModel.swift in Sources */,
 				154F6D5C224A637A00043BBD /* ParentCategoriesPresenter.swift in Sources */,
 				110F9D932237A6310020BABC /* AppDelegate.swift in Sources */,

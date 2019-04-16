@@ -8,36 +8,37 @@
 
 import UIKit
 
+
 class SearchTableViewController: UITableViewController, UISearchBarDelegate {
 
     //MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet var searchResultTableView: UITableView!
 
     //MARK: - Properties
+    var searchResults: SearchResults = SearchResults() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    private var presenter: SearchResultsPresenter?
 
     //MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        searchResultTableView.keyboardDismissMode = .onDrag
-    }
-
-    //MARK: - Table View Data Source Methods
-    override func numberOfSections(in tableView: UITableView) -> Int {
-
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return 0
+        tableView.keyboardDismissMode = .onDrag
+        tableView.reloadData()
     }
 
     //MARK: Search Bar Delegate Methods
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
-        searchBar.showsCancelButton = true
+    }
+
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.showsCancelButton = false
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -49,6 +50,24 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.endEditing(true)
         self.searchBar.showsCancelButton = false
+        let userText = searchBar.text
+        presenter = SearchResultsPresenter(with: self, userText: userText ?? "")
+        print("It is users text: \(userText!)")
+        print("Search results count: \(searchResults.results)")
+    }
+
+    //MARK: - Table View Data Source Methods
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.results.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        return cell
     }
 
     //MARK: - Actions
@@ -58,6 +77,5 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
             let _ = self.navigationController?.popToRootViewController(animated: true)
         }
     }
-
 
 }

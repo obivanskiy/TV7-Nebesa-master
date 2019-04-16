@@ -9,20 +9,20 @@
 import Foundation
 
 
-struct SearchResults {
-    let searchResults: [SearchResultsData]
+struct SearchResults: Decodable {
+    let results: [SearchResultsData]
 
     enum CodingKeys: String, CodingKey {
         case searchResults = "results"
     }
 
     init() {
-        searchResults = [SearchResultsData]()
+        results = [SearchResultsData]()
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        searchResults = try container.decodeIfPresent(Array<SearchResultsData>.self, forKey: .searchResults) ?? [SearchResultsData]()
+        results = try container.decodeIfPresent(Array<SearchResultsData>.self, forKey: .searchResults) ?? [SearchResultsData]()
     }
 }
 
@@ -36,20 +36,20 @@ struct SearchResultsData: Decodable {
     let seriesId: String
     let seriesName: String
     let seriesCaption: String
-    let firstBroadcast: String
-    let firstBroadcastChannel: String
-    let duration: String
+    let firstBroadcast: String?
+    let firstBroadcastChannel: String?
+    let duration: String?
     let imagePath: String
     let type: String
-    let spokenLang: String
-    let relevant: String
+    let spokenLang: String?
+    let relevant: String?
     let vod: String
     let score: String
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
-        case caption = "caprion"
+        case caption = "caption"
         case description = "description"
         case seriesId = "series_id"
         case seriesName = "series_name"
