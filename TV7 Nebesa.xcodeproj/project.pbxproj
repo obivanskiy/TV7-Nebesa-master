@@ -181,8 +181,11 @@
 		1106CDF3225F7CF800B67F55 /* HomeCollectionControllers */ = {
 			isa = PBXGroup;
 			children = (
+				152DF3B72242725800BDC90B /* HomeScreen.storyboard */,
 				1106CDF8225F8D9E00B67F55 /* HomeRecommendCell.swift */,
+				1106CE212260D67C00B67F55 /* RecommendTableViewCell.swift */,
 				1106CDF6225F804500B67F55 /* HomeBaseViewController.swift */,
+				1138EEEE2242ECCE00E687ED /* HomeScreenDataModel.swift */,
 			);
 			path = HomeCollectionControllers;
 			sourceTree = "<group>";
@@ -190,13 +193,12 @@
 		1106CDFA225FB74C00B67F55 /* HOME */ = {
 			isa = PBXGroup;
 			children = (
+				1106CDF3225F7CF800B67F55 /* HomeCollectionControllers */,
 				1106CE0B2260A11B00B67F55 /* ScrollController */,
-				152DF3B72242725800BDC90B /* HomeScreen.storyboard */,
 				11F4FF28225CAD1F007359C4 /* MenuBar+NavBar */,
 				11F4FF29225CAD4A007359C4 /* HomeTableViewCells */,
 				11F4FF2A225CAD68007359C4 /* HomeControllers */,
 				11F4FF15225B768C007359C4 /* HomeScreenPresenters */,
-				1106CDF3225F7CF800B67F55 /* HomeCollectionControllers */,
 				117C3A3B2253ADEB00B1E91F /* Helpers */,
 				11F4FF21225C96C2007359C4 /* HomeScreenModels */,
 			);
@@ -235,7 +237,6 @@
 				1106CE1F2260D65700B67F55 /* HomeRecommendViewController.swift */,
 				1106CE172260D2D200B67F55 /* NewestViewController.swift */,
 				1106CE1D2260D57600B67F55 /* MostViewedViewController.swift */,
-				1106CE212260D67C00B67F55 /* RecommendTableViewCell.swift */,
 				1106CE192260D4B400B67F55 /* HomeNewestTableViewCell.swift */,
 				1106CE1B2260D56000B67F55 /* MostViewedTableViewCell.swift */,
 			);
@@ -346,7 +347,6 @@
 		11F4FF21225C96C2007359C4 /* HomeScreenModels */ = {
 			isa = PBXGroup;
 			children = (
-				1138EEEE2242ECCE00E687ED /* HomeScreenDataModel.swift */,
 				11F4FF1D225C7A13007359C4 /* HomeScreenNewestProgrammes.swift */,
 				11F4FF1F225C91E6007359C4 /* HomeScreenMostViewedProgrammes.swift */,
 				11F4FF0B225B371F007359C4 /* ProgramInfoModel.swift */,

@@ -18,7 +18,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMenuBar()
-        homePageCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reIdentifier)
+        homePageCollectionView.register(HomeRecommendCell.self, forCellWithReuseIdentifier: reIdentifier)
         // Do any additional setup after loading the view.
     }
     
@@ -65,12 +65,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reIdentifier, for: indexPath) as UICollectionViewCell
-        
-        let colors: [UIColor] = [.blue, .purple, .red]
-        
-        cell.backgroundColor = colors[indexPath.item]
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reIdentifier, for: indexPath) as! HomeRecommendCell
         
         return cell
     }

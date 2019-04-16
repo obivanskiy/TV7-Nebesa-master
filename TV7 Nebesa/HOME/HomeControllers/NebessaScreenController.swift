@@ -8,10 +8,10 @@
 
 import UIKit
 
- class NebessaScreenController : UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+ class NebessaScreenController : UIViewController {
+// , UITableViewDataSource, UITableViewDelegate
   
-    private var presenter: HomeScreenPresenter?
+//    private var presenter: HomeScreenPresenter?
     
     private var homeScreenProgrammeDataSegue: String = "HomeScreenProgrammePageSegue"
     
@@ -22,14 +22,14 @@ import UIKit
             }
         }
     }
-    
-    var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes() {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
+//
+//    var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes() {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
+//    }
    
     
     let tableView = UITableView()
@@ -38,14 +38,14 @@ import UIKit
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter = HomeScreenPresenter(with: self)
+//        self.presenter = HomeScreenPresenter(with: self)
         
         setupMenuBar()
         setupNavBarButtons()
         setupNavigationItems()
         title = titleItem
-        tableView.dataSource = self
-        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.delegate = self
         
         //late parser
 //        homeScreenDownloadService(homeScreenData: HomeScreenData())
@@ -61,33 +61,33 @@ import UIKit
    
 
      //MARK: - Table view data source
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return homeScreenData.homeScreenProgrammes.count
-    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+////        return homeScreenData.homeScreenProgrammes.count
+//    }
     
     
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeScreenCell", for: indexPath) as? HomeScreenTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.cellModel = homeScreenData.homeScreenProgrammes[indexPath.row]
-
-        return cell
-    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeScreenCell", for: indexPath) as? HomeScreenTableViewCell else {
+//            return UITableViewCell()
+//        }
+////        cell.cellModel = homeScreenData.homeScreenProgrammes[indexPath.row]
+//
+//        return cell
+//    }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let cell = tableView.cellForRow(at: indexPath) as! HomeScreenTableViewCell
-        //        tableView.beginUpdates()
-        //        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
-        //        tableView.endUpdates()
-        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
-        performSegue(withIdentifier: homeScreenProgrammeDataSegue, sender: self)
-    }
-    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        let cell = tableView.cellForRow(at: indexPath) as! HomeScreenTableViewCell
+//        //        tableView.beginUpdates()
+//        //        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
+//        //        tableView.endUpdates()
+//        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
+//        performSegue(withIdentifier: homeScreenProgrammeDataSegue, sender: self)
+//    }
+//
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         if(velocity.y>0) {
