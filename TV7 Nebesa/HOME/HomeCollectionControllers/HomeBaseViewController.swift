@@ -10,7 +10,8 @@ import UIKit
 
 let reIdentifier = "homeCell"
 
-class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
+class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
     @IBOutlet weak var homePageCollectionView: UICollectionView!
@@ -18,7 +19,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMenuBar()
-        homePageCollectionView.register(HomeRecommendCell.self, forCellWithReuseIdentifier: reIdentifier)
+//        homePageCollectionView.register(HomeRecommendCell.self, forCellWithReuseIdentifier: reIdentifier)
         // Do any additional setup after loading the view.
     }
     
@@ -103,6 +104,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         view.addConstraintsWithFormat(withVisualFormat: "V:[v0(50)]", views: menuBar)
         menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
+    
     
 
     /*

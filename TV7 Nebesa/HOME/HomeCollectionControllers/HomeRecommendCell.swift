@@ -8,11 +8,11 @@
 
 import UIKit
 
-class HomeRecommendCell: BaseCell, UITableViewDelegate, UITableViewDataSource {
+class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var recommendTableView: UITableView!
-    
+     private var homeScreenProgrammeDataSegue: String = "HomeScreenProgrammePageSegue"
     let cellIdentifier = "tableCell"
     
         var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes() {
@@ -23,43 +23,71 @@ class HomeRecommendCell: BaseCell, UITableViewDelegate, UITableViewDataSource {
             }
         }
    
-    override func setupViews() {
-        
+    override func awakeFromNib() {
+        requestHomeScreenMainInformation()
         setupTableView()
     }
     
     func setupTableView() {
-        homeScreenDownloadService(homeScreenData: HomeScreenData())
+//        homeScreenDownloadService(homeScreenData: HomeScreenData())
         print(HomeScreenData())
         recommendTableView.dataSource = self
         recommendTableView.delegate = self
-        recommendTableView.register(RecommendTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+       
        
         recommendTableView.contentInset = .init(top: 50, left: 0, bottom: 0, right: 0)
         recommendTableView.scrollIndicatorInsets = .init(top: 50, left: 0, bottom: 0, right: 0)
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+                tableView.deselectRow(at: indexPath, animated: true)
+                let cell = tableView.cellForRow(at: indexPath) as! RecommendTableViewCell
+                HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
+            }
     
-    func homeScreenDownloadService(homeScreenData: HomeScreenData) {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL
-        guard let url = URL(string: urlToParse) else {
-            return
-        }
-        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
-            guard error == nil else {
-                return
+   
+   
+    
+    
+           private func requestHomeScreenMainInformation() {
+                NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMainData) { result in
+                    switch result {
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    case .success(let data):
+                        self.serializeHomeScreenMainInformation(requestData: data)
+                    }
+                }
             }
-            guard let responseData = data else {
-                return
+        
+            private func serializeHomeScreenMainInformation(requestData: (Data)) {
+                do {
+                    self.homeScreenData  = try JSONDecoder().decode(HomeScreenProgrammes.self, from: requestData)
+                } catch let error {
+                    print(error.localizedDescription)
+                }
             }
-            do {
-                self.homeScreenData = try JSONDecoder().decode(HomeScreenProgrammes.self, from: responseData)
-               
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
-        urlSessionTask.resume()
-    }
+    
+//    func homeScreenDownloadService(homeScreenData: HomeScreenData) {
+//        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL
+//        guard let url = URL(string: urlToParse) else {
+//            return
+//        }
+//        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error  in
+//            guard error == nil else {
+//                return
+//            }
+//            guard let responseData = data else {
+//                return
+//            }
+//            do {
+//                self.homeScreenData = try JSONDecoder().decode(HomeScreenProgrammes.self, from: responseData)
+//
+//            } catch let error {
+//                print(error.localizedDescription)
+//            }
+//        }
+//        urlSessionTask.resume()
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return homeScreenData.homeScreenProgrammes.count
@@ -75,4 +103,5 @@ class HomeRecommendCell: BaseCell, UITableViewDelegate, UITableViewDataSource {
         return cell
     
 }
+    
 }

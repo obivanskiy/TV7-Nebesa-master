@@ -11,25 +11,16 @@ import Kingfisher
 class RecommendTableViewCell: UITableViewCell {
     
     private let dateFormatter = DateFormatter()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setUp()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setUp()
-    }
-    
-    func setUp() {
-        dateFormatter.dateFormat = "MM-dd-YYYY HH:mm"
-}
+
 
     @IBOutlet weak var RecommendImageView: UIImageView!
     @IBOutlet weak var RecommendTitleLabel: UILabel!
     @IBOutlet weak var RecommendDateLabel: UILabel!
-    @IBOutlet weak var RecommendCaptionLabel: UITextView!
+    @IBOutlet weak var RecommendCaptionLabel: UILabel! {
+        didSet {
+            RecommendCaptionLabel.numberOfLines = 3
+        }
+    }
     
     var cellModel: HomeScreenData? {
         didSet {
@@ -44,7 +35,7 @@ class RecommendTableViewCell: UITableViewCell {
         RecommendTitleLabel.sizeToFit()
         RecommendTitleLabel.text = cellModel.seriesName
         
-        RecommendDateLabel.text = TimeInterval(cellModel.firstBroadcast).map(Date.init(timeIntervalSince1970:)).map(dateFormatter.string)
+        RecommendDateLabel.text = "Длительность: \(dateFormatter(cellModel.visibleOnVodSince))"
         
         RecommendCaptionLabel.text = cellModel.caption
         
@@ -53,8 +44,18 @@ class RecommendTableViewCell: UITableViewCell {
         }
         RecommendImageView.kf.setImage(with: previewImageURL)
     }
-
     
+    private func dateFormatter(_ dateIn: String) -> String {
+        guard let unixDate = Double(dateIn) else { return "" }
+        let date = Date(timeIntervalSinceNow: unixDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MM YYYY"
+        
+        let newDate = dateFormatter.string(from: date)
+        return newDate
+    }
+
+//    TimeInterval(cellModel.firstBroadcast).map(Date.init(timeIntervalSince1970:)).map(dateFormatter.string)
 }
 
 

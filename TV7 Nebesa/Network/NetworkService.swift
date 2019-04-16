@@ -47,6 +47,7 @@ class NetworkService {
         case unknownError
     }
     
+    
     static func performRequest(requestType: NetworkRequestType, completion: @escaping (Result<Data, Error>) -> Void)  {
         guard let urlString = requestURL[requestType] else {
             completion(.failure(networkResult.wrongPath))

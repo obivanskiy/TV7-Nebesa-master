@@ -28,6 +28,8 @@
 		110F9DAE2237A7610020BABC /* HighlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAD2237A7610020BABC /* HighlightsViewController.swift */; };
 		1138EEEB2242CE7F00E687ED /* HomeScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138EEE92242CE7F00E687ED /* HomeScreenTableViewCell.swift */; };
 		1138EEEF2242ECCE00E687ED /* HomeScreenDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138EEEE2242ECCE00E687ED /* HomeScreenDataModel.swift */; };
+		115ED83E22667970002D6D52 /* 9651.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11E11F3222439CF800483859 /* 9651.ttf */; };
+		115ED840226690E7002D6D52 /* NewestHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115ED83F226690E7002D6D52 /* NewestHomeCell.swift */; };
 		117C3A3A2252ABC500B1E91F /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C3A392252ABC500B1E91F /* System.swift */; };
 		117C3A3D2253AE0900B1E91F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C3A3C2253AE0900B1E91F /* Extensions.swift */; };
 		117C3A402253AEFC00B1E91F /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C3A3F2253AEFC00B1E91F /* VideoCell.swift */; };
@@ -43,7 +45,6 @@
 		11BF07C1224E57EC00947B7E /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF07C0224E57EC00947B7E /* HomeScreenVC.swift */; };
 		11BF07C3224E60E700947B7E /* Nebessa.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11BF07C2224E60E700947B7E /* Nebessa.storyboard */; };
 		11BF07C5224E715200947B7E /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF07C4224E715200947B7E /* CustomNavigationBar.swift */; };
-		11E11F3322439CF800483859 /* 9651.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11E11F3222439CF800483859 /* 9651.ttf */; };
 		11F4FF0422576AA4007359C4 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF0322576AA4007359C4 /* CustomNavigationController.swift */; };
 		11F4FF0822579554007359C4 /* VideoPageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF0722579554007359C4 /* VideoPageCellTableViewCell.swift */; };
 		11F4FF0A22579CBF007359C4 /* HomeVideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4FF0922579CBF007359C4 /* HomeVideoTableViewController.swift */; };
@@ -108,6 +109,7 @@
 		110F9DAD2237A7610020BABC /* HighlightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsViewController.swift; sourceTree = "<group>"; };
 		1138EEE92242CE7F00E687ED /* HomeScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenTableViewCell.swift; sourceTree = "<group>"; };
 		1138EEEE2242ECCE00E687ED /* HomeScreenDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenDataModel.swift; sourceTree = "<group>"; };
+		115ED83F226690E7002D6D52 /* NewestHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestHomeCell.swift; sourceTree = "<group>"; };
 		117C3A392252ABC500B1E91F /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		117C3A3C2253AE0900B1E91F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		117C3A3F2253AEFC00B1E91F /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -182,8 +184,9 @@
 			isa = PBXGroup;
 			children = (
 				152DF3B72242725800BDC90B /* HomeScreen.storyboard */,
-				1106CDF8225F8D9E00B67F55 /* HomeRecommendCell.swift */,
 				1106CE212260D67C00B67F55 /* RecommendTableViewCell.swift */,
+				115ED83F226690E7002D6D52 /* NewestHomeCell.swift */,
+				1106CDF8225F8D9E00B67F55 /* HomeRecommendCell.swift */,
 				1106CDF6225F804500B67F55 /* HomeBaseViewController.swift */,
 				1138EEEE2242ECCE00E687ED /* HomeScreenDataModel.swift */,
 			);
@@ -557,13 +560,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAFDE801223FC69A00006FEE /* TVGuideCell.xib in Resources */,
+				115ED83E22667970002D6D52 /* 9651.ttf in Resources */,
 				110F9D9D2237A6320020BABC /* Assets.xcassets in Resources */,
 				15D626F3224142B900449F8B /* Categories.storyboard in Resources */,
 				152DF3B6224271E400BDC90B /* BestScenesScreen.storyboard in Resources */,
 				152DF3B82242725800BDC90B /* HomeScreen.storyboard in Resources */,
 				152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */,
 				11BF07C3224E60E700947B7E /* Nebessa.storyboard in Resources */,
-				11E11F3322439CF800483859 /* 9651.ttf in Resources */,
 				110F9D982237A6310020BABC /* Main.storyboard in Resources */,
 				152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */,
 			);
@@ -632,6 +635,7 @@
 				1106CE112260AD4F00B67F55 /* BaseRecommendPresenter.swift in Sources */,
 				11F4FF0822579554007359C4 /* VideoPageCellTableViewCell.swift in Sources */,
 				15F1580D223FD4C9005047CD /* SubCategoriesModel.swift in Sources */,
+				115ED840226690E7002D6D52 /* NewestHomeCell.swift in Sources */,
 				11F4FF1E225C7A13007359C4 /* HomeScreenNewestProgrammes.swift in Sources */,
 				11BF07C5224E715200947B7E /* CustomNavigationBar.swift in Sources */,
 				15D626F0224125B200449F8B /* SeriesInfoModel.swift in Sources */,
