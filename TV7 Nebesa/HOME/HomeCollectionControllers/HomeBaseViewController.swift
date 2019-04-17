@@ -10,9 +10,10 @@ import UIKit
 
 let cellId = "homeCell"
 let newestCellId = "homeNewestCell"
+let mostViewedCellId = "mostViewedCell" 
 
 
-class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
     @IBOutlet weak var homePageCollectionView: UICollectionView!
@@ -71,10 +72,12 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeRecommendCell
             return cell
-        
-        }
+        } else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newestCellId, for: indexPath) as! HomeNewestCell
             return cell
+        } 
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mostViewedCellId, for: indexPath) as! HomeMostViewedCell
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

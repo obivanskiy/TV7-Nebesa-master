@@ -16,8 +16,6 @@ class NewestTableViewCell: UITableViewCell {
     @IBOutlet weak var newestCaptionLabel: UILabel!
     @IBOutlet weak var newestImageView: UIImageView!
     
-    
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

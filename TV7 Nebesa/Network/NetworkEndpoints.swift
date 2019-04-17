@@ -20,7 +20,7 @@ struct NetworkEndpoints {
     //MARK: - HomeScreen endpoints
     static var homeScreenDataURL: String = "get_tv7_vod_recommendations/?date=2019-04-06"
     static var homeScreenNewestProgrammesURL: String = "get_tv7_vod_new?limit=10&offset=0"
-    static var homeScreenMostViewedProgrammesURL : String = "get_tv7_vod_previousweek_stats?vod=RU1"
+    static var homeScreenMostViewedProgrammesURL: String = "get_tv7_vod_previousweek_stats?vod=RU1"
     
     
     //MARK: - Video playback endpoints

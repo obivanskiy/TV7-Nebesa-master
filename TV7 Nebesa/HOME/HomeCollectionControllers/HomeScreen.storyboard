@@ -196,18 +196,18 @@
             <objects>
                 <viewController id="MBD-vz-poy" customClass="HomeVideoPlayerController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bVc-bn-SfI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-0R-sdG" userLabel="ProgramView">
-                                <rect key="frame" x="0.0" y="90" width="414" height="233"/>
+                                <rect key="frame" x="0.0" y="2" width="414" height="233"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UVY-0R-sdG" secondAttribute="height" multiplier="16:9" id="bPl-1X-7Sp"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="videoTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5w-82-Kt8" userLabel="VideoTitle">
-                                <rect key="frame" x="16" y="343" width="382" height="21"/>
+                                <rect key="frame" x="16" y="255" width="382" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Dkk-bA-OLn"/>
                                 </constraints>
@@ -216,7 +216,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="videoDescription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xio-FU-gBQ" userLabel="VideoDescription">
-                                <rect key="frame" x="16" y="380" width="382" height="21"/>
+                                <rect key="frame" x="16" y="292" width="382" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="cPv-EQ-cNy"/>
                                 </constraints>
@@ -225,7 +225,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EpisodeNumber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGL-5C-7bP" userLabel="EpisodeNumber">
-                                <rect key="frame" x="16" y="431" width="382" height="21"/>
+                                <rect key="frame" x="16" y="343" width="382" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="As6-da-2bX"/>
                                 </constraints>
@@ -234,7 +234,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baH-su-eJa" userLabel="Duration">
-                                <rect key="frame" x="16" y="458" width="382" height="21"/>
+                                <rect key="frame" x="16" y="370" width="382" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="A14-qa-CSH"/>
                                 </constraints>
@@ -243,7 +243,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LiveBroadcast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvH-J4-xYA" userLabel="FirstBroadcast">
-                                <rect key="frame" x="16" y="485" width="382" height="20.5"/>
+                                <rect key="frame" x="16" y="397" width="382" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -405,11 +405,11 @@
             <objects>
                 <viewController id="HXY-pw-zdd" customClass="HomeBaseViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y2N-ue-twT">
-                        <rect key="frame" x="0.0" y="0.0" width="1242" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1242" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KW3-sO-5wA">
-                                <rect key="frame" x="0.0" y="138" width="1242" height="675"/>
+                                <rect key="frame" x="0.0" y="50" width="1242" height="675"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="eqW-mo-UWI">
                                     <size key="itemSize" width="92" height="10"/>
@@ -613,7 +613,7 @@
                                             <outlet property="newestTableView" destination="wc0-bD-xez" id="7dD-Vw-BVx"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mostViewedCell" id="QhE-um-4rQ" customClass="HomeNewestCell" customModule="TV7_Nebesa" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mostViewedCell" id="QhE-um-4rQ" customClass="HomeMostViewedCell" customModule="TV7_Nebesa" customModuleProvider="target">
                                         <rect key="frame" x="826" y="1.5" width="413" height="672"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -624,7 +624,7 @@
                                                     <rect key="frame" x="0.0" y="15" width="413" height="657"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newestCellId" rowHeight="144" id="1Nz-Ut-eJr" customClass="NewestTableViewCell" customModule="TV7_Nebesa" customModuleProvider="target">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mostViewedCellId" rowHeight="144" id="1Nz-Ut-eJr" customClass="MostViewedTableViewCell" customModule="TV7_Nebesa" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="28" width="413" height="144"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Nz-Ut-eJr" id="FHf-7E-SJ0">
@@ -684,10 +684,10 @@
                                                             </tableViewCellContentView>
                                                             <accessibility key="accessibilityConfiguration" identifier="HomeScreenCell"/>
                                                             <connections>
-                                                                <outlet property="newestCaptionLabel" destination="chi-ni-FJl" id="k1U-w5-uBY"/>
-                                                                <outlet property="newestDateLabel" destination="IFG-x6-pwl" id="1x4-PS-Cnu"/>
-                                                                <outlet property="newestImageView" destination="oxI-Km-4KN" id="clN-7W-edX"/>
-                                                                <outlet property="newestTitleLabel" destination="NdT-oR-OsS" id="DLy-Ih-2mc"/>
+                                                                <outlet property="mostViewedCaption" destination="chi-ni-FJl" id="obI-o0-aBD"/>
+                                                                <outlet property="mostViewedDateLabel" destination="IFG-x6-pwl" id="6qg-Im-CKB"/>
+                                                                <outlet property="mostViewedImageView" destination="oxI-Km-4KN" id="YLU-dC-0Fw"/>
+                                                                <outlet property="mostViewedTitle" destination="NdT-oR-OsS" id="3KS-5s-af7"/>
                                                             </connections>
                                                         </tableViewCell>
                                                     </prototypes>
@@ -707,7 +707,7 @@
                                         </constraints>
                                         <size key="customSize" width="413" height="672"/>
                                         <connections>
-                                            <outlet property="newestTableView" destination="b7c-YS-90h" id="4Sr-zj-dEL"/>
+                                            <outlet property="mostViewedTableView" destination="b7c-YS-90h" id="i1r-4N-Jlt"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -740,9 +740,9 @@
         <!--Navigation Controller-->
         <scene sceneID="Ix5-uq-WVx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UCu-H1-aMA" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="UCu-H1-aMA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BtB-Ha-sQE" customClass="CustomNavigationBar" customModule="TV7_Nebesa" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="BtB-Ha-sQE" customClass="CustomNavigationBar" customModule="TV7_Nebesa" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

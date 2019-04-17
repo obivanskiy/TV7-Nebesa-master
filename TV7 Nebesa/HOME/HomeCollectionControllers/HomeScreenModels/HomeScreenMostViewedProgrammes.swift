@@ -22,6 +22,7 @@ struct HomeScreenMostViewedProgrammes: Codable {
     
     init() {
         homeScreenMostViewedProgrammes = [HomeMostViewedData]()
+        
     }
     
     init(from decoder: Decoder) throws {
@@ -38,7 +39,7 @@ struct HomeMostViewedData: Codable {
     let programName: String
     let episodeNumber: String?
     let caption: String?
-    let homeScreenMostViewedPreviewImageURLString: String?
+    let homeScreenMostViewedPreviewImageURLString: String
     let time: String
     let id: Identifier
     let sid: String?
