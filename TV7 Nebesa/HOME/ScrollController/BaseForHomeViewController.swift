@@ -31,6 +31,21 @@ final class BaseForHomeViewController : UIViewController, UITableViewDataSource,
         }
     }
     
+   
+    var homeScreenNewestData: HomeScreenNewestProgrammes = HomeScreenNewestProgrammes() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    var homeScreenMostViewedData: HomeScreenMostViewedProgrammes = HomeScreenMostViewedProgrammes() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     let tableView = UITableView()
     let titleItem = "Небеса"

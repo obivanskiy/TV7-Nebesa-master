@@ -8,7 +8,8 @@
 
 import UIKit
 
-let reIdentifier = "homeCell"
+let cellId = "homeCell"
+let newestCellId = "homeNewestCell"
 
 
 class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -19,7 +20,7 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMenuBar()
-//        homePageCollectionView.register(HomeRecommendCell.self, forCellWithReuseIdentifier: reIdentifier)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -38,10 +39,10 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     //UICollectionViewDatasource methods
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    //func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         
-        return 1
-    }
+    //    return 1
+   // }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 3
     }
@@ -66,9 +67,14 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reIdentifier, for: indexPath) as! HomeRecommendCell
+    
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeRecommendCell
+            return cell
         
-        return cell
+        }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newestCellId, for: indexPath) as! HomeNewestCell
+            return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

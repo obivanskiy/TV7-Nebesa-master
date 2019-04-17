@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import AVKit
 
-final class HomeVideoPlayerController: UIViewController {
+class HomeVideoPlayerController: UIViewController {
     
     
     //MARK: - Stored properties

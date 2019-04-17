@@ -48,7 +48,7 @@ struct HomeScreenNewestProgrammes: Codable {
         let startDate: String?
         let path: String?
         let linkPath: String?
-        let homeScreenNewestPreviewImageURLString: String?
+        let homeScreenNewestPreviewImageURLString: String
         
         
         

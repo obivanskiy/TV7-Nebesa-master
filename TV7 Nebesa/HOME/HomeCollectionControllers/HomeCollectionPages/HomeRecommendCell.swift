@@ -10,9 +10,9 @@ import UIKit
 
 class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource {
     
-    
     @IBOutlet weak var recommendTableView: UITableView!
-     private var homeScreenProgrammeDataSegue: String = "HomeScreenProgrammePageSegue"
+    
+    private var homeScreenProgrammeDataSegue: String = "HomeScreenProgrammePageSegue"
     let cellIdentifier = "tableCell"
     
         var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes() {
@@ -30,7 +30,6 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
     
     func setupTableView() {
 //        homeScreenDownloadService(homeScreenData: HomeScreenData())
-        print(HomeScreenData())
         recommendTableView.dataSource = self
         recommendTableView.delegate = self
        
@@ -48,7 +47,7 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
    
     
     
-           private func requestHomeScreenMainInformation() {
+            private func requestHomeScreenMainInformation() {
                 NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMainData) { result in
                     switch result {
                     case .failure(let error):
@@ -67,6 +66,30 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
                 }
             }
     
+
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return homeScreenData.homeScreenProgrammes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeScreenCell", for: indexPath) as? RecommendTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.cellModel = homeScreenData.homeScreenProgrammes[indexPath.row]
+         print(homeScreenData.homeScreenProgrammes)
+        return cell
+    
+}
+    
+}
+
+
+
+
+
+
 //    func homeScreenDownloadService(homeScreenData: HomeScreenData) {
 //        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL
 //        guard let url = URL(string: urlToParse) else {
@@ -88,20 +111,3 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
 //        }
 //        urlSessionTask.resume()
 //    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return homeScreenData.homeScreenProgrammes.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeScreenCell", for: indexPath) as? RecommendTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.cellModel = homeScreenData.homeScreenProgrammes[indexPath.row]
-         print(homeScreenData.homeScreenProgrammes)
-        return cell
-    
-}
-    
-}

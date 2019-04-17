@@ -11,7 +11,6 @@ import Foundation
 struct HomeScreenProgrammes: Codable {
     
     let homeScreenProgrammes: [HomeScreenData]
-    
     enum CodingKeys: String, CodingKey {
         case homeScreenProgrammes = "tv7_vod_recommendations"
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class BaseRecommendPresenter {
+class BaseRecommendPresenter {
     let viewController: BaseForHomeViewController!
     
     init(with viewController: BaseForHomeViewController) {
@@ -56,10 +56,51 @@ final class BaseRecommendPresenter {
             print(error.localizedDescription)
         }
     }
+    // Second cell-Screen
+    private func requestHomeScreenNewestProgrammes() {
+        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenNewestProgrammes) { result in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let data):
+                self.serializeHomeScreenNewestProgrammes(requestData: data)
+            }
+        }
+    }
+    
+    private func serializeHomeScreenNewestProgrammes(requestData: (Data)) {
+        do {
+            viewController.self.homeScreenNewestData  = try JSONDecoder().decode(HomeScreenNewestProgrammes.self, from: requestData)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    //Third mostViewedCellScreen
+    
+    
+    private func requestHomeScreenMostViewedProgrammes() {
+        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMostViewedProgrammes) { result in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let data):
+                self.serializeHomeScreenMostViewedProgrammes(requestData: data)
+            }
+        }
+    }
+    
+    private func serializeHomeScreenMostViewedProgrammes(requestData: (Data)) {
+        do {
+            viewController.self.homeScreenMostViewedData  = try JSONDecoder().decode(HomeScreenMostViewedProgrammes.self, from: requestData)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+}
     
     //Newest Programmes
     
     // Most Viewed Programmes
     
-    
-}
+

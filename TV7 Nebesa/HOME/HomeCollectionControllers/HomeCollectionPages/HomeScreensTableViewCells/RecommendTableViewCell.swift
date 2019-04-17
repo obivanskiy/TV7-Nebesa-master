@@ -30,7 +30,7 @@ class RecommendTableViewCell: UITableViewCell {
         }
     }
     
-    private func setupUI(cellModel: HomeScreenData) {
+    func setupUI(cellModel: HomeScreenData) {
         RecommendImageView.sizeToFit()
         RecommendTitleLabel.sizeToFit()
         RecommendTitleLabel.text = cellModel.seriesName
