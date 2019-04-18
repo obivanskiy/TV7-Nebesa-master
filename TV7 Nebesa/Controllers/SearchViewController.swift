@@ -63,6 +63,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        if searchResults.results[indexPath.row].type == "series" {
+            //define SearchCell
+        }
+        // Change to EpisodeCell
         guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: SearchSeriesCell.identifier, for: indexPath) as? SearchSeriesCell else {
             return UITableViewCell()
         }
