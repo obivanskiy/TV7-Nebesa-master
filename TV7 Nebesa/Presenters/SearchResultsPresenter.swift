@@ -10,10 +10,10 @@ import Foundation
 
 
 class SearchResultsPresenter {
-    let viewController: SearchTableViewController!
+    let viewController: SearchViewController!
     var userText = String()
 
-    init(with viewController: SearchTableViewController, userText: String) {
+    init(with viewController: SearchViewController, userText: String = "Библия") {
         self.viewController = viewController
         self.userText = userText
         fetchSearchResults(userText)
