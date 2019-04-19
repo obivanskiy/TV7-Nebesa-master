@@ -24,19 +24,13 @@ class SearchSeriesCell: UITableViewCell {
             setupUI(cellModel: cellModel)
         }
     }
-//
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//
-//    }
-//
+
     private func setupUI(cellModel: SearchResultsData) {
         seriesNameLabel.text = cellModel.name
         captionLabel.text = cellModel.caption
         guard let previewImageURL = URL.init(string: cellModel.imagePath) else { return }
         seriesPreviewImage.kf.setImage(with: previewImageURL)
         self.selectionStyle = .none
-        
     }
 
 }

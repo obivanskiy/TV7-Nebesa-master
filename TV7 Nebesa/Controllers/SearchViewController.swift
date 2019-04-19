@@ -10,6 +10,7 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
+
     //MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResultsTableView: UITableView!
@@ -49,30 +50,32 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
+        self.definesPresentationContext = true
     }
 
-
-
     //MARK: - Table View Data Source Methods
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 2
-//    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.results.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         if searchResults.results[indexPath.row].type == "series" {
-            //define SearchCell
+            guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: SearchSeriesCell.identifier, for: indexPath) as? SearchSeriesCell else {
+                return UITableViewCell()
+            }
+            cell.cellModel = searchResults.results[indexPath.row]
+            return cell
         }
-        // Change to EpisodeCell
-        guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: SearchSeriesCell.identifier, for: indexPath) as? SearchSeriesCell else {
+        guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: SearchEpisodeCell.identifier, for: indexPath) as? SearchEpisodeCell else {
             return UITableViewCell()
         }
         cell.cellModel = searchResults.results[indexPath.row]
         return cell
+    }
+
+    //MARK: Table View Delegate Methods
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath)
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -92,11 +95,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
         searchResultsTableView.keyboardDismissMode = .onDrag
-        //Register for SearchSeriesCell.xib
+        //Register for SearchSeriesCell.xib and SearchEpisodeCell.xib
         searchResultsTableView.register(UINib(nibName: SearchSeriesCell.identifier, bundle: .none), forCellReuseIdentifier: SearchSeriesCell.identifier)
         searchResultsTableView.register(UINib(nibName: SearchEpisodeCell.identifier, bundle: .none), forCellReuseIdentifier: SearchEpisodeCell.identifier)
-        searchResultsTableView.estimatedRowHeight = 200
-        searchResultsTableView.rowHeight = UITableView.automaticDimension
+//        searchResultsTableView.estimatedRowHeight = 200
+//        searchResultsTableView.rowHeight = UITableView.automaticDimension
     }
 
     private func setupSearchBar() {
