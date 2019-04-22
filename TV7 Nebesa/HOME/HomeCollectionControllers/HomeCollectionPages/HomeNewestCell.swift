@@ -31,9 +31,8 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
         //        homeScreenDownloadService(homeScreenData: HomeScreenData())
         newestTableView.dataSource = self
         newestTableView.delegate = self
-        
-        print(homeScreenNewestData.homeScreenNewestProgrammes)
-        newestTableView.contentInset = .init(top: 50, left: 0, bottom: 0, right: 0)
+//        print(homeScreenNewestData.homeScreenNewestProgrammes)
+//        newestTableView.contentInset = .init(top: 50, left: 0, bottom: 0, right: 0)
         newestTableView.scrollIndicatorInsets = .init(top: 50, left: 0, bottom: 0, right: 0)
     }
     
@@ -47,7 +46,7 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
             return UITableViewCell()
         }
         cell.cellModel = homeScreenNewestData.homeScreenNewestProgrammes[indexPath.row]
-        print(homeScreenNewestData.homeScreenNewestProgrammes)
+//        print(homeScreenNewestData.homeScreenNewestProgrammes)
        
         return cell
         
@@ -72,6 +71,7 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
     private func serializeHomeScreenNewestInformation(requestData: (Data)) {
         do {
             self.homeScreenNewestData  = try JSONDecoder().decode(HomeScreenNewestProgrammes.self, from: requestData)
+            print(homeScreenNewestData.homeScreenNewestProgrammes)
         } catch let error {
             print(error.localizedDescription)
         }

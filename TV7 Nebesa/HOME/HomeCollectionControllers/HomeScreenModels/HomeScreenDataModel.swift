@@ -11,6 +11,7 @@ import Foundation
 struct HomeScreenProgrammes: Codable {
     
     let homeScreenProgrammes: [HomeScreenData]
+    
     enum CodingKeys: String, CodingKey {
         case homeScreenProgrammes = "tv7_vod_recommendations"
     }
@@ -21,11 +22,13 @@ struct HomeScreenProgrammes: Codable {
     
     init() {
         homeScreenProgrammes = [HomeScreenData]()
+        print("DDDD", homeScreenProgrammes)
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         homeScreenProgrammes = try container.decodeIfPresent(Array<HomeScreenData>.self, forKey: .homeScreenProgrammes) ?? [HomeScreenData]()
+        print("lll", HomeScreenData())
     }
 }
     
@@ -118,6 +121,7 @@ struct HomeScreenProgrammes: Codable {
             homeScreenVideoPreviewImageURLString = try container.decodeIfPresent(String.self, forKey: .imagePath) ?? ""
             seriesName = try container.decodeIfPresent(String.self, forKey: .seriesName) ?? ""
             visibleOnVodSince = try container.decodeIfPresent(String.self, forKey: .visibleOnVodSince) ?? ""
+           
             
         }
 }

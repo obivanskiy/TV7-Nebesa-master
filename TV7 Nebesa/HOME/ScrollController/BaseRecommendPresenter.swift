@@ -79,28 +79,28 @@ class BaseRecommendPresenter {
     //Third mostViewedCellScreen
     
     
-    private func requestHomeScreenMostViewedProgrammes() {
-        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMostViewedProgrammes) { result in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let data):
-                self.serializeHomeScreenMostViewedProgrammes(requestData: data)
-            }
-        }
-    }
-    
-    private func serializeHomeScreenMostViewedProgrammes(requestData: (Data)) {
-        do {
-            viewController.self.homeScreenMostViewedData  = try JSONDecoder().decode(HomeScreenMostViewedProgrammes.self, from: requestData)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-}
+//    private func requestHomeScreenMostViewedProgrammes() {
+//        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMostViewedProgrammes) { result in
+//            switch result {
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .success(let data):
+//                self.serializeHomeScreenMostViewedProgrammes(requestData: data)
+//            }
+//        }
+//    }
+//    
+//    private func serializeHomeScreenMostViewedProgrammes(requestData: (Data)) {
+//        do {
+//            viewController.self.homeScreenMostViewedData  = try JSONDecoder().decode(HomeScreenMostViewedProgrammes.self, from: requestData)
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//    }
+//}
     
     //Newest Programmes
     
     // Most Viewed Programmes
     
-
+}

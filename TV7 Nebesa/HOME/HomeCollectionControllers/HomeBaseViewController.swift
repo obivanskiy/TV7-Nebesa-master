@@ -10,7 +10,9 @@ import UIKit
 
 let cellId = "homeCell"
 let newestCellId = "homeNewestCell"
-let mostViewedCellId = "mostViewedCell" 
+let mostViewedCellId = "mostViewedCell"
+
+let titleItem = "Небеса"
 
 
 class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -20,35 +22,25 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupMenuBar()
+        //setupMenuBar()
+        setupNavigationItems()
         
-        // Do any additional setup after loading the view.
     }
-    
     
     //UICollectionViewDelegateFlowLayout methods
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat
     {
-        
         return 0;
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat
     {
-        
         return 0;
     }
     
-    
-    //UICollectionViewDatasource methods
-    //func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        
-    //    return 1
-   // }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 3
     }
   
-    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let index = Int(targetContentOffset.pointee.x / view.frame.width)
         let indexPath = IndexPath(item: index, section: 0)
@@ -61,7 +53,6 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         homePageCollectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return 3
@@ -69,14 +60,14 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-        if indexPath.item == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeRecommendCell
+        if indexPath.item == 2 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mostViewedCellId, for: indexPath) as! HomeMostViewedCell
             return cell
         } else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newestCellId, for: indexPath) as! HomeNewestCell
             return cell
         } 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mostViewedCellId, for: indexPath) as! HomeMostViewedCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeRecommendCell
         return cell
     }
     
@@ -112,6 +103,13 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         view.addConstraintsWithFormat(withVisualFormat: "H:|[v0]|", views: menuBar)
         view.addConstraintsWithFormat(withVisualFormat: "V:[v0(50)]", views: menuBar)
         menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+    }
+    func setupNavigationItems() {
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        titleLabel.text = titleItem
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
+        navigationItem.titleView = titleLabel
     }
     
     

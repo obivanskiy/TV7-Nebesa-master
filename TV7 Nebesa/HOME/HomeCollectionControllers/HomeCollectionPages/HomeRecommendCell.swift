@@ -13,7 +13,7 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
     @IBOutlet weak var recommendTableView: UITableView!
     
     private var homeScreenProgrammeDataSegue: String = "HomeScreenProgrammePageSegue"
-    let cellIdentifier = "tableCell"
+    
     
         var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes() {
             didSet {
@@ -33,7 +33,7 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
         recommendTableView.dataSource = self
         recommendTableView.delegate = self
        
-       
+//       print(homeScreenData.homeScreenProgrammes)
         recommendTableView.contentInset = .init(top: 50, left: 0, bottom: 0, right: 0)
         recommendTableView.scrollIndicatorInsets = .init(top: 50, left: 0, bottom: 0, right: 0)
     }
@@ -43,10 +43,6 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
                 HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
             }
     
-   
-   
-    
-    
             private func requestHomeScreenMainInformation() {
                 NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMainData) { result in
                     switch result {
@@ -54,13 +50,17 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
                         print(error.localizedDescription)
                     case .success(let data):
                         self.serializeHomeScreenMainInformation(requestData: data)
+                        print("data1",data)
+                   
                     }
                 }
+                
             }
         
             private func serializeHomeScreenMainInformation(requestData: (Data)) {
                 do {
                     self.homeScreenData  = try JSONDecoder().decode(HomeScreenProgrammes.self, from: requestData)
+                    print("Aaaa", homeScreenData.homeScreenProgrammes)
                 } catch let error {
                     print(error.localizedDescription)
                 }
@@ -78,7 +78,7 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
             return UITableViewCell()
         }
         cell.cellModel = homeScreenData.homeScreenProgrammes[indexPath.row]
-         print(homeScreenData.homeScreenProgrammes)
+//         print(homeScreenData.homeScreenProgrammes)
         return cell
     
 }

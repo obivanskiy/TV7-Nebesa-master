@@ -21,7 +21,9 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
         }
     }
     
+    
     override func awakeFromNib() {
+        print(">>>", "awakeFromNib")
         requestHomeScreenMostViewedInformation()
         setupTableView()
     }
@@ -37,14 +39,17 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(homeMostViewedData.homeScreenMostViewedProgrammes.count)
+        print(">>>", homeMostViewedData.homeScreenMostViewedProgrammes.count)
         return homeMostViewedData.homeScreenMostViewedProgrammes.count
+//        homeMostViewedData.homeScreenMostViewedProgrammes.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = mostViewedTableView.dequeueReusableCell(withIdentifier: "mostViewedCellId", for: indexPath) as? MostViewedTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MostViewedCell", for: indexPath) as? MostViewedTableViewCell
+            else {
+                print("BAD NEWS")
             return UITableViewCell()
         }
         cell.cellModel = homeMostViewedData.homeScreenMostViewedProgrammes[indexPath.row]
@@ -59,24 +64,31 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
         //        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
     }
     
-    private func requestHomeScreenMostViewedInformation() {
+    func requestHomeScreenMostViewedInformation() {
         NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMostViewedProgrammes) { result in
+            
+            print(">>>", result)
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let data):
                 self.serializeHomeScreenMostViewedInformation(requestData: data)
-                print(data)
+                print("data1", data)
+             
+               
             }
         }
     }
     
-    private func serializeHomeScreenMostViewedInformation(requestData: (Data)) {
+    func serializeHomeScreenMostViewedInformation(requestData: (Data)) {
         do {
+            print(">>>", String(data: requestData, encoding: .utf8))
+            
             self.homeMostViewedData  = try JSONDecoder().decode(HomeScreenMostViewedProgrammes.self, from: requestData)
+            print("BBBB", homeMostViewedData.homeScreenMostViewedProgrammes.count)
+            
         } catch let error {
             print(error.localizedDescription)
-            print("Done!!!!!!!!")
         }
     }
 }

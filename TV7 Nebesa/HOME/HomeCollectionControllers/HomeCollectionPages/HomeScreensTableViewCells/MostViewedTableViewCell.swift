@@ -17,11 +17,7 @@ class MostViewedTableViewCell: UITableViewCell {
     @IBOutlet weak var mostViewedCaption: UILabel!
     @IBOutlet weak var mostViewedImageView: UIImageView!
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
+    
     var cellModel: HomeMostViewedData? {
         didSet {
             guard let cellModel = cellModel else { return }
@@ -33,7 +29,7 @@ class MostViewedTableViewCell: UITableViewCell {
     func setupUI(cellModel: HomeMostViewedData) {
        mostViewedImageView.sizeToFit()
         mostViewedTitle.sizeToFit()
-        mostViewedTitle.text = cellModel.seriesName
+        mostViewedTitle.text = cellModel.programName
         
         mostViewedDateLabel.text = "Длительность: \(cellModel.time)"
         

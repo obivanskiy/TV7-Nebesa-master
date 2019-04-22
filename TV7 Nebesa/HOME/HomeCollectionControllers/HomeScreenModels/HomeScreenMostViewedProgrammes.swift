@@ -6,14 +6,14 @@
 //  Copyright © 2019 Богдан Воробйовський. All rights reserved.
 //
 
-
 import Foundation
 
 struct HomeScreenMostViewedProgrammes: Codable {
+   
     let homeScreenMostViewedProgrammes: [HomeMostViewedData]
     
     enum CodingKeys: String, CodingKey {
-        case homeScreenMostViewedProgrammes = "tv7_vod_previousweek_stats"
+        case homeScreenMostViewedProgrammes = "get_tv7_vod_previousweek_stats"
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -22,26 +22,27 @@ struct HomeScreenMostViewedProgrammes: Codable {
     
     init() {
         homeScreenMostViewedProgrammes = [HomeMostViewedData]()
-        
+        print("CCCC", homeScreenMostViewedProgrammes)
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         homeScreenMostViewedProgrammes = try container.decodeIfPresent(Array<HomeMostViewedData>.self, forKey: .homeScreenMostViewedProgrammes) ?? [HomeMostViewedData]()
+        print("QQQ", [HomeMostViewedData]())
     }
 }
 
 struct HomeMostViewedData: Codable {
     typealias Identifier = String
     
-    let count: Int?
+    let count: String?
     let seriesName: String?
-    let programName: String
+    let programName: String?
     let episodeNumber: String?
     let caption: String?
     let homeScreenMostViewedPreviewImageURLString: String
-    let time: String
-    let id: Identifier
+    let time: String?
+    let id: String?
     let sid: String?
     let cid: String?
         
@@ -82,7 +83,7 @@ struct HomeMostViewedData: Codable {
     
     init() {
         
-        self.count = 0
+        self.count = ""
         self.seriesName = ""
         self.programName = ""
         self.episodeNumber = ""
@@ -92,6 +93,7 @@ struct HomeMostViewedData: Codable {
         self.id = ""
         self.sid = ""
         self.cid = ""
+        print(self.homeScreenMostViewedPreviewImageURLString)
         
     
         
@@ -99,7 +101,7 @@ struct HomeMostViewedData: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        count = try container.decodeIfPresent(Int.self, forKey: .count) ?? 0
+        count = try container.decodeIfPresent(String.self, forKey: .count) ?? ""
         seriesName = try container.decodeIfPresent(String.self, forKey: .seriesName) ?? ""
         programName = try container.decodeIfPresent(String.self, forKey: .programName) ?? ""
         episodeNumber = try container.decodeIfPresent(String.self, forKey: .episodeNumber) ?? ""
@@ -109,7 +111,6 @@ struct HomeMostViewedData: Codable {
         id = try container.decodeIfPresent(Identifier.self, forKey: .id) ?? ""
         sid = try container.decodeIfPresent(String.self, forKey: .sid) ?? ""
         cid = try container.decodeIfPresent(String.self, forKey: .cid) ?? ""
-        
     }
 }
 

@@ -9,24 +9,25 @@
 import Foundation
 
 struct HomeScreenNewestProgrammes: Codable {
+    
     let homeScreenNewestProgrammes: [HomeNewestData]
     
-        enum CodingKeys: String, CodingKey {
-            case homeScreenNewestProgrammes = "tv7_vod_new"
-        }
-        func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            try container.encode(homeScreenNewestProgrammes, forKey: .homeScreenNewestProgrammes)
-        }
-        
-        init() {
-            homeScreenNewestProgrammes = [HomeNewestData]()
-        }
-        
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            homeScreenNewestProgrammes = try container.decodeIfPresent(Array<HomeNewestData>.self, forKey: .homeScreenNewestProgrammes) ?? [HomeNewestData]()
-        }
+    enum CodingKeys: String, CodingKey {
+        case homeScreenNewestProgrammes = "tv7_vod_new"
+    }
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(homeScreenNewestProgrammes, forKey: .homeScreenNewestProgrammes)
+    }
+    
+    init() {
+        homeScreenNewestProgrammes = [HomeNewestData]()
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        homeScreenNewestProgrammes = try container.decodeIfPresent(Array<HomeNewestData>.self, forKey: .homeScreenNewestProgrammes) ?? [HomeNewestData]()
+    }
     }
     
     struct HomeNewestData: Codable {

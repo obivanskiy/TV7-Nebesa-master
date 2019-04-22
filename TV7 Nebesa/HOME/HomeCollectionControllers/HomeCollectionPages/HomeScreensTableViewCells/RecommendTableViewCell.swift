@@ -35,7 +35,7 @@ class RecommendTableViewCell: UITableViewCell {
         RecommendTitleLabel.sizeToFit()
         RecommendTitleLabel.text = cellModel.seriesName
         
-        RecommendDateLabel.text = "Длительность: \(dateFormatter(cellModel.visibleOnVodSince))"
+        RecommendDateLabel.text = "Дата: \(dateFormatter(cellModel.visibleOnVodSince))"
         
         RecommendCaptionLabel.text = cellModel.caption
         
@@ -47,9 +47,9 @@ class RecommendTableViewCell: UITableViewCell {
     
     private func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }
-        let date = Date(timeIntervalSinceNow: unixDate)
+        let date = Date(timeIntervalSince1970: unixDate/1000.0 )
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MM YYYY"
+        dateFormatter.dateFormat = "dd/MM/YYYY"
         
         let newDate = dateFormatter.string(from: date)
         return newDate
