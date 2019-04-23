@@ -33,7 +33,7 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
         newestTableView.delegate = self
 //        print(homeScreenNewestData.homeScreenNewestProgrammes)
 //        newestTableView.contentInset = .init(top: 50, left: 0, bottom: 0, right: 0)
-        newestTableView.scrollIndicatorInsets = .init(top: 50, left: 0, bottom: 0, right: 0)
+//        newestTableView.scrollIndicatorInsets = .init(top: 50, left: 0, bottom: 0, right: 0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

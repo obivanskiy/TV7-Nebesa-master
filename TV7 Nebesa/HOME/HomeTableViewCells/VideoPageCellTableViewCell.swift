@@ -26,6 +26,10 @@ class VideoPageCellTableViewCell: UITableViewCell {
         }
     }
     
+    override func awakeFromNib() {
+      
+    }
+    
     func setupUI(cellModel: HomeScreenData) {
         VideoTitleLabel.text = cellModel.name
         VideoDescriptionLabel.text = cellModel.caption

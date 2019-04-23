@@ -29,9 +29,9 @@ class MostViewedTableViewCell: UITableViewCell {
     func setupUI(cellModel: HomeMostViewedData) {
        mostViewedImageView.sizeToFit()
         mostViewedTitle.sizeToFit()
-        mostViewedTitle.text = cellModel.programName
+        mostViewedTitle.text = cellModel.seriesName ?? cellModel.programName
         
-        mostViewedDateLabel.text = "Длительность: \(cellModel.time)"
+        mostViewedDateLabel.text = "Длительность: \(dateFormatter(cellModel.time!))"
         
         mostViewedCaption.text = cellModel.caption
         
@@ -40,7 +40,15 @@ class MostViewedTableViewCell: UITableViewCell {
         }
         mostViewedImageView.kf.setImage(with: previewImageURL)
     }
-
+    private func dateFormatter(_ dateIn: String) -> String {
+        guard let unixDate = Double(dateIn) else { return "" }
+        let date = Date(timeIntervalSince1970: unixDate/1000.0 )
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        let newDate = dateFormatter.string(from: date)
+        return newDate
+    }
     
     
     

@@ -9,6 +9,26 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Compact-Display-Regular.otf">
+            <string>SFCompactDisplay-Regular</string>
+        </array>
+        <array key="SF-Compact-Display-Ultralight.otf">
+            <string>SFCompactDisplay-Ultralight</string>
+        </array>
+        <array key="SF-Compact-Text-MediumItalic.otf">
+            <string>SFCompactText-MediumItalic</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Thin.otf">
+            <string>SFProDisplay-Thin</string>
+        </array>
+        <array key="SF-Pro-Display-Ultralight.otf">
+            <string>SFProDisplay-Ultralight</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Nebessa Screen Controller-->
         <scene sceneID="dAk-NS-Oth">
@@ -153,76 +173,76 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-0R-sdG" userLabel="ProgramView">
-                                <rect key="frame" x="0.0" y="2" width="414" height="233"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UVY-0R-sdG" secondAttribute="height" multiplier="16:9" id="bPl-1X-7Sp"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="videoTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5w-82-Kt8" userLabel="VideoTitle">
-                                <rect key="frame" x="16" y="255" width="382" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Dkk-bA-OLn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="videoDescription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xio-FU-gBQ" userLabel="VideoDescription">
-                                <rect key="frame" x="16" y="292" width="382" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="cPv-EQ-cNy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EpisodeNumber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGL-5C-7bP" userLabel="EpisodeNumber">
-                                <rect key="frame" x="16" y="343" width="382" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="As6-da-2bX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baH-su-eJa" userLabel="Duration">
-                                <rect key="frame" x="16" y="370" width="382" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="A14-qa-CSH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LiveBroadcast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvH-J4-xYA" userLabel="FirstBroadcast">
-                                <rect key="frame" x="16" y="397" width="382" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="AqJ-gd-Pml">
+                                <rect key="frame" x="15" y="243" width="384" height="99"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="videoTitle" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5w-82-Kt8" userLabel="VideoTitle">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Dkk-bA-OLn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFCompactText-MediumItalic" family="SF Compact Text" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="videoDescription" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xio-FU-gBQ" userLabel="VideoDescription">
+                                        <rect key="frame" x="0.0" y="39" width="384" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="3Az-3p-uCw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XZe-gd-H0l">
+                                <rect key="frame" x="15" y="347" width="384" height="62.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EpisodeNumber" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGL-5C-7bP" userLabel="EpisodeNumber">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="As6-da-2bX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Ultralight" family="SF Pro Display" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baH-su-eJa" userLabel="Duration">
+                                        <rect key="frame" x="0.0" y="21" width="384" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="A14-qa-CSH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Ultralight" family="SF Pro Display" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LiveBroadcast" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvH-J4-xYA" userLabel="FirstBroadcast">
+                                        <rect key="frame" x="0.0" y="42" width="384" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Ultralight" family="SF Pro Display" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="B5w-82-Kt8" firstAttribute="top" secondItem="UVY-0R-sdG" secondAttribute="bottom" constant="20" id="1qs-sG-6z6"/>
-                            <constraint firstItem="B5w-82-Kt8" firstAttribute="leading" secondItem="4yb-VM-feC" secondAttribute="leading" constant="16" id="DgT-mN-dC9"/>
-                            <constraint firstItem="VGL-5C-7bP" firstAttribute="leading" secondItem="B5w-82-Kt8" secondAttribute="leading" id="HJD-6O-a4t"/>
-                            <constraint firstItem="VGL-5C-7bP" firstAttribute="trailing" secondItem="B5w-82-Kt8" secondAttribute="trailing" id="Isn-AQ-mzW"/>
-                            <constraint firstItem="baH-su-eJa" firstAttribute="top" secondItem="VGL-5C-7bP" secondAttribute="bottom" constant="6" id="JHT-w0-tq3"/>
-                            <constraint firstItem="VGL-5C-7bP" firstAttribute="top" secondItem="Xio-FU-gBQ" secondAttribute="bottom" constant="30" id="MYJ-bs-FhU"/>
-                            <constraint firstItem="AvH-J4-xYA" firstAttribute="top" secondItem="baH-su-eJa" secondAttribute="bottom" constant="6" id="Qnb-dI-paj"/>
+                            <constraint firstItem="XZe-gd-H0l" firstAttribute="top" secondItem="AqJ-gd-Pml" secondAttribute="bottom" constant="5" id="2dh-NO-Tjf"/>
+                            <constraint firstItem="UVY-0R-sdG" firstAttribute="top" secondItem="4yb-VM-feC" secondAttribute="top" id="9ck-fs-k5t"/>
+                            <constraint firstItem="4yb-VM-feC" firstAttribute="trailing" secondItem="XZe-gd-H0l" secondAttribute="trailing" constant="15" id="B6r-fh-AWi"/>
                             <constraint firstItem="UVY-0R-sdG" firstAttribute="leading" secondItem="4yb-VM-feC" secondAttribute="leading" id="QpX-cv-bF7"/>
                             <constraint firstItem="UVY-0R-sdG" firstAttribute="trailing" secondItem="4yb-VM-feC" secondAttribute="trailing" id="Rxo-SO-e8o"/>
-                            <constraint firstItem="UVY-0R-sdG" firstAttribute="top" secondItem="4yb-VM-feC" secondAttribute="top" constant="2" id="SuM-gU-rEj"/>
-                            <constraint firstItem="baH-su-eJa" firstAttribute="leading" secondItem="B5w-82-Kt8" secondAttribute="leading" id="THc-Bb-H24"/>
-                            <constraint firstItem="Xio-FU-gBQ" firstAttribute="trailing" secondItem="B5w-82-Kt8" secondAttribute="trailing" id="V58-5q-Zr6"/>
-                            <constraint firstItem="Xio-FU-gBQ" firstAttribute="leading" secondItem="B5w-82-Kt8" secondAttribute="leading" id="WXo-gy-tCX"/>
-                            <constraint firstItem="AvH-J4-xYA" firstAttribute="trailing" secondItem="B5w-82-Kt8" secondAttribute="trailing" id="Ye7-XS-1Gw"/>
-                            <constraint firstItem="baH-su-eJa" firstAttribute="trailing" secondItem="B5w-82-Kt8" secondAttribute="trailing" id="a9d-5c-p4u"/>
-                            <constraint firstItem="4yb-VM-feC" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="AvH-J4-xYA" secondAttribute="bottom" constant="308" id="jaA-to-0IA"/>
-                            <constraint firstItem="Xio-FU-gBQ" firstAttribute="top" secondItem="B5w-82-Kt8" secondAttribute="bottom" constant="16" id="lF2-X8-2cd"/>
-                            <constraint firstItem="AvH-J4-xYA" firstAttribute="leading" secondItem="B5w-82-Kt8" secondAttribute="leading" id="o0e-eq-rP0"/>
-                            <constraint firstItem="B5w-82-Kt8" firstAttribute="centerX" secondItem="UVY-0R-sdG" secondAttribute="centerX" id="xWf-gY-x3Q"/>
+                            <constraint firstItem="4yb-VM-feC" firstAttribute="trailing" secondItem="AqJ-gd-Pml" secondAttribute="trailing" constant="15" id="jV5-uh-DjH"/>
+                            <constraint firstItem="AqJ-gd-Pml" firstAttribute="top" secondItem="UVY-0R-sdG" secondAttribute="bottom" constant="10" id="jiE-5t-Vm8"/>
+                            <constraint firstItem="XZe-gd-H0l" firstAttribute="leading" secondItem="4yb-VM-feC" secondAttribute="leading" constant="15" id="vhX-Kb-OI8"/>
+                            <constraint firstItem="AqJ-gd-Pml" firstAttribute="leading" secondItem="4yb-VM-feC" secondAttribute="leading" constant="15" id="xUD-5Y-vkn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4yb-VM-feC"/>
                     </view>
@@ -236,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkL-AW-vFr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4223" y="1219"/>
+            <point key="canvasLocation" x="4221.739130434783" y="1218.75"/>
         </scene>
         <!--Menu Table View Controller-->
         <scene sceneID="wGp-kB-1M4">
@@ -395,12 +415,12 @@
                                                                             <constraint firstAttribute="height" constant="129.5" id="xPz-vG-AII"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мессия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cz-Vp-EIn">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мессия" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cz-Vp-EIn">
                                                                         <rect key="frame" x="227.5" y="12" width="180.5" height="19"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="19" id="G1e-11-ald"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -409,16 +429,13 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="11" id="N1L-8D-O6B"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                        <fontDescription key="fontDescription" name="SFCompactDisplay-Ultralight" family="SF Compact Display" pointSize="11"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yc4-xA-Pge">
-                                                                        <rect key="frame" x="229" y="54" width="174" height="17"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="dOJ-IG-7ND"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yc4-xA-Pge">
+                                                                        <rect key="frame" x="229" y="54" width="174" height="79.5"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Thin" family="SF Pro Display" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -433,6 +450,7 @@
                                                                     <constraint firstItem="eFP-g8-Lya" firstAttribute="leading" secondItem="8cz-Vp-EIn" secondAttribute="leading" id="ZCV-sv-08x"/>
                                                                     <constraint firstAttribute="trailingMargin" secondItem="eFP-g8-Lya" secondAttribute="trailing" constant="-11" id="a8v-iA-Uqt"/>
                                                                     <constraint firstItem="8cz-Vp-EIn" firstAttribute="leading" secondItem="pPS-XI-qJR" secondAttribute="trailing" constant="6" id="kAJ-It-Wa7"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Yc4-xA-Pge" secondAttribute="bottom" constant="10" id="mAl-KZ-wE8"/>
                                                                     <constraint firstItem="8cz-Vp-EIn" firstAttribute="top" secondItem="pPS-XI-qJR" secondAttribute="top" constant="5" id="nhJ-5C-3bg"/>
                                                                     <constraint firstItem="Yc4-xA-Pge" firstAttribute="leading" secondItem="pPS-XI-qJR" secondAttribute="trailing" constant="7.5" id="qIO-pB-NcD"/>
                                                                     <constraint firstItem="pPS-XI-qJR" firstAttribute="centerY" secondItem="dQC-p3-IaO" secondAttribute="centerY" id="v5T-Tl-OGY"/>
@@ -493,12 +511,12 @@
                                                                             <constraint firstAttribute="width" secondItem="ZKu-Mf-qUd" secondAttribute="height" multiplier="16:9" constant="-16.670000000000002" id="Fth-wf-S62"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мессия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMC-Cm-6sv">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мессия" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="IMC-Cm-6sv">
                                                                         <rect key="frame" x="227.5" y="12" width="180.5" height="19"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="19" id="NpH-Ta-hpM"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                                        <fontDescription key="fontDescription" name="SFCompactText-MediumItalic" family="SF Compact Text" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -507,16 +525,16 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="11" id="qOg-sz-zvf"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                        <fontDescription key="fontDescription" name="SFCompactDisplay-Ultralight" family="SF Compact Display" pointSize="11"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHo-Jz-DSX">
-                                                                        <rect key="frame" x="229" y="54" width="174" height="17"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHo-Jz-DSX">
+                                                                        <rect key="frame" x="229" y="54" width="174" height="81.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="spC-gj-aPr"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Thin" family="SF Pro Display" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -527,6 +545,7 @@
                                                                     <constraint firstItem="IMC-Cm-6sv" firstAttribute="leading" secondItem="mKn-Pc-hN9" secondAttribute="leading" id="D86-8p-Y2l"/>
                                                                     <constraint firstItem="IMC-Cm-6sv" firstAttribute="leading" secondItem="ZKu-Mf-qUd" secondAttribute="trailing" constant="6" id="LgL-cn-rpl"/>
                                                                     <constraint firstAttribute="trailing" secondItem="DHo-Jz-DSX" secondAttribute="trailing" constant="10" id="SyN-yL-jfX"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="DHo-Jz-DSX" secondAttribute="bottom" constant="8" id="Wsu-oA-swv"/>
                                                                     <constraint firstItem="mKn-Pc-hN9" firstAttribute="top" secondItem="IMC-Cm-6sv" secondAttribute="bottom" constant="2" id="iLe-Ar-DFS"/>
                                                                     <constraint firstAttribute="trailing" secondItem="IMC-Cm-6sv" secondAttribute="trailing" constant="5" id="jS7-f3-rtU"/>
                                                                     <constraint firstItem="ZKu-Mf-qUd" firstAttribute="leading" secondItem="O9h-ZU-gg6" secondAttribute="leading" constant="8" id="m5P-59-7Za"/>
@@ -590,12 +609,12 @@
                                                                             <constraint firstAttribute="width" secondItem="oxI-Km-4KN" secondAttribute="height" multiplier="16:9" constant="-16.670000000000002" id="Y12-lu-x5C"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мессия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdT-oR-OsS">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мессия" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="NdT-oR-OsS">
                                                                         <rect key="frame" x="227.5" y="12" width="180.5" height="19"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="19" id="gNw-PB-ctn"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -604,16 +623,16 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="11" id="0hE-ab-BmP"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                        <fontDescription key="fontDescription" name="SFCompactDisplay-Ultralight" family="SF Compact Display" pointSize="11"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chi-ni-FJl">
-                                                                        <rect key="frame" x="229" y="54" width="174" height="17"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="chi-ni-FJl">
+                                                                        <rect key="frame" x="229" y="54" width="174" height="79.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="cq9-U1-0NV"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Thin" family="SF Pro Display" pointSize="13"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -625,6 +644,7 @@
                                                                     <constraint firstItem="chi-ni-FJl" firstAttribute="leading" secondItem="oxI-Km-4KN" secondAttribute="trailing" constant="7.5" id="ERC-4S-lOE"/>
                                                                     <constraint firstAttribute="trailing" secondItem="NdT-oR-OsS" secondAttribute="trailing" constant="5" id="Osv-xQ-hb7"/>
                                                                     <constraint firstItem="NdT-oR-OsS" firstAttribute="top" secondItem="oxI-Km-4KN" secondAttribute="top" constant="5" id="Tsm-aK-SvD"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="chi-ni-FJl" secondAttribute="bottom" constant="10" id="YA1-15-dH5"/>
                                                                     <constraint firstItem="oxI-Km-4KN" firstAttribute="centerY" secondItem="FHf-7E-SJ0" secondAttribute="centerY" id="fDY-MO-ZuV"/>
                                                                     <constraint firstItem="IFG-x6-pwl" firstAttribute="leading" secondItem="NdT-oR-OsS" secondAttribute="leading" id="iFi-KF-gIV"/>
                                                                     <constraint firstAttribute="trailing" secondItem="chi-ni-FJl" secondAttribute="trailing" constant="10" id="ikq-Tk-xF6"/>
@@ -703,7 +723,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Ix5-uq-WVx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="UCu-H1-aMA" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UCu-H1-aMA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="BtB-Ha-sQE" customClass="CustomNavigationBar" customModule="TV7_Nebesa" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

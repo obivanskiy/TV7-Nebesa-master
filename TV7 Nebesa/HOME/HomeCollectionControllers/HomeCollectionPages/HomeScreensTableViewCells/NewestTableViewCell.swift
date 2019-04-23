@@ -34,7 +34,7 @@ class NewestTableViewCell: UITableViewCell {
         newestTitleLabel.sizeToFit()
         newestTitleLabel.text = cellModel.seriesName
         
-        newestDateLabel.text = "Длительность: \(cellModel.firstBroadcast)"
+        newestDateLabel.text = dateFormatter(cellModel.firstBroadcast)
         
         newestCaptionLabel.text = cellModel.caption
         
@@ -42,6 +42,15 @@ class NewestTableViewCell: UITableViewCell {
             return
         }
         newestImageView.kf.setImage(with: previewImageURL)
+    }
+    private func dateFormatter(_ dateIn: String) -> String {
+        guard let unixDate = Double(dateIn) else { return "" }
+        let date = Date(timeIntervalSince1970: unixDate/1000.0 )
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY"
+        
+        let newDate = dateFormatter.string(from: date)
+        return newDate
     }
 
 }

@@ -34,8 +34,8 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
         mostViewedTableView.delegate = self
         
         print(homeMostViewedData.homeScreenMostViewedProgrammes)
-        mostViewedTableView.contentInset = .init(top: 50, left: 0, bottom: 0, right: 0)
-        mostViewedTableView.scrollIndicatorInsets = .init(top: 50, left: 0, bottom: 0, right: 0)
+//        mostViewedTableView.contentInset = .init(top: 50, left: 0, bottom: 0, right: 0)
+//        mostViewedTableView.scrollIndicatorInsets = .init(top: 50, left: 0, bottom: 0, right: 0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,6 +44,7 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
 //        homeMostViewedData.homeScreenMostViewedProgrammes.count
         
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -82,8 +83,6 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
     
     func serializeHomeScreenMostViewedInformation(requestData: (Data)) {
         do {
-            print(">>>", String(data: requestData, encoding: .utf8))
-            
             self.homeMostViewedData  = try JSONDecoder().decode(HomeScreenMostViewedProgrammes.self, from: requestData)
             print("BBBB", homeMostViewedData.homeScreenMostViewedProgrammes.count)
             

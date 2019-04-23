@@ -13,9 +13,10 @@ class BaseHomeController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupNavBarButtons()
         setUpStatusBar()
+        
 
     }
     

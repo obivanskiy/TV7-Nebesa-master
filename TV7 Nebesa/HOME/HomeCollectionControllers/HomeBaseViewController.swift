@@ -15,6 +15,7 @@ let mostViewedCellId = "mostViewedCell"
 let titleItem = "Небеса"
 
 
+
 class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
@@ -22,10 +23,12 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setupMenuBar()
+        
+        setupMenuBar()
         setupNavigationItems()
         
     }
+    
     
     //UICollectionViewDelegateFlowLayout methods
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat
@@ -68,11 +71,13 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
             return cell
         } 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeRecommendCell
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width , height: view.frame.height)
+        return CGSize(width: view.frame.width , height: view.frame.height - 50)
+        //TODO: - landscape orientation
     }
     
     
@@ -93,6 +98,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     
     //:MARK - SETUP PRIVATE MENUBAR
     private func setupMenuBar() {
+        
         let redView = UIView()
         redView.backgroundColor = UIColor.rgb(red: 12, green: 100, blue: 194)
         view.addSubview(redView)

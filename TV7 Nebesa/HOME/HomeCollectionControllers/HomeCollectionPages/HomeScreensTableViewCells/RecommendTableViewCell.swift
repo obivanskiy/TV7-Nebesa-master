@@ -16,12 +16,12 @@ class RecommendTableViewCell: UITableViewCell {
     @IBOutlet weak var RecommendImageView: UIImageView!
     @IBOutlet weak var RecommendTitleLabel: UILabel!
     @IBOutlet weak var RecommendDateLabel: UILabel!
-    @IBOutlet weak var RecommendCaptionLabel: UILabel! {
-        didSet {
-            RecommendCaptionLabel.numberOfLines = 3
-        }
+    @IBOutlet weak var RecommendCaptionLabel: UILabel!
+        
+    override func awakeFromNib() {
+        let captionLabelHeight = RecommendCaptionLabel.optimalHeight
+        RecommendCaptionLabel.frame = CGRect(x: RecommendCaptionLabel.frame.origin.x, y: RecommendCaptionLabel.frame.origin.y, width: RecommendCaptionLabel.frame.width, height: captionLabelHeight)
     }
-    
     var cellModel: HomeScreenData? {
         didSet {
             guard let cellModel = cellModel else { return }
@@ -31,11 +31,12 @@ class RecommendTableViewCell: UITableViewCell {
     }
     
     func setupUI(cellModel: HomeScreenData) {
+       
         RecommendImageView.sizeToFit()
         RecommendTitleLabel.sizeToFit()
         RecommendTitleLabel.text = cellModel.seriesName
         
-        RecommendDateLabel.text = "Дата: \(dateFormatter(cellModel.visibleOnVodSince))"
+        RecommendDateLabel.text = "\(dateFormatter(cellModel.visibleOnVodSince))"
         
         RecommendCaptionLabel.text = cellModel.caption
         

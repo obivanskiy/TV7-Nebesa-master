@@ -32,6 +32,7 @@ class HomeVideoPlayerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,9 +41,12 @@ class HomeVideoPlayerController: UIViewController {
     
     //MARK: -Set up the UI
     private func setUpUI() {
-        
-        VideoTitleLabel.text = HomeVideoPlayerController.programInfo.name
-        VideoCaptionLabel.text = HomeVideoPlayerController.programInfo.caption
+        var titleName = HomeVideoPlayerController.programInfo.seriesName
+        if titleName == "" {
+          titleName = HomeVideoPlayerController.programInfo.name
+        }
+        VideoTitleLabel.text = titleName
+        VideoCaptionLabel.text = HomeVideoPlayerController.programInfo.caption 
         VideoEpisodeNumberLabel.text = "Эпизод: \(HomeVideoPlayerController.programInfo.episodeNumber)"
         VideoDurationLabel.text = "Длительность: \(dateFormatter(HomeVideoPlayerController.programInfo.duration))"
         
