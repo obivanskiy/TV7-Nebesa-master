@@ -22,6 +22,7 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
                 }
             }
         }
+    
    
     override func awakeFromNib() {
         requestHomeScreenMainInformation()
@@ -43,31 +44,6 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
                 HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
             }
     
-            private func requestHomeScreenMainInformation() {
-                NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMainData) { result in
-                    switch result {
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                    case .success(let data):
-                        self.serializeHomeScreenMainInformation(requestData: data)
-                        print("data1",data)
-                   
-                    }
-                }
-                
-            }
-        
-            private func serializeHomeScreenMainInformation(requestData: (Data)) {
-                do {
-                    self.homeScreenData  = try JSONDecoder().decode(HomeScreenProgrammes.self, from: requestData)
-                    print("Aaaa", homeScreenData.homeScreenProgrammes)
-                } catch let error {
-                    print(error.localizedDescription)
-                }
-            }
-    
-
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(">>>>", homeScreenData.homeScreenProgrammes.count)
         return homeScreenData.homeScreenProgrammes.count
@@ -84,6 +60,53 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
         return cell
     
 }
+    
+    private func requestHomeScreenMainInformation() {
+        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMainData) { result in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let data):
+                self.serializeHomeScreenMainInformation(requestData: data)
+                print("data1",data)
+                
+            }
+        }
+        
+    }
+    
+    private func serializeHomeScreenMainInformation(requestData: (Data)) {
+        do {
+            self.homeScreenData  = try JSONDecoder().decode(HomeScreenProgrammes.self, from: requestData)
+            print("Aaaa", homeScreenData.homeScreenProgrammes)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+//    private func requestForProgrammeInfo() {
+//        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchCategoryData) { (result) in
+//            switch result {
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .success(let data):
+//                self.serializeProgrammeInfo(requestData: data)
+//            }
+//        }
+//    }
+//
+//    private func serializeProgrammeInfo(requestData: (Data)) {
+//        do {
+//            self.categoryData  = try JSONDecoder().decode(CategoryProgrammes.self, from: requestData)
+//            viewController.self.title = CategoryDataPresenter.categoryTitle ?? ""
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//    }
+    
+    
+    
+    
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
 //            myViewController.navigationController?.setNavigationBarHidden(true, animated: true)

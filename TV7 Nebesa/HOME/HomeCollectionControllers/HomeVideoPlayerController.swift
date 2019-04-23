@@ -17,6 +17,7 @@ class HomeVideoPlayerController: UIViewController {
     private var player: AVPlayer?
     private var playerViewController = AVPlayerViewController()
     static var programInfo: HomeScreenData = HomeScreenData()
+    static var newProgramInfo : HomeNewestData = HomeNewestData()
     private var videoURLString: String = ""
     private var screenTitle: String = "ВИДЕО"
 
@@ -49,6 +50,7 @@ class HomeVideoPlayerController: UIViewController {
         VideoCaptionLabel.text = HomeVideoPlayerController.programInfo.caption 
         VideoEpisodeNumberLabel.text = "Эпизод: \(HomeVideoPlayerController.programInfo.episodeNumber)"
         VideoDurationLabel.text = "Длительность: \(dateFormatter(HomeVideoPlayerController.programInfo.duration))"
+        VideoFirstBroadcastLabel.text = "Доступен с:\(broadcastDateFormatter(HomeVideoPlayerController.programInfo.firstBroadcast))"
         
         
         // set up url from the data source
@@ -76,6 +78,15 @@ class HomeVideoPlayerController: UIViewController {
         let date = Date(timeIntervalSince1970: unixDate)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
+        
+        let newDate = dateFormatter.string(from: date)
+        return newDate
+    }
+    private func broadcastDateFormatter(_ dateIn: String) -> String {
+        guard let unixDate = Double(dateIn) else { return "" }
+        let date = Date(timeIntervalSince1970: unixDate/1000)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY"
         
         let newDate = dateFormatter.string(from: date)
         return newDate

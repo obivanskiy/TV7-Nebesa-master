@@ -22,6 +22,8 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
         }
     }
     
+    
+    
     override func awakeFromNib() {
         requestHomeScreenNewestInformation()
         setupTableView()
@@ -53,9 +55,18 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        _ = tableView.cellForRow(at: indexPath) as! NewestTableViewCell
-//        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
+        let cell = tableView.cellForRow(at: indexPath) as! NewestTableViewCell
+        HomeVideoPlayerController.newProgramInfo = cell.cellModel ?? HomeNewestData()
     }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+////        let cell = tableView.cellForRow(at: indexPath) as! NewestTableViewCell
+////        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeNewestData()
+//
+////        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
+//    }
+    
+    
     
     private func requestHomeScreenNewestInformation() {
         NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenNewestProgrammes) { result in
@@ -76,4 +87,7 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
             print(error.localizedDescription)
         }
     }
+    
+ 
+    
 }

@@ -290,6 +290,7 @@
 				152DF3B72242725800BDC90B /* HomeScreen.storyboard */,
 				115ED8482266BFC8002D6D52 /* HomeCollectionPages */,
 				1106CDF6225F804500B67F55 /* HomeBaseViewController.swift */,
+				11F4FF0D225B450A007359C4 /* HomeVideoPlayerController.swift */,
 				11F4FF21225C96C2007359C4 /* HomeScreenModels */,
 			);
 			path = HomeCollectionControllers;
@@ -552,7 +553,6 @@
 			children = (
 				11AED3602255F48100647B97 /* BaseHomeController.swift */,
 				11AED362225605FB00647B97 /* NebessaScreenController.swift */,
-				11F4FF0D225B450A007359C4 /* HomeVideoPlayerController.swift */,
 			);
 			path = HomeControllers;
 			sourceTree = "<group>";

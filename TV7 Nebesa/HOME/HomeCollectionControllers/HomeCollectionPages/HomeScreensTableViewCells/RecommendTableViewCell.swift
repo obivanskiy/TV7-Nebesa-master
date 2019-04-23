@@ -36,7 +36,7 @@ class RecommendTableViewCell: UITableViewCell {
         RecommendTitleLabel.sizeToFit()
         RecommendTitleLabel.text = cellModel.seriesName
         
-        RecommendDateLabel.text = "\(dateFormatter(cellModel.visibleOnVodSince))"
+        RecommendDateLabel.text = "\(dateFormatter(cellModel.firstBroadcast))"
         
         RecommendCaptionLabel.text = cellModel.caption
         

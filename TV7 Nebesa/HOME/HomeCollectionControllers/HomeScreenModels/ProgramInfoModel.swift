@@ -10,14 +10,14 @@ import Foundation
 
 
 struct HomeScreenProgrammeInformation: Codable {
-    let homeProgrammeInfo: [ProgramInfo]
+    let homeProgrammeInfo: [ProgrammeInfo]
     
     enum CodingKeys: String, CodingKey{
         case homeProgrammeInfo = "tv7_program_info"
     }
     
     init() {
-        homeProgrammeInfo = [ProgramInfo]()
+        homeProgrammeInfo = [ProgrammeInfo]()
     }
     
     func encode(to encoder: Encoder) throws {
@@ -27,11 +27,11 @@ struct HomeScreenProgrammeInformation: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        homeProgrammeInfo = try container.decodeIfPresent(Array<ProgramInfo>.self, forKey: .homeProgrammeInfo) ?? [ProgramInfo]()
+        homeProgrammeInfo = try container.decodeIfPresent(Array<ProgrammeInfo>.self, forKey: .homeProgrammeInfo) ?? [ProgrammeInfo]()
     }
 }
 
-struct ProgramInfo: Codable {
+struct ProgrammeInfo: Codable {
     typealias Identifier = String
     
     let id: Identifier

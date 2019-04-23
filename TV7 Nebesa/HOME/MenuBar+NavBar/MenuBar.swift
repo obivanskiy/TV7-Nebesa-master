@@ -59,7 +59,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }()
     //8
     let cellId = "cellId"
-    let imageNames = ["subscriptions", "logoButton","trending"]
+    let imageNames = ["smallWishlist", "logoButton","mostViewed"]
     let numberOfItemsInMenu = 3
     
     //1) init frame

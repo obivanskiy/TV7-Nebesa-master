@@ -15,12 +15,14 @@ struct NetworkEndpoints {
     static var parentCategoriesURL: String = "get_tv7_parent_categories/"
     static var subCategoriesURL: String = "get_tv7_sub_categories/?parent_id="
     static var seriesInfoURL: String = "get_tv7_series_info?series_id=52761"
+    
     static var tvGuide: String = "get_tv7_tv_guide_date/?date=2019-03-18"
     
     //MARK: - HomeScreen endpoints
     static var homeScreenDataURL: String = "get_tv7_vod_recommendations/?date=2019-04-22"
     static var homeScreenNewestProgrammesURL: String = "get_tv7_vod_new?limit=40&offset=0"
     static var homeScreenMostViewedProgrammesURL: String = "get_tv7_vod_previousweek_stats?vod=RU1"
+    static var programmeInfoURL: String = "/api/jed/get_tv7_program_info?program_id="
     
     
     //MARK: - Video playback endpoints

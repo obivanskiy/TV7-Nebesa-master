@@ -251,6 +251,7 @@
                         <outlet property="VideoCaptionLabel" destination="Xio-FU-gBQ" id="8zT-8c-8bt"/>
                         <outlet property="VideoDurationLabel" destination="baH-su-eJa" id="E5P-zq-cg5"/>
                         <outlet property="VideoEpisodeNumberLabel" destination="VGL-5C-7bP" id="Sm1-7m-TKg"/>
+                        <outlet property="VideoFirstBroadcastLabel" destination="AvH-J4-xYA" id="UKI-t0-D4l"/>
                         <outlet property="VideoTitleLabel" destination="B5w-82-Kt8" id="2Ir-mm-zwZ"/>
                     </connections>
                 </viewController>
