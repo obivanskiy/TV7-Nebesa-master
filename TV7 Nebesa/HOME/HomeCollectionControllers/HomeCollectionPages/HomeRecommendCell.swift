@@ -9,31 +9,35 @@
 import UIKit
 
 class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource {
+    
     var myViewController : HomeBaseViewController!
+    
     @IBOutlet weak var recommendTableView: UITableView!
     
     private var homeScreenProgrammeDataSegue: String = "HomeScreenProgrammePageSegue"
     
+    private var presenterForRecommend: HomeRecommendPresenter?
     
-        var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes() {
-            didSet {
-                DispatchQueue.main.async {
-                    self.recommendTableView.reloadData()
-                }
+    var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes(){
+        didSet {
+            DispatchQueue.main.async {
+                self.recommendTableView.reloadData()
             }
         }
-    private var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation() 
+    }
+
     
    
     override func awakeFromNib() {
-        requestHomeScreenMainInformation()
+        self.presenterForRecommend = HomeRecommendPresenter(with: self)
+        recommendTableView.dataSource = self
+        recommendTableView.delegate = self
+        
         setupTableView()
     }
     
     func setupTableView() {
 //        homeScreenDownloadService(homeScreenData: HomeScreenData())
-        recommendTableView.dataSource = self
-        recommendTableView.delegate = self
        
 //       print(homeScreenData.homeScreenProgrammes)
 //        recommendTableView.contentInset = .init(top: 50, left: 0, bottom: 0, right: 0)
@@ -42,7 +46,7 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(">>>>", homeScreenData.homeScreenProgrammes.count)
+       print("COUNT--\(homeScreenData.homeScreenProgrammes.count)")
         return homeScreenData.homeScreenProgrammes.count
         
     }
@@ -57,68 +61,23 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
         return cell
     
 }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-//        let cell = tableView.cellForRow(at: indexPath) as! RecommendTableViewCell
-//        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
-        NetworkService.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + homeScreenData.homeScreenProgrammes[indexPath.row].id
-        requestVideoInfo()
-        DispatchQueue.main.async {
-            HomeVideoPlayerController.programInfo = self.videoData.homeProgrammeInfo[0]
-            print("PASS Data to cell!!!!!")
-            print(HomeVideoPlayerController.programInfo)
-        }
-        
-        
-        
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+////        let cell = tableView.cellForRow(at: indexPath) as! RecommendTableViewCell
+////        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
+//        NetworkService.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + homeScreenData.homeScreenProgrammes[indexPath.row].id
+//        requestVideoInfo()
+//        DispatchQueue.main.async {
+//            HomeVideoPlayerController.programInfo = self.videoData.homeProgrammeInfo[0]
+//            print("PASS Data to cell!!!!!")
+//            print(HomeVideoPlayerController.programInfo)
+//        }
+//        
+//        
+//        
+//    }
     
-    private func requestHomeScreenMainInformation() {
-        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMainData) { result in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let data):
-                self.serializeHomeScreenMainInformation(requestData: data)
-                print("data1",data)
-                
-            }
-        }
-        
-    }
     
-    private func serializeHomeScreenMainInformation(requestData: (Data)) {
-        do {
-            self.homeScreenData  = try JSONDecoder().decode(HomeScreenProgrammes.self, from: requestData)
-            print("Aaaa", homeScreenData.homeScreenProgrammes)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-    
-    private func requestVideoInfo() {
-        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchVideoData) { result in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let data):
-                self.serializeVideoInfo(requestData: data)
-                print("Video data",data)
-                
-            }
-        }
-        
-    }
-    
-    private func serializeVideoInfo(requestData: (Data)) {
-        do {
-            self.videoData  = try JSONDecoder().decode(HomeScreenProgrammeInformation.self, from: requestData)
-            print("Video Data", requestData )
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
     
     
     

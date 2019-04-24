@@ -11,24 +11,31 @@ import UIKit
 let cellId = "homeCell"
 let newestCellId = "homeNewestCell"
 let mostViewedCellId = "mostViewedCell"
-
 let titleItem = "Небеса"
 
-
-
-class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
+class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate {
     
     @IBOutlet weak var homePageCollectionView: UICollectionView!
+    
+    private var presenterForRecommend: HomeRecommendPresenter?
+    private var presenterForNewest: HomeNewestPresenter?
+    private var presenterForMostViewed: HomeMostViewedPresenter?
+    
+    
+    var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes()
+    var homeScreenNewestData: HomeScreenNewestProgrammes = HomeScreenNewestProgrammes()
+    var homeMostViewedData: HomeScreenMostViewedProgrammes = HomeScreenMostViewedProgrammes()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setupMenuBar()
         setupNavigationItems()
+        print("XFDCGHVBJKNLM______________\(homeScreenData.homeScreenProgrammes)")
         
     }
-    
     
     //UICollectionViewDelegateFlowLayout methods
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat
@@ -57,14 +64,14 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return 3
-    }
+}
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
         if indexPath.item == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mostViewedCellId, for: indexPath) as! HomeMostViewedCell
+            
             return cell
         } else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newestCellId, for: indexPath) as! HomeNewestCell

@@ -12,23 +12,20 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var mostViewedTableView: UITableView!
     
-    var homeMostViewedData: HomeScreenMostViewedProgrammes = HomeScreenMostViewedProgrammes()
-//
-    private var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation() {
-                didSet {
-                    DispatchQueue.main.async {
-                        self.mostViewedTableView.reloadData()
-        
-                    }
-                }
+    private var presenterForMostViewed: HomeMostViewedPresenter?
+    
+    var homeMostViewedData: HomeScreenMostViewedProgrammes = HomeScreenMostViewedProgrammes(){
+        didSet {
+            DispatchQueue.main.async {
+                self.mostViewedTableView.reloadData()
             }
+        }
+    }
+//
 
-    
-    
-    
     override func awakeFromNib() {
         print(">>>", "awakeFromNib")
-        requestHomeScreenMostViewedInformation()
+        self.presenterForMostViewed = HomeMostViewedPresenter(with: self)
         setupTableView()
     }
     
@@ -42,9 +39,9 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(">>>", videoData.homeProgrammeInfo.count)
+
         
-        return videoData.homeProgrammeInfo.count
+        return homeMostViewedData.homeScreenMostViewedProgrammes.count
         
 //        return homeMostViewedData.homeScreenMostViewedProgrammes.count
 //        homeMostViewedData.homeScreenMostViewedProgrammes.count
@@ -61,7 +58,7 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
         }
 //        cell.cellModel = homeMostViewedData.homeScreenMostViewedProgrammes[indexPath.row]
 //        print(homeMostViewedData.homeScreenMostViewedProgrammes)
-        cell.cellModel = videoData.homeProgrammeInfo[indexPath.row]
+        cell.cellModel = homeMostViewedData.homeScreenMostViewedProgrammes[indexPath.row]
         print(homeMostViewedData.homeScreenMostViewedProgrammes)
         
         return cell
@@ -73,57 +70,57 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
         //        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
     }
     
-    func requestHomeScreenMostViewedInformation() {
-        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMostViewedProgrammes) { result in
-            
-            print(">>>", result)
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let data):
-                self.serializeHomeScreenMostViewedInformation(requestData: data)
-                print("data1", data)
-                for obj in self.homeMostViewedData.homeScreenMostViewedProgrammes {
-                    NetworkService.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + obj.id
-                    self.requestVideoInfo()
-                }
-              
-            }
-        }
-    }
-    
-    func serializeHomeScreenMostViewedInformation(requestData: (Data)) {
-        do {
-            self.homeMostViewedData  = try JSONDecoder().decode(HomeScreenMostViewedProgrammes.self, from: requestData)
-            print(homeMostViewedData.homeScreenMostViewedProgrammes)
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-    
-    
-    private func requestVideoInfo() {
-        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchVideoData) { result in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let data):
-                self.serializeVideoInfo(requestData: data)
-                print("Video data",data)
-                
-            }
-        }
-        
-    }
-    
-    private func serializeVideoInfo(requestData: (Data)) {
-        do {
-            self.videoData  = try JSONDecoder().decode(HomeScreenProgrammeInformation.self, from: requestData)
-            print("Video Data", requestData )
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
+//    func requestHomeScreenMostViewedInformation() {
+//        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMostViewedProgrammes) { result in
+//
+//            print(">>>", result)
+//            switch result {
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .success(let data):
+//                self.serializeHomeScreenMostViewedInformation(requestData: data)
+//                print("data1", data)
+//                for obj in self.homeMostViewedData.homeScreenMostViewedProgrammes {
+//                    NetworkService.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + obj.id
+//                    self.requestVideoInfo()
+//                }
+//
+//            }
+//        }
+//    }
+//
+//    func serializeHomeScreenMostViewedInformation(requestData: (Data)) {
+//        do {
+//            self.homeMostViewedData  = try JSONDecoder().decode(HomeScreenMostViewedProgrammes.self, from: requestData)
+//            print(homeMostViewedData.homeScreenMostViewedProgrammes)
+//
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//    }
+//
+//
+//    private func requestVideoInfo() {
+//        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchVideoData) { result in
+//            switch result {
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .success(let data):
+//                self.serializeVideoInfo(requestData: data)
+//                print("Video data",data)
+//
+//            }
+//        }
+//
+//    }
+//
+//    private func serializeVideoInfo(requestData: (Data)) {
+//        do {
+//            self.videoData  = try JSONDecoder().decode(HomeScreenProgrammeInformation.self, from: requestData)
+//            print("Video Data", requestData )
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//    }
 }
 

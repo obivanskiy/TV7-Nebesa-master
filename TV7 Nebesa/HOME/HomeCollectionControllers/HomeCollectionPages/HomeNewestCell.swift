@@ -8,24 +8,21 @@
 
 import UIKit
 
-
 class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate{
-    
+    var myViewController : HomeBaseViewController!
     @IBOutlet weak var newestTableView: UITableView!
     
+   private var presenterForNewest: HomeNewestPresenter?
    var homeScreenNewestData: HomeScreenNewestProgrammes = HomeScreenNewestProgrammes() {
         didSet {
             DispatchQueue.main.async {
                 self.newestTableView.reloadData()
-                
             }
         }
     }
     
-    
-    
     override func awakeFromNib() {
-        requestHomeScreenNewestInformation()
+        self.presenterForNewest = HomeNewestPresenter(with: self)
         setupTableView()
     }
     
