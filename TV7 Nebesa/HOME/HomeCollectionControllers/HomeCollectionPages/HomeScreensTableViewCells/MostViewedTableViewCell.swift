@@ -18,7 +18,7 @@ class MostViewedTableViewCell: UITableViewCell {
     @IBOutlet weak var mostViewedImageView: UIImageView!
     
     
-    var cellModel: HomeMostViewedData? {
+    var cellModel: ProgrammeInfo? {
         didSet {
             guard let cellModel = cellModel else { return }
             setupUI(cellModel: cellModel)
@@ -26,16 +26,16 @@ class MostViewedTableViewCell: UITableViewCell {
         }
     }
     
-    func setupUI(cellModel: HomeMostViewedData) {
+    func setupUI(cellModel: ProgrammeInfo) {
        mostViewedImageView.sizeToFit()
         mostViewedTitle.sizeToFit()
-        mostViewedTitle.text = cellModel.seriesName ?? cellModel.programName
+        mostViewedTitle.text = cellModel.sname
         
-        mostViewedDateLabel.text = "Длительность: \(dateFormatter(cellModel.time!))"
+        mostViewedDateLabel.text = "Длительность: \(dateFormatter(cellModel.time))"
         
         mostViewedCaption.text = cellModel.caption
         
-        guard let previewImageURL = URL.init(string: cellModel.homeScreenMostViewedPreviewImageURLString) else {
+        guard let previewImageURL = URL.init(string: cellModel.imagePath) else {
             return
         }
         mostViewedImageView.kf.setImage(with: previewImageURL)
