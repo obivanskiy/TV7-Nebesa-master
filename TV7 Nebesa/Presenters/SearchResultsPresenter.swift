@@ -13,7 +13,7 @@ class SearchResultsPresenter {
     let viewController: SearchViewController!
     var userText = String()
 
-    init(with viewController: SearchViewController, userText: String = "Библия") {
+    init(with viewController: SearchViewController, userText: String) {
         self.viewController = viewController
         self.userText = userText
         fetchSearchResults(userText)

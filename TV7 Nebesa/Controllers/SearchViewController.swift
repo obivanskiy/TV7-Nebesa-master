@@ -23,7 +23,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
+    var searchEpisode: SearchEpisode = SearchEpisode()
     private var presenter: SearchResultsPresenter?
+    private var presenterEpisode: SearchEpisodePresenter?
+    private var programmeDataSegue = "ProgrammeScreenSegue"
+    private let episodeSegue = "episodeSegue"
+    private let seriesSegue = "seriesSegue"
 
     //MARK: - Lifecycle methods
     override func viewDidLoad() {
@@ -75,7 +80,17 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     //MARK: Table View Delegate Methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+        let typeOfContent = searchResults.results[indexPath.row].type
+        switch typeOfContent {
+        case "episode":
+            performSegue(withIdentifier: episodeSegue, sender: self)
+            print("Did select = episode")
+        case "series":
+            performSegue(withIdentifier: seriesSegue, sender: self)
+            print("Did select = series")
+        default:
+            print("There is no type found")
+        }
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -90,6 +105,33 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
+            assertionFailure("Identifier not found")
+            return
+        }
+        switch identifier {
+        case episodeSegue:
+            guard let indexPath = self.searchResultsTableView.indexPathForSelectedRow else {
+                return
+            }
+            guard let destVC = segue.destination as? SearchEpisodeViewController else { return }
+
+            destVC.episodeId = searchResults.results[indexPath.row].id
+            print("Episode id for EPisodeVC: \(destVC.episodeId)")
+
+        case seriesSegue:
+            guard let indexPath = self.searchResultsTableView.indexPathForSelectedRow else { return
+
+            }
+            print(indexPath.row)
+            print("series")
+        default:
+            assertionFailure("Identifier wasn't recognized")
+        }
+    }
+
     //MARK: - Private Methods
     private func setupTableView() {
         searchResultsTableView.delegate = self
@@ -98,8 +140,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //Register for SearchSeriesCell.xib and SearchEpisodeCell.xib
         searchResultsTableView.register(UINib(nibName: SearchSeriesCell.identifier, bundle: .none), forCellReuseIdentifier: SearchSeriesCell.identifier)
         searchResultsTableView.register(UINib(nibName: SearchEpisodeCell.identifier, bundle: .none), forCellReuseIdentifier: SearchEpisodeCell.identifier)
-//        searchResultsTableView.estimatedRowHeight = 200
-//        searchResultsTableView.rowHeight = UITableView.automaticDimension
     }
 
     private func setupSearchBar() {

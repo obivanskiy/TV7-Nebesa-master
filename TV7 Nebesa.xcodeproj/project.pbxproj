@@ -58,6 +58,9 @@
 		FA8A42A722672BF7000F35B5 /* SearchEpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A42A522672BF7000F35B5 /* SearchEpisodeCell.swift */; };
 		FA8A42A822672BF7000F35B5 /* SearchEpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8A42A622672BF7000F35B5 /* SearchEpisodeCell.xib */; };
 		FAF046722268653B00078B4F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF046712268653B00078B4F /* SearchViewController.swift */; };
+		FAF04674226F0D7800078B4F /* SearchEpisodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF04673226F0D7700078B4F /* SearchEpisodeModel.swift */; };
+		FAF04676226F18E500078B4F /* SearchEpisodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF04675226F18E500078B4F /* SearchEpisodePresenter.swift */; };
+		FAF04678226F1D9B00078B4F /* SearchEpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF04677226F1D9B00078B4F /* SearchEpisodeViewController.swift */; };
 		FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDE7FE223FC69A00006FEE /* TVGuideCell.swift */; };
 		FAFDE801223FC69A00006FEE /* TVGuideCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFDE7FF223FC69A00006FEE /* TVGuideCell.xib */; };
 		FAFDE803223FCAA100006FEE /* TVGuideModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDE802223FCAA100006FEE /* TVGuideModel.swift */; };
@@ -120,6 +123,9 @@
 		FA8A42A522672BF7000F35B5 /* SearchEpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEpisodeCell.swift; sourceTree = "<group>"; };
 		FA8A42A622672BF7000F35B5 /* SearchEpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchEpisodeCell.xib; sourceTree = "<group>"; };
 		FAF046712268653B00078B4F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		FAF04673226F0D7700078B4F /* SearchEpisodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEpisodeModel.swift; sourceTree = "<group>"; };
+		FAF04675226F18E500078B4F /* SearchEpisodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEpisodePresenter.swift; sourceTree = "<group>"; };
+		FAF04677226F1D9B00078B4F /* SearchEpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEpisodeViewController.swift; sourceTree = "<group>"; };
 		FAFDE7FE223FC69A00006FEE /* TVGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGuideCell.swift; sourceTree = "<group>"; };
 		FAFDE7FF223FC69A00006FEE /* TVGuideCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVGuideCell.xib; sourceTree = "<group>"; };
 		FAFDE802223FCAA100006FEE /* TVGuideModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGuideModel.swift; sourceTree = "<group>"; };
@@ -215,6 +221,7 @@
 				15F1637D2254DF2E00E2DEFF /* TVGuidePresenter.swift */,
 				FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */,
 				FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */,
+				FAF04675226F18E500078B4F /* SearchEpisodePresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -245,6 +252,7 @@
 				152DF3B922428B2900BDC90B /* SeriesProgrammesModel.swift */,
 				FAFDE802223FCAA100006FEE /* TVGuideModel.swift */,
 				FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */,
+				FAF04673226F0D7700078B4F /* SearchEpisodeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -263,6 +271,7 @@
 				110F9D942237A6310020BABC /* ViewController.swift */,
 				110F9DA72237A6A50020BABC /* BroadcastViewController.swift */,
 				FAF046712268653B00078B4F /* SearchViewController.swift */,
+				FAF04677226F1D9B00078B4F /* SearchEpisodeViewController.swift */,
 				110F9DAD2237A7610020BABC /* HighlightsViewController.swift */,
 				110F9DAB2237A74E0020BABC /* ParentCategoriesTableViewController.swift */,
 				15F1580E223FDA6B005047CD /* SubCategoriesTableViewController.swift */,
@@ -482,8 +491,10 @@
 				15F1580B223FD39C005047CD /* SubCategoryTableViewCell.swift in Sources */,
 				15F1580F223FDA6B005047CD /* SubCategoriesTableViewController.swift in Sources */,
 				FA8A42A3226622E8000F35B5 /* SearchSeriesCell.swift in Sources */,
+				FAF04678226F1D9B00078B4F /* SearchEpisodeViewController.swift in Sources */,
 				154B7F55223ADCA90020A4E4 /* NetworkEndpoints.swift in Sources */,
 				15CD9CDE22534BAE0014E326 /* String+Extension.swift in Sources */,
+				FAF04676226F18E500078B4F /* SearchEpisodePresenter.swift in Sources */,
 				FA8A42A722672BF7000F35B5 /* SearchEpisodeCell.swift in Sources */,
 				15E398C1225F78F700E4AC55 /* UILabel+Extension.swift in Sources */,
 				15D626EE22411C2C00449F8B /* EpisodeInfoTableViewCell.swift in Sources */,
@@ -491,6 +502,7 @@
 				110F9DAE2237A7610020BABC /* HighlightsViewController.swift in Sources */,
 				FAF046722268653B00078B4F /* SearchViewController.swift in Sources */,
 				15F5DA32225F7D1900B989A1 /* NebesaPlayer.swift in Sources */,
+				FAF04674226F0D7800078B4F /* SearchEpisodeModel.swift in Sources */,
 				FA29D6B12264C94E00B39250 /* SearchResultsPresenter.swift in Sources */,
 				FAFDE803223FCAA100006FEE /* TVGuideModel.swift in Sources */,
 				154F6D5C224A637A00043BBD /* ParentCategoriesPresenter.swift in Sources */,
