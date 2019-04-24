@@ -22,7 +22,7 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
                 }
             }
         }
-    private var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation()
+    private var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation() 
     
    
     override func awakeFromNib() {

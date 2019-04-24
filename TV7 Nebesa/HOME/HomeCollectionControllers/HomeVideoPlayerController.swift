@@ -16,7 +16,7 @@ class HomeVideoPlayerController: UIViewController {
     //MARK: - Stored properties
     private var player: AVPlayer?
     private var playerViewController = AVPlayerViewController()
-    static var programInfo: ProgrammeInfo = ProgrammeInfo() 
+ 
     
 //    static var newProgramInfo : HomeNewestData = HomeNewestData()
     private var videoURLString: String = ""
@@ -31,15 +31,23 @@ class HomeVideoPlayerController: UIViewController {
     @IBOutlet weak var VideoDurationLabel: UILabel!
     @IBOutlet weak var VideoFirstBroadcastLabel: UILabel!
 
+    
+    static var programInfo: ProgrammeInfo = ProgrammeInfo() {
+        didSet {
+            
+            print(programInfo)
+        }
+    }
     //MARK: - View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        setUpUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
