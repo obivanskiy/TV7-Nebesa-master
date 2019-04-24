@@ -23,6 +23,8 @@ class NetworkService {
         //
         case fetchHomeScreenNewestProgrammes
         case fetchHomeScreenMostViewedProgrammes
+        
+        case fetchVideoData
     }
     
     static var requestURL: [NetworkRequestType : String] = [

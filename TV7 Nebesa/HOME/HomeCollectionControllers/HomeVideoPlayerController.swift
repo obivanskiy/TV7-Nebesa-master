@@ -16,10 +16,12 @@ class HomeVideoPlayerController: UIViewController {
     //MARK: - Stored properties
     private var player: AVPlayer?
     private var playerViewController = AVPlayerViewController()
-    static var programInfo: HomeScreenData = HomeScreenData()
-    static var newProgramInfo : HomeNewestData = HomeNewestData()
+    static var programInfo: ProgrammeInfo = ProgrammeInfo() 
+    
+//    static var newProgramInfo : HomeNewestData = HomeNewestData()
     private var videoURLString: String = ""
     private var screenTitle: String = "ВИДЕО"
+    
 
     //MARK: - Outlets
     @IBOutlet weak var ProgramVideoView: UIView!
@@ -36,13 +38,21 @@ class HomeVideoPlayerController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         player(urlString: videoURLString)
     }
     
+ 
+    
+    
+    
     //MARK: -Set up the UI
     private func setUpUI() {
-        var titleName = HomeVideoPlayerController.programInfo.seriesName
+        var titleName = HomeVideoPlayerController.programInfo.sname
         if titleName == "" {
           titleName = HomeVideoPlayerController.programInfo.name
         }
@@ -54,7 +64,7 @@ class HomeVideoPlayerController: UIViewController {
         
         
         // set up url from the data source
-        self.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + HomeVideoPlayerController.programInfo.linkPath + NetworkEndpoints.playlistEndpoint
+        self.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + HomeVideoPlayerController.programInfo.path + NetworkEndpoints.playlistEndpoint
         print(videoURLString)
         self.title = self.screenTitle
     }

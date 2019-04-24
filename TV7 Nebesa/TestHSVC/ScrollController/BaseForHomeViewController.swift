@@ -87,12 +87,12 @@ final class BaseForHomeViewController : UIViewController, UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cell = tableView.cellForRow(at: indexPath) as! HomeScreenTableViewCell
-        //        tableView.beginUpdates()
-        //        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
-        //        tableView.endUpdates()
-        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
-        performSegue(withIdentifier: homeScreenProgrammeDataSegue, sender: self)
+//        let cell = tableView.cellForRow(at: indexPath) as! HomeScreenTableViewCell
+//        //        tableView.beginUpdates()
+//        //        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
+//        //        tableView.endUpdates()
+//        HomeVideoPlayerController.programInfo = ProgrammeInfo()
+//        performSegue(withIdentifier: homeScreenProgrammeDataSegue, sender: self)
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
