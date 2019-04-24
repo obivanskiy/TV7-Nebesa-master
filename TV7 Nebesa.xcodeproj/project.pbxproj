@@ -61,6 +61,8 @@
 		FAF04674226F0D7800078B4F /* SearchEpisodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF04673226F0D7700078B4F /* SearchEpisodeModel.swift */; };
 		FAF04676226F18E500078B4F /* SearchEpisodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF04675226F18E500078B4F /* SearchEpisodePresenter.swift */; };
 		FAF04678226F1D9B00078B4F /* SearchEpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF04677226F1D9B00078B4F /* SearchEpisodeViewController.swift */; };
+		FAF0467B2270554700078B4F /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF046792270554700078B4F /* EpisodeCell.swift */; };
+		FAF0467C2270554700078B4F /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF0467A2270554700078B4F /* EpisodeCell.xib */; };
 		FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDE7FE223FC69A00006FEE /* TVGuideCell.swift */; };
 		FAFDE801223FC69A00006FEE /* TVGuideCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFDE7FF223FC69A00006FEE /* TVGuideCell.xib */; };
 		FAFDE803223FCAA100006FEE /* TVGuideModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDE802223FCAA100006FEE /* TVGuideModel.swift */; };
@@ -126,6 +128,8 @@
 		FAF04673226F0D7700078B4F /* SearchEpisodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEpisodeModel.swift; sourceTree = "<group>"; };
 		FAF04675226F18E500078B4F /* SearchEpisodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEpisodePresenter.swift; sourceTree = "<group>"; };
 		FAF04677226F1D9B00078B4F /* SearchEpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEpisodeViewController.swift; sourceTree = "<group>"; };
+		FAF046792270554700078B4F /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		FAF0467A2270554700078B4F /* EpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
 		FAFDE7FE223FC69A00006FEE /* TVGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGuideCell.swift; sourceTree = "<group>"; };
 		FAFDE7FF223FC69A00006FEE /* TVGuideCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVGuideCell.xib; sourceTree = "<group>"; };
 		FAFDE802223FCAA100006FEE /* TVGuideModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGuideModel.swift; sourceTree = "<group>"; };
@@ -320,6 +324,8 @@
 				FA8A42A2226622E8000F35B5 /* SearchSeriesCell.xib */,
 				FA8A42A522672BF7000F35B5 /* SearchEpisodeCell.swift */,
 				FA8A42A622672BF7000F35B5 /* SearchEpisodeCell.xib */,
+				FAF046792270554700078B4F /* EpisodeCell.swift */,
+				FAF0467A2270554700078B4F /* EpisodeCell.xib */,
 			);
 			path = SearchCells;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 				FAFDE801223FC69A00006FEE /* TVGuideCell.xib in Resources */,
 				110F9D9D2237A6320020BABC /* Assets.xcassets in Resources */,
 				15D626F3224142B900449F8B /* Categories.storyboard in Resources */,
+				FAF0467C2270554700078B4F /* EpisodeCell.xib in Resources */,
 				152DF3B6224271E400BDC90B /* BestScenesScreen.storyboard in Resources */,
 				152DF3B82242725800BDC90B /* HomeScreen.storyboard in Resources */,
 				152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */,
@@ -474,6 +481,7 @@
 				15CD9CE0225379980014E326 /* WebTVScreenViewController.swift in Sources */,
 				FA4F347D2260A010000508B9 /* TVProgramPresenter.swift in Sources */,
 				15B08172223A90A200826057 /* CategoryDataTableViewCell.swift in Sources */,
+				FAF0467B2270554700078B4F /* EpisodeCell.swift in Sources */,
 				157E83CD224D19E700993933 /* CategoryDataPresenter.swift in Sources */,
 				15F1637E2254DF2E00E2DEFF /* TVGuidePresenter.swift in Sources */,
 				1593B35F224CC915002E08AC /* SubCategoriesPresenter.swift in Sources */,
