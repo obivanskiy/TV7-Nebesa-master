@@ -563,6 +563,7 @@
                                                                 <outlet property="newestDateLabel" destination="mKn-Pc-hN9" id="QPF-be-r5l"/>
                                                                 <outlet property="newestImageView" destination="ZKu-Mf-qUd" id="jZa-8x-BzI"/>
                                                                 <outlet property="newestTitleLabel" destination="IMC-Cm-6sv" id="8yB-vb-pNi"/>
+                                                                <segue destination="MBD-vz-poy" kind="show" identifier="videoDataSegue" id="aEJ-1F-RoF"/>
                                                             </connections>
                                                         </tableViewCell>
                                                     </prototypes>
@@ -740,4 +741,7 @@
             <point key="canvasLocation" x="977" y="1220"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="aEJ-1F-RoF"/>
+    </inferredMetricsTieBreakers>
 </document>
