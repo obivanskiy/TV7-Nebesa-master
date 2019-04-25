@@ -254,7 +254,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F6H-oh-7us">
-                                <rect key="frame" x="0.0" y="284" width="375" height="383"/>
+                                <rect key="frame" x="0.0" y="334" width="375" height="333"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="seriesCell" id="30u-xU-rEu">
@@ -264,37 +264,39 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="688-hz-42c" kind="show" identifier="episodeSegue" id="cFI-5G-b0X"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="akO-d3-aAU">
-                                <rect key="frame" x="16" y="64" width="343" height="220"/>
+                                <rect key="frame" x="16" y="74" width="343" height="260"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seb-oA-zrf">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="115"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ST4-cP-xmn">
-                                        <rect key="frame" x="0.0" y="147" width="343" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="253" translatesAutoresizingMaskIntoConstraints="NO" id="WDE-u4-9kQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="159.5"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ST4-cP-xmn">
+                                        <rect key="frame" x="0.0" y="191.5" width="343" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8o6-fD-YAJ">
-                                        <rect key="frame" x="0.0" y="199.5" width="343" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8o6-fD-YAJ">
+                                        <rect key="frame" x="0.0" y="243" width="343" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="220" id="pRx-hV-Nfh"/>
+                                    <constraint firstAttribute="height" constant="260" id="pRx-hV-Nfh"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="akO-d3-aAU" firstAttribute="top" secondItem="s5R-09-xBf" secondAttribute="top" id="KEG-wQ-6hB"/>
+                            <constraint firstItem="akO-d3-aAU" firstAttribute="top" secondItem="s5R-09-xBf" secondAttribute="top" constant="10" id="KEG-wQ-6hB"/>
                             <constraint firstItem="akO-d3-aAU" firstAttribute="leading" secondItem="s5R-09-xBf" secondAttribute="leading" constant="16" id="Lh4-aQ-ly5"/>
                             <constraint firstItem="F6H-oh-7us" firstAttribute="trailing" secondItem="s5R-09-xBf" secondAttribute="trailing" id="b9N-6G-2Qi"/>
                             <constraint firstItem="F6H-oh-7us" firstAttribute="leading" secondItem="s5R-09-xBf" secondAttribute="leading" id="j9N-rf-mYJ"/>
@@ -305,8 +307,8 @@
                         <viewLayoutGuide key="safeArea" id="s5R-09-xBf"/>
                     </view>
                     <connections>
-                        <outlet property="seriesDescriptionLabel" destination="8o6-fD-YAJ" id="bOA-tY-DgR"/>
-                        <outlet property="seriesImage" destination="seb-oA-zrf" id="Yl9-4U-T4J"/>
+                        <outlet property="seriesCaptionLabel" destination="8o6-fD-YAJ" id="bOA-tY-DgR"/>
+                        <outlet property="seriesImage" destination="WDE-u4-9kQ" id="ewE-9K-ucB"/>
                         <outlet property="seriesNameLabel" destination="ST4-cP-xmn" id="zch-Ln-4NM"/>
                         <outlet property="seriesTableView" destination="F6H-oh-7us" id="EEK-6l-fH2"/>
                     </connections>
@@ -334,4 +336,7 @@
             <point key="canvasLocation" x="2177" y="901"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="lzH-eq-tQC"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -64,6 +64,7 @@
 		FAF0467B2270554700078B4F /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF046792270554700078B4F /* EpisodeCell.swift */; };
 		FAF0467C2270554700078B4F /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF0467A2270554700078B4F /* EpisodeCell.xib */; };
 		FAF0467E2271AF7C00078B4F /* SearchSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0467D2271AF7B00078B4F /* SearchSeriesViewController.swift */; };
+		FAF046802271F2AC00078B4F /* SearchSeriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0467F2271F2AC00078B4F /* SearchSeriesPresenter.swift */; };
 		FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDE7FE223FC69A00006FEE /* TVGuideCell.swift */; };
 		FAFDE801223FC69A00006FEE /* TVGuideCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFDE7FF223FC69A00006FEE /* TVGuideCell.xib */; };
 		FAFDE803223FCAA100006FEE /* TVGuideModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDE802223FCAA100006FEE /* TVGuideModel.swift */; };
@@ -132,6 +133,7 @@
 		FAF046792270554700078B4F /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		FAF0467A2270554700078B4F /* EpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
 		FAF0467D2271AF7B00078B4F /* SearchSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSeriesViewController.swift; sourceTree = "<group>"; };
+		FAF0467F2271F2AC00078B4F /* SearchSeriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSeriesPresenter.swift; sourceTree = "<group>"; };
 		FAFDE7FE223FC69A00006FEE /* TVGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGuideCell.swift; sourceTree = "<group>"; };
 		FAFDE7FF223FC69A00006FEE /* TVGuideCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVGuideCell.xib; sourceTree = "<group>"; };
 		FAFDE802223FCAA100006FEE /* TVGuideModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGuideModel.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */,
 				FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */,
 				FAF04675226F18E500078B4F /* SearchEpisodePresenter.swift */,
+				FAF0467F2271F2AC00078B4F /* SearchSeriesPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				15CD9CE0225379980014E326 /* WebTVScreenViewController.swift in Sources */,
 				FA4F347D2260A010000508B9 /* TVProgramPresenter.swift in Sources */,
 				15B08172223A90A200826057 /* CategoryDataTableViewCell.swift in Sources */,
+				FAF046802271F2AC00078B4F /* SearchSeriesPresenter.swift in Sources */,
 				FAF0467B2270554700078B4F /* EpisodeCell.swift in Sources */,
 				157E83CD224D19E700993933 /* CategoryDataPresenter.swift in Sources */,
 				15F1637E2254DF2E00E2DEFF /* TVGuidePresenter.swift in Sources */,

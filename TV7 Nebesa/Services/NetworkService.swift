@@ -22,6 +22,7 @@ class NetworkService {
         case fetchTVProgram
         case fetchSearchResults
         case fetchSearchEpisode
+        case fetchSearchSeries
     }
     
     static var requestURL: [NetworkRequestType : String] = [
@@ -29,7 +30,8 @@ class NetworkService {
         .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL,
         .fetchTVProgram: NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide,
         .fetchSearchResults: NetworkEndpoints.searchBaseURL + NetworkEndpoints.searchResultsURL,
-        .fetchSearchEpisode: NetworkEndpoints.baseURL + NetworkEndpoints.searchEpisodeURL
+        .fetchSearchEpisode: NetworkEndpoints.baseURL + NetworkEndpoints.searchEpisodeURL,
+        .fetchSearchSeries: NetworkEndpoints.baseURL + NetworkEndpoints.seriesProgrammesURL
     ]
 
     enum networkResult: Swift.Error {

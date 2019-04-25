@@ -28,6 +28,14 @@ class SearchEpisodeCell: UITableViewCell {
         }
     }
 
+    //New For SeriesVC
+    var seriesCellModel: ProgrammesData? {
+        didSet {
+            guard let seriesCellModel = seriesCellModel else { return }
+            setupUISeries(seriesCellModel: seriesCellModel)
+        }
+    }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -39,6 +47,16 @@ class SearchEpisodeCell: UITableViewCell {
         nameLabel.attributedText = attributedText
         captionLabel.text = cellModel.caption
         guard let previewImageURL = URL.init(string: cellModel.imagePath) else { return }
+        episodePreviewImage.kf.setImage(with: previewImageURL)
+        self.selectionStyle = .none
+    }
+
+    private func setupUISeries(seriesCellModel: ProgrammesData) {
+        let attributedText = NSMutableAttributedString(string: seriesCellModel.seriesName, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSAttributedString(string: " \(seriesCellModel.name)", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13)]))
+        nameLabel.attributedText = attributedText
+        captionLabel.text = seriesCellModel.caption
+        guard let previewImageURL = URL.init(string: seriesCellModel.imagePath) else { return }
         episodePreviewImage.kf.setImage(with: previewImageURL)
         self.selectionStyle = .none
     }

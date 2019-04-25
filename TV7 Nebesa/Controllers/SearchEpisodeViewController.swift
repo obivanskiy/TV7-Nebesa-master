@@ -20,7 +20,7 @@ class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITabl
     var searchEpisodeData: SearchEpisode = SearchEpisode() {
         didSet {
             DispatchQueue.main.async {
-                self.view.reloadInputViews()
+                self.episodeTableView.reloadData()
             }
         }
     }
