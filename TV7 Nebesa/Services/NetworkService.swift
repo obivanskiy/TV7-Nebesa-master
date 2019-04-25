@@ -19,11 +19,25 @@ class NetworkService {
         case fetchSeriesMainData
         case fetchSeriesProgrammes
         case fetchWebTVProgrammesList
+        //
+        case fetchHomeScreenMainData
+        case fetchHomeScreenProgrammeData
+        case fetchHomeScreenNewestProgrammes
+        case fetchHomeScreenMostViewedProgrammes
+        case fetchVideoData
     }
     
     static var requestURL: [NetworkRequestType : String] = [
         .fetchParentCategories : NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL,
-        .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL
+        .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL,
+        //Home Screen data
+        .fetchHomeScreenMainData : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL,
+        
+        //Most Viewed/ Newest programmes URL's on the homeScreen
+        .fetchHomeScreenNewestProgrammes : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenNewestProgrammesURL,
+        .fetchHomeScreenMostViewedProgrammes : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenMostViewedProgrammesURL
+        
+        //        .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL
     ]
 
     enum networkResult: Swift.Error {

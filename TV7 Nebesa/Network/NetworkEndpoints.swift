@@ -19,6 +19,12 @@ struct NetworkEndpoints {
     static var webTVGuideURL: String = "get_tv7_tv_guide_date?date="
     static var tvGuide: String = "get_tv7_tv_guide_date/?date="
     
+    //MARK: - HomeScreen endpoints
+    static var homeScreenDataURL: String = "get_tv7_vod_recommendations/?date=2019-04-22"
+    static var homeScreenNewestProgrammesURL: String = "get_tv7_vod_new?limit=40&offset=0"
+    static var homeScreenMostViewedProgrammesURL: String = "get_tv7_vod_previousweek_stats?vod=RU1"
+    static var programmeInfoURL: String = "get_tv7_program_info?program_id="
+    
     //MARK: - Video playback endpoints
     static var baseURLForVideoPlayback: String = "https://vod.tv7.fi:443/vod-appletv/_definst_/mp4:"
     static var playlistEndpoint: String = "/chunklist.m3u8"

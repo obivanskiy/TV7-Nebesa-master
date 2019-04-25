@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dwb-CS-2RT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dwb-CS-2RT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="1880" y="721"/>
         </scene>
-        <!--NavigationHomeScreen-->
+        <!--HomeScreen-->
         <scene sceneID="W7b-Vo-RO7">
             <objects>
-                <viewControllerPlaceholder storyboardName="HomeScreen" referencedIdentifier="NavigationHomeScreen" id="xXA-OF-CVk" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="HomeScreen" id="xXA-OF-CVk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="zH5-e4-s1w"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lpH-gP-WWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
