@@ -269,7 +269,6 @@
 		1106CDF3225F7CF800B67F55 /* HomeCollectionControllers */ = {
 			isa = PBXGroup;
 			children = (
-				152DF3B72242725800BDC90B /* HomeScreen.storyboard */,
 				11AED3602255F48100647B97 /* BaseHomeController.swift */,
 				115ED8482266BFC8002D6D52 /* HomeCollectionPages */,
 				1106CDF6225F804500B67F55 /* HomeBaseViewController.swift */,
@@ -576,6 +575,7 @@
 		15CF8F6F2237BD24008424E9 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				152DF3B72242725800BDC90B /* HomeScreen.storyboard */,
 				152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */,
 				152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */,
 				152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */,
