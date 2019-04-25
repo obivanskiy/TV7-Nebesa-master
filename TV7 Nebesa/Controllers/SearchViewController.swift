@@ -113,19 +113,17 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         switch identifier {
         case episodeSegue:
-            guard let indexPath = self.searchResultsTableView.indexPathForSelectedRow else {
-                return
-            }
+            guard let indexPath = self.searchResultsTableView.indexPathForSelectedRow else { return }
             guard let destVC = segue.destination as? SearchEpisodeViewController else { return }
 
             destVC.episodeId = searchResults.results[indexPath.row].id
-            print("Episode id for EPisodeVC: \(destVC.episodeId)")
-
+            print("Episode id for EpisodeVC: \(destVC.episodeId)")
         case seriesSegue:
             guard let indexPath = self.searchResultsTableView.indexPathForSelectedRow else { return }
-            
-            print(indexPath.row)
-            print("series")
+            guard let destVC = segue.destination as? SearchSeriesViewController else { return }
+            destVC.title = searchResults.results[indexPath.row].name
+            let dataForSeries = searchResults.results[indexPath.row]
+            destVC.dataForTopContentDictionary = ["name": dataForSeries.name, "imagePath": dataForSeries.imagePath, "caption": dataForSeries.caption]
         default:
             assertionFailure("Identifier wasn't recognized")
         }
