@@ -373,10 +373,10 @@
             </objects>
             <point key="canvasLocation" x="978" y="417"/>
         </scene>
-        <!--Home Base View Controller-->
+        <!--Небеса ТВ7-->
         <scene sceneID="JbI-H1-iH9">
             <objects>
-                <viewController id="HXY-pw-zdd" customClass="HomeBaseViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Небеса ТВ7" id="HXY-pw-zdd" customClass="HomeBaseViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y2N-ue-twT">
                         <rect key="frame" x="0.0" y="0.0" width="1242" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -662,6 +662,7 @@
                                                                 <outlet property="mostViewedDateLabel" destination="IFG-x6-pwl" id="YY2-Pg-YqA"/>
                                                                 <outlet property="mostViewedImageView" destination="oxI-Km-4KN" id="f4E-sT-V3b"/>
                                                                 <outlet property="mostViewedTitle" destination="NdT-oR-OsS" id="74G-eZ-Zw4"/>
+                                                                <segue destination="MBD-vz-poy" kind="show" identifier="videoDataSegue" id="1bB-yk-62Z"/>
                                                             </connections>
                                                         </tableViewCell>
                                                     </prototypes>
@@ -727,6 +728,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UCu-H1-aMA" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="BtB-Ha-sQE" customClass="CustomNavigationBar" customModule="TV7_Nebesa" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -742,6 +744,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aEJ-1F-RoF"/>
+        <segue reference="1bB-yk-62Z"/>
     </inferredMetricsTieBreakers>
 </document>

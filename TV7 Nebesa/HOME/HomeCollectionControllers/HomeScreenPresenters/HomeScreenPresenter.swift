@@ -39,7 +39,6 @@ final class HomeRecommendPresenter {
             print(error.localizedDescription)
         }
     }
-    // Second cell-Scree
 }
     
 

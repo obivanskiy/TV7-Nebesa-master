@@ -11,7 +11,7 @@ import UIKit
 let cellId = "homeCell"
 let newestCellId = "homeNewestCell"
 let mostViewedCellId = "mostViewedCell"
-let titleItem = "Небеса"
+var titleItem = ""
 
 class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate {
     
@@ -25,15 +25,13 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     //    var homeScreenNewestData: HomeScreenNewestProgrammes = HomeScreenNewestProgrammes()
     //    var homeMostViewedData: HomeScreenMostViewedProgrammes = HomeScreenMostViewedProgrammes()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         setupMenuBar()
         setupNavigationItems()
-
-        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.title = "Небеса ТВ7"
     }
     
     //UICollectionViewDelegateFlowLayout methods
@@ -67,16 +65,18 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
 }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
+       
         if indexPath.item == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mostViewedCellId, for: indexPath) as! HomeMostViewedCell
+//            vc.titleItem = "Топовые"
             return cell
         } else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newestCellId, for: indexPath) as! HomeNewestCell
+//            vc.vctitleItem = "Новые"
             return cell
         } 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeRecommendCell
-        
+//        vc.titleItem = "Рекомедованные"
         return cell
     }
     
@@ -123,11 +123,6 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         navigationItem.titleView = titleLabel
     }
     
-    
-    // MARK: - Navigation
-    
-   
- 
     // MARK: - Navigation
     
     private enum SegueIdentifier: String {
@@ -183,8 +178,23 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 destination.videoDuration = data.duration!
                 destination.videoFirstBroadcast = data.firstBroadcast
                 destination.videoEpisodeNumber = data.episodeNumber!
-            case is HomeNewestCell:
-                break
+           
+            case let tableCell as MostViewedTableViewCell:
+                let collectionCell = collectionView.cellForItem(at: IndexPath(item: 2, section: 0)) as! HomeMostViewedCell
+                let indexPath = collectionCell.mostViewedTableView.indexPath(for: tableCell)
+                let data = collectionCell.homeMostViewedData.homeScreenMostViewedProgrammes[indexPath!.row]
+                destination.title = data.seriesName
+                //                if data.description != "" {
+                //                    destination.videoCaption = data.description
+                //                } else {
+                destination.videoCaption = data.caption
+                
+                destination.videoTitle = data.programName
+//                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.! + NetworkEndpoints.playlistEndpoint
+//                print(destination.videoURLString)
+                destination.videoDuration = data.time!
+//                destination.videoFirstBroadcast = data.
+                destination.videoEpisodeNumber = data.episodeNumber!
             default:
                 break
             }

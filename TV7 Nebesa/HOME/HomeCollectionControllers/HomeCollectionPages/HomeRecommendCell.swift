@@ -61,13 +61,13 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
         return cell
     
 }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-                tableView.deselectRow(at: indexPath, animated: true)
-                let cell = tableView.cellForRow(at: indexPath) as! RecommendTableViewCell
-
-                HomeVideoPlayerController.programInfo = cell.cellModel!
-//                self.performSegue(withIdentifier: homeScreenProgrammeDataSegue, sender: self)
-            }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//                tableView.deselectRow(at: indexPath, animated: true)
+//                let cell = tableView.cellForRow(at: indexPath) as! RecommendTableViewCell
+//
+//                HomeVideoPlayerController.programInfo = cell.cellModel!
+////                self.performSegue(withIdentifier: homeScreenProgrammeDataSegue, sender: self)
+//            }
     
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

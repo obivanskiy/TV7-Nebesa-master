@@ -12,15 +12,15 @@ import AVKit
 
 class HomeVideoPlayerController: UIViewController {
     
-    
+    private var presenter: VideoPresenter?
     //MARK: - Stored properties
     private var player: AVPlayer?
     private var playerViewController = AVPlayerViewController()
-    static var programInfo : HomeScreenData = HomeScreenData()
-    static var newestInfo: HomeNewestData = HomeNewestData()
-  
-//    static var newProgramInfo : HomeNewestData = HomeNewestData()
- 
+//    static var programInfo : HomeScreenData = HomeScreenData()
+//    static var newestInfo: HomeNewestData = HomeNewestData()
+    
+    static var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation()
+    var videoID: String = ""
     private var screenTitle: String = "ВИДЕО"
     var videoTitle: String? = ""
     var videoSeriesName: String? = ""
@@ -40,18 +40,19 @@ class HomeVideoPlayerController: UIViewController {
     @IBOutlet weak var VideoDurationLabel: UILabel!
     @IBOutlet weak var VideoFirstBroadcastLabel: UILabel!
 
-//    static var programInfo: ProgrammeInfo = ProgrammeInfo() {
-//        didSet {
-//
-//            print(programInfo)
-//        }
-//    }
+    static var programInfo: ProgrammeInfo = ProgrammeInfo() {
+        didSet {
+
+            print(programInfo)
+        }
+    }
     //MARK: - View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+    self.presenter = VideoPresenter(with: self)
         setUpUI()
     }
     
