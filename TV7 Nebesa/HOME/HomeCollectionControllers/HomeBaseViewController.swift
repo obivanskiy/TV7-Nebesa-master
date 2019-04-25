@@ -126,8 +126,12 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     
     // MARK: - Navigation
     
+   
+ 
+    // MARK: - Navigation
+    
     private enum SegueIdentifier: String {
-        case iwan
+        case videoDataSegue
     }
     
     var collectionView: UICollectionView {
@@ -142,7 +146,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
             return
         }
         switch identifier {
-        case .iwan:
+        case .videoDataSegue:
             guard let sender = sender else { return }
             let destination = segue.destination as! HomeVideoPlayerController
             switch sender {
@@ -150,7 +154,19 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! HomeRecommendCell
                 let indexPath = collectionCell.recommendTableView.indexPath(for: tableCell)
                 let data = collectionCell.homeScreenData.homeScreenProgrammes[indexPath!.row]
-                destination.title = data.caption
+                destination.title = data.seriesName
+                if data.description != "" {
+                    destination.videoCaption = data.description
+                } else {
+                     destination.videoCaption = data.caption
+                }
+                destination.videoTitle = data.name
+                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.linkPath + NetworkEndpoints.playlistEndpoint
+                print(destination.videoURLString)
+                destination.videoDuration = data.duration
+                destination.videoFirstBroadcast = data.firstBroadcast
+                destination.videoEpisodeNumber = data.episodeNumber
+                
             case is HomeMostViewedCell:
                 break
             case is HomeNewestCell:
@@ -160,5 +176,4 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
             }
         }
     }
-
 }

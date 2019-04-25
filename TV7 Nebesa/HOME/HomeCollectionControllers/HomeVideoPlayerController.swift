@@ -20,10 +20,17 @@ class HomeVideoPlayerController: UIViewController {
     static var newestInfo: HomeNewestData = HomeNewestData()
   
 //    static var newProgramInfo : HomeNewestData = HomeNewestData()
-    private var videoURLString: String = ""
+ 
     private var screenTitle: String = "ВИДЕО"
+    var videoTitle: String? = ""
+    var videoSeriesName: String? = ""
+    var videoCaption: String? = ""
+    var videoEpisodeNumber: String = ""
+    var videoDuration: String = ""
+    var videoFirstBroadcast: String = ""
+    var videoURLString: String = ""
     
-  
+   
 
     //MARK: - Outlets
     @IBOutlet weak var ProgramVideoView: UIView!
@@ -53,23 +60,21 @@ class HomeVideoPlayerController: UIViewController {
     }
 
     //MARK: -Set up the UI
-    private func setUpUI() {
-        var titleName = HomeVideoPlayerController.programInfo.seriesName
-        if titleName == "" {
-          titleName = HomeVideoPlayerController.programInfo.name
+
+        private func setUpUI() {
+            
+            var titleName = videoTitle
+            if titleName == "" {
+                titleName = videoSeriesName
+            }
+            VideoTitleLabel.text = titleName
+            VideoCaptionLabel.text = videoCaption
+            VideoEpisodeNumberLabel.text = "Эпизод: \(videoEpisodeNumber)"
+            VideoDurationLabel.text = "Длительность: \(dateFormatter(videoDuration))"
+            VideoFirstBroadcastLabel.text = "Доступен с:\(broadcastDateFormatter(videoFirstBroadcast))"
+
+   
         }
-        VideoTitleLabel.text = titleName
-        VideoCaptionLabel.text = HomeVideoPlayerController.programInfo.caption 
-        VideoEpisodeNumberLabel.text = "Эпизод: \(HomeVideoPlayerController.programInfo.episodeNumber)"
-        VideoDurationLabel.text = "Длительность: \(dateFormatter(HomeVideoPlayerController.programInfo.duration))"
-        VideoFirstBroadcastLabel.text = "Доступен с:\(broadcastDateFormatter(HomeVideoPlayerController.programInfo.firstBroadcast))"
-        
-        
-        // set up url from the data source
-        self.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + HomeVideoPlayerController.programInfo.linkPath + NetworkEndpoints.playlistEndpoint
-        print(videoURLString)
-        self.title = self.screenTitle
-    }
     
     //MARK: - Player function
     private func player(urlString: String) {

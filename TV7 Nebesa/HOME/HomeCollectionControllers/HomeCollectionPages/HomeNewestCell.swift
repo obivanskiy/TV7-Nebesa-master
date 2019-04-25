@@ -63,28 +63,7 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
 //
 ////        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
 //    }
-    
-    
-    
-    private func requestHomeScreenNewestInformation() {
-        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenNewestProgrammes) { result in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let data):
-                self.serializeHomeScreenNewestInformation(requestData: data)
-            }
-        }
-    }
-    
-    private func serializeHomeScreenNewestInformation(requestData: (Data)) {
-        do {
-            self.homeScreenNewestData  = try JSONDecoder().decode(HomeScreenNewestProgrammes.self, from: requestData)
-            print(homeScreenNewestData.homeScreenNewestProgrammes)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
+  
     
  
     
