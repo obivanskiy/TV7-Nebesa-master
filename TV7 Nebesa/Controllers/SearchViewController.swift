@@ -122,9 +122,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("Episode id for EPisodeVC: \(destVC.episodeId)")
 
         case seriesSegue:
-            guard let indexPath = self.searchResultsTableView.indexPathForSelectedRow else { return
-
-            }
+            guard let indexPath = self.searchResultsTableView.indexPathForSelectedRow else { return }
+            
             print(indexPath.row)
             print("series")
         default:

@@ -16,8 +16,6 @@ class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var episodeTableView: UITableView!
     
     //MARK: - Properties
-    private var player: AVPlayer?
-    private var playerViewController = AVPlayerViewController()
     var episodeId = ""
     var searchEpisodeData: SearchEpisode = SearchEpisode() {
         didSet {
@@ -28,11 +26,17 @@ class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITabl
     }
     private var videoURLString = ""
     private var presenter: SearchEpisodePresenter?
+    private var screenTitle = "ВИДЕО"
 
     //MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        let cell = EpisodeCell()
+        cell.stopPlayback()
     }
 
     //MARK: - Table View Data Source Methods
@@ -45,6 +49,7 @@ class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITabl
             return UITableViewCell()
         }
         cell.cellModel = searchEpisodeData.results[indexPath.row]
+        videoURLString = NetworkEndpoints.baseURLForVideoPlayback + cell.cellModel!.path + NetworkEndpoints.playlistEndpoint
         return cell
     }
 
@@ -55,7 +60,7 @@ class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITabl
         presenter = SearchEpisodePresenter(with: self, episodeId: episodeId)
         //Register for EpisodeCell.xib
         episodeTableView.register(UINib(nibName: EpisodeCell.identifier, bundle: .none), forCellReuseIdentifier: EpisodeCell.identifier)
-
+        self.title = screenTitle
     }
 
 }
