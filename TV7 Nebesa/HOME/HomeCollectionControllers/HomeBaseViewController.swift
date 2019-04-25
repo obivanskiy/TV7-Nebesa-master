@@ -116,11 +116,27 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
     func setupNavigationItems() {
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        titleLabel.text = titleItem
-        titleLabel.textColor = UIColor.white
-        titleLabel.font = UIFont.systemFont(ofSize: 20)
-        navigationItem.titleView = titleLabel
+//        let navController = navigationController!
+//
+//        let image = #imageLiteral(resourceName: "LogoImage")
+//        let imageView = UIImageView(image: image)
+//
+//        let bannerWidth = navController.navigationBar.frame.width
+//        let bannerHeight = navController.navigationBar.frame.height
+//
+//        let bannerX = bannerWidth/2 - image.size.width * 2
+//        let bannerY = bannerHeight/2 - image.size.height/2
+        
+//        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+//
+//        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth, height: bannerHeight)
+//        
+//        imageView.contentMode = .scaleAspectFill
+////        titleLabel.text = titleItem
+////        titleLabel.textColor = UIColor.white
+////        titleLabel.font = UIFont.systemFont(ofSize: 20)
+//        navigationItem.titleView = imageView
+        
     }
     
     // MARK: - Navigation
