@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CategorySeriesTableViewController: UITableViewController {
+final class CategorySeriesTableViewController: UITableViewController, Castable {
     
     // MARK: - Stored properties
     private var presenter: CategorySeriesPresenter?
@@ -35,6 +35,7 @@ final class CategorySeriesTableViewController: UITableViewController {
     //MARK: - View lifecycle functions
     override func viewDidLoad() {
         self.presenter = CategorySeriesPresenter(with: self)
+        navigationItem.rightBarButtonItem = googleCastButton
     }
     
     // MARK: - Table view data source
@@ -72,7 +73,9 @@ final class CategorySeriesTableViewController: UITableViewController {
 //        tableView.beginUpdates()
 //        cell.episodeDescriptionLabel.numberOfLines = (cell.episodeDescriptionLabel.numberOfLines == 0) ? 2 : 0
 //        tableView.endUpdates()
+
         ProgrammeScreenViewController.programmeData = cell.cellModel ?? ProgrammesData()
+        
         performSegue(withIdentifier: programmeDataSegue, sender: self)
     }
     

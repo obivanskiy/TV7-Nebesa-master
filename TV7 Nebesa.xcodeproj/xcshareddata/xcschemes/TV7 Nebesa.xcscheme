@@ -61,12 +61,6 @@
             ReferencedContainer = "container:TV7 Nebesa.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
-      <LocationScenarioReference
-         identifier = "Tokyo, Japan"
-         referenceType = "1">
-      </LocationScenarioReference>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "OS_ACTIVITY_MODE"

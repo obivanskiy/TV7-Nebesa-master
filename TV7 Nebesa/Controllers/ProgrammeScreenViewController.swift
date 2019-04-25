@@ -9,8 +9,9 @@
 import UIKit
 import AVFoundation
 import AVKit
+import GoogleCast
 
-final class ProgrammeScreenViewController: UIViewController {
+final class ProgrammeScreenViewController: UIViewController, Castable {
     
     //MARK: - Stored properties
     private var player: AVPlayer?
@@ -27,6 +28,9 @@ final class ProgrammeScreenViewController: UIViewController {
     @IBOutlet weak var programmeNumberLabel: UILabel!
     @IBOutlet weak var programmeLenghtLabel: UILabel!
     
+    private var playerView: Player!
+    
+    
     //MARK: - View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,13 +38,14 @@ final class ProgrammeScreenViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        player(urlString: videoURLString)
+        //player(urlString: videoURLString)
+       createPlayerView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        stopPlayback()
+        playerView.stopPlayback()
     }
-    
+
     //MARK: -Set up the UI
     private func setUpUI() {
         seriesNameLabel.text = ProgrammeScreenViewController.programmeData.seriesName
@@ -51,24 +56,31 @@ final class ProgrammeScreenViewController: UIViewController {
         // set up url from the data source
         self.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + ProgrammeScreenViewController.programmeData.linkPath + NetworkEndpoints.playlistEndpoint
         self.title = self.screenTitle
+        navigationItem.rightBarButtonItem = googleCastButton
     }
+    
+    private func createPlayerView() {
+        playerView = Player(frame: programmeView.bounds)
+        print(videoURLString)
+        playerView.mediaItem = MediaItem(name: ProgrammeScreenViewController.programmeData.seriesName, about: ProgrammeScreenViewController.programmeData.caption, videoUrl: videoURLString.encodeUrl()!, thumbnailUrl: nil)
+        playerView.initPlayerLayer()
+        programmeView.addSubview(playerView)
+    }
+
     
     //MARK: - Player function
-    private func player(urlString: String) {
-        if let  videoURL = URL(string: urlString.encodeUrl()!) {
-            self.player = AVPlayer(url: videoURL)
-            playerViewController.player = self.player
-            playerViewController.view.frame = programmeView.bounds
-            self.addChild(playerViewController)
-            programmeView.addSubview(playerViewController.view)
-            playerViewController.didMove(toParent: self)
-            playerViewController.player?.pause()
-        }
-    }
-    
-    private func stopPlayback() {
-        playerViewController.player?.pause()
-    }
+//    private func player(urlString: String) {
+//        if let  videoURL = URL(string: urlString.encodeUrl()!) {
+//            self.player = AVPlayer(url: videoURL)
+//            playerViewController.player = self.player
+//            playerViewController.view.frame = programmeView.bounds
+//            self.addChild(playerViewController)
+//            programmeView.addSubview(playerViewController.view)
+//            playerViewController.didMove(toParent: self)
+//            playerViewController.player?.pause()
+//
+//        }
+//    }
     
     //MARK: - Date formatter
     private func dateFormatter(_ dateIn: String) -> String {
