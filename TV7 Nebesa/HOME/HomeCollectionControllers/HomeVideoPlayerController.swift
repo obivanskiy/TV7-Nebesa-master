@@ -16,12 +16,14 @@ class HomeVideoPlayerController: UIViewController {
     //MARK: - Stored properties
     private var player: AVPlayer?
     private var playerViewController = AVPlayerViewController()
- 
-    
+    static var programInfo : HomeScreenData = HomeScreenData()
+    static var newestInfo: HomeNewestData = HomeNewestData()
+  
 //    static var newProgramInfo : HomeNewestData = HomeNewestData()
     private var videoURLString: String = ""
     private var screenTitle: String = "ВИДЕО"
     
+  
 
     //MARK: - Outlets
     @IBOutlet weak var ProgramVideoView: UIView!
@@ -31,19 +33,15 @@ class HomeVideoPlayerController: UIViewController {
     @IBOutlet weak var VideoDurationLabel: UILabel!
     @IBOutlet weak var VideoFirstBroadcastLabel: UILabel!
 
-    
-    static var programInfo: ProgrammeInfo = ProgrammeInfo() {
-        didSet {
-            
-            print(programInfo)
-        }
-    }
+//    static var programInfo: ProgrammeInfo = ProgrammeInfo() {
+//        didSet {
+//
+//            print(programInfo)
+//        }
+//    }
     //MARK: - View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,14 +51,10 @@ class HomeVideoPlayerController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         player(urlString: videoURLString)
     }
-    
- 
-    
-    
-    
+
     //MARK: -Set up the UI
     private func setUpUI() {
-        var titleName = HomeVideoPlayerController.programInfo.sname
+        var titleName = HomeVideoPlayerController.programInfo.seriesName
         if titleName == "" {
           titleName = HomeVideoPlayerController.programInfo.name
         }
@@ -72,7 +66,7 @@ class HomeVideoPlayerController: UIViewController {
         
         
         // set up url from the data source
-        self.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + HomeVideoPlayerController.programInfo.path + NetworkEndpoints.playlistEndpoint
+        self.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + HomeVideoPlayerController.programInfo.linkPath + NetworkEndpoints.playlistEndpoint
         print(videoURLString)
         self.title = self.screenTitle
     }

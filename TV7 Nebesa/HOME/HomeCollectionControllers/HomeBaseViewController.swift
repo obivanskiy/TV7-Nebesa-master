@@ -17,14 +17,13 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     
     @IBOutlet weak var homePageCollectionView: UICollectionView!
     
-    private var presenterForRecommend: HomeRecommendPresenter?
-    private var presenterForNewest: HomeNewestPresenter?
-    private var presenterForMostViewed: HomeMostViewedPresenter?
-    
-    
-    var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes()
-    var homeScreenNewestData: HomeScreenNewestProgrammes = HomeScreenNewestProgrammes()
-    var homeMostViewedData: HomeScreenMostViewedProgrammes = HomeScreenMostViewedProgrammes()
+    private var homeScreenProgrammeDataSegue: String = "HomeScreenProgrammePageSegue"
+    //    private var presenterForRecommend: HomeRecommendPresenter?
+    //    private var presenterForNewest: HomeNewestPresenter?
+    //    private var presenterForMostViewed: HomeMostViewedPresenter?
+    //    var homeScreenData: HomeScreenProgrammes = HomeScreenProgrammes()
+    //    var homeScreenNewestData: HomeScreenNewestProgrammes = HomeScreenNewestProgrammes()
+    //    var homeMostViewedData: HomeScreenMostViewedProgrammes = HomeScreenMostViewedProgrammes()
     
     
     override func viewDidLoad() {
@@ -33,7 +32,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         
         setupMenuBar()
         setupNavigationItems()
-        print("XFDCGHVBJKNLM______________\(homeScreenData.homeScreenProgrammes)")
+
         
     }
     
@@ -71,7 +70,6 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     
         if indexPath.item == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mostViewedCellId, for: indexPath) as! HomeMostViewedCell
-            
             return cell
         } else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newestCellId, for: indexPath) as! HomeNewestCell
@@ -126,15 +124,41 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     }
     
     
-
-    /*
     // MARK: - Navigation
-
+    
+    private enum SegueIdentifier: String {
+        case iwan
+    }
+    
+    var collectionView: UICollectionView {
+        // FIXME: IBOutlet to UICollectionView
+        let subviews = view.subviews.compactMap { $0 as? UICollectionView }
+        return subviews.first!
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let identifier = segue.identifier.flatMap(SegueIdentifier.init) else {
+            return
+        }
+        switch identifier {
+        case .iwan:
+            guard let sender = sender else { return }
+            let destination = segue.destination as! HomeVideoPlayerController
+            switch sender {
+            case let tableCell as RecommendTableViewCell:
+                let collectionCell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! HomeRecommendCell
+                let indexPath = collectionCell.recommendTableView.indexPath(for: tableCell)
+                let data = collectionCell.homeScreenData.homeScreenProgrammes[indexPath!.row]
+                destination.title = data.caption
+            case is HomeMostViewedCell:
+                break
+            case is HomeNewestCell:
+                break
+            default:
+                break
+            }
+        }
     }
-    */
 
 }

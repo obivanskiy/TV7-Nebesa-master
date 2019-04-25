@@ -464,7 +464,7 @@
                                                                 <outlet property="RecommendDateLabel" destination="eFP-g8-Lya" id="jVj-Dt-aQE"/>
                                                                 <outlet property="RecommendImageView" destination="pPS-XI-qJR" id="WXh-EF-0Kt"/>
                                                                 <outlet property="RecommendTitleLabel" destination="8cz-Vp-EIn" id="SOo-Rp-AGp"/>
-                                                                <segue destination="MBD-vz-poy" kind="show" id="YOe-dQ-cLb"/>
+                                                                <segue destination="MBD-vz-poy" kind="show" identifier="HomeScreenProgrammeDataSegue" id="amj-FJ-Oio"/>
                                                             </connections>
                                                         </tableViewCell>
                                                     </prototypes>

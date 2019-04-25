@@ -45,7 +45,8 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
             return UITableViewCell()
         }
         cell.cellModel = homeScreenNewestData.homeScreenNewestProgrammes[indexPath.row]
-//        print(homeScreenNewestData.homeScreenNewestProgrammes)
+        
+        print(homeScreenNewestData.homeScreenNewestProgrammes)
        
         return cell
         

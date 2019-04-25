@@ -25,7 +25,7 @@ class CustomNavigationBar: UINavigationBar {
 
      func setUp() {
         
-        prefersLargeTitles = false
+//        prefersLargeTitles = false
         
         barStyle = .blackOpaque
         barTintColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1) //12
