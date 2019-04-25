@@ -1079,13 +1079,13 @@
 				CODE_SIGN_ENTITLEMENTS = "TV7 Nebesa/TV7 Nebesa.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PWNU96MEM5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "TV7 Nebesa/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tv7Nebesa.LIGHTHOUSE;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vorobiovskyi.TV7-Nebesa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1101,13 +1101,13 @@
 				CODE_SIGN_ENTITLEMENTS = "TV7 Nebesa/TV7 Nebesa.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PWNU96MEM5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "TV7 Nebesa/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tv7Nebesa.LIGHTHOUSE;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vorobiovskyi.TV7-Nebesa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
