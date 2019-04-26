@@ -9,12 +9,13 @@
 import UIKit
 import AVFoundation
 import AVKit
+import GoogleCast
 
-class HomeVideoPlayerController: UIViewController {
+class HomeVideoPlayerController: UIViewController, Castable {
     
     private var presenter: VideoPresenter?
     //MARK: - Stored properties
-    private var player: AVPlayer?
+    private var player: Player!
     private var playerViewController = AVPlayerViewController()
 //    static var programInfo : HomeScreenData = HomeScreenData()
 //    static var newestInfo: HomeNewestData = HomeNewestData()
@@ -49,15 +50,16 @@ class HomeVideoPlayerController: UIViewController {
     //MARK: - View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-    self.presenter = VideoPresenter(with: self)
+        self.presenter = VideoPresenter(with: self)
         setUpUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        createPlayerView()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        player(urlString: videoURLString)
+        
     }
 
     //MARK: -Set up the UI
@@ -73,22 +75,17 @@ class HomeVideoPlayerController: UIViewController {
             VideoEpisodeNumberLabel.text = "Эпизод: \(videoEpisodeNumber)"
             VideoDurationLabel.text = "Длительность: \(dateFormatter(videoDuration))"
             VideoFirstBroadcastLabel.text = "Доступен с:\(broadcastDateFormatter(videoFirstBroadcast))"
-
-   
+            navigationItem.rightBarButtonItem = googleCastButton
         }
     
     //MARK: - Player function
-    private func player(urlString: String) {
-        if let  videoURL = URL(string: urlString.encodeUrl()!) {
-            self.player = AVPlayer(url: videoURL)
-            playerViewController.player = self.player
-            playerViewController.view.frame = ProgramVideoView.bounds
-            self.addChild(playerViewController)
-            ProgramVideoView.addSubview(playerViewController.view)
-            playerViewController.didMove(toParent: self)
-            playerViewController.player?.pause()
-        }
+    private func createPlayerView() {
+        player = Player(frame: ProgramVideoView.bounds)
+        player.mediaItem = MediaItem(name: videoTitle, about: videoCaption, videoUrl: videoURLString.encodeUrl()!, thumbnailUrl: nil)
+        player.initPlayerLayer()
+        ProgramVideoView.addSubview(player)
     }
+
     
     //MARK: - Date formatter
     private func dateFormatter(_ dateIn: String) -> String {

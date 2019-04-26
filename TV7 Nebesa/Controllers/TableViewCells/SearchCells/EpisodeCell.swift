@@ -30,7 +30,7 @@ class EpisodeCell: UITableViewCell {
 
     //MARK: - Properties
     private var videoURL = ""
-    private var player: AVPlayer?
+    private var player: Player!
     var playerViewController = AVPlayerViewController()
 
     var cellModel: SearchEpisodeData? {
@@ -51,7 +51,7 @@ class EpisodeCell: UITableViewCell {
         durationLabel.text = "Длительность: " + String(durationInMinutes/1000/60) + " Мин"
         firstBroadcast.text = "Первая трансляция: " + dateFormatter(cellModel.visibleOnVodSince)
         videoURL = NetworkEndpoints.baseURLForVideoPlayback + cellModel.path + NetworkEndpoints.playlistEndpoint
-        setupPlayer(from: videoURL)
+        createPlayerView()
         print(videoURL)
     }
 
@@ -64,14 +64,11 @@ class EpisodeCell: UITableViewCell {
         return newDate
     }
 
-    private func setupPlayer(from urlString: String) {
-        if let videoURL = URL(string: urlString.encodeUrl()!) {
-            player = AVPlayer(url: videoURL)
-            playerViewController.player = player
-            playerViewController.view.frame = episodeVideoView.bounds
-            episodeVideoView.addSubview(playerViewController.view)
-            playerViewController.player?.pause()
-        }
+    private func createPlayerView() {
+        player = Player(frame: episodeVideoView.bounds)
+        player.mediaItem = MediaItem(name: cellModel?.name, about: cellModel?.caption, videoUrl: videoURL.encodeUrl(), thumbnailUrl: nil)
+        player.initPlayerLayer()
+        episodeVideoView.addSubview(player)
     }
 
     func stopPlayback() {

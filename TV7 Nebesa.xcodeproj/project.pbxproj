@@ -96,6 +96,7 @@
 		110F9DA82237A6A50020BABC /* BroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DA72237A6A50020BABC /* BroadcastViewController.swift */; };
 		110F9DAC2237A74E0020BABC /* ParentCategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAB2237A74E0020BABC /* ParentCategoriesTableViewController.swift */; };
 		110F9DAE2237A7610020BABC /* HighlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAD2237A7610020BABC /* HighlightsViewController.swift */; };
+		1511D8DE2272F106007EFD45 /* Pods_TV7_Nebesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */; };
 		152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */; };
 		152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */; };
 		152DF3B6224271E400BDC90B /* BestScenesScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */; };
@@ -136,7 +137,6 @@
 		15F1637E2254DF2E00E2DEFF /* TVGuidePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1637D2254DF2E00E2DEFF /* TVGuidePresenter.swift */; };
 		15F5DA32225F7D1900B989A1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5DA31225F7D1900B989A1 /* Player.swift */; };
 		15F68BB122511AEE006F3BFB /* CategorySeriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F68BB022511AEE006F3BFB /* CategorySeriesPresenter.swift */; };
-		C0B38F8033B235E335AED466 /* Pods_TV7_Nebesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */; };
 		FA29D6AF2264B79800B39250 /* SearchResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */; };
 		FA29D6B12264C94E00B39250 /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */; };
 		FA4F347D2260A010000508B9 /* TVProgramPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */; };
@@ -321,8 +321,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1511D8DE2272F106007EFD45 /* Pods_TV7_Nebesa.framework in Frameworks */,
 				152E1B0C2264C1D800EEB85A /* ExternalAccessory.framework in Frameworks */,
-				C0B38F8033B235E335AED466 /* Pods_TV7_Nebesa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,7 +711,7 @@
 				110F9D8C2237A6310020BABC /* Frameworks */,
 				110F9D8D2237A6310020BABC /* Resources */,
 				37E08AADAF115BE025A663A1 /* [CP] Embed Pods Frameworks */,
-				FC5396A29A1053B9B9140C2E /* [CP] Copy Pods Resources */,
+				318F688D8D5FB921045A9026 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -866,6 +866,30 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		318F688D8D5FB921045A9026 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh",
+				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.4.1_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
+				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.4.1_static/GoogleCast.framework/GoogleCastUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastCoreResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastUIResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		37E08AADAF115BE025A663A1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -888,30 +912,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FC5396A29A1053B9B9140C2E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh",
-				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.3.5_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
-				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.3.5_static/GoogleCast.framework/GoogleCastUIResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastCoreResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastUIResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

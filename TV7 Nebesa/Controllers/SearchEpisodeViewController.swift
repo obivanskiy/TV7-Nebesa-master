@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import AVKit
 
-class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Castable {
 
     //MARK: - Outlets
     @IBOutlet weak var episodeTableView: UITableView!
@@ -32,6 +32,7 @@ class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        navigationItem.rightBarButtonItem = googleCastButton
     }
 
     override func viewWillDisappear(_ animated: Bool) {
