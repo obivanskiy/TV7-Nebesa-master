@@ -378,11 +378,11 @@
             <objects>
                 <viewController title="Небеса ТВ7" id="HXY-pw-zdd" customClass="HomeBaseViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y2N-ue-twT">
-                        <rect key="frame" x="0.0" y="0.0" width="1242" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KW3-sO-5wA">
-                                <rect key="frame" x="0.0" y="50" width="1242" height="675"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="675"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="eqW-mo-UWI">
                                     <size key="itemSize" width="92" height="10"/>
@@ -692,7 +692,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNz-Q3-nZE">
-                                <rect key="frame" x="0.0" y="0.0" width="1242" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="MNg-C0-rC3"/>
@@ -714,7 +714,6 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="KVW-JK-O4H"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <size key="freeformSize" width="1242" height="896"/>
                     <connections>
                         <outlet property="homePageCollectionView" destination="KW3-sO-5wA" id="bsX-h1-s33"/>
                     </connections>

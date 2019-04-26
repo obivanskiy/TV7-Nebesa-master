@@ -54,17 +54,5 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! NewestTableViewCell
-//        HomeVideoPlayerController.newProgramInfo = cell.cellModel ?? HomeNewestData()
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-////        let cell = tableView.cellForRow(at: indexPath) as! NewestTableViewCell
-////        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeNewestData()
-//
-////        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
-//    }
-  
-    
- 
-    
 }

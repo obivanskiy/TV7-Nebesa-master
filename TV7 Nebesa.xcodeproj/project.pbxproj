@@ -136,7 +136,6 @@
 		15F1637E2254DF2E00E2DEFF /* TVGuidePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1637D2254DF2E00E2DEFF /* TVGuidePresenter.swift */; };
 		15F5DA32225F7D1900B989A1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5DA31225F7D1900B989A1 /* Player.swift */; };
 		15F68BB122511AEE006F3BFB /* CategorySeriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F68BB022511AEE006F3BFB /* CategorySeriesPresenter.swift */; };
-		15FE370022719B7400C92E51 /* NewPlayerByIvan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE36FF22719B7400C92E51 /* NewPlayerByIvan.swift */; };
 		C0B38F8033B235E335AED466 /* Pods_TV7_Nebesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */; };
 		FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDE7FE223FC69A00006FEE /* TVGuideCell.swift */; };
 		FAFDE801223FC69A00006FEE /* TVGuideCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFDE7FF223FC69A00006FEE /* TVGuideCell.xib */; };
@@ -278,7 +277,6 @@
 		15F1637D2254DF2E00E2DEFF /* TVGuidePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVGuidePresenter.swift; sourceTree = "<group>"; };
 		15F5DA31225F7D1900B989A1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Player.swift; path = "TV7 Nebesa/Controllers/Player.swift"; sourceTree = SOURCE_ROOT; };
 		15F68BB022511AEE006F3BFB /* CategorySeriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySeriesPresenter.swift; sourceTree = "<group>"; };
-		15FE36FF22719B7400C92E51 /* NewPlayerByIvan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlayerByIvan.swift; sourceTree = "<group>"; };
 		2831A2EA4C6801B61AA13941 /* Pods-TV7 Nebesa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV7 Nebesa.release.xcconfig"; path = "Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa.release.xcconfig"; sourceTree = "<group>"; };
 		5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV7_Nebesa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A01670E8FE1B6304A067FA /* Pods-TV7 Nebesa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV7 Nebesa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa.debug.xcconfig"; sourceTree = "<group>"; };
@@ -553,7 +551,6 @@
 			isa = PBXGroup;
 			children = (
 				15F5DA31225F7D1900B989A1 /* Player.swift */,
-				15FE36FF22719B7400C92E51 /* NewPlayerByIvan.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -820,7 +817,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 			);
@@ -833,7 +830,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC5396A29A1053B9B9140C2E /* [CP] Copy Pods Resources */ = {
@@ -844,7 +841,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh",
 				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.3.5_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
 				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.3.5_static/GoogleCast.framework/GoogleCastUIResources.bundle",
 			);
@@ -857,7 +854,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -867,7 +864,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15FE370022719B7400C92E51 /* NewPlayerByIvan.swift in Sources */,
 				1103F73922721F630016A3C8 /* CustomNavigationBar.swift in Sources */,
 				15CD9CE6225380E70014E326 /* WebTVMainTableViewCell.swift in Sources */,
 				15B0816E223A6C5900826057 /* CategoryDataViewController.swift in Sources */,
@@ -1079,13 +1075,13 @@
 				CODE_SIGN_ENTITLEMENTS = "TV7 Nebesa/TV7 Nebesa.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PWNU96MEM5;
 				INFOPLIST_FILE = "TV7 Nebesa/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vorobiovskyi.TV7-Nebesa";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.TV7-Nebesa.LIGHTHOUSE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1101,13 +1097,13 @@
 				CODE_SIGN_ENTITLEMENTS = "TV7 Nebesa/TV7 Nebesa.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PWNU96MEM5;
 				INFOPLIST_FILE = "TV7 Nebesa/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vorobiovskyi.TV7-Nebesa";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.TV7-Nebesa.LIGHTHOUSE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

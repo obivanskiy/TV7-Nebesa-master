@@ -19,16 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-
-//        let options = GCKCastOptions(discoveryCriteria: GCKDiscoveryCriteria(applicationID: appID))
-//        options.physicalVolumeButtonsWillControlDeviceVolume = true
-//        GCKCastContext.setSharedInstanceWith(options)
-//
-//        let logFilter = GCKLoggerFilter()
-//        logFilter.minimumLevel = .verbose
-//        GCKLogger.sharedInstance().filter = logFilter
-//        GCKLogger.sharedInstance().delegate = self
-        
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSession.Category.playback)
