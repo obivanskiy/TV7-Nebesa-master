@@ -72,6 +72,6 @@ class EpisodeCell: UITableViewCell {
     }
 
     func stopPlayback() {
-        playerViewController.player?.pause()
+//        player.stopPlayback()
     }
 }

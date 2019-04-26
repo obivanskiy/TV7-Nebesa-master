@@ -96,6 +96,8 @@
 		110F9DA82237A6A50020BABC /* BroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DA72237A6A50020BABC /* BroadcastViewController.swift */; };
 		110F9DAC2237A74E0020BABC /* ParentCategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAB2237A74E0020BABC /* ParentCategoriesTableViewController.swift */; };
 		110F9DAE2237A7610020BABC /* HighlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAD2237A7610020BABC /* HighlightsViewController.swift */; };
+		111F951B2273083900C35737 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F951A2273083900C35737 /* TabBar.swift */; };
+		111F951D22730A7300C35737 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F951C22730A7300C35737 /* TabBarController.swift */; };
 		1511D8DE2272F106007EFD45 /* Pods_TV7_Nebesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */; };
 		152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */; };
 		152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */; };
@@ -250,6 +252,8 @@
 		110F9DA72237A6A50020BABC /* BroadcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewController.swift; sourceTree = "<group>"; };
 		110F9DAB2237A74E0020BABC /* ParentCategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCategoriesTableViewController.swift; sourceTree = "<group>"; };
 		110F9DAD2237A7610020BABC /* HighlightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsViewController.swift; sourceTree = "<group>"; };
+		111F951A2273083900C35737 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		111F951C22730A7300C35737 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BestScenesScreen.storyboard; sourceTree = "<group>"; };
@@ -462,6 +466,7 @@
 				1103F72F22721F630016A3C8 /* MenuBar.swift */,
 				1103F73022721F630016A3C8 /* CustomNavigationBar.swift */,
 				1103F73122721F630016A3C8 /* CustomNavigationController.swift */,
+				111F951A2273083900C35737 /* TabBar.swift */,
 			);
 			path = "MenuBar+NavBar";
 			sourceTree = "<group>";
@@ -633,6 +638,7 @@
 				15D626E922411BD100449F8B /* CategorySeriesTableViewController.swift */,
 				15CD9CD7225217FD0014E326 /* ProgrammeScreenViewController.swift */,
 				15CD9CDF225379980014E326 /* WebTVScreenViewController.swift */,
+				111F951C22730A7300C35737 /* TabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -874,7 +880,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh",
 				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.4.1_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
 				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.4.1_static/GoogleCast.framework/GoogleCastUIResources.bundle",
 			);
@@ -887,7 +893,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		37E08AADAF115BE025A663A1 /* [CP] Embed Pods Frameworks */ = {
@@ -898,7 +904,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 			);
@@ -911,7 +917,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -970,6 +976,7 @@
 				15CD9CD8225217FD0014E326 /* ProgrammeScreenViewController.swift in Sources */,
 				110F9DAE2237A7610020BABC /* HighlightsViewController.swift in Sources */,
 				15F5DA32225F7D1900B989A1 /* Player.swift in Sources */,
+				111F951B2273083900C35737 /* TabBar.swift in Sources */,
 				FAF046722268653B00078B4F /* SearchViewController.swift in Sources */,
 				FAF04674226F0D7800078B4F /* SearchEpisodeModel.swift in Sources */,
 				FA29D6B12264C94E00B39250 /* SearchResultsPresenter.swift in Sources */,
@@ -1001,6 +1008,7 @@
 				FAF0467E2271AF7C00078B4F /* SearchSeriesViewController.swift in Sources */,
 				FA29D6AF2264B79800B39250 /* SearchResultsModel.swift in Sources */,
 				110F9DAC2237A74E0020BABC /* ParentCategoriesTableViewController.swift in Sources */,
+				111F951D22730A7300C35737 /* TabBarController.swift in Sources */,
 				152DF3BA22428B2900BDC90B /* SeriesProgrammesModel.swift in Sources */,
 				1103F73722721F630016A3C8 /* HeaderMenuTableViewCell.swift in Sources */,
 			);

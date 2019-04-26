@@ -10,17 +10,20 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SF-Compact-Display-Regular.otf">
-            <string>SFCompactDisplay-Regular</string>
-        </array>
         <array key="SF-Compact-Display-Ultralight.otf">
             <string>SFCompactDisplay-Ultralight</string>
+        </array>
+        <array key="SF-Compact-Rounded-Light.otf">
+            <string>SFCompactRounded-Light</string>
         </array>
         <array key="SF-Compact-Text-MediumItalic.otf">
             <string>SFCompactText-MediumItalic</string>
         </array>
         <array key="SF-Pro-Display-Regular.otf">
             <string>SFProDisplay-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-RegularItalic.otf">
+            <string>SFProDisplay-Italic</string>
         </array>
         <array key="SF-Pro-Display-Thin.otf">
             <string>SFProDisplay-Thin</string>
@@ -187,7 +190,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Dkk-bA-OLn"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SFCompactText-MediumItalic" family="SF Compact Text" pointSize="21"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Italic" family="SF Pro Display" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -196,7 +199,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="3Az-3p-uCw"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="SFCompactRounded-Light" family="SF Compact Rounded" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -401,6 +404,11 @@
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v04-Kg-onR">
                                                     <rect key="frame" x="0.0" y="0.0" width="413" height="672"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <view key="tableFooterView" contentMode="scaleToFill" id="kbJ-B6-vgy">
+                                                        <rect key="frame" x="0.0" y="172" width="413" height="7"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeScreenCell" rowHeight="144" id="5vR-zS-cSB" customClass="RecommendTableViewCell" customModule="TV7_Nebesa" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="28" width="413" height="144"/>
@@ -621,7 +629,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.01.2001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFG-x6-pwl">
-                                                                        <rect key="frame" x="227.5" y="33" width="176.5" height="11"/>
+                                                                        <rect key="frame" x="227.5" y="33" width="188.5" height="11"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="11" id="0hE-ab-BmP"/>
                                                                         </constraints>
@@ -712,8 +720,8 @@
                         <viewLayoutGuide key="safeArea" id="R5s-p0-r2x"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="homeTab" id="qG4-2N-IeM"/>
                     <navigationItem key="navigationItem" id="KVW-JK-O4H"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="homePageCollectionView" destination="KW3-sO-5wA" id="bsX-h1-s33"/>
                     </connections>
@@ -742,6 +750,9 @@
             <point key="canvasLocation" x="977" y="1220"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="homeTab" width="28" height="27"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1bB-yk-62Z"/>
     </inferredMetricsTieBreakers>

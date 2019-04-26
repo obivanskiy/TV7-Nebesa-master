@@ -61,6 +61,10 @@ class HomeVideoPlayerController: UIViewController, Castable {
     override func viewDidAppear(_ animated: Bool) {
         
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        player.stopPlayback()
+    }
 
     //MARK: -Set up the UI
 
