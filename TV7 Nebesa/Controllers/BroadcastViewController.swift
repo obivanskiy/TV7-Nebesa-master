@@ -6,6 +6,7 @@
 //
 import UIKit
 
+
 class BroadcastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 
     //MARK: - Outlets
@@ -14,15 +15,15 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var dateStackView: UIStackView!
     @IBOutlet weak var tvGuideTableViewConstraintToTop: NSLayoutConstraint!
 
-
-    //MARK: - Private properties
-    private (set) var tvGuideSeries: TVGuideDates = TVGuideDates() {
+    //MARK: - TVProgram properties
+    var tvGuideSeries: TVGuideDates = TVGuideDates() {
         didSet {
             DispatchQueue.main.async {
                 self.tvGuideTableView.reloadData()
             }
         }
     }
+    private var presenter: TVProgramPresenter?
     private var arrayOfDates = [Date]()
     private var arrayOfDatesStrings = [String]()
     private var expandedRows = Set<Int>()
@@ -31,7 +32,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        downloadServiceForChosenDate(currentDate(Date()))
+        presenter = TVProgramPresenter(with: self)
         setupTVGuideTableView()
         setupDateCollectionView()
         generateDates()
@@ -44,9 +45,11 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TVGuideCell.identifier, for: indexPath) as? TVGuideCell else { return UITableViewCell()}
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TVGuideCell.identifier, for: indexPath) as? TVGuideCell else {
+            return UITableViewCell()
+        }
         let data = tvGuideSeries.tvGuideDates
+
         if !data.isEmpty {
             switch data[indexPath.row] {
             case let (x) where x.series == "":
@@ -62,7 +65,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
             displayMessage("Sorry, we have no data on this date")
         }
         cell.isExpanded = self.expandedRows.contains(indexPath.row)
-
         return cell
     }
 
@@ -100,7 +102,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
-
         self.expandedRows.remove(indexPath.row)
         cell.isExpanded = false
         self.tvGuideTableView.beginUpdates()
@@ -128,8 +129,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
     //MARK: - Collection View Data Source Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let numberOfItemsInSection = arrayOfDatesStrings.count
-        return numberOfItemsInSection
+        return arrayOfDatesStrings.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -141,18 +141,21 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
     //MARK: - Collection View Delegate Methods
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        downloadServiceForChosenDate(currentDate(arrayOfDates[indexPath.row]))
+        presenter = TVProgramPresenter(with: self, chosenDate: arrayOfDates[indexPath.row])
         tvGuideTableView.reloadData()
     }
 
-    // MARK: - Private Methods
+    //MARK: - Actions
+    @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
+    }
+
+    //MARK: - Private Methods
     // Formates Unix date into the normal format
     fileprivate func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }
         let date = Date(timeIntervalSince1970: unixDate)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-
         let newDate = dateFormatter.string(from: date)
         return newDate
     }
@@ -160,7 +163,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     private func setupTVGuideTableView() {
         tvGuideTableView.dataSource = self
         tvGuideTableView.delegate = self
-
         //Register for TVGuideCell.xib
         tvGuideTableView.register(UINib(nibName: "TVGuideCell", bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
         tvGuideTableView.allowsSelection = true
@@ -174,15 +176,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         dateCollectionView.reloadData()
     }
 
-    // Modify current date into the needed format request
-    private func currentDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let currentDateFormat = dateFormatter.string(from: date)
-        return currentDateFormat
-    }
-
-    // Generate Dates from the current date +- 15 days for requests to server
+    // Generate Dates from the current date +/- 15 days for requests to server
     private func generateDates() {
         for number in -15...15 {
             guard let newDate = NSCalendar.current.date(byAdding: .day, value: number, to: Date()) else { continue }
@@ -213,23 +207,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         let okAction = UIAlertAction(title: "OK", style: .default)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
-    }
-
-
-    //MARK: - TV Guide Series Download
-    private func downloadServiceForChosenDate(_ date: String) {
-        let urlToParse = NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide + date
-        guard let url = URL(string: urlToParse) else { return }
-        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard error == nil else { return }
-            guard let responseData = data else { return }
-            do {
-                self.tvGuideSeries = try JSONDecoder().decode(TVGuideDates.self, from: responseData)
-            } catch let error {
-                print("Error is \(error)")
-            }
-        }
-        urlSessionTask.resume()
     }
 
 

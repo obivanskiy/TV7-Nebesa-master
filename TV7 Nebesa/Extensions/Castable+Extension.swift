@@ -17,7 +17,7 @@ protocol Castable {
 extension Castable {
     var googleCastButton: UIBarButtonItem! {
         let castButton = GCKUICastButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-        castButton.tintColor = UIColor.red
+        castButton.tintColor = UIColor.white
         return UIBarButtonItem(customView: castButton)
     }
 }

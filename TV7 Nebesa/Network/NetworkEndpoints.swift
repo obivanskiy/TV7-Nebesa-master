@@ -18,6 +18,7 @@ struct NetworkEndpoints {
     static var seriesProgrammesURL: String = "get_tv7_series_programs?series_id="
     static var webTVGuideURL: String = "get_tv7_tv_guide_date?date="
     static var tvGuide: String = "get_tv7_tv_guide_date/?date="
+    static var searchEpisodeURL: String = "get_tv7_program_info/?program_id="
     
     //MARK: - HomeScreen endpoints
     static var homeScreenDataURL: String = "get_tv7_vod_recommendations/?date=2019-04-22"
@@ -32,4 +33,8 @@ struct NetworkEndpoints {
     //MARK: - Live streams endpoints
     static var webTVVideoStreamBaseURL: String = "https://vod.tv7.fi:443/"
     static var webTVStreamRUEndpoint: String = "tv7-ru/_definst_/smil:tv7-ru.smil/playlist.m3u8"
+
+    //MARK: - Search results endpoints
+    static var searchBaseURL: String = "http://edom.tv7.fi:8084/search1.1/SearchServlet"
+    static var searchResultsURL: String = "?vod=RU1&query="
 }

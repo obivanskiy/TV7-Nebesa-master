@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var enableGoogleCastLogging: Bool = true
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UITabBar.appearance().backgroundColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1) //12
         
         let audioSession = AVAudioSession.sharedInstance()
         do {
