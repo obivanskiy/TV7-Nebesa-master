@@ -1,54 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="TVGuideCell" customModule="TV7_Nebesa" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TVGuideCell" rowHeight="100" id="KGk-i7-Jjw" customClass="TVGuideCell" customModule="TV7_Nebesa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzr-Be-u0a">
-                        <rect key="frame" x="11" y="11" width="42" height="21.5"/>
+                        <rect key="frame" x="16" y="39.5" width="54" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHJ-cr-beH">
-                        <rect key="frame" x="86" y="11" width="218" height="21.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHJ-cr-beH">
+                        <rect key="frame" x="86" y="11" width="218" height="37"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                         <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZc-6q-vCo">
+                        <rect key="frame" x="86" y="49" width="218" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="999" constant="40" id="cDJ-mz-b5d"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="kzr-Be-u0a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="2Ty-4Q-2QY"/>
-                    <constraint firstItem="OHJ-cr-beH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="86" id="AHA-aq-yHf"/>
-                    <constraint firstAttribute="trailing" secondItem="kzr-Be-u0a" secondAttribute="trailing" constant="267" id="Eys-Yf-D9W"/>
+                    <constraint firstItem="tZc-6q-vCo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="86" id="6hm-DY-F0z"/>
+                    <constraint firstItem="tZc-6q-vCo" firstAttribute="top" secondItem="OHJ-cr-beH" secondAttribute="bottom" constant="1" id="8Md-Nr-Vms"/>
+                    <constraint firstItem="OHJ-cr-beH" firstAttribute="leading" secondItem="kzr-Be-u0a" secondAttribute="trailing" constant="16" id="AuS-4S-tXh"/>
+                    <constraint firstAttribute="trailing" secondItem="tZc-6q-vCo" secondAttribute="trailing" constant="16" id="K9Y-2i-bxE"/>
                     <constraint firstItem="kzr-Be-u0a" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LrX-hs-r1d"/>
-                    <constraint firstItem="OHJ-cr-beH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hkb-HT-nzl"/>
-                    <constraint firstItem="kzr-Be-u0a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="hqi-en-re4"/>
-                    <constraint firstItem="OHJ-cr-beH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="kle-yh-yOx"/>
-                    <constraint firstAttribute="trailing" secondItem="OHJ-cr-beH" secondAttribute="trailing" constant="16" id="qA1-UG-ppA"/>
+                    <constraint firstItem="OHJ-cr-beH" firstAttribute="trailing" secondItem="tZc-6q-vCo" secondAttribute="trailing" id="MmI-78-Gmy"/>
+                    <constraint firstItem="OHJ-cr-beH" firstAttribute="width" secondItem="tZc-6q-vCo" secondAttribute="width" id="Uaq-ST-bky"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="tZc-6q-vCo" secondAttribute="bottom" id="dVG-PT-W5i"/>
+                    <constraint firstItem="kzr-Be-u0a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hqi-en-re4"/>
+                    <constraint firstItem="OHJ-cr-beH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="mIG-Qd-7gA"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="captionHeight" destination="cDJ-mz-b5d" id="gbw-Gu-CCr"/>
+                <outlet property="captionLabel" destination="tZc-6q-vCo" id="nzX-aY-mZA"/>
                 <outlet property="seriesTVGuide" destination="OHJ-cr-beH" id="jGd-uW-dKu"/>
                 <outlet property="timeTVGuide" destination="kzr-Be-u0a" id="Qh2-Rk-I3f"/>
             </connections>
-            <point key="canvasLocation" x="52.799999999999997" y="48.575712143928037"/>
+            <point key="canvasLocation" x="93" y="85"/>
         </tableViewCell>
     </objects>
 </document>

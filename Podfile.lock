@@ -1,16 +1,27 @@
 PODS:
+  - google-cast-sdk (4.3.5):
+    - google-cast-sdk/Core (= 4.3.5)
+    - Protobuf (~> 3.0)
+  - google-cast-sdk/Core (4.3.5):
+    - Protobuf (~> 3.0)
   - Kingfisher (5.3.0)
+  - Protobuf (3.7.0)
 
 DEPENDENCIES:
+  - google-cast-sdk
   - Kingfisher
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - google-cast-sdk
     - Kingfisher
+    - Protobuf
 
 SPEC CHECKSUMS:
+  google-cast-sdk: 462e10c781ea8ad480d2e16200bb8584ef067e07
   Kingfisher: 4692c783ffb99e9e2e40a6eb3e518c3b96c6fa8c
+  Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
 
-PODFILE CHECKSUM: 7aed985fda09688520fcfcc3657cef728cdfd062
+PODFILE CHECKSUM: 7878caa6782f6a90263659ab616239d27ba5ae0a
 
 COCOAPODS: 1.5.3
