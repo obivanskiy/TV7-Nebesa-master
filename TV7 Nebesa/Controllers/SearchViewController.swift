@@ -138,6 +138,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //Register for SearchSeriesCell.xib and SearchEpisodeCell.xib
         searchResultsTableView.register(UINib(nibName: SearchSeriesCell.identifier, bundle: .none), forCellReuseIdentifier: SearchSeriesCell.identifier)
         searchResultsTableView.register(UINib(nibName: SearchEpisodeCell.identifier, bundle: .none), forCellReuseIdentifier: SearchEpisodeCell.identifier)
+        if Reachability.isConnectedToNetwork(){
+            print("Internet Connection Available!")
+        } else {
+            showDefaultAlert(title: "Sorry", message: "You have no internet connection.")
+            print("Internet Connection not Available!")
+        }
     }
 
     private func setupSearchBar() {

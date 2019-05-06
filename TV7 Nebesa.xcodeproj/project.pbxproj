@@ -140,6 +140,7 @@
 		15F5DA32225F7D1900B989A1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5DA31225F7D1900B989A1 /* Player.swift */; };
 		15F68BB122511AEE006F3BFB /* CategorySeriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F68BB022511AEE006F3BFB /* CategorySeriesPresenter.swift */; };
 		FA1D633322801DA800C2AA13 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D633222801DA800C2AA13 /* UIViewController+Extension.swift */; };
+		FA1D63372280522900C2AA13 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D63362280522800C2AA13 /* InternetConnection.swift */; };
 		FA29D6AF2264B79800B39250 /* SearchResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */; };
 		FA29D6B12264C94E00B39250 /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */; };
 		FA4F347D2260A010000508B9 /* TVProgramPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */; };
@@ -301,6 +302,7 @@
 		5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV7_Nebesa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A01670E8FE1B6304A067FA /* Pods-TV7 Nebesa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV7 Nebesa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa.debug.xcconfig"; sourceTree = "<group>"; };
 		FA1D633222801DA800C2AA13 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		FA1D63362280522800C2AA13 /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
 		FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsModel.swift; sourceTree = "<group>"; };
 		FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
 		FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProgramPresenter.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */,
+				FA1D63362280522800C2AA13 /* InternetConnection.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -992,6 +995,7 @@
 				1103F69522721D870016A3C8 /* HomeMostViewedCell.swift in Sources */,
 				FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */,
 				1103F6A222721D880016A3C8 /* HomeMostViewedPresenter.swift in Sources */,
+				FA1D63372280522900C2AA13 /* InternetConnection.swift in Sources */,
 				1103F73C22721F630016A3C8 /* System.swift in Sources */,
 				1103F69F22721D880016A3C8 /* HomeScreenPresenter.swift in Sources */,
 				FAFDE80B2241289700006FEE /* DateCollectionViewCell.swift in Sources */,

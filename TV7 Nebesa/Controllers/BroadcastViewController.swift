@@ -167,6 +167,13 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         tvGuideTableView.register(UINib(nibName: "TVGuideCell", bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
         tvGuideTableView.allowsSelection = true
         tvGuideTableView.rowHeight = UITableView.automaticDimension
+        // Checking for an internet connection
+        if Reachability.isConnectedToNetwork(){
+            print("Internet Connection Available!")
+        } else {
+            showDefaultAlert(title: "Sorry", message: "You have no internet connection.")
+            print("Internet Connection not Available!")
+        }
     }
 
     private func setupDateCollectionView() {

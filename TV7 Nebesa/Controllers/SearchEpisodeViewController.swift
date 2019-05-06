@@ -36,8 +36,8 @@ class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        let cell = EpisodeCell()
-        cell.stopPlayback()
+//        let cell = EpisodeCell()
+//        cell.stopPlayback()
     }
 
     // MARK: - Table View Data Source Methods
