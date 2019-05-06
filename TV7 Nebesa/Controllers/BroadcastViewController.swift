@@ -9,13 +9,13 @@ import UIKit
 
 class BroadcastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    //MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet weak var tvGuideTableView: UITableView!
     @IBOutlet weak var dateCollectionView: UICollectionView!
     @IBOutlet weak var dateStackView: UIStackView!
     @IBOutlet weak var tvGuideTableViewConstraintToTop: NSLayoutConstraint!
 
-    //MARK: - TVProgram properties
+    // MARK: - TVProgram properties
     var tvGuideSeries: TVGuideDates = TVGuideDates() {
         didSet {
             DispatchQueue.main.async {
@@ -29,7 +29,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     private var expandedRows = Set<Int>()
     private var lastContentOffset: CGFloat = 0
 
-    //MARK: - Lifecycle methods
+    // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = TVProgramPresenter(with: self)
@@ -39,7 +39,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         firstAppearSelectedItem()
     }
 
-    //MARK: - Table View Data Source Methods
+    // MARK: - Table View Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tvGuideSeries.tvGuideDates.count
     }
@@ -62,13 +62,13 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
             cell.timeLabel.text = dateFormatter(data[indexPath.row].date)
             cell.captionLabel.text = data[indexPath.row].caption
         } else {
-            displayMessage("Sorry, we have no data on this date")
+            showDefaultAlert(title: "Error", message: "Sorry, we have no data on this date")
         }
         cell.isExpanded = self.expandedRows.contains(indexPath.row)
         return cell
     }
 
-    //MARK: - Table View Delegate Methods
+    // MARK: - Table View Delegate Methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
 
@@ -127,7 +127,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
 
-    //MARK: - Collection View Data Source Methods
+    // MARK: - Collection View Data Source Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayOfDatesStrings.count
     }
@@ -139,17 +139,17 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
 
-    //MARK: - Collection View Delegate Methods
+    // MARK: - Collection View Delegate Methods
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter = TVProgramPresenter(with: self, chosenDate: arrayOfDates[indexPath.row])
         tvGuideTableView.reloadData()
     }
 
-    //MARK: - Actions
+    // MARK: - Actions
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
     }
 
-    //MARK: - Private Methods
+    // MARK: - Private Methods
     // Formates Unix date into the normal format
     fileprivate func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }
@@ -195,20 +195,11 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         dateCollectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
     }
 
-    //Need to think about this. Isn't working now
+    // Need to think about this. Isn't working now
     private func scrollToCurrentTime() {
         let selectedIndexPath = IndexPath(item: 12, section: 0)
         self.tvGuideTableView.scrollToRow(at: selectedIndexPath, at: .top, animated: true)
     }
-
-    // Display Alert Message
-    private func displayMessage(_ userMessage: String) -> Void {
-        let alertController = UIAlertController(title: "Oops", message: userMessage, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-
 
 }
 

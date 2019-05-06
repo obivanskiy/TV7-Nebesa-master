@@ -10,7 +10,7 @@ import UIKit
 
 class TVGuideCell: UITableViewCell {
 
-    //MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var seriesLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!

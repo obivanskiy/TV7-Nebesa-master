@@ -139,6 +139,7 @@
 		15F1637E2254DF2E00E2DEFF /* TVGuidePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1637D2254DF2E00E2DEFF /* TVGuidePresenter.swift */; };
 		15F5DA32225F7D1900B989A1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5DA31225F7D1900B989A1 /* Player.swift */; };
 		15F68BB122511AEE006F3BFB /* CategorySeriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F68BB022511AEE006F3BFB /* CategorySeriesPresenter.swift */; };
+		FA1D633322801DA800C2AA13 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D633222801DA800C2AA13 /* UIViewController+Extension.swift */; };
 		FA29D6AF2264B79800B39250 /* SearchResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */; };
 		FA29D6B12264C94E00B39250 /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */; };
 		FA4F347D2260A010000508B9 /* TVProgramPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */; };
@@ -299,6 +300,7 @@
 		2831A2EA4C6801B61AA13941 /* Pods-TV7 Nebesa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV7 Nebesa.release.xcconfig"; path = "Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa.release.xcconfig"; sourceTree = "<group>"; };
 		5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV7_Nebesa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A01670E8FE1B6304A067FA /* Pods-TV7 Nebesa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV7 Nebesa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa.debug.xcconfig"; sourceTree = "<group>"; };
+		FA1D633222801DA800C2AA13 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsModel.swift; sourceTree = "<group>"; };
 		FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
 		FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProgramPresenter.swift; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 				15CE9DC42244DF2F00362B40 /* URL+Extension.swift */,
 				15CD9CDD22534BAE0014E326 /* String+Extension.swift */,
 				154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */,
+				FA1D633222801DA800C2AA13 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				1103F69A22721D880016A3C8 /* HomeRecommendCell.swift in Sources */,
 				FA8A42A3226622E8000F35B5 /* SearchSeriesCell.swift in Sources */,
 				FAF04678226F1D9B00078B4F /* SearchEpisodeViewController.swift in Sources */,
+				FA1D633322801DA800C2AA13 /* UIViewController+Extension.swift in Sources */,
 				154B7F55223ADCA90020A4E4 /* NetworkEndpoints.swift in Sources */,
 				1103F69D22721D880016A3C8 /* HomeScreenMostViewedProgrammes.swift in Sources */,
 				15CD9CDE22534BAE0014E326 /* String+Extension.swift in Sources */,
