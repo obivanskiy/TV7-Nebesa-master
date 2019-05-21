@@ -68,20 +68,6 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
     }
 
     
-    //MARK: - Player function
-//    private func player(urlString: String) {
-//        if let  videoURL = URL(string: urlString.encodeUrl()!) {
-//            self.player = AVPlayer(url: videoURL)
-//            playerViewController.player = self.player
-//            playerViewController.view.frame = programmeView.bounds
-//            self.addChild(playerViewController)
-//            programmeView.addSubview(playerViewController.view)
-//            playerViewController.didMove(toParent: self)
-//            playerViewController.player?.pause()
-//
-//        }
-//    }
-    
     //MARK: - Date formatter
     private func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }

@@ -22,6 +22,7 @@ enum PlaybackState {
 }
 
 class Player: UIView {
+    
     private let timeObserver = "currentItem.loadedTimeRanges"
     
     var mediaItem: MediaItem!

@@ -23,6 +23,7 @@ class CastManager: NSObject {
     
     private let appID: String = "54B61D58"
     private var sessionManager: GCKSessionManager!
+    
     var hasConnectionEstablished: Bool {
         let castSession = sessionManager.currentCastSession
         if castSession != nil {
@@ -40,7 +41,6 @@ class CastManager: NSObject {
     }
     
     // MARK: - Init
-    
     func initialise() {
         initialiseContext()
         createSessionManager()
@@ -53,7 +53,7 @@ class CastManager: NSObject {
         sessionManager = GCKCastContext.sharedInstance().sessionManager
         sessionManager.add(self)
     }
-    //B21B9F3A
+    
     private func initialiseContext() {
         //application Id registered
         let options = GCKCastOptions(discoveryCriteria: GCKDiscoveryCriteria.init(applicationID: appID))
