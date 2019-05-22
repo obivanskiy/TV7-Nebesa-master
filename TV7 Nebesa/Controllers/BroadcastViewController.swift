@@ -148,6 +148,8 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
     // MARK: - Actions
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
+//        let searchVC = UIStoryboard(name: "ProgrammeScreen", bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+//        self.navigationController?.present(searchVC, animated: true, completion: nil)
     }
 
     // MARK: - Private Methods

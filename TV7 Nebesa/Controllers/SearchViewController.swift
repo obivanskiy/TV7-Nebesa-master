@@ -29,6 +29,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private var programmeDataSegue = "ProgrammeScreenSegue"
     private let episodeSegue = "episodeSegue"
     private let seriesSegue = "seriesSegue"
+    private var searchDelayer = Timer()
 
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
@@ -56,6 +57,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         self.definesPresentationContext = true
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchDelayer.invalidate()
+        searchDelayer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(search(_:)), userInfo: searchText, repeats: false)
     }
 
     // MARK: - Table View Data Source Methods
@@ -144,6 +150,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             showDefaultAlert(title: "Sorry", message: "You have no internet connection.")
             print("Internet Connection not Available!")
         }
+    }
+
+    // Make search when user stop typing
+    @objc private func search(_ gesture: UITapGestureRecognizer) {
+        guard let searchText = searchDelayer.userInfo as? String else { return }
+        if searchDelayer.userInfo != nil && searchText != "" {
+            presenter = SearchResultsPresenter(with: self, userText: searchDelayer.userInfo as! String)
+        }
+        searchDelayer.invalidate()
+        searchResultsTableView.reloadData()
     }
 
     private func setupSearchBar() {
