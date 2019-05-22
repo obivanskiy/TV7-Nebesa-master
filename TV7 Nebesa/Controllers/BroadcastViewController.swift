@@ -142,6 +142,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: - Collection View Delegate Methods
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter = TVProgramPresenter(with: self, chosenDate: arrayOfDates[indexPath.row])
+        expandedRows.removeAll()
         tvGuideTableView.reloadData()
     }
 
