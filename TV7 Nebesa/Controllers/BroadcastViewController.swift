@@ -15,7 +15,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var dateStackView: UIStackView!
     @IBOutlet weak var tvGuideTableViewConstraintToTop: NSLayoutConstraint!
 
-    // MARK: - TVProgram properties
+    // MARK: - Properties
     var tvGuideSeries: TVGuideDates = TVGuideDates() {
         didSet {
             DispatchQueue.main.async {
@@ -28,6 +28,10 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     private var arrayOfDatesStrings = [String]()
     private var expandedRows = Set<Int>()
     private var lastContentOffset: CGFloat = 0
+    private struct Constants {
+        static let programmeScree = "ProgrammeScreen"
+        static let searchVC = "SearchViewController"
+    }
 
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
@@ -148,12 +152,12 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
     // MARK: - Actions
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
-//        let searchVC = UIStoryboard(name: "ProgrammeScreen", bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-//        self.navigationController?.present(searchVC, animated: true, completion: nil)
+       let searchVC = UIStoryboard(name: Constants.programmeScree, bundle: nil).instantiateViewController(withIdentifier: Constants.searchVC) as! SearchViewController
+        self.navigationController?.pushViewController(searchVC, animated: true)
     }
 
     // MARK: - Private Methods
-    // Formates Unix date into the normal format
+    // Formates Unix date to appropriate format
     fileprivate func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }
         let date = Date(timeIntervalSince1970: unixDate)
@@ -167,7 +171,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         tvGuideTableView.dataSource = self
         tvGuideTableView.delegate = self
         //Register for TVGuideCell.xib
-        tvGuideTableView.register(UINib(nibName: "TVGuideCell", bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
+        tvGuideTableView.register(UINib(nibName: TVGuideCell.identifier, bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
         tvGuideTableView.allowsSelection = true
         tvGuideTableView.rowHeight = UITableView.automaticDimension
         // Checking for an internet connection

@@ -26,9 +26,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var searchEpisode: SearchEpisode = SearchEpisode()
     private var presenter: SearchResultsPresenter?
     private var presenterEpisode: SearchEpisodePresenter?
-    private var programmeDataSegue = "ProgrammeScreenSegue"
-    private let episodeSegue = "episodeSegue"
-    private let seriesSegue = "seriesSegue"
+    private struct Constants {
+        static let programmeDataSegue = "ProgrammeScreenSegue"
+        static let episodeSegue = "episodeSegue"
+        static let seriesSegue = "seriesSegue"
+    }
     private var searchDelayer = Timer()
 
     // MARK: - Lifecycle methods
@@ -89,10 +91,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let typeOfContent = searchResults.results[indexPath.row].type
         switch typeOfContent {
         case "episode":
-            performSegue(withIdentifier: episodeSegue, sender: self)
+            performSegue(withIdentifier: Constants.episodeSegue, sender: self)
             print("Did select = episode")
         case "series":
-            performSegue(withIdentifier: seriesSegue, sender: self)
+            performSegue(withIdentifier: Constants.seriesSegue, sender: self)
             print("Did select = series")
         default:
             print("There is no type found")
@@ -103,14 +105,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchBar.showsCancelButton = false
     }
 
-    // MARK: - Actions
-    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-        searchBar.endEditing(true)
-        self.dismiss(animated: true) {
-            let _ = self.navigationController?.popToRootViewController(animated: true)
-        }
-    }
-
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {
@@ -118,13 +112,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return
         }
         switch identifier {
-        case episodeSegue:
+        case Constants.episodeSegue:
             guard let indexPath = self.searchResultsTableView.indexPathForSelectedRow else { return }
             guard let destVC = segue.destination as? SearchEpisodeViewController else { return }
 
             destVC.episodeId = searchResults.results[indexPath.row].id
             print("Episode id for EpisodeVC: \(destVC.episodeId)")
-        case seriesSegue:
+        case Constants.seriesSegue:
             guard let indexPath = self.searchResultsTableView.indexPathForSelectedRow else { return }
             guard let destVC = segue.destination as? SearchSeriesViewController else { return }
             let dataForSeries = searchResults.results[indexPath.row]
@@ -144,7 +138,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //Register for SearchSeriesCell.xib and SearchEpisodeCell.xib
         searchResultsTableView.register(UINib(nibName: SearchSeriesCell.identifier, bundle: .none), forCellReuseIdentifier: SearchSeriesCell.identifier)
         searchResultsTableView.register(UINib(nibName: SearchEpisodeCell.identifier, bundle: .none), forCellReuseIdentifier: SearchEpisodeCell.identifier)
-        if Reachability.isConnectedToNetwork(){
+        if Reachability.isConnectedToNetwork() {
             print("Internet Connection Available!")
         } else {
             showDefaultAlert(title: "Sorry", message: "You have no internet connection.")
