@@ -39,6 +39,7 @@ class NetworkService {
         //Most Viewed/ Newest programmes URL's on the homeScreen
         .fetchHomeScreenNewestProgrammes : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenNewestProgrammesURL,
         .fetchHomeScreenMostViewedProgrammes : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenMostViewedProgrammesURL,
+        .fetchVideoData: NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL,
         
         //        .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL
         .fetchTVProgram: NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide,

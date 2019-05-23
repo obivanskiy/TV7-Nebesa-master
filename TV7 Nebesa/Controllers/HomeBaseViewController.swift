@@ -161,7 +161,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         switch identifier {
         case .videoDataSegue:
             guard let sender = sender else { return }
-            let destination = segue.destination as! HomeVideoPlayerController
+            let destination = segue.destination as! VideoPlayer
             switch sender {
             case let tableCell as RecommendTableViewCell:
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! HomeRecommendCell
@@ -201,18 +201,14 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 2, section: 0)) as! HomeMostViewedCell
                 let indexPath = collectionCell.mostViewedTableView.indexPath(for: tableCell)
                 let data = collectionCell.homeMostViewedData.homeScreenMostViewedProgrammes[indexPath!.row]
-                destination.title = data.seriesName
-                //                if data.description != "" {
-                //                    destination.videoCaption = data.description
-                //                } else {
-                destination.videoCaption = data.caption
-                
-                destination.videoTitle = data.programName
-//                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.! + NetworkEndpoints.playlistEndpoint
-//                print(destination.videoURLString)
-                destination.videoDuration = data.time!
-//                destination.videoFirstBroadcast = data.
-                destination.videoEpisodeNumber = data.episodeNumber!
+//                destination.title = data.seriesName
+//                //                if data.description != "" {
+//                //                    destination.videoCaption = data.description
+//                //                } else {
+//                destination.videoCaption = data.caption
+//                destination.videoTitle = data.programName
+//                destination.videoDuration = data.time!
+//                destination.videoEpisodeNumber = data.episodeNumber!
             default:
                 break
             }

@@ -167,10 +167,10 @@
             </objects>
             <point key="canvasLocation" x="1920.289855072464" y="416.51785714285711"/>
         </scene>
-        <!--Home Video Player Controller-->
+        <!--Video Player-->
         <scene sceneID="BRJ-TB-4bS">
             <objects>
-                <viewController id="MBD-vz-poy" customClass="HomeVideoPlayerController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MBD-vz-poy" customClass="VideoPlayer" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bVc-bn-SfI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

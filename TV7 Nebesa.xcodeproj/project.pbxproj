@@ -23,7 +23,6 @@
 		1103F69E22721D880016A3C8 /* ProgramInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1103F68B22721D870016A3C8 /* ProgramInfoModel.swift */; };
 		1103F69F22721D880016A3C8 /* HomeScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1103F68D22721D870016A3C8 /* HomeScreenPresenter.swift */; };
 		1103F6A022721D880016A3C8 /* HomeNewestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1103F68E22721D870016A3C8 /* HomeNewestPresenter.swift */; };
-		1103F6A122721D880016A3C8 /* HomeProgrammePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1103F68F22721D870016A3C8 /* HomeProgrammePresenter.swift */; };
 		1103F6A222721D880016A3C8 /* HomeMostViewedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1103F69022721D870016A3C8 /* HomeMostViewedPresenter.swift */; };
 		1103F6A322721D880016A3C8 /* VideoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1103F69122721D870016A3C8 /* VideoPresenter.swift */; };
 		1103F6F322721EC50016A3C8 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1103F6BB22721EC50016A3C8 /* SF-Pro-Display-Thin.otf */; };
@@ -98,6 +97,7 @@
 		110F9DAE2237A7610020BABC /* HighlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAD2237A7610020BABC /* HighlightsViewController.swift */; };
 		111F951B2273083900C35737 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F951A2273083900C35737 /* TabBar.swift */; };
 		111F951D22730A7300C35737 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F951C22730A7300C35737 /* TabBarController.swift */; };
+		115B77572296EB3100B0EC3E /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B77562296EB3100B0EC3E /* VideoPlayer.swift */; };
 		1511D8DE2272F106007EFD45 /* Pods_TV7_Nebesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */; };
 		152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */; };
 		152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */; };
@@ -177,7 +177,6 @@
 		1103F68B22721D870016A3C8 /* ProgramInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramInfoModel.swift; sourceTree = "<group>"; };
 		1103F68D22721D870016A3C8 /* HomeScreenPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenPresenter.swift; sourceTree = "<group>"; };
 		1103F68E22721D870016A3C8 /* HomeNewestPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNewestPresenter.swift; sourceTree = "<group>"; };
-		1103F68F22721D870016A3C8 /* HomeProgrammePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeProgrammePresenter.swift; sourceTree = "<group>"; };
 		1103F69022721D870016A3C8 /* HomeMostViewedPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMostViewedPresenter.swift; sourceTree = "<group>"; };
 		1103F69122721D870016A3C8 /* VideoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPresenter.swift; sourceTree = "<group>"; };
 		1103F6BB22721EC50016A3C8 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
@@ -254,6 +253,7 @@
 		110F9DAD2237A7610020BABC /* HighlightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsViewController.swift; sourceTree = "<group>"; };
 		111F951A2273083900C35737 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		111F951C22730A7300C35737 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		115B77562296EB3100B0EC3E /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BestScenesScreen.storyboard; sourceTree = "<group>"; };
@@ -374,8 +374,8 @@
 			children = (
 				1103F68D22721D870016A3C8 /* HomeScreenPresenter.swift */,
 				1103F68E22721D870016A3C8 /* HomeNewestPresenter.swift */,
-				1103F68F22721D870016A3C8 /* HomeProgrammePresenter.swift */,
 				1103F69022721D870016A3C8 /* HomeMostViewedPresenter.swift */,
+				115B77562296EB3100B0EC3E /* VideoPlayer.swift */,
 				1103F69122721D870016A3C8 /* VideoPresenter.swift */,
 			);
 			path = HomeScreenPresenters;
@@ -880,7 +880,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh",
 				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.4.1_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
 				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.4.1_static/GoogleCast.framework/GoogleCastUIResources.bundle",
 			);
@@ -893,7 +893,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		37E08AADAF115BE025A663A1 /* [CP] Embed Pods Frameworks */ = {
@@ -904,7 +904,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 			);
@@ -917,7 +917,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -945,7 +945,6 @@
 				15D626F0224125B200449F8B /* SeriesInfoModel.swift in Sources */,
 				15CD9CE4225380BF0014E326 /* WebTVTimeZoneTableViewCell.swift in Sources */,
 				15B0816C223A4F6A00826057 /* CategoriesDataModel.swift in Sources */,
-				1103F6A122721D880016A3C8 /* HomeProgrammePresenter.swift in Sources */,
 				110F9DA82237A6A50020BABC /* BroadcastViewController.swift in Sources */,
 				15D626EC22411C1E00449F8B /* SeriesInfoTableViewCell.swift in Sources */,
 				15CE9DC52244DF2F00362B40 /* URL+Extension.swift in Sources */,
@@ -984,6 +983,7 @@
 				154F6D5C224A637A00043BBD /* ParentCategoriesPresenter.swift in Sources */,
 				110F9D932237A6310020BABC /* AppDelegate.swift in Sources */,
 				1103F73B22721F630016A3C8 /* Extensions.swift in Sources */,
+				115B77572296EB3100B0EC3E /* VideoPlayer.swift in Sources */,
 				1103F73E2272219D0016A3C8 /* VideoCell.swift in Sources */,
 				1103F69522721D870016A3C8 /* HomeMostViewedCell.swift in Sources */,
 				FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */,

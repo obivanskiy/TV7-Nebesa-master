@@ -11,22 +11,29 @@ import AVFoundation
 import AVKit
 import GoogleCast
 
-class HomeVideoPlayerController: UIViewController, Castable {
+class VideoPlayer: UIViewController, Castable {
     
-    private var presenter: VideoPresenter?
-   
+    
+    
     //MARK: - Stored properties
     private var player: Player!
     private var playerViewController = AVPlayerViewController()
     
-    static var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation()
-    
-    static var programInfo: ProgrammeInfo = ProgrammeInfo() {
+    private var playerPresenter: VideoPresenter?
+    var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation(){
         didSet {
-            
-            print(programInfo)
+//            setUpUI()
+            setUpVideoData()
+        
+            print("---------------> Video data has been recieved")
+//            DispatchQueue.main.async {
+//                self.setUpUI()
+//            }
         }
+        
     }
+    
+
     var videoID: String = ""
     private var screenTitle: String = "ВИДЕО"
     var videoTitle: String? = ""
@@ -36,9 +43,10 @@ class HomeVideoPlayerController: UIViewController, Castable {
     var videoDuration: String = ""
     var videoFirstBroadcast: String = ""
     var videoURLString: String = ""
+    var thumbnailUrl: String = ""
     
-   
-
+    
+    
     //MARK: - Outlets
     @IBOutlet weak var ProgramVideoView: UIView!
     @IBOutlet weak var VideoTitleLabel: UILabel!
@@ -46,17 +54,21 @@ class HomeVideoPlayerController: UIViewController, Castable {
     @IBOutlet weak var VideoEpisodeNumberLabel: UILabel!
     @IBOutlet weak var VideoDurationLabel: UILabel!
     @IBOutlet weak var VideoFirstBroadcastLabel: UILabel!
-
-   
+    
+    
     //MARK: - View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.presenter = VideoPresenter(with: self)
+        self.playerPresenter = VideoPresenter(with: self)
+        
         setUpUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+//        setUpUI()
         createPlayerView()
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,31 +78,52 @@ class HomeVideoPlayerController: UIViewController, Castable {
     override func viewWillDisappear(_ animated: Bool) {
         player.stopPlayback()
     }
-
+    
     //MARK: -Set up the UI
-
-        private func setUpUI() {
-            
-            var titleName = videoTitle
-            if titleName == "" {
-                titleName = videoSeriesName
-            }
-            VideoTitleLabel.text = titleName
-            VideoCaptionLabel.text = videoCaption
-            VideoEpisodeNumberLabel.text = "Эпизод: \(videoEpisodeNumber)"
-            VideoDurationLabel.text = "Длительность: \(dateFormatter(videoDuration))"
-            VideoFirstBroadcastLabel.text = "Доступен с:\(broadcastDateFormatter(videoFirstBroadcast))"
-            navigationItem.rightBarButtonItem = googleCastButton
+    private func setUpVideoData() {
+        
+        var titleName = videoTitle
+        if titleName == "" {
+            titleName = videoSeriesName
         }
+        videoTitle = videoData.homeProgrammeInfo[0].name
+        videoCaption = videoData.homeProgrammeInfo[0].caption
+        videoEpisodeNumber = "Эпизод: \(videoData.homeProgrammeInfo[0].episodeNumber)"
+        videoDuration = "Длительность: \(dateFormatter(videoData.homeProgrammeInfo[0].duration))"
+        videoFirstBroadcast = "Доступен с:\(broadcastDateFormatter(videoData.homeProgrammeInfo[0].firstBroadcast))"
+        videoURLString = NetworkEndpoints.baseURLForVideoPlayback + videoData.homeProgrammeInfo[0].path + NetworkEndpoints.playlistEndpoint
+        thumbnailUrl = videoData.homeProgrammeInfo[0].imagePath
+        
+         print(thumbnailUrl, "----------", videoURLString)
+        
+        
+        
+        navigationItem.rightBarButtonItem = googleCastButton
+    }
+    
+    private func setUpUI() {
+
+        var titleName = videoTitle
+        if titleName == "" {
+            titleName = videoSeriesName
+        }
+        VideoTitleLabel.text = titleName
+        VideoCaptionLabel.text = videoCaption
+        VideoEpisodeNumberLabel.text = "Эпизод: \(videoEpisodeNumber)"
+        VideoDurationLabel.text = "Длительность: \(dateFormatter(videoDuration))"
+        VideoFirstBroadcastLabel.text = "Доступен с:\(broadcastDateFormatter(videoFirstBroadcast))"
+        navigationItem.rightBarButtonItem = googleCastButton
+    }
     
     //MARK: - Player function
     private func createPlayerView() {
+   
         player = Player(frame: ProgramVideoView.bounds)
-        player.mediaItem = MediaItem(name: videoTitle, about: videoCaption, videoUrl: videoURLString.encodeUrl()!, thumbnailUrl: nil)
+        player.mediaItem = MediaItem(name: videoTitle, about: VideoCaptionLabel.text, videoUrl: videoURLString.encodeUrl()!, thumbnailUrl: thumbnailUrl)
         player.initPlayerLayer()
         ProgramVideoView.addSubview(player)
     }
-
+    
     
     //MARK: - Date formatter
     private func dateFormatter(_ dateIn: String) -> String {
