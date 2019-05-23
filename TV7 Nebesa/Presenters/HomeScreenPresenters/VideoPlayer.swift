@@ -22,13 +22,10 @@ class VideoPlayer: UIViewController, Castable {
     private var playerPresenter: VideoPresenter?
     var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation(){
         didSet {
-//            setUpUI()
+
             setUpVideoData()
-        
             print("---------------> Video data has been recieved")
-//            DispatchQueue.main.async {
-//                self.setUpUI()
-//            }
+
         }
         
     }
@@ -67,6 +64,7 @@ class VideoPlayer: UIViewController, Castable {
     override func viewWillAppear(_ animated: Bool) {
 //        setUpUI()
         createPlayerView()
+        setUpUI()
         
         
     }

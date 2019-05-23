@@ -201,6 +201,9 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 2, section: 0)) as! HomeMostViewedCell
                 let indexPath = collectionCell.mostViewedTableView.indexPath(for: tableCell)
                 let data = collectionCell.homeMostViewedData.homeScreenMostViewedProgrammes[indexPath!.row]
+                let videoID = data.id!
+                print(videoID)
+                NetworkService.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
 //                destination.title = data.seriesName
 //                //                if data.description != "" {
 //                //                    destination.videoCaption = data.description
