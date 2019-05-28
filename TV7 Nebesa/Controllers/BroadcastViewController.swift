@@ -32,6 +32,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         static let programmeScreen = "ProgrammeScreen"
         static let searchVC = "SearchViewController"
     }
+    private var scrollToTime = true
 
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
@@ -52,22 +53,13 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TVGuideCell.identifier, for: indexPath) as? TVGuideCell else {
             return UITableViewCell()
         }
-        let data = tvGuideSeries.tvGuideDates
+        cell.cellModel = tvGuideSeries.tvGuideDates[indexPath.row]
 
-        if !data.isEmpty {
-            switch data[indexPath.row] {
-            case let (x) where x.series == "":
-                cell.seriesLabel.text = data[indexPath.row].name
-            case let (x) where x.name != "":
-                cell.seriesLabel.text = "\(data[indexPath.row].series): " + "\(data[indexPath.row].name)"
-            default:
-                cell.seriesLabel.text = data[indexPath.row].series
-            }
-            cell.timeLabel.text = dateFormatter(data[indexPath.row].date)
-            cell.captionLabel.text = data[indexPath.row].caption
-        } else {
-            showDefaultAlert(title: "Error", message: "Sorry, we have no data on this date")
+        let dates = Double((cell.cellModel?.date)!)!
+        if dates > Date().timeIntervalSince1970 {
+//            self.tvGuideTableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }
+
         cell.isExpanded = self.expandedRows.contains(indexPath.row)
         return cell
     }
@@ -112,6 +104,34 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         self.tvGuideTableView.endUpdates()
     }
 
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // This fu*king stuff is for scrolling to current time for the first loading app
+        let lastRow = tableView.indexPathsForVisibleRows?.last
+        let nowUnix = Date().timeIntervalSince1970
+        var nearestTime = Double()
+        var arrayOfTimes = [String]()
+
+        // 1.Appending value of "time" to array; 2. Looking for the nearest time of TV program
+        for time in tvGuideSeries.tvGuideDates {
+            arrayOfTimes.append(time.time)
+            if Double(time.date)! > nowUnix {
+                nearestTime = Double(time.date)!
+                break
+            }
+        }
+        let nearestTimeString = String(Int(nearestTime)) + "000"
+        let firstIndex = arrayOfTimes.firstIndex(of: nearestTimeString)
+
+        if indexPath.row == lastRow?.row {
+            if scrollToTime == true {
+                let indexPath = IndexPath(row: firstIndex!, section: 0)
+                tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                scrollToTime = false
+            }
+        }
+    }
+
+    // MARK: - Scroll View Delegate Methods
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == tvGuideTableView {
             self.lastContentOffset = scrollView.contentOffset.y
@@ -207,12 +227,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         let firstAppearSelectedItem = arrayOfDatesStrings.count/2
         let selectedIndexPath = IndexPath(item: firstAppearSelectedItem, section: 0)
         dateCollectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
-    }
-
-    // Need to think about this. Isn't working now
-    private func scrollToCurrentTime() {
-        let selectedIndexPath = IndexPath(item: 12, section: 0)
-        self.tvGuideTableView.scrollToRow(at: selectedIndexPath, at: .top, animated: true)
     }
 
 
