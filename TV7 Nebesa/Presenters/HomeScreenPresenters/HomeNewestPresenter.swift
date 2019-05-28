@@ -13,12 +13,13 @@ final class HomeNewestPresenter {
     
     init(with collectionCell: HomeNewestCell) {
         self.collectionCell = collectionCell
-        requestHomeScreenNewestProgrammes()
+        
+        requestHomeScreenNewestProgrammes(limit: collectionCell.limit, offset: collectionCell.offset)
      
     }
     
     // Second cell-Screen
-    private func requestHomeScreenNewestProgrammes() {
+    private func requestHomeScreenNewestProgrammes(limit: Int, offset: Int) {
         NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenNewestProgrammes) { result in
             switch result {
             case .failure(let error):

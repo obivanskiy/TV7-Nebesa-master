@@ -22,8 +22,14 @@ class VideoPlayer: UIViewController, Castable {
     private var playerPresenter: VideoPresenter?
     var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation(){
         didSet {
+            
 
             setUpVideoData()
+            
+            DispatchQueue.main.async {
+                self.createPlayerView()
+            }
+            
             print("---------------> Video data has been recieved")
 
         }
@@ -58,13 +64,16 @@ class VideoPlayer: UIViewController, Castable {
         super.viewDidLoad()
         self.playerPresenter = VideoPresenter(with: self)
         
-        setUpUI()
+//        setUpUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
 //        setUpUI()
-        createPlayerView()
-        setUpUI()
+//        createPlayerView()
+        DispatchQueue.main.async {
+            self.setUpUI()
+        }
+        
         
         
     }
@@ -96,11 +105,12 @@ class VideoPlayer: UIViewController, Castable {
         
         
         
-        navigationItem.rightBarButtonItem = googleCastButton
+//        navigationItem.rightBarButtonItem = googleCastButton
     }
     
     private func setUpUI() {
 
+        
         var titleName = videoTitle
         if titleName == "" {
             titleName = videoSeriesName
@@ -110,6 +120,7 @@ class VideoPlayer: UIViewController, Castable {
         VideoEpisodeNumberLabel.text = "Эпизод: \(videoEpisodeNumber)"
         VideoDurationLabel.text = "Длительность: \(dateFormatter(videoDuration))"
         VideoFirstBroadcastLabel.text = "Доступен с:\(broadcastDateFormatter(videoFirstBroadcast))"
+        
         navigationItem.rightBarButtonItem = googleCastButton
     }
     
@@ -120,6 +131,7 @@ class VideoPlayer: UIViewController, Castable {
         player.mediaItem = MediaItem(name: videoTitle, about: VideoCaptionLabel.text, videoUrl: videoURLString.encodeUrl()!, thumbnailUrl: thumbnailUrl)
         player.initPlayerLayer()
         ProgramVideoView.addSubview(player)
+        
     }
     
     

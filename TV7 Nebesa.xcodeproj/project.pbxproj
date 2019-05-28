@@ -97,6 +97,7 @@
 		110F9DAE2237A7610020BABC /* HighlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9DAD2237A7610020BABC /* HighlightsViewController.swift */; };
 		111F951B2273083900C35737 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F951A2273083900C35737 /* TabBar.swift */; };
 		111F951D22730A7300C35737 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F951C22730A7300C35737 /* TabBarController.swift */; };
+		112EB591229D307B003B2EAA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112EB590229D307B003B2EAA /* APIService.swift */; };
 		115B77572296EB3100B0EC3E /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B77562296EB3100B0EC3E /* VideoPlayer.swift */; };
 		1511D8DE2272F106007EFD45 /* Pods_TV7_Nebesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */; };
 		152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */; };
@@ -253,6 +254,7 @@
 		110F9DAD2237A7610020BABC /* HighlightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsViewController.swift; sourceTree = "<group>"; };
 		111F951A2273083900C35737 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		111F951C22730A7300C35737 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		112EB590229D307B003B2EAA /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		115B77562296EB3100B0EC3E /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 			children = (
 				1103F68D22721D870016A3C8 /* HomeScreenPresenter.swift */,
 				1103F68E22721D870016A3C8 /* HomeNewestPresenter.swift */,
+				112EB590229D307B003B2EAA /* APIService.swift */,
 				1103F69022721D870016A3C8 /* HomeMostViewedPresenter.swift */,
 				115B77562296EB3100B0EC3E /* VideoPlayer.swift */,
 				1103F69122721D870016A3C8 /* VideoPresenter.swift */,
@@ -978,6 +981,7 @@
 				111F951B2273083900C35737 /* TabBar.swift in Sources */,
 				FAF046722268653B00078B4F /* SearchViewController.swift in Sources */,
 				FAF04674226F0D7800078B4F /* SearchEpisodeModel.swift in Sources */,
+				112EB591229D307B003B2EAA /* APIService.swift in Sources */,
 				FA29D6B12264C94E00B39250 /* SearchResultsPresenter.swift in Sources */,
 				FAFDE803223FCAA100006FEE /* TVGuideModel.swift in Sources */,
 				154F6D5C224A637A00043BBD /* ParentCategoriesPresenter.swift in Sources */,

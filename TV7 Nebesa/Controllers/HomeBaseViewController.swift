@@ -17,6 +17,8 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     
     @IBOutlet weak var homePageCollectionView: UICollectionView!
     
+    var controller: HomeBaseViewController?
+    
     private var homeScreenProgrammeDataSegue: String = "HomeScreenProgrammePageSegue"
     //    private var presenterForRecommend: HomeRecommendPresenter?
     //    private var presenterForNewest: HomeNewestPresenter?
@@ -29,6 +31,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         setupMenuBar()
         setupNavigationItems()
+//        showCenterPage(collectionViewIndex: 1)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +63,11 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     func scrollToMenuIndex(menuIndex: Int) {
         let indexPath = IndexPath(item: menuIndex, section: 0)
         homePageCollectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    func showCenterPage(collectionViewIndex: Int) {
+        let indexPath = IndexPath(item: collectionViewIndex, section: 0)
+        homePageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -167,18 +175,24 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! HomeRecommendCell
                 let indexPath = collectionCell.recommendTableView.indexPath(for: tableCell)
                 let data = collectionCell.homeScreenData.homeScreenProgrammes[indexPath!.row]
-                destination.title = data.seriesName
-                if data.description != "" {
-                    destination.videoCaption = data.description
-                } else {
-                     destination.videoCaption = data.caption
-                }
-                destination.videoTitle = data.name
-                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.linkPath + NetworkEndpoints.playlistEndpoint
-                print(destination.videoURLString)
-                destination.videoDuration = data.duration
-                destination.videoFirstBroadcast = data.firstBroadcast
-                destination.videoEpisodeNumber = data.episodeNumber
+                /// New 
+                let videoID = data.id
+                print(videoID)
+                NetworkService.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
+                ///// previous sending
+//                destination.title = data.seriesName
+//                if data.description != "" {
+//                    destination.videoCaption = data.description
+//                } else {
+//                     destination.videoCaption = data.caption
+//                }
+//                destination.videoTitle = data.name
+//                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.linkPath + NetworkEndpoints.playlistEndpoint
+//                print(destination.videoURLString)
+//                destination.videoDuration = data.duration
+//                destination.videoFirstBroadcast = data.firstBroadcast
+//                destination.videoEpisodeNumber = data.episodeNumber
+                //////
                 
             case let tableCell as NewestTableViewCell:
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 1, section: 0)) as! HomeNewestCell
@@ -204,6 +218,13 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 let videoID = data.id!
                 print(videoID)
                 NetworkService.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
+//                let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+//                activityIndicator.center = self.view.center
+//                activityIndicator.hidesWhenStopped = true
+//                activityIndicator.style = .gray
+//                self.view.addSubview(activityIndicator)
+//                activityIndicator.startAnimating()
+                
 //                destination.title = data.seriesName
 //                //                if data.description != "" {
 //                //                    destination.videoCaption = data.description

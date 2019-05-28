@@ -61,6 +61,8 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
         return cell
     
 }
+ 
+    
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //                tableView.deselectRow(at: indexPath, animated: true)
 //                let cell = tableView.cellForRow(at: indexPath) as! RecommendTableViewCell
