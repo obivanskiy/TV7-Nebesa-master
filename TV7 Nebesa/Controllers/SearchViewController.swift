@@ -34,10 +34,24 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private var searchDelayer = Timer()
 
     // MARK: - Lifecycle methods
+    override func loadView() {
+        super.loadView()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupSearchBar()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
     }
 
     // MARK: Search Bar Delegate Methods
@@ -66,7 +80,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchDelayer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(search(_:)), userInfo: searchText, repeats: false)
     }
 
-    // MARK: - Table View Data Source Methods
+    // MARK: - Table View Data Source Methodsa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.results.count
     }
@@ -135,6 +149,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
         searchResultsTableView.keyboardDismissMode = .onDrag
+        searchResultsTableView.tableFooterView = UIView()
         //Register for SearchSeriesCell.xib and SearchEpisodeCell.xib
         searchResultsTableView.register(UINib(nibName: SearchSeriesCell.identifier, bundle: .none), forCellReuseIdentifier: SearchSeriesCell.identifier)
         searchResultsTableView.register(UINib(nibName: SearchEpisodeCell.identifier, bundle: .none), forCellReuseIdentifier: SearchEpisodeCell.identifier)
@@ -159,6 +174,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private func setupSearchBar() {
         searchBar.delegate = self
     }
+
 
 
 }

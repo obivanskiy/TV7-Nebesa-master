@@ -29,7 +29,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
     private var expandedRows = Set<Int>()
     private var lastContentOffset: CGFloat = 0
     private struct Constants {
-        static let programmeScree = "ProgrammeScreen"
+        static let programmeScreen = "ProgrammeScreen"
         static let searchVC = "SearchViewController"
     }
 
@@ -88,16 +88,16 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         }
 
         // ******** Expanded cells haven't work yet *********
-        switch cell.captionLabel.calculateMaxLines() {
-        case 1:
-            print("1")
-        case 2:
-            print("2")
-        case 3:
-            print("3")
-        default:
-            print("default")
-        }
+//        switch cell.captionLabel.calculateMaxLines() {
+//        case 1:
+//            print("1")
+//        case 2:
+//            print("2")
+//        case 3:
+//            print("3")
+//        default:
+//            print("default")
+//        }
 
         cell.isExpanded = !cell.isExpanded
         self.tvGuideTableView.beginUpdates()
@@ -152,13 +152,13 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
 
     // MARK: - Actions
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
-       let searchVC = UIStoryboard(name: Constants.programmeScree, bundle: nil).instantiateViewController(withIdentifier: Constants.searchVC) as! SearchViewController
+        guard let searchVC = UIStoryboard(name: Constants.programmeScreen, bundle: nil).instantiateViewController(withIdentifier: Constants.searchVC) as? SearchViewController else { return }
         self.navigationController?.pushViewController(searchVC, animated: true)
     }
 
     // MARK: - Private Methods
     // Formates Unix date to appropriate format
-    fileprivate func dateFormatter(_ dateIn: String) -> String {
+    private func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }
         let date = Date(timeIntervalSince1970: unixDate)
         let dateFormatter = DateFormatter()
@@ -214,6 +214,7 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         let selectedIndexPath = IndexPath(item: 12, section: 0)
         self.tvGuideTableView.scrollToRow(at: selectedIndexPath, at: .top, animated: true)
     }
+
 
 }
 
