@@ -25,7 +25,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ata-cv-Xoq">
                                 <rect key="frame" x="0.0" y="0.0" width="370" height="175"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="175" id="XeR-9g-AUd"/>
+                                    <constraint firstAttribute="height" constant="175" id="QGR-KW-ZS7"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31O-E5-ApJ">
