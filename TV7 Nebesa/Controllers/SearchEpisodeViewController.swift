@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import AVKit
 
-class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Castable {
+final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Castable {
 
     // MARK: - Outlets
     @IBOutlet weak var episodeTableView: UITableView!

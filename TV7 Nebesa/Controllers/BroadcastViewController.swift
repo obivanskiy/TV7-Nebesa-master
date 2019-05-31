@@ -7,7 +7,7 @@
 import UIKit
 
 
-class BroadcastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+final class BroadcastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var tvGuideTableView: UITableView!
@@ -126,9 +126,11 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
             if scrollToTime == true {
                 let indexPath = IndexPath(row: firstIndex!, section: 0)
                 tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                tableView.cellForRow(at: indexPath)?.isHighlighted = true
                 scrollToTime = false
             }
         }
+
     }
 
     // MARK: - Scroll View Delegate Methods
@@ -192,10 +194,9 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         tvGuideTableView.delegate = self
         //Register for TVGuideCell.xib
         tvGuideTableView.register(UINib(nibName: TVGuideCell.identifier, bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
-        tvGuideTableView.allowsSelection = true
         tvGuideTableView.rowHeight = UITableView.automaticDimension
         // Checking for an internet connection
-        if Reachability.isConnectedToNetwork(){
+        if Reachability.isConnectedToNetwork() {
             print("Internet Connection Available!")
         } else {
             showDefaultAlert(title: "Sorry", message: "You have no internet connection.")

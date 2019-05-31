@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchSeriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class SearchSeriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - Outlets
     @IBOutlet weak var seriesTableView: UITableView!
