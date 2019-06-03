@@ -81,18 +81,18 @@ class CastManager: NSObject {
     
     private func styleConnectionController() {
         let castStyle = GCKUIStyle.sharedInstance()
-        //castStyle.castViews.deviceControl.connectionController.buttonTextColor = .nodesColor
+        castStyle.castViews.backgroundColor = .black
         castStyle.apply()
     }
     
     private func miniControllerStyle() {
         let castStyle = GCKUIStyle.sharedInstance()
         castStyle.castViews.mediaControl.miniController.backgroundColor = .nodesColor()
-        castStyle.castViews.mediaControl.miniController.bodyTextColor = .white
-        castStyle.castViews.mediaControl.miniController.buttonTextColor = .white
+        castStyle.castViews.mediaControl.miniController.bodyTextColor = .blue
+        castStyle.castViews.mediaControl.miniController.buttonTextColor = .blue
         castStyle.castViews.mediaControl.miniController.headingTextColor = .white
-        castStyle.castViews.mediaControl.miniController.captionTextColor = .white
-        castStyle.castViews.mediaControl.miniController.iconTintColor = .white
+        castStyle.castViews.mediaControl.miniController.captionTextColor = .black
+        castStyle.castViews.mediaControl.miniController.iconTintColor = .blue
         
         castStyle.apply()
     }
@@ -123,7 +123,7 @@ class CastManager: NSObject {
     
     // MARK: - Start
     
-    func startSelectedItemRemotely(_ mediaInfo: GCKMediaInformation, at time: TimeInterval, completion: (Bool) -> Void) {
+    func startSelectedItemRemotely(_ mediaInfo: GCKMediaInformation, at time: TimeInterval, completion: @escaping (Bool) -> Void) {
         let castSession = sessionManager.currentCastSession
         
         if castSession != nil {
@@ -140,7 +140,7 @@ class CastManager: NSObject {
     
     // MARK: - Play/Resume
     
-    func playSelectedItemRemotely(to time: TimeInterval?, completion: (Bool) -> Void) {
+    func playSelectedItemRemotely(to time: TimeInterval?, completion: @escaping (Bool) -> Void) {
         let castSession = sessionManager.currentCastSession
         if castSession != nil {
             let remoteClient = castSession?.remoteMediaClient

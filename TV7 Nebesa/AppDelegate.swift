@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         catch {
             print("Setting category to AVAudioSessionCategoryPlayback failed.")
         }
-        
         CastManager.shared.initialise()
         
         return true

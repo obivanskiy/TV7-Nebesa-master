@@ -59,7 +59,6 @@ class Player: UIView {
     
     override func removeFromSuperview() {
         super.removeFromSuperview()
-        
         player.removeObserver(self, forKeyPath: timeObserver)
     }
     
@@ -71,7 +70,9 @@ class Player: UIView {
         player = AVPlayer(url: url)
         player.addObserver(self, forKeyPath: timeObserver, options: .new, context: nil)
         playerViewController.player = player
+        playerViewController.showsPlaybackControls = false
         playerViewController.view.frame = bounds
+        
         addSubview(playerViewController.view)
     }
     
@@ -97,15 +98,15 @@ class Player: UIView {
             let loadedTimeRanges = player.currentItem?.loadedTimeRanges
             guard let timeRanges = loadedTimeRanges, timeRanges.count > 0, let timeRange = timeRanges[0] as? CMTimeRange else { return }
             let currentBufferDuration = CMTimeGetSeconds(CMTimeAdd(timeRange.start, timeRange.duration))
-//            if player.status == AVPlayer.Status.readyToPlay && currentBufferDuration > 2 {
-//                if playPauseButton == nil {
-////                    createPlayPauseButton()
-//                }
-//                if buttonStackView == nil {
-//                    createButtonStackView()
-//                }
+            if player.status == AVPlayer.Status.readyToPlay && currentBufferDuration > 2 {
+                if playPauseButton == nil {
+                    createPlayPauseButton()
+                }
+                if buttonStackView == nil {
+                    createButtonStackView()
+                }
 //                spinner.stopAnimating()
-//            }
+            }
         }
     }
     
@@ -121,17 +122,15 @@ class Player: UIView {
             case .ended, .failedToStart:
                 if self.playbackState == .playCast {
                     self.playbackState = .pause
-//                    self.startPlayer(nil)
+                    self.startPlayer(nil)
                 } else if self.playbackState == .pauseCast {
                     self.playbackState = .play
-//                    self.pausePlayer(nil)
+                    self.pausePlayer(nil)
                 }
             default: break
             }
         }
-        
         CastManager.shared.addSessionStatusListener(listener: sessionStatusListener)
-        
     }
     
     private func startCastPlay() {
@@ -156,7 +155,7 @@ class Player: UIView {
         CastManager.shared.playSelectedItemRemotely(to: nil) { (done) in
             if !done {
                 self.playbackState = .pause
-//                self.startPlayer(nil)
+                self.startPlayer(nil)
             }
         }
     }
@@ -166,47 +165,47 @@ class Player: UIView {
         CastManager.shared.pauseSelectedItemRemotely(to: nil) { (done) in
             if !done {
                 self.playbackState = .pause
-//                self.startPlayer(nil)
+                self.startPlayer(nil)
             }
         }
     }
-    
+    // CREATE CUSTOM BUTTONS CLASS
     // MARK: - Play/Pause/Replay Button
     
-//    private func createPlayPauseButton() {
-//        playPauseButton = UIButton()
-//        playPauseButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-//        playPauseButton.setTitle("", for: .normal)
-//        playPauseButton.layer.cornerRadius = 40/2
-//        playPauseButton.clipsToBounds = true
-//        playPauseButton.backgroundColor = UIColor.black.withAlphaComponent(0.64)
-//        addSubview(playPauseButton)
-//        playPauseButton.translatesAutoresizingMaskIntoConstraints = false
-//        playPauseButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-//        playPauseButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-//        playPauseButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-//        playPauseButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-//
-//        changeToPlayButton()
-//    }
+    private func createPlayPauseButton() {
+        playPauseButton = UIButton()
+        playPauseButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        playPauseButton.setTitle("", for: .normal)
+        playPauseButton.layer.cornerRadius = 40/2
+        playPauseButton.clipsToBounds = true
+        playPauseButton.backgroundColor = UIColor.black.withAlphaComponent(0.64)
+        addSubview(playPauseButton)
+        playPauseButton.translatesAutoresizingMaskIntoConstraints = false
+        playPauseButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        playPauseButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        playPauseButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        playPauseButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+
+        changeToPlayButton()
+    }
     
     // MARK: Play Button Change
     
-//    private func changeToPlayButton() {
-//        guard let playPauseButton = playPauseButton else { return }
-//        playPauseButton.removeTarget(self, action: nil, for: .allEvents)
-//        playPauseButton.setImage(#imageLiteral(resourceName: "icon_play"), for: .normal)
-//        playPauseButton.addTarget(self, action: #selector(startPlayer(_:)), for: .touchUpInside)
-//    }
+    private func changeToPlayButton() {
+        guard let playPauseButton = playPauseButton else { return }
+        playPauseButton.removeTarget(self, action: nil, for: .allEvents)
+        playPauseButton.setImage(#imageLiteral(resourceName: "icon_play"), for: .normal)
+        playPauseButton.addTarget(self, action: #selector(startPlayer(_:)), for: .touchUpInside)
+    }
     
     // MARK: Pause Button Change
-//
-//    private func changeToPauseButton() {
-//        guard let playPauseButton = playPauseButton else { return }
-//        playPauseButton.removeTarget(self, action: nil, for: .allEvents)
-//        playPauseButton.setImage(#imageLiteral(resourceName: "icon_pause"), for: .normal)
-//        playPauseButton.addTarget(self, action: #selector(pausePlayer(_:)), for: .touchUpInside)
-//    }
+
+    private func changeToPauseButton() {
+        guard let playPauseButton = playPauseButton else { return }
+        playPauseButton.removeTarget(self, action: nil, for: .allEvents)
+        playPauseButton.setImage(#imageLiteral(resourceName: "icon_pause"), for: .normal)
+        playPauseButton.addTarget(self, action: #selector(pausePlayer(_:)), for: .touchUpInside)
+    }
     
     // MARK: Start Player
     
@@ -224,7 +223,7 @@ class Player: UIView {
             playbackState = .playCast
             continueCastPlay()
         }
-//        changeToPauseButton()
+        changeToPauseButton()
     }
     
     // MARK: Pause Player
@@ -238,67 +237,66 @@ class Player: UIView {
             playbackState = .pauseCast
             pauseCastPlay()
         }
-
-//        changeToPlayButton()
+        changeToPlayButton()
     }
     
     // MARK: - Bottom Controls
     
     // MARK: Button StackView
     
-//    private func createButtonStackView() {
-//        buttonStackView = UIStackView()
-//        buttonStackView.axis = .horizontal
-//        buttonStackView.alignment = .fill
-//        buttonStackView.spacing = 5
-//        addSubview(buttonStackView)
-//        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-//        buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//        buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-//        buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-//        buttonStackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    private func createButtonStackView() {
+        buttonStackView = UIStackView()
+        buttonStackView.axis = .horizontal
+        buttonStackView.alignment = .fill
+        buttonStackView.spacing = 5
+        addSubview(buttonStackView)
+        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        buttonStackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+
+        createcurrentTimeLabel()
+        createSlider()
+        createTotalTimeLabel()
+    }
+    
+//     MARK: - Current Time Gradient Label
+
+    private func createcurrentTimeLabel() {
+        currentTimeLabel = UILabel()
+        currentTimeLabel.textAlignment = .right
+        currentTimeLabel.textColor = .white
+        buttonStackView.addArrangedSubview(currentTimeLabel)
+        currentTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+        currentTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+//     MARK: - Total Time Gradient Label
 //
-//        createcurrentTimeLabel()
-//        createSlider()
-//        createTotalTimeLabel()
-//    }
+    private func createTotalTimeLabel() {
+        totalTimeLabel = UILabel()
+        totalTimeLabel.textAlignment = .left
+        totalTimeLabel.textColor = .white
+        buttonStackView.addArrangedSubview(totalTimeLabel)
+        totalTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+        totalTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+    }
     
-    // MARK: - Current Time Gradient Label
-//
-//    private func createcurrentTimeLabel() {
-//        currentTimeLabel = UILabel()
-//        currentTimeLabel.textAlignment = .right
-//        currentTimeLabel.textColor = .white
-//        buttonStackView.addArrangedSubview(currentTimeLabel)
-//        currentTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-//        currentTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
-//    }
+//     MARK: - Player Slider
     
-    // MARK: - Total Time Gradient Label
-    
-//    private func createTotalTimeLabel() {
-//        totalTimeLabel = UILabel()
-//        totalTimeLabel.textAlignment = .left
-//        totalTimeLabel.textColor = .white
-//        buttonStackView.addArrangedSubview(totalTimeLabel)
-//        totalTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-//        totalTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
-//    }
-    
-    // MARK: - Player Slider
-    
-//    private func createSlider() {
-//        slider = UISlider()
-//        slider.isContinuous = true
-//        slider.isUserInteractionEnabled = true
-//        slider.minimumValue = 0
-//        slider.maximumValue = 1
-//        slider.tintColor = UIColor.nodesColor()
-//        slider.value = 0
-//        slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
-//        addSliderRecognizers()
-//        buttonStackView.addArrangedSubview(slider)
-//    }
+    private func createSlider() {
+        slider = UISlider()
+        slider.isContinuous = true
+        slider.isUserInteractionEnabled = true
+        slider.minimumValue = 0
+        slider.maximumValue = 1
+        slider.tintColor = UIColor.nodesColor()
+        slider.value = 0
+        slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
+        addSliderRecognizers()
+        buttonStackView.addArrangedSubview(slider)
+    }
     // MARK: - Update slider on Local
     
     private func scheduleLocalTimer() {
@@ -324,7 +322,7 @@ class Player: UIView {
         guard let currentItem = player.currentItem else { return }
         var currentTime = player.currentTime().seconds
         var duration = currentItem.asset.duration.seconds
-//        slider.value = Float(currentTime / duration)
+        slider.value = Float(currentTime / duration)
         guard (currentTime.isNaN || currentTime.isInfinite && duration.isInfinite || duration.isNaN) else {
             return
         }
@@ -338,7 +336,6 @@ class Player: UIView {
     }
     
     // MARK: - Update slider on Cast
-    
     private func scheduleCastTimer() {
         DispatchQueue.main.async {
             switch self.playbackState {
@@ -416,7 +413,7 @@ class Player: UIView {
             CastManager.shared.playSelectedItemRemotely(to: currentTime, completion: { (done) in
                 if !done {
                     self.playbackState = .pause
-//                    self.startPlayer(nil)
+                    self.startPlayer(nil)
                 }
             })
         }

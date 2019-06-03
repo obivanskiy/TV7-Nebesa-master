@@ -24,6 +24,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
     //MARK: - Outlets
     @IBOutlet weak var webTVStreamView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dateAndTimeZone: UILabel!
     
     //MARK: - GoogleCast properties
     private var castButton: GCKUICastButton!
@@ -45,6 +46,15 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
             }
         }
     }
+    private var currentTimeZone: String!
+    
+    private(set) var sortedDates: [TVGuideDatesData] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -57,17 +67,48 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
         tableView.dataSource = self
         self.title = "ВЕБ-ТВ"
         self.presenter = TVGuidePresenter(with: self)
-//        player(urlString: ruStreamLink)
+        getCurrentTimeZone()
+        self.dateAndTimeZone.text = getCurrentTimeAndDate() + " " + currentTimeZone
         
         //MARK: -Add to extension or func
         navigationItem.rightBarButtonItem = googleCastButton
         createPlayerView()
+        filterDates(programmes: webTVProgrammesList)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         playerView.stopPlayback()
     }
- 
+    
+    //MARK: - Fetch current date and time zone
+    
+    private func getCurrentTimeAndDate() -> String {
+        let dateFormatter : DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy  HH:mm"
+        let date = Date()
+        let dateString = dateFormatter.string(from: date)
+        let currentDateAndTime = dateString
+        
+        return currentDateAndTime
+    }
+    
+    private func getCurrentTimeZone() {
+        var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
+        self.currentTimeZone = "\(String(TimeZone.current.identifier)): \(localTimeZoneAbbreviation)"
+    }
+    
+    
+    
+    //MARK: - transition to the landscape mode while rotating
+    
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        super.viewWillTransition(to: size, with: coordinator)
+//        coordinator.animate(alongsideTransition: { (context) in
+//        }) { (context) in
+//            self.playerView.bounds.size = self.playerView.bounds.size
+//        }
+//    }
+    
     private func createPlayerView() {
         playerView = Player(frame: webTVStreamView.bounds)
         
@@ -75,54 +116,33 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
         playerView.initPlayerLayer()
         webTVStreamView.addSubview(playerView)
     }
-
-    
-//    private func player(urlString: String) {
-//        if let  videoURL = URL(string: urlString.encodeUrl()!) {
-//            self.webTVPLayer = AVPlayer(url: videoURL)
-//            print("Live stream url: \(videoURL)")
-//            webTVPlayerViewController.player = self.webTVPLayer
-//            webTVPlayerViewController.view.frame = webTVStreamView.bounds
-//            self.addChild(webTVPlayerViewController)
-//            webTVStreamView.addSubview(webTVPlayerViewController.view)
-//            webTVPlayerViewController.didMove(toParent: self)
-//            webTVPlayerViewController.player?.pause()
-//        }
-//    }
     
     private func stopPlayback() {
         webTVPlayerViewController.player?.pause()
     }
-
+    
     // MARK: - Table View Data Source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return webTVProgrammesList.tvGuideDates.count
+        return sortedDates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if  indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: WebTVDateTableViewCell.identifier, for: indexPath) as? WebTVDateTableViewCell else {
-                return UITableViewCell()
-            }
-            tableView.estimatedRowHeight = 20
-            return cell
-        }
         
-        if indexPath.row == 1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: WebTVTimeZoneTableViewCell.identifier, for: indexPath) as? WebTVTimeZoneTableViewCell else {
-                return UITableViewCell()
-            }
-            tableView.estimatedRowHeight = 20
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WebTVMainTableViewCell", for: indexPath) as? WebTVMainTableViewCell else {
+            return UITableViewCell()
         }
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: WebTVMainTableViewCell.identifier, for: indexPath) as? WebTVMainTableViewCell else {
-                return UITableViewCell()
-            }
-            tableView.estimatedRowHeight = 70
-            cell.programmeNameLabel.text = webTVProgrammesList.tvGuideDates[indexPath.row].name
-            cell.programmeTimeLabel.text = dateFormatter(webTVProgrammesList.tvGuideDates[indexPath.row].date)
-            return cell
+//        tableView.estimatedRowHeight = 120
+        
+        // if name in request comes as empty string, use caption instead of it
+        if sortedDates[indexPath.row].name == "" {
+            cell.nameLabel.text = sortedDates[indexPath.row].name
+        } else {
+            cell.nameLabel.text = sortedDates[indexPath.row].name
+        }
+        cell.dateLabel.text = dateFormatter(sortedDates[indexPath.row].date)
+        
+        return cell
     }
     
     private func dateFormatter(_ dateIn: String) -> String {
@@ -133,5 +153,14 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
         
         let newDate = dateFormatter.string(from: date)
         return newDate
+    }
+    
+    //MARK: - sort tv guide time
+    private func filterDates(programmes: TVGuideDates) {
+        let currentDate = String(Date().timeIntervalSince1970)
+        
+        self.sortedDates = webTVProgrammesList.tvGuideDates.filter {
+            return $0.date >= currentDate
+        }
     }
 }
