@@ -99,6 +99,7 @@
 		111F951D22730A7300C35737 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F951C22730A7300C35737 /* TabBarController.swift */; };
 		112EB591229D307B003B2EAA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112EB590229D307B003B2EAA /* APIService.swift */; };
 		115B77572296EB3100B0EC3E /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B77562296EB3100B0EC3E /* VideoPlayer.swift */; };
+		11955C3E22A6737600FE659B /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11955C3D22A6737600FE659B /* VideoModel.swift */; };
 		1511D8DE2272F106007EFD45 /* Pods_TV7_Nebesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */; };
 		152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */; };
 		152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */; };
@@ -256,6 +257,7 @@
 		111F951C22730A7300C35737 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		112EB590229D307B003B2EAA /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		115B77562296EB3100B0EC3E /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
+		11955C3D22A6737600FE659B /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BestScenesScreen.storyboard; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				112EB590229D307B003B2EAA /* APIService.swift */,
 				1103F69022721D870016A3C8 /* HomeMostViewedPresenter.swift */,
 				115B77562296EB3100B0EC3E /* VideoPlayer.swift */,
+				11955C3D22A6737600FE659B /* VideoModel.swift */,
 				1103F69122721D870016A3C8 /* VideoPresenter.swift */,
 			);
 			path = HomeScreenPresenters;
@@ -989,6 +992,7 @@
 				1103F73B22721F630016A3C8 /* Extensions.swift in Sources */,
 				115B77572296EB3100B0EC3E /* VideoPlayer.swift in Sources */,
 				1103F73E2272219D0016A3C8 /* VideoCell.swift in Sources */,
+				11955C3E22A6737600FE659B /* VideoModel.swift in Sources */,
 				1103F69522721D870016A3C8 /* HomeMostViewedCell.swift in Sources */,
 				FAFDE800223FC69A00006FEE /* TVGuideCell.swift in Sources */,
 				1103F6A222721D880016A3C8 /* HomeMostViewedPresenter.swift in Sources */,

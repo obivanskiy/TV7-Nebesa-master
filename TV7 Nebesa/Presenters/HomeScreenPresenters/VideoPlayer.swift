@@ -19,22 +19,50 @@ class VideoPlayer: UIViewController, Castable {
     private var player: Player!
     private var playerViewController = AVPlayerViewController()
     
-    private var playerPresenter: VideoPresenter?
+//    private var playerPresenter: VideoPresenter?
     var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation(){
-        didSet {
-            
-
-            setUpVideoData()
-            
-            DispatchQueue.main.async {
-                self.createPlayerView()
-            }
-            
+        didSet{
             print("---------------> Video data has been recieved")
-
+            videoEpisodeNumber = "Эпизод: \(videoData.homeProgrammeInfo[0].episodeNumber)"
+            videoDuration = "Длительность: \(dateFormatter(videoData.homeProgrammeInfo[0].duration))"
+            videoFirstBroadcast = "Доступен с:\(broadcastDateFormatter(videoData.homeProgrammeInfo[0].firstBroadcast))"
+            videoURLString = NetworkEndpoints.baseURLForVideoPlayback + videoData.homeProgrammeInfo[0].path + NetworkEndpoints.playlistEndpoint
+            thumbnailUrl = videoData.homeProgrammeInfo[0].imagePath
+            VideoTitleLabel.text = videoData.homeProgrammeInfo[0].name
+            VideoCaptionLabel.text = videoData.homeProgrammeInfo[0].caption
+            VideoEpisodeNumberLabel.text = "Эпизод: \(videoEpisodeNumber)"
+            VideoDurationLabel.text = "Длительность: \(videoDuration)"
+            VideoFirstBroadcastLabel.text = "Доступен с:\(videoFirstBroadcast)"
+            DispatchQueue.main.async {
+                                self.createPlayerView()
+                            }
+        }
+    }
+  
+    
+    func fetchVideos(){
+        ApiService.shared.requestVideoInfo { (videoData: HomeScreenProgrammeInformation) in
+            self.videoData = videoData
+            
         }
         
     }
+    
+//        HomeScreenProgrammeInformation = HomeScreenProgrammeInformation(){
+//        didSet {
+//
+//
+//            setUpVideoData()
+//
+//            DispatchQueue.main.async {
+//                self.createPlayerView()
+//            }
+//
+//            print("---------------> Video data has been recieved")
+//
+//        }
+//
+//    }
     
 
     var videoID: String = ""
@@ -62,7 +90,8 @@ class VideoPlayer: UIViewController, Castable {
     //MARK: - View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.playerPresenter = VideoPresenter(with: self)
+        fetchVideos()
+//        self.playerPresenter = VideoPresenter(with: self)
         
 //        setUpUI()
     }
@@ -83,7 +112,7 @@ class VideoPlayer: UIViewController, Castable {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        player.stopPlayback()
+//        player.stopPlayback()
     }
     
     //MARK: -Set up the UI

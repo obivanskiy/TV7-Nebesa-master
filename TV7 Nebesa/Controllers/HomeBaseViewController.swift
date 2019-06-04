@@ -178,7 +178,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 /// New 
                 let videoID = data.id
                 print(videoID)
-                NetworkService.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
+                ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
                 ///// previous sending
 //                destination.title = data.seriesName
 //                if data.description != "" {
@@ -217,7 +217,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 let data = collectionCell.homeMostViewedData.homeScreenMostViewedProgrammes[indexPath!.row]
                 let videoID = data.id!
                 print(videoID)
-                NetworkService.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
+                  ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
 //                let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 //                activityIndicator.center = self.view.center
 //                activityIndicator.hidesWhenStopped = true

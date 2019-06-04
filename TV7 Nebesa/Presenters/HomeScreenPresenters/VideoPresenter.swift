@@ -12,6 +12,7 @@ import Foundation
 final class VideoPresenter {
     let viewController: VideoPlayer!
     
+    
     init(with viewController: VideoPlayer) {
         self.viewController = viewController
         requestVideoInfo()
