@@ -136,7 +136,9 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
         
         // if name in request comes as empty string, use caption instead of it
         if sortedDates[indexPath.row].name == "" {
-            cell.nameLabel.text = sortedDates[indexPath.row].name
+            cell.nameLabel.text = sortedDates[indexPath.row].series
+        } else if sortedDates[indexPath.row].name != "" && sortedDates[indexPath.row].name != "" {
+            cell.nameLabel.text = sortedDates[indexPath.row].series + ": " + sortedDates[indexPath.row].name
         } else {
             cell.nameLabel.text = sortedDates[indexPath.row].name
         }
