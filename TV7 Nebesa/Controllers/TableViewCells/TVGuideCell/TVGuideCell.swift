@@ -15,6 +15,7 @@ class TVGuideCell: UITableViewCell {
     @IBOutlet weak var seriesLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var captionLabelHeight: NSLayoutConstraint!
+    @IBOutlet weak var expandRowButton: UIButton!
 
     // Expand Cell when select
     var isExpanded: Bool = false {

@@ -55,6 +55,11 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
         }
         cell.cellModel = tvGuideSeries.tvGuideDates[indexPath.row]
         cell.isExpanded = self.expandedRows.contains(indexPath.row)
+        if cell.cellModel?.caption == "" {
+            cell.expandRowButton.isHidden = true
+        } else {
+            cell.expandRowButton.isHidden = false
+        }
         return cell
     }
 
@@ -72,19 +77,6 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
         case false:
             self.expandedRows.insert(indexPath.row)
         }
-
-        // ******** Expanded cells haven't work yet *********
-//        switch cell.captionLabel.calculateMaxLines() {
-//        case 1:
-//            print("1")
-//        case 2:
-//            print("2")
-//        case 3:
-//            print("3")
-//        default:
-//            print("default")
-//        }
-
         cell.isExpanded = !cell.isExpanded
         self.tvGuideTableView.beginUpdates()
         self.tvGuideTableView.endUpdates()

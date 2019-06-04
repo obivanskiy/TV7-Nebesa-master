@@ -40,6 +40,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UyF-Hu-CUm" userLabel="Expand Arrow">
+                        <rect key="frame" x="297" y="42.5" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="8tJ-ep-pQq"/>
+                            <constraint firstAttribute="height" constant="15" id="QQM-wQ-Axe"/>
+                        </constraints>
+                        <state key="normal" image="expandArrow"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="OHJ-cr-beH" firstAttribute="leading" secondItem="kzr-Be-u0a" secondAttribute="trailing" constant="16" id="2x4-h2-D4f"/>
@@ -51,6 +59,8 @@
                     <constraint firstItem="kzr-Be-u0a" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LrX-hs-r1d"/>
                     <constraint firstItem="BcY-FW-zL5" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="OHg-j8-ipH"/>
                     <constraint firstItem="BcY-FW-zL5" firstAttribute="trailing" secondItem="OHJ-cr-beH" secondAttribute="trailing" id="OVj-o7-3wO"/>
+                    <constraint firstAttribute="trailing" secondItem="UyF-Hu-CUm" secondAttribute="trailing" constant="8" id="SZX-FG-6pG"/>
+                    <constraint firstItem="UyF-Hu-CUm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XMP-dt-W6d"/>
                     <constraint firstItem="kzr-Be-u0a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hqi-en-re4"/>
                 </constraints>
             </tableViewCellContentView>
@@ -58,10 +68,14 @@
             <connections>
                 <outlet property="captionLabel" destination="BcY-FW-zL5" id="Y7P-2s-raa"/>
                 <outlet property="captionLabelHeight" destination="Cyz-eq-qXW" id="xCU-Tp-77q"/>
+                <outlet property="expandRowButton" destination="UyF-Hu-CUm" id="PmW-8v-Hbh"/>
                 <outlet property="seriesLabel" destination="OHJ-cr-beH" id="10d-BS-mim"/>
                 <outlet property="timeLabel" destination="kzr-Be-u0a" id="32Y-Qb-ZHJ"/>
             </connections>
             <point key="canvasLocation" x="52.799999999999997" y="90.854572713643179"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="expandArrow" width="25" height="25"/>
+    </resources>
 </document>
