@@ -70,9 +70,7 @@ class Player: UIView {
         player = AVPlayer(url: url)
         player.addObserver(self, forKeyPath: timeObserver, options: .new, context: nil)
         playerViewController.player = player
-        playerViewController.showsPlaybackControls = false
         playerViewController.view.frame = bounds
-        
         addSubview(playerViewController.view)
     }
     
@@ -99,7 +97,7 @@ class Player: UIView {
             guard let timeRanges = loadedTimeRanges, timeRanges.count > 0, let timeRange = timeRanges[0] as? CMTimeRange else { return }
             let currentBufferDuration = CMTimeGetSeconds(CMTimeAdd(timeRange.start, timeRange.duration))
             if player.status == AVPlayer.Status.readyToPlay && currentBufferDuration > 2 {
-                if playPauseButton == nil {
+                if playPauseButton == nil  {
                     createPlayPauseButton()
                 }
                 if buttonStackView == nil {
@@ -116,14 +114,18 @@ class Player: UIView {
         let sessionStatusListener: (CastSessionStatus) -> Void = { status in
             switch status {
             case .started:
+                self.hideNativeControls()
                 self.startCastPlay()
             case .resumed:
+                self.hideNativeControls()
                 self.continueCastPlay()
             case .ended, .failedToStart:
                 if self.playbackState == .playCast {
+                    self.showNativeControls()
                     self.playbackState = .pause
                     self.startPlayer(nil)
                 } else if self.playbackState == .pauseCast {
+                    self.hideNativeControls()
                     self.playbackState = .play
                     self.pausePlayer(nil)
                 }
@@ -132,6 +134,21 @@ class Player: UIView {
         }
         CastManager.shared.addSessionStatusListener(listener: sessionStatusListener)
     }
+    
+    //MARK: - Native controls functions
+    private func hideNativeControls() {
+        playPauseButton.isHidden = false
+        buttonStackView.isHidden = false
+        playerViewController.showsPlaybackControls = false
+    }
+    
+    private func showNativeControls() {
+        playPauseButton.isHidden = true
+        buttonStackView.isHidden = true
+        playerViewController.showsPlaybackControls = true
+    }
+    
+    
     
     private func startCastPlay() {
         guard let currentItem = player.currentItem else { return }
@@ -185,7 +202,7 @@ class Player: UIView {
         playPauseButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         playPauseButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         playPauseButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-
+        playPauseButton.isHidden = true
         changeToPlayButton()
     }
     
@@ -259,6 +276,7 @@ class Player: UIView {
         createcurrentTimeLabel()
         createSlider()
         createTotalTimeLabel()
+        buttonStackView.isHidden = true
     }
     
 //     MARK: - Current Time Gradient Label
@@ -332,7 +350,6 @@ class Player: UIView {
         
         totalTimeLabel.text = duration.toTimeString() as String
         currentTimeLabel.text = currentTime.toTimeString() as String
-        
     }
     
     // MARK: - Update slider on Cast
@@ -395,6 +412,7 @@ class Player: UIView {
         
         let positionOfSlider: CGPoint = slider.frame.origin
         let widthOfSlider: CGFloat = slider.frame.size.width
+
         let newValue = ((pointTapped.x - positionOfSlider.x) * CGFloat(slider.maximumValue) / widthOfSlider)
         
         slider.setValue(Float(newValue), animated: true)

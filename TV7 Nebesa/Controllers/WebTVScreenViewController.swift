@@ -158,7 +158,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
     //MARK: - sort tv guide time
     private func filterDates(programmes: TVGuideDates) {
         let currentDate = String(Date().timeIntervalSince1970)
-        
         self.sortedDates = webTVProgrammesList.tvGuideDates.filter {
             return $0.date >= currentDate
         }
