@@ -179,38 +179,28 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 let videoID = data.id
                 print(videoID)
                 ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
-                ///// previous sending
-//                destination.title = data.seriesName
-//                if data.description != "" {
-//                    destination.videoCaption = data.description
-//                } else {
-//                     destination.videoCaption = data.caption
-//                }
-//                destination.videoTitle = data.name
-//                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.linkPath + NetworkEndpoints.playlistEndpoint
-//                print(destination.videoURLString)
-//                destination.videoDuration = data.duration
-//                destination.videoFirstBroadcast = data.firstBroadcast
-//                destination.videoEpisodeNumber = data.episodeNumber
-                //////
+             
                 
             case let tableCell as NewestTableViewCell:
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 1, section: 0)) as! HomeNewestCell
                 let indexPath = collectionCell.newestTableView.indexPath(for: tableCell)
                 let data = collectionCell.homeScreenNewestData.homeScreenNewestProgrammes[indexPath!.row]
-                destination.title = data.seriesName
-//                if data.description != "" {
-//                    destination.videoCaption = data.description
-//                } else {
-                    destination.videoCaption = data.caption
-                
-                destination.videoTitle = data.name
-                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.linkPath! + NetworkEndpoints.playlistEndpoint
-                print(destination.videoURLString)
-                destination.videoDuration = data.duration!
-                destination.videoFirstBroadcast = data.firstBroadcast
-                destination.videoEpisodeNumber = data.episodeNumber!
-           
+                let videoID = data.id
+                print(videoID)
+                ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
+//                destination.title = data.seriesName
+////                if data.description != "" {
+////                    destination.videoCaption = data.description
+////                } else {
+//                    destination.videoCaption = data.caption
+//
+//                destination.videoTitle = data.name
+//                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.linkPath! + NetworkEndpoints.playlistEndpoint
+//                print(destination.videoURLString)
+//                destination.videoDuration = data.duration!
+//                destination.videoFirstBroadcast = data.firstBroadcast
+//                destination.videoEpisodeNumber = data.episodeNumber!
+//
             case let tableCell as MostViewedTableViewCell:
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 2, section: 0)) as! HomeMostViewedCell
                 let indexPath = collectionCell.mostViewedTableView.indexPath(for: tableCell)

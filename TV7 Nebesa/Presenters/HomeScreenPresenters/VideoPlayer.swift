@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import AVKit
 import GoogleCast
+import SVProgressHUD
 
 class VideoPlayer: UIViewController, Castable {
     
@@ -23,16 +24,8 @@ class VideoPlayer: UIViewController, Castable {
     var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation(){
         didSet{
             print("---------------> Video data has been recieved")
-            videoEpisodeNumber = "Эпизод: \(videoData.homeProgrammeInfo[0].episodeNumber)"
-            videoDuration = "Длительность: \(dateFormatter(videoData.homeProgrammeInfo[0].duration))"
-            videoFirstBroadcast = "Доступен с:\(broadcastDateFormatter(videoData.homeProgrammeInfo[0].firstBroadcast))"
-            videoURLString = NetworkEndpoints.baseURLForVideoPlayback + videoData.homeProgrammeInfo[0].path + NetworkEndpoints.playlistEndpoint
-            thumbnailUrl = videoData.homeProgrammeInfo[0].imagePath
-            VideoTitleLabel.text = videoData.homeProgrammeInfo[0].name
-            VideoCaptionLabel.text = videoData.homeProgrammeInfo[0].caption
-            VideoEpisodeNumberLabel.text = "Эпизод: \(videoEpisodeNumber)"
-            VideoDurationLabel.text = "Длительность: \(videoDuration)"
-            VideoFirstBroadcastLabel.text = "Доступен с:\(videoFirstBroadcast)"
+            setUpVideoData()
+            setUpUI()
             DispatchQueue.main.async {
                                 self.createPlayerView()
                             }
@@ -41,28 +34,17 @@ class VideoPlayer: UIViewController, Castable {
   
     
     func fetchVideos(){
+        SVProgressHUD.setBackgroundColor(.white)
+        SVProgressHUD.setForegroundColor(UIColor.blue)
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.show()
         ApiService.shared.requestVideoInfo { (videoData: HomeScreenProgrammeInformation) in
             self.videoData = videoData
-            
         }
+        
         
     }
     
-//        HomeScreenProgrammeInformation = HomeScreenProgrammeInformation(){
-//        didSet {
-//
-//
-//            setUpVideoData()
-//
-//            DispatchQueue.main.async {
-//                self.createPlayerView()
-//            }
-//
-//            print("---------------> Video data has been recieved")
-//
-//        }
-//
-//    }
     
 
     var videoID: String = ""
@@ -91,20 +73,9 @@ class VideoPlayer: UIViewController, Castable {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchVideos()
-//        self.playerPresenter = VideoPresenter(with: self)
-        
-//        setUpUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        setUpUI()
-//        createPlayerView()
-        DispatchQueue.main.async {
-            self.setUpUI()
-        }
-        
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -122,6 +93,7 @@ class VideoPlayer: UIViewController, Castable {
         if titleName == "" {
             titleName = videoSeriesName
         }
+     
         videoTitle = videoData.homeProgrammeInfo[0].name
         videoCaption = videoData.homeProgrammeInfo[0].caption
         videoEpisodeNumber = "Эпизод: \(videoData.homeProgrammeInfo[0].episodeNumber)"
@@ -129,6 +101,7 @@ class VideoPlayer: UIViewController, Castable {
         videoFirstBroadcast = "Доступен с:\(broadcastDateFormatter(videoData.homeProgrammeInfo[0].firstBroadcast))"
         videoURLString = NetworkEndpoints.baseURLForVideoPlayback + videoData.homeProgrammeInfo[0].path + NetworkEndpoints.playlistEndpoint
         thumbnailUrl = videoData.homeProgrammeInfo[0].imagePath
+        
         
          print(thumbnailUrl, "----------", videoURLString)
         
@@ -157,10 +130,10 @@ class VideoPlayer: UIViewController, Castable {
     private func createPlayerView() {
    
         player = Player(frame: ProgramVideoView.bounds)
-        player.mediaItem = MediaItem(name: videoTitle, about: VideoCaptionLabel.text, videoUrl: videoURLString.encodeUrl()!, thumbnailUrl: thumbnailUrl)
+        player.mediaItem = MediaItem(name: videoTitle, about: VideoCaptionLabel.text, videoUrl: videoURLString.encodeUrl()!, thumbnailUrl: thumbnailUrl.encodeUrl()!)
         player.initPlayerLayer()
         ProgramVideoView.addSubview(player)
-        
+        SVProgressHUD.dismiss()
     }
     
     

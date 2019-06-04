@@ -36,7 +36,7 @@ struct ProgrammeInfo: Codable {
     
     let id: Identifier
     let episodeNumber: String
-    let name: String
+    let name: String?
     let caption: String
     let description: String
     let aspectRatio: String
