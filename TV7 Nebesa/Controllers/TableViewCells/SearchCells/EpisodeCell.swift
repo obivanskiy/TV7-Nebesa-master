@@ -31,7 +31,7 @@ class EpisodeCell: UITableViewCell {
     // MARK: - Properties
     private var videoURL = ""
     private var player: Player!
-    var playerViewController = AVPlayerViewController()
+//    var playerViewController = AVPlayerViewController()
 
     var cellModel: SearchEpisodeData? {
         didSet {

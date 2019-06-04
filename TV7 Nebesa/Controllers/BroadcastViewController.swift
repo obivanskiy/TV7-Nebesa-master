@@ -54,12 +54,6 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
             return UITableViewCell()
         }
         cell.cellModel = tvGuideSeries.tvGuideDates[indexPath.row]
-
-        let dates = Double((cell.cellModel?.date)!)!
-        if dates > Date().timeIntervalSince1970 {
-//            self.tvGuideTableView.scrollToRow(at: indexPath, at: .top, animated: true)
-        }
-
         cell.isExpanded = self.expandedRows.contains(indexPath.row)
         return cell
     }
@@ -229,7 +223,6 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
         let selectedIndexPath = IndexPath(item: firstAppearSelectedItem, section: 0)
         dateCollectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
     }
-
 
 }
 

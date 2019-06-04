@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import AVFoundation
-import AVKit
 
 final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Castable {
 
