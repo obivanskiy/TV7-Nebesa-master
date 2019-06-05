@@ -47,7 +47,7 @@ class SearchEpisodeCell: UITableViewCell {
         captionLabel.text = cellModel.caption
         guard let previewImageURL = URL.init(string: cellModel.imagePath) else { return }
         episodePreviewImage.kf.setImage(with: previewImageURL)
-        self.selectionStyle = .none
+        selectionStyle = .none
     }
 
     private func setupUISeries(seriesCellModel: ProgrammesData) {
@@ -57,7 +57,7 @@ class SearchEpisodeCell: UITableViewCell {
         captionLabel.text = seriesCellModel.caption
         guard let previewImageURL = URL.init(string: seriesCellModel.imagePath) else { return }
         episodePreviewImage.kf.setImage(with: previewImageURL)
-        self.selectionStyle = .none
+        selectionStyle = .none
     }
     
 }

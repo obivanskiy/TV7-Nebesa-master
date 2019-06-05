@@ -24,13 +24,14 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     private var presenter: TVProgramPresenter?
-    private var arrayOfDates = [Date]()
-    private var arrayOfDatesStrings = [String]()
-    private var expandedRows = Set<Int>()
+    private var arrayOfDates: [Date] = []
+    private var arrayOfDatesStrings: [String] = []
+    private var expandedRows: Set<Int> = []
     private var lastContentOffset: CGFloat = 0
-    private struct Constants {
+    private enum Constants {
         static let programmeScreen = "ProgrammeScreen"
         static let searchVC = "SearchViewController"
+        static let dataCell = "DateCell"
     }
     private var scrollToTime = true
 
@@ -95,22 +96,23 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
         let lastRow = tableView.indexPathsForVisibleRows?.last
         let nowUnix = Date().timeIntervalSince1970
         var nearestTime = Double()
-        var arrayOfTimes = [String]()
+        var arrayOfTimes: [String] = []
 
         // 1.Appending value of "time" to array; 2. Looking for the nearest time of TV program
         for time in tvGuideSeries.tvGuideDates {
             arrayOfTimes.append(time.time)
-            if Double(time.date)! > nowUnix {
-                nearestTime = Double(time.date)!
+            guard let checkTime = Double(time.date) else { return }
+            if checkTime > nowUnix {
+                nearestTime = checkTime
                 break
             }
         }
-        let nearestTimeString = String(Int(nearestTime)) + "000"
-        let firstIndex = arrayOfTimes.firstIndex(of: nearestTimeString)
+        let nearestTimeString = "\(Int(nearestTime))" + "000"
+        guard let firstIndex = arrayOfTimes.firstIndex(of: nearestTimeString) else { return }
 
         if indexPath.row == lastRow?.row {
             if scrollToTime == true {
-                let indexPath = IndexPath(row: firstIndex!, section: 0)
+                let indexPath = IndexPath(row: firstIndex, section: 0)
                 tableView.scrollToRow(at: indexPath, at: .top, animated: true)
                 tableView.cellForRow(at: indexPath)?.isHighlighted = true
                 scrollToTime = false
@@ -145,7 +147,7 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DateCell", for: indexPath) as! DateCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.dataCell, for: indexPath) as! DateCollectionViewCell
         let dates = self.arrayOfDatesStrings[indexPath.row]
         cell.dateLabel.text = dates
         return cell

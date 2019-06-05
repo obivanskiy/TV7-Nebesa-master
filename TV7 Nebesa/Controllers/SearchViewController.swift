@@ -26,7 +26,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     var searchEpisode: SearchEpisode = SearchEpisode()
     private var presenter: SearchResultsPresenter?
     private var presenterEpisode: SearchEpisodePresenter?
-    private struct Constants {
+    private enum Constants {
         static let programmeDataSegue = "ProgrammeScreenSegue"
         static let episodeSegue = "episodeSegue"
         static let seriesSegue = "seriesSegue"
@@ -34,24 +34,10 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     private var searchDelayer = Timer()
 
     // MARK: - Lifecycle methods
-    override func loadView() {
-        super.loadView()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupSearchBar()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
     }
 
     // MARK: Search Bar Delegate Methods
@@ -100,7 +86,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
 
-    // MARK: Table View Delegate Methods
+    // MARK: - Table View Delegate Methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let typeOfContent = searchResults.results[indexPath.row].type
         switch typeOfContent {

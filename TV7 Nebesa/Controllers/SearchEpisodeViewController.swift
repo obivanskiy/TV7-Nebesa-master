@@ -48,7 +48,8 @@ final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, 
             return UITableViewCell()
         }
         cell.cellModel = searchEpisodeData.results[indexPath.row]
-        videoURLString = NetworkEndpoints.baseURLForVideoPlayback + cell.cellModel!.path + NetworkEndpoints.playlistEndpoint
+        guard let path = cell.cellModel?.path else { return UITableViewCell() }
+        videoURLString = NetworkEndpoints.baseURLForVideoPlayback + path + NetworkEndpoints.playlistEndpoint
         return cell
     }
 

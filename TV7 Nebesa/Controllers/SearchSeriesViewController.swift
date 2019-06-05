@@ -26,7 +26,9 @@ final class SearchSeriesViewController: UIViewController, UITableViewDelegate, U
             }
         }
     }
-    private var episodeSegue = "episodeSegue"
+    private enum Constants {
+        static let episodeSegue = "episodeSegue"
+    }
     private var presenter: SearchSeriesPresenter?
 
     // MARK: - Lifecycle Methods
@@ -50,7 +52,7 @@ final class SearchSeriesViewController: UIViewController, UITableViewDelegate, U
 
     // MARK: - Table View Delegate Methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: episodeSegue, sender: self)
+        performSegue(withIdentifier: Constants.episodeSegue, sender: self)
     }
 
     // MARK: - Navigation
