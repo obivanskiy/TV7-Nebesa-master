@@ -78,7 +78,13 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
     
     override func viewWillDisappear(_ animated: Bool) {
         playerView.stopPlayback()
+        
+        if self.isMovingFromParent {
+            UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
+        }
     }
+    
+    @objc func canRotate() -> Void {}
     
     //MARK: - Fetch current date and time zone
     

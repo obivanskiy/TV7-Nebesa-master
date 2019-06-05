@@ -44,8 +44,14 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
     
     override func viewWillDisappear(_ animated: Bool) {
         playerView.stopPlayback()
+        
+        if self.isMovingFromParent {
+            UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
+        }
     }
-
+    
+    @objc func canRotate() -> Void {}
+    
     //MARK: -Set up the UI
     private func setUpUI() {
         seriesNameLabel.text = ProgrammeScreenViewController.programmeData.seriesName

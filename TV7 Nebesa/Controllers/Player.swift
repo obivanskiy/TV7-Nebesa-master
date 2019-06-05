@@ -30,11 +30,11 @@ class Player: UIView {
     private var playbackState: PlaybackState = .created
     let playerViewController = AVPlayerViewController()
     
-    private var playPauseButton: UIButton!
+    private var playPauseButton: UIButton?
     private var spinner: UIActivityIndicatorView!
     
     //MARK: - bottom controls
-    private var buttonStackView: UIStackView!
+    private var buttonStackView: UIStackView?
     private var currentTimeLabel: UILabel!
     private var totalTimeLabel: UILabel!
     private var slider: UISlider!
@@ -66,7 +66,6 @@ class Player: UIView {
     
     func initPlayerLayer() {
         guard let url = URL(string: mediaItem.videoUrl) else { return }
-        
         player = AVPlayer(url: url)
         player.addObserver(self, forKeyPath: timeObserver, options: .new, context: nil)
         playerViewController.player = player
@@ -137,14 +136,14 @@ class Player: UIView {
     
     //MARK: - Native controls functions
     private func hideNativeControls() {
-        playPauseButton.isHidden = false
-        buttonStackView.isHidden = false
+        playPauseButton?.isHidden = false
+        buttonStackView?.isHidden = false
         playerViewController.showsPlaybackControls = false
     }
     
     private func showNativeControls() {
-        playPauseButton.isHidden = true
-        buttonStackView.isHidden = true
+        playPauseButton?.isHidden = true
+        buttonStackView?.isHidden = true
         playerViewController.showsPlaybackControls = true
     }
     
@@ -191,18 +190,18 @@ class Player: UIView {
     
     private func createPlayPauseButton() {
         playPauseButton = UIButton()
-        playPauseButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        playPauseButton.setTitle("", for: .normal)
-        playPauseButton.layer.cornerRadius = 40/2
-        playPauseButton.clipsToBounds = true
-        playPauseButton.backgroundColor = UIColor.black.withAlphaComponent(0.64)
-        addSubview(playPauseButton)
-        playPauseButton.translatesAutoresizingMaskIntoConstraints = false
-        playPauseButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        playPauseButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        playPauseButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        playPauseButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        playPauseButton.isHidden = true
+        playPauseButton?.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        playPauseButton?.setTitle("", for: .normal)
+        playPauseButton?.layer.cornerRadius = 40/2
+        playPauseButton?.clipsToBounds = true
+        playPauseButton?.backgroundColor = UIColor.black.withAlphaComponent(0.64)
+        addSubview(playPauseButton ?? UIButton())
+        playPauseButton?.translatesAutoresizingMaskIntoConstraints = false
+        playPauseButton?.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        playPauseButton?.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        playPauseButton?.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        playPauseButton?.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        playPauseButton?.isHidden = true
         changeToPlayButton()
     }
     
@@ -263,20 +262,20 @@ class Player: UIView {
     
     private func createButtonStackView() {
         buttonStackView = UIStackView()
-        buttonStackView.axis = .horizontal
-        buttonStackView.alignment = .fill
-        buttonStackView.spacing = 5
-        addSubview(buttonStackView)
-        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        buttonStackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        buttonStackView?.axis = .horizontal
+        buttonStackView?.alignment = .fill
+        buttonStackView?.spacing = 5
+        addSubview(buttonStackView ?? UIStackView())
+        buttonStackView?.translatesAutoresizingMaskIntoConstraints = false
+        buttonStackView?.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        buttonStackView?.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        buttonStackView?.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        buttonStackView?.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
         createcurrentTimeLabel()
         createSlider()
         createTotalTimeLabel()
-        buttonStackView.isHidden = true
+        buttonStackView?.isHidden = true
     }
     
 //     MARK: - Current Time Gradient Label
@@ -285,7 +284,7 @@ class Player: UIView {
         currentTimeLabel = UILabel()
         currentTimeLabel.textAlignment = .right
         currentTimeLabel.textColor = .white
-        buttonStackView.addArrangedSubview(currentTimeLabel)
+        buttonStackView?.addArrangedSubview(currentTimeLabel)
         currentTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         currentTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
@@ -296,7 +295,7 @@ class Player: UIView {
         totalTimeLabel = UILabel()
         totalTimeLabel.textAlignment = .left
         totalTimeLabel.textColor = .white
-        buttonStackView.addArrangedSubview(totalTimeLabel)
+        buttonStackView?.addArrangedSubview(totalTimeLabel)
         totalTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         totalTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
@@ -313,7 +312,7 @@ class Player: UIView {
         slider.value = 0
         slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
         addSliderRecognizers()
-        buttonStackView.addArrangedSubview(slider)
+        buttonStackView?.addArrangedSubview(slider)
     }
     // MARK: - Update slider on Local
     
