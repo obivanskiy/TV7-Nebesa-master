@@ -15,19 +15,26 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
     
     let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
  
-    var isDataLoading:Bool=false
-    var pageNo:Int=0
-    var limit:Int=20
-    var offset:Int=0 //pageNo*limit
-    var didEndReached:Bool=false
+    var isDataLoading:Bool = false
+    var pageNo:Int = 0
+    var limit:Int = 10
+    var offset:Int = 0 //pageNo*limit
+    var didEndReached:Bool = false
     
-   private var presenterForNewest: HomeNewestPresenter?
-   var homeScreenNewestData: HomeScreenNewestProgrammes = HomeScreenNewestProgrammes() {
+    private var presenterForNewest: HomeNewestPresenter?
+    var videos: [HomeNewestData]? {
+        didSet {
+            self.newestTableView.reloadData()
+        }
+    }
+    var homeScreenNewestData: HomeScreenNewestProgrammes = HomeScreenNewestProgrammes() {
         didSet {
             DispatchQueue.main.async {
                 
                 self.newestTableView.reloadData()
                 self.activityIndicator.stopAnimating()
+                self.videos = self.homeScreenNewestData.homeScreenNewestProgrammes
+                print("-----///",self.videos as Any)
             }
         }
     }
@@ -53,7 +60,7 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return homeScreenNewestData.homeScreenNewestProgrammes.count
+        return videos?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -61,8 +68,9 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
         guard let cell = newestTableView.dequeueReusableCell(withIdentifier: "newestCellId", for: indexPath) as? NewestTableViewCell else {
             return UITableViewCell()
         }
-        cell.cellModel = homeScreenNewestData.homeScreenNewestProgrammes[indexPath.row]
-        
+        if let data = videos {
+        cell.cellModel = data[indexPath.row]
+        }
         print(homeScreenNewestData.homeScreenNewestProgrammes)
        
         return cell
@@ -84,6 +92,24 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         print("scrollViewDidEndDecelerating")
     }
+    
+    func loadMore(){
+        
+        ApiService.shared.requestNewestVideos { (videoData: HomeScreenNewestProgrammes) in
+            
+            print("------))))",videoData.homeScreenNewestProgrammes)
+            
+            for video in videoData.homeScreenNewestProgrammes {
+                self.videos?.append(video)
+                
+                print(video)
+            }
+            self.newestTableView.reloadData()
+            self.isDataLoading = false
+        }
+        
+        
+    }
     //Pagination
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
@@ -93,13 +119,20 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
         {
             if !isDataLoading{
                 isDataLoading = true
-                self.pageNo=self.pageNo+1
-                self.limit=self.limit+10
+                self.pageNo = self.pageNo+1
+             
                 self.offset=self.limit * self.pageNo
-                NetworkService.requestURL[.fetchHomeScreenNewestProgrammes] = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenNewestProgrammesURL + "&limit=\(limit)" + "&offset=\(offset)"
-                reloadInputViews()
+                ApiService.shared.requestURL[.fetchHomeScreenNewestProgrammes] = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenNewestProgrammesURL + "&limit=\(limit)" + "&offset=\(offset)"
+                pageNo += 1
+                loadMore()
+                print(pageNo, limit, offset)
+                
+                
+//                reloadInputViews()
             }
         }
+        
+       
         
         
     }

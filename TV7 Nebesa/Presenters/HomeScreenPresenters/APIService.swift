@@ -16,10 +16,14 @@ class ApiService: NSObject {
     func requestVideoInfo(completion: @escaping (HomeScreenProgrammeInformation) -> ()) {
      performRequest(requestType: .fetchVideoData, completion: completion)
     }
-    func fetchVideos(completion: @escaping ([Video]) -> ()) {
-        fetchFeedForUrlString(urlString: "\(baseUrl)/home.json", completion: completion)
+    
+    func requestNewestVideos(completion: @escaping (HomeScreenNewestProgrammes) -> ()) {
+        performRequestForNewest(requestType: .fetchHomeScreenNewestProgrammes, completion: completion)
     }
     
+//    func requestRecommendVideos(completion: @escaping (HomeScreenData) -> ()) {
+//        performRequest(requestType: .fetchHomeScreenMainData, completion: completion)
+//    }
     
 //    NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchVideoData) { result in
 //    switch result {
@@ -43,17 +47,28 @@ class ApiService: NSObject {
         }
     }
     
+    func serializeNewestVideos(requestData: (Data), dataModel: Codable) {
+        do {
+            let videos = try JSONDecoder().decode(HomeScreenNewestProgrammes.self, from: requestData)
+            print("Video Data", requestData)
+            print("-------->!!!", videos)
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
 //    func fetchVideos(completion: @escaping ([Video]) -> ()) {
 //        fetchFeedForUrlString(urlString: "\(baseUrl)/home.json", completion: completion)
 //    }
 //
-    func fetchTrendingFeed(completion: @escaping ([Video]) -> ()) {
-        fetchFeedForUrlString(urlString: "\(baseUrl)/trending.json", completion: completion)
-    }
-    
-    func fetchSubscriptionFeed(completion: @escaping ([Video]) -> ()) {
-        fetchFeedForUrlString(urlString: "\(baseUrl)/subscriptions.json", completion: completion)
-    }
+//    func fetchTrendingFeed(completion: @escaping ([Video]) -> ()) {
+//        fetchFeedForUrlString(urlString: "\(baseUrl)/trending.json", completion: completion)
+//    }
+//
+//    func fetchSubscriptionFeed(completion: @escaping ([Video]) -> ()) {
+//        fetchFeedForUrlString(urlString: "\(baseUrl)/subscriptions.json", completion: completion)
+//    }
     
     
     public enum NetworkRequestType {
@@ -100,6 +115,7 @@ class ApiService: NSObject {
         case unknownError
     }
     
+    
     func performRequest(requestType: NetworkRequestType, completion: @escaping (HomeScreenProgrammeInformation) -> Void)  {
         guard let urlString = requestURL[requestType] else {return}
         print(urlString)
@@ -125,21 +141,20 @@ class ApiService: NSObject {
         }
         urlSessionTask.resume()
     }
-    func fetchFeedForUrlString(urlString: String, completion: @escaping ([Video]) -> ()) {
-        let url = URL(string: urlString)
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            
-            if error != nil {
-                print(error ?? "")
-                return
+    
+    func performRequestForNewest(requestType: NetworkRequestType, completion: @escaping (HomeScreenNewestProgrammes) -> Void)  {
+        guard let urlString = requestURL[requestType] else {return}
+        print(urlString)
+        guard let url = URL(string: urlString) else {return}
+        print(url)
+        let urlSessionTask = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Loading err",error.localizedDescription)
             }
-            
             do {
-                guard let data = data else { return }
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let videos = try decoder.decode([Video].self, from: data)
-                
+                guard let data = data else {return}
+                let videos = try JSONDecoder().decode(HomeScreenNewestProgrammes.self, from: data)
+                print(data)
                 DispatchQueue.main.async {
                     completion(videos)
                 }
@@ -149,8 +164,9 @@ class ApiService: NSObject {
             }
             
             
-            
-            }.resume()
+        }
+        urlSessionTask.resume()
     }
+
     
 }

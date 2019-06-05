@@ -83,7 +83,7 @@ class VideoPlayer: UIViewController, Castable {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-//        player.stopPlayback()
+        player.stopPlayback()
     }
     
     //MARK: -Set up the UI
@@ -119,9 +119,9 @@ class VideoPlayer: UIViewController, Castable {
         }
         VideoTitleLabel.text = titleName
         VideoCaptionLabel.text = videoCaption
-        VideoEpisodeNumberLabel.text = "Эпизод: \(videoEpisodeNumber)"
-        VideoDurationLabel.text = "Длительность: \(dateFormatter(videoDuration))"
-        VideoFirstBroadcastLabel.text = "Доступен с:\(broadcastDateFormatter(videoFirstBroadcast))"
+        VideoEpisodeNumberLabel.text = videoEpisodeNumber
+        VideoDurationLabel.text = videoDuration
+        VideoFirstBroadcastLabel.text = videoFirstBroadcast
         
         navigationItem.rightBarButtonItem = googleCastButton
     }

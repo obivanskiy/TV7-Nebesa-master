@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 let cellId = "homeCell"
 let newestCellId = "homeNewestCell"
 let mostViewedCellId = "mostViewedCell"
@@ -179,12 +180,14 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 let videoID = data.id
                 print(videoID)
                 ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
-             
+                
+                
+                //:TODO - Force unwrapping!!!
                 
             case let tableCell as NewestTableViewCell:
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 1, section: 0)) as! HomeNewestCell
                 let indexPath = collectionCell.newestTableView.indexPath(for: tableCell)
-                let data = collectionCell.homeScreenNewestData.homeScreenNewestProgrammes[indexPath!.row]
+                let data = collectionCell.videos![indexPath!.row]
                 let videoID = data.id
                 print(videoID)
                 ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
@@ -208,6 +211,10 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 let videoID = data.id!
                 print(videoID)
                   ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
+                ApiService.shared.requestVideoInfo { (videoData: HomeScreenProgrammeInformation) in
+                    destination.videoData = videoData
+                }
+                
 //                let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 //                activityIndicator.center = self.view.center
 //                activityIndicator.hidesWhenStopped = true
