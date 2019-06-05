@@ -22,13 +22,13 @@ struct HomeScreenProgrammes: Codable {
     
     init() {
         homeScreenProgrammes = [HomeScreenData]()
-        print("DDDD", homeScreenProgrammes)
+//        print("DDDD", homeScreenProgrammes)
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         homeScreenProgrammes = try container.decodeIfPresent(Array<HomeScreenData>.self, forKey: .homeScreenProgrammes) ?? [HomeScreenData]()
-        print("lll", HomeScreenData())
+//        print("lll", HomeScreenData())
     }
 }
     

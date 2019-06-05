@@ -34,7 +34,7 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
                 self.newestTableView.reloadData()
                 self.activityIndicator.stopAnimating()
                 self.videos = self.homeScreenNewestData.homeScreenNewestProgrammes
-                print("-----///",self.videos as Any)
+               
             }
         }
     }

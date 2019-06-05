@@ -40,8 +40,17 @@ class MostViewedTableViewCell: UITableViewCell {
         guard let previewImageURL = URL.init(string: cellModel.homeScreenMostViewedPreviewImageURLString) else {
             return
         }
-     
-        mostViewedImageView.kf.setImage(with: previewImageURL)
+        let cacheKey = cellModel.homeScreenMostViewedPreviewImageURLString
+        let resource = ImageResource(downloadURL: previewImageURL, cacheKey: cacheKey)
+        //        imageView.kf.setImage(with: resource)
+        let cache = ImageCache.default
+        let cached = cache.isCached(forKey: cacheKey)
+        
+        // To know where the cached image is:
+        let cacheType = cache.imageCachedType(forKey: cacheKey)
+        print(cacheType, cached)
+        mostViewedImageView.kf.setImage(with: resource)
+        
     }
     private func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }
