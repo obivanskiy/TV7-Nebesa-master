@@ -13,6 +13,11 @@ class ApiService: NSObject {
     static let shared = ApiService()
     let baseUrl = NetworkEndpoints.baseURL
     
+    enum dataModel {
+        case homeScreenProgrammeInformation
+        case homeScreenNewestProgrammes
+    }
+    
     func requestVideoInfo(completion: @escaping (HomeScreenProgrammeInformation) -> ()) {
      performRequest(requestType: .fetchVideoData, completion: completion)
     }
@@ -21,90 +26,23 @@ class ApiService: NSObject {
         performRequestForNewest(requestType: .fetchHomeScreenNewestProgrammes, completion: completion)
     }
     
-//    func requestRecommendVideos(completion: @escaping (HomeScreenData) -> ()) {
-//        performRequest(requestType: .fetchHomeScreenMainData, completion: completion)
-//    }
-    
-//    NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchVideoData) { result in
-//    switch result {
-//    case .failure(let error):
-//    print(error.localizedDescription)
-//    case .success(let data):
-//    self.serializeVideoInfo(requestData: data, dataModel: HomeScreenProgrammeInformation.self as! Codable)
-//    print("Video data",data)
-//    }
-//    }
-    
-    
-    func serializeVideoInfo(requestData: (Data), dataModel: Codable) {
-        do {
-            let videos = try JSONDecoder().decode(HomeScreenProgrammeInformation.self, from: requestData)
-            print("Video Data", requestData)
-            print("-------->!!!", videos)
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func serializeNewestVideos(requestData: (Data), dataModel: Codable) {
-        do {
-            let videos = try JSONDecoder().decode(HomeScreenNewestProgrammes.self, from: requestData)
-            print("Video Data", requestData)
-            print("-------->!!!", videos)
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-    
-//    func fetchVideos(completion: @escaping ([Video]) -> ()) {
-//        fetchFeedForUrlString(urlString: "\(baseUrl)/home.json", completion: completion)
-//    }
-//
-//    func fetchTrendingFeed(completion: @escaping ([Video]) -> ()) {
-//        fetchFeedForUrlString(urlString: "\(baseUrl)/trending.json", completion: completion)
-//    }
-//
-//    func fetchSubscriptionFeed(completion: @escaping ([Video]) -> ()) {
-//        fetchFeedForUrlString(urlString: "\(baseUrl)/subscriptions.json", completion: completion)
-//    }
-    
-    
+
     public enum NetworkRequestType {
-        case fetchParentCategories
-        case fetchSubCategories
-        case fetchCategoryData
-        case fetchSeriesMainData
-        case fetchSeriesProgrammes
-        case fetchWebTVProgrammesList
-        case fetchHomeScreenMainData
+       
         case fetchHomeScreenProgrammeData
         case fetchHomeScreenNewestProgrammes
         case fetchHomeScreenMostViewedProgrammes
         case fetchVideoData
-        case fetchTVProgram
-        case fetchSearchResults
-        case fetchSearchEpisode
-        case fetchSearchSeries
+      
     }
     
      var requestURL: [NetworkRequestType : String] = [
-        .fetchParentCategories : NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL,
-        .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL,
-        //Home Screen data
-        .fetchHomeScreenMainData : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL,
-        
+       
         //Most Viewed/ Newest programmes URL's on the homeScreen
         .fetchHomeScreenNewestProgrammes : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenNewestProgrammesURL,
         .fetchHomeScreenMostViewedProgrammes : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenMostViewedProgrammesURL,
         .fetchVideoData: NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL,
-        
-        //        .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL
-        .fetchTVProgram: NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide,
-        .fetchSearchResults: NetworkEndpoints.searchBaseURL + NetworkEndpoints.searchResultsURL,
-        .fetchSearchEpisode: NetworkEndpoints.baseURL + NetworkEndpoints.searchEpisodeURL,
-        .fetchSearchSeries: NetworkEndpoints.baseURL + NetworkEndpoints.seriesProgrammesURL
+     
     ]
     
     enum networkResult: Swift.Error {
@@ -170,3 +108,54 @@ class ApiService: NSObject {
 
     
 }
+
+//    func requestRecommendVideos(completion: @escaping (HomeScreenData) -> ()) {
+//        performRequest(requestType: .fetchHomeScreenMainData, completion: completion)
+//    }
+
+//    NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchVideoData) { result in
+//    switch result {
+//    case .failure(let error):
+//    print(error.localizedDescription)
+//    case .success(let data):
+//    self.serializeVideoInfo(requestData: data, dataModel: HomeScreenProgrammeInformation.self as! Codable)
+//    print("Video data",data)
+//    }
+//    }
+
+//
+//    func serializeVideoInfo(requestData: (Data), dataModel: Codable) {
+//        do {
+//            let videos = try JSONDecoder().decode(HomeScreenProgrammeInformation.self, from: requestData)
+//            print("Video Data", requestData)
+//            print("-------->!!!", videos)
+//
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//    }
+//
+//    func serializeNewestVideos(requestData: (Data), dataModel: Codable) {
+//        do {
+//            let videos = try JSONDecoder().decode(HomeScreenNewestProgrammes.self, from: requestData)
+//            print("Video Data", requestData)
+//            print("-------->!!!", videos)
+//
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//    }
+
+//    func fetchVideos(completion: @escaping ([Video]) -> ()) {
+//        fetchFeedForUrlString(urlString: "\(baseUrl)/home.json", completion: completion)
+//    }
+//
+//    func fetchTrendingFeed(completion: @escaping ([Video]) -> ()) {
+//        fetchFeedForUrlString(urlString: "\(baseUrl)/trending.json", completion: completion)
+//    }
+//
+//    func fetchSubscriptionFeed(completion: @escaping ([Video]) -> ()) {
+//        fetchFeedForUrlString(urlString: "\(baseUrl)/subscriptions.json", completion: completion)
+//    }
+
+

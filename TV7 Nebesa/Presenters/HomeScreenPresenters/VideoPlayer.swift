@@ -20,7 +20,7 @@ class VideoPlayer: UIViewController, Castable {
     private var player: Player!
     private var playerViewController = AVPlayerViewController()
     
-//    private var playerPresenter: VideoPresenter?
+    var video: Video?
     var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation(){
         didSet{
             print("---------------> Video data has been recieved")
@@ -47,7 +47,11 @@ class VideoPlayer: UIViewController, Castable {
     
     
 
-    var videoID: String = ""
+    var videoID: String = "" {
+        didSet{
+            print("ANY")
+        }
+    }
     private var screenTitle: String = "ВИДЕО"
     var videoTitle: String? = ""
     var videoSeriesName: String? = ""
@@ -72,10 +76,16 @@ class VideoPlayer: UIViewController, Castable {
     //MARK: - View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        if videoID != "" {
         fetchVideos()
+        } else {
+            setUpUI()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        guard videoID == "" else {return}
+        createPlayerView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -122,6 +132,7 @@ class VideoPlayer: UIViewController, Castable {
         VideoEpisodeNumberLabel.text = videoEpisodeNumber
         VideoDurationLabel.text = videoDuration
         VideoFirstBroadcastLabel.text = videoFirstBroadcast
+        
         
         navigationItem.rightBarButtonItem = googleCastButton
     }

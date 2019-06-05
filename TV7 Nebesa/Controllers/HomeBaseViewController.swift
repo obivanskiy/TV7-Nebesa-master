@@ -172,15 +172,32 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
             guard let sender = sender else { return }
             let destination = segue.destination as! VideoPlayer
             switch sender {
+                
+                
             case let tableCell as RecommendTableViewCell:
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! HomeRecommendCell
                 let indexPath = collectionCell.recommendTableView.indexPath(for: tableCell)
                 let data = collectionCell.homeScreenData.homeScreenProgrammes[indexPath!.row]
-                /// New 
-                let videoID = data.id
-                print(videoID)
-                ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
+                destination.title = data.seriesName
+                if data.description != "" {
+                    destination.videoCaption = data.description
+                } else {
+                    destination.videoCaption = data.caption
+                }
+                destination.videoTitle = data.name
+                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.linkPath + NetworkEndpoints.playlistEndpoint
+                print(destination.videoURLString, data.id)
+                destination.videoDuration = data.duration
+                destination.videoFirstBroadcast = data.firstBroadcast
+                destination.videoEpisodeNumber = data.episodeNumber
+
                 
+                /// New
+//                let videoID = data.id
+//                destination.videoID = videoID
+//                print(videoID)
+//                ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
+//
                 
                 //:TODO - Force unwrapping!!!
                 
@@ -189,26 +206,17 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 let indexPath = collectionCell.newestTableView.indexPath(for: tableCell)
                 let data = collectionCell.videos![indexPath!.row]
                 let videoID = data.id
+                destination.videoID = videoID
                 print(videoID)
                 ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
-//                destination.title = data.seriesName
-////                if data.description != "" {
-////                    destination.videoCaption = data.description
-////                } else {
-//                    destination.videoCaption = data.caption
-//
-//                destination.videoTitle = data.name
-//                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.linkPath! + NetworkEndpoints.playlistEndpoint
-//                print(destination.videoURLString)
-//                destination.videoDuration = data.duration!
-//                destination.videoFirstBroadcast = data.firstBroadcast
-//                destination.videoEpisodeNumber = data.episodeNumber!
+
 //
             case let tableCell as MostViewedTableViewCell:
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 2, section: 0)) as! HomeMostViewedCell
                 let indexPath = collectionCell.mostViewedTableView.indexPath(for: tableCell)
                 let data = collectionCell.homeMostViewedData.homeScreenMostViewedProgrammes[indexPath!.row]
                 let videoID = data.id!
+                destination.videoID = videoID
                 print(videoID)
                   ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
                 ApiService.shared.requestVideoInfo { (videoData: HomeScreenProgrammeInformation) in
@@ -222,17 +230,13 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
 //                self.view.addSubview(activityIndicator)
 //                activityIndicator.startAnimating()
                 
-//                destination.title = data.seriesName
-//                //                if data.description != "" {
-//                //                    destination.videoCaption = data.description
-//                //                } else {
-//                destination.videoCaption = data.caption
-//                destination.videoTitle = data.programName
-//                destination.videoDuration = data.time!
-//                destination.videoEpisodeNumber = data.episodeNumber!
+//
             default:
                 break
             }
         }
     }
 }
+
+
+

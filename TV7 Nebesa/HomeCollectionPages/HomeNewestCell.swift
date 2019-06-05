@@ -71,7 +71,6 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
         if let data = videos {
         cell.cellModel = data[indexPath.row]
         }
-        print(homeScreenNewestData.homeScreenNewestProgrammes)
        
         return cell
         
@@ -96,13 +95,8 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
     func loadMore(){
         
         ApiService.shared.requestNewestVideos { (videoData: HomeScreenNewestProgrammes) in
-            
-            print("------))))",videoData.homeScreenNewestProgrammes)
-            
             for video in videoData.homeScreenNewestProgrammes {
                 self.videos?.append(video)
-                
-                print(video)
             }
             self.newestTableView.reloadData()
             self.isDataLoading = false
@@ -115,13 +109,12 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
         
         print("scrollViewDidEndDragging")
         
-        if ((newestTableView.contentOffset.y + newestTableView.frame.size.height) >= newestTableView.contentSize.height)
+        if ((newestTableView.contentOffset.y + newestTableView.frame.size.height) >= newestTableView.contentSize.height * 0.8)
         {
             if !isDataLoading{
                 isDataLoading = true
                 self.pageNo = self.pageNo+1
-             
-                self.offset=self.limit * self.pageNo
+                self.offset = self.limit * self.pageNo
                 ApiService.shared.requestURL[.fetchHomeScreenNewestProgrammes] = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenNewestProgrammesURL + "&limit=\(limit)" + "&offset=\(offset)"
                 pageNo += 1
                 loadMore()
