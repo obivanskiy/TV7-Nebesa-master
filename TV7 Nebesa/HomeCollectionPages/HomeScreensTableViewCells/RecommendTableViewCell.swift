@@ -34,12 +34,17 @@ class RecommendTableViewCell: UITableViewCell {
        
         RecommendImageView.sizeToFit()
         RecommendTitleLabel.sizeToFit()
-        RecommendTitleLabel.text = cellModel.seriesName
-        
+        if cellModel.name.isEmpty {
+           RecommendTitleLabel.text = cellModel.seriesName
+        } else {
+           RecommendTitleLabel.text = cellModel.name
+        }
         RecommendDateLabel.text = "\(dateFormatter(cellModel.firstBroadcast))"
-        
+        if cellModel.caption.isEmpty {
+          RecommendCaptionLabel.text = cellModel.description
+        } else {
         RecommendCaptionLabel.text = cellModel.caption
-        
+        }
         guard let previewImageURL = URL.init(string: cellModel.homeScreenVideoPreviewImageURLString) else {
             return
         }

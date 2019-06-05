@@ -30,6 +30,10 @@ class NetworkService {
         case fetchSearchSeries
     }
     
+   
+  
+    
+    
     static var requestURL: [NetworkRequestType : String] = [
         .fetchParentCategories : NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL,
         .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL,
@@ -79,5 +83,7 @@ class NetworkService {
         }
         urlSessionTask.resume()
     }
+   
+    
 }
 

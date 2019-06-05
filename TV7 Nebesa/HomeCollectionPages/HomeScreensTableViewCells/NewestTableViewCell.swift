@@ -32,11 +32,15 @@ class NewestTableViewCell: UITableViewCell {
     func setupUI(cellModel: HomeNewestData) {
         newestImageView.sizeToFit()
         newestTitleLabel.sizeToFit()
-        newestTitleLabel.text = cellModel.seriesName
         
-        newestDateLabel.text = dateFormatter(cellModel.firstBroadcast)
         
-        newestCaptionLabel.text = cellModel.caption
+        if cellModel.name!.isEmpty {
+            newestTitleLabel.text = cellModel.seriesName
+        } else {
+            newestTitleLabel.text = cellModel.name
+        }
+        newestDateLabel.text = "\(dateFormatter(cellModel.firstBroadcast))"
+       newestCaptionLabel.text = cellModel.caption
         
         guard let previewImageURL = URL.init(string: cellModel.homeScreenNewestPreviewImageURLString) else {
             return

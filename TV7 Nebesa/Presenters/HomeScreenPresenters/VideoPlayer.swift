@@ -106,9 +106,9 @@ class VideoPlayer: UIViewController, Castable {
      
         videoTitle = videoData.homeProgrammeInfo[0].name
         videoCaption = videoData.homeProgrammeInfo[0].caption
-        videoEpisodeNumber = "Эпизод: \(videoData.homeProgrammeInfo[0].episodeNumber)"
-        videoDuration = "Длительность: \(dateFormatter(videoData.homeProgrammeInfo[0].duration))"
-        videoFirstBroadcast = "Доступен с:\(broadcastDateFormatter(videoData.homeProgrammeInfo[0].firstBroadcast))"
+        videoEpisodeNumber = videoData.homeProgrammeInfo[0].episodeNumber
+        videoDuration = videoData.homeProgrammeInfo[0].duration
+        videoFirstBroadcast = videoData.homeProgrammeInfo[0].firstBroadcast
         videoURLString = NetworkEndpoints.baseURLForVideoPlayback + videoData.homeProgrammeInfo[0].path + NetworkEndpoints.playlistEndpoint
         thumbnailUrl = videoData.homeProgrammeInfo[0].imagePath
         
@@ -129,9 +129,9 @@ class VideoPlayer: UIViewController, Castable {
         }
         VideoTitleLabel.text = titleName
         VideoCaptionLabel.text = videoCaption
-        VideoEpisodeNumberLabel.text = videoEpisodeNumber
-        VideoDurationLabel.text = videoDuration
-        VideoFirstBroadcastLabel.text = videoFirstBroadcast
+        VideoEpisodeNumberLabel.text = "Эпизод: \(videoEpisodeNumber)"
+        VideoDurationLabel.text = "Длительность: \(dateFormatter(videoDuration))"
+        VideoFirstBroadcastLabel.text = "Доступен с: \(broadcastDateFormatter(videoFirstBroadcast))"
         
         
         navigationItem.rightBarButtonItem = googleCastButton
