@@ -12,6 +12,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     var homeController: HomeBaseViewController?
     var horizontalBarLeftAnchorConstraint: NSLayoutConstraint?
+    var menuIsOpen = false
     
     func setupHorizontalBar() {
         let horizontalBarView = UIView()
@@ -44,6 +45,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
 //        }, completion: nil)
         
         homeController?.scrollToMenuIndex(menuIndex: indexPath.item)
+        
     }
     
     //3
@@ -90,6 +92,19 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         
         cell.imageView.image = UIImage(named: imageNames[indexPath.item])?.withRenderingMode(.alwaysTemplate)
         cell.tintColor = UIColor.rgb(red: 91, green: 14, blue: 13)
+        UIView.animate(
+            withDuration: 1.0,
+            delay: 0.0,
+            usingSpringWithDamping: 0.4,
+            initialSpringVelocity: 10,
+            options: .allowUserInteraction,
+            animations: {
+                let angle: CGFloat = .pi * 2
+                cell.imageView.transform = CGAffineTransform(rotationAngle: angle)
+                cell.imageView.layoutIfNeeded()
+        },
+            completion: nil
+        )
         
         return cell
     }
@@ -120,12 +135,34 @@ class MenuCell: BaseCell {
     override var isHighlighted: Bool {
         didSet {
             imageView.tintColor = isHighlighted ? UIColor.white : UIColor.rgb(red: 23, green: 20, blue: 60)
+            let angle: CGFloat = .pi * 2
+            let angleBack: CGFloat = -.pi * 2
+//            imageView.transform = isHighlighted ? CGAffineTransform(scaleX: 1.2, y: 1.2) : CGAffineTransform(scaleX: 1, y: 1)
+            let scale = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            let rotate = CGAffineTransform(rotationAngle: .pi*2)
+            UIView.animate(withDuration: 1, delay: 0.0, options: .allowUserInteraction, animations: {
+                self.imageView.transform = CGAffineTransform(scaleX: 1.7, y: 1.7)
+//                self.imageView.transform = scale.concatenating(rotate)
+                print(self.isHighlighted.description)
+            }) { (isSelected) in
+//                self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+            UIView.animate(withDuration: 1, delay: 0.0, options: .allowUserInteraction, animations: {
+                self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                //                self.imageView.transform = scale.concatenating(rotate)
+                print(self.isHighlighted.description)
+            }) { (isSelected) in
+                //                self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+            
+            
         }
     }
     
     override var isSelected: Bool {
         didSet {
             imageView.tintColor = isSelected ? UIColor.white : UIColor.rgb(red: 23, green: 20, blue: 60)
+            
         }
     }
     
@@ -138,6 +175,7 @@ class MenuCell: BaseCell {
         
         addConstraint(NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
+        
     }
 
 }

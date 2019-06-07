@@ -40,6 +40,8 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         
     }
     
+    
+    
     //UICollectionViewDelegateFlowLayout methods
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat
     {
@@ -58,6 +60,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         let index = Int(targetContentOffset.pointee.x / view.frame.width)
         let indexPath = IndexPath(item: index, section: 0)
         menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+        
         
     }
     
