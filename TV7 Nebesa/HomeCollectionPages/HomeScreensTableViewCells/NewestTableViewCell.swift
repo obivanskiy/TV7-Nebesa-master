@@ -42,15 +42,27 @@ class NewestTableViewCell: UITableViewCell {
         newestDateLabel.text = "\(dateFormatter(cellModel.firstBroadcast))"
        newestCaptionLabel.text = cellModel.caption
         
-        guard let previewImageURL = URL.init(string: cellModel.homeScreenNewestPreviewImageURLString) else {
+        guard let previewImageURL = URL.init(string: cellModel.previewImageURLString) else {
             return
         }
-        let cacheKey = cellModel.homeScreenNewestPreviewImageURLString
+        let cacheKey = cellModel.previewImageURLString
         let resource = ImageResource(downloadURL: previewImageURL, cacheKey: cacheKey)
         //        imageView.kf.setImage(with: resource)
+//        ImageCache.default.maxMemoryCost = 1024 * 1024 * yourValue
         let cache = ImageCache.default
-        let cached = cache.isCached(forKey: cacheKey)
+        cache.memoryStorage.config.totalCostLimit = 1
+        cache.diskStorage.config.sizeLimit = 1024 * 1024 * 300
+        ImageCache.default.calculateDiskStorageSize { result in
+            switch result {
+            case .success(let size):
+                print("Disk cache size: \(Double(size) / 1024 / 1024) MB")
+            case .failure(let error):
+                print(error)
+            }
+        }
         
+        let cached = cache.isCached(forKey: cacheKey)
+
         // To know where the cached image is:
         let cacheType = cache.imageCachedType(forKey: cacheKey)
         print(cacheType, cached)

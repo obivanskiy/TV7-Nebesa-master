@@ -712,8 +712,8 @@
                             <constraint firstItem="vNz-Q3-nZE" firstAttribute="top" secondItem="R5s-p0-r2x" secondAttribute="top" id="9zH-M5-ew1"/>
                             <constraint firstItem="KW3-sO-5wA" firstAttribute="top" secondItem="vNz-Q3-nZE" secondAttribute="bottom" id="Bxw-M1-cOQ"/>
                             <constraint firstItem="R5s-p0-r2x" firstAttribute="trailing" secondItem="KW3-sO-5wA" secondAttribute="trailing" id="NlU-BX-t2a"/>
-                            <constraint firstItem="vNz-Q3-nZE" firstAttribute="leading" secondItem="R5s-p0-r2x" secondAttribute="leading" id="U9v-uV-AHP"/>
-                            <constraint firstItem="vNz-Q3-nZE" firstAttribute="trailing" secondItem="R5s-p0-r2x" secondAttribute="trailing" id="Y51-Ae-Zdo"/>
+                            <constraint firstItem="vNz-Q3-nZE" firstAttribute="leading" secondItem="y2N-ue-twT" secondAttribute="leading" id="U9v-uV-AHP"/>
+                            <constraint firstItem="vNz-Q3-nZE" firstAttribute="trailing" secondItem="y2N-ue-twT" secondAttribute="trailing" id="Y51-Ae-Zdo"/>
                             <constraint firstItem="KW3-sO-5wA" firstAttribute="leading" secondItem="R5s-p0-r2x" secondAttribute="leading" id="Ycu-jd-65k"/>
                             <constraint firstItem="R5s-p0-r2x" firstAttribute="bottom" secondItem="KW3-sO-5wA" secondAttribute="bottom" id="rqB-tS-b8e"/>
                         </constraints>

@@ -49,7 +49,7 @@ struct HomeScreenNewestProgrammes: Codable {
         let startDate: String?
         let path: String?
         let linkPath: String?
-        let homeScreenNewestPreviewImageURLString: String
+        let previewImageURLString: String
         
         
         
@@ -94,7 +94,7 @@ struct HomeScreenNewestProgrammes: Codable {
             try container.encode(startDate, forKey: .startDate)
             try container.encode(path, forKey: .path)
             try container.encode(linkPath, forKey: .linkPath)
-            try container.encode(homeScreenNewestPreviewImageURLString, forKey: .imagePath)
+            try container.encode(previewImageURLString, forKey: .imagePath)
 
             
         }
@@ -116,7 +116,7 @@ struct HomeScreenNewestProgrammes: Codable {
             self.startDate = ""
             self.path = ""
             self.linkPath = ""
-            self.homeScreenNewestPreviewImageURLString = ""
+            self.previewImageURLString = ""
            
         }
         
@@ -140,7 +140,7 @@ struct HomeScreenNewestProgrammes: Codable {
             startDate = try container.decodeIfPresent(String.self, forKey: .startDate) ?? ""
             path = try container.decodeIfPresent(String.self, forKey: .path) ?? ""
             linkPath = try container.decodeIfPresent(String.self, forKey: .linkPath) ?? ""
-            homeScreenNewestPreviewImageURLString = try container.decodeIfPresent(String.self, forKey: .imagePath) ?? ""
+            previewImageURLString = try container.decodeIfPresent(String.self, forKey: .imagePath) ?? ""
            
 }
 

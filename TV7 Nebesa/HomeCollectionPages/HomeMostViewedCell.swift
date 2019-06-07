@@ -59,7 +59,7 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
 //        cell.cellModel = homeMostViewedData.homeScreenMostViewedProgrammes[indexPath.row]
 //        print(homeMostViewedData.homeScreenMostViewedProgrammes)
         cell.cellModel = homeMostViewedData.homeScreenMostViewedProgrammes[indexPath.row]
-        print(homeMostViewedData.homeScreenMostViewedProgrammes)
+//        print(homeMostViewedData.homeScreenMostViewedProgrammes)
         
         return cell
         

@@ -125,6 +125,10 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
             }
         }
         
+        // Remove all.
+        
+     
+        
        
         
         

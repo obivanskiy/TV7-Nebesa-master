@@ -139,10 +139,11 @@ class VideoPlayer: UIViewController, Castable {
     
     //MARK: - Player function
     private func createPlayerView() {
-   
+   playerViewController.videoGravity = .resizeAspectFill
         player = Player(frame: ProgramVideoView.bounds)
         player.mediaItem = MediaItem(name: videoTitle, about: VideoCaptionLabel.text, videoUrl: videoURLString.encodeUrl()!, thumbnailUrl: thumbnailUrl.encodeUrl()!)
         player.initPlayerLayer()
+        
         ProgramVideoView.addSubview(player)
         SVProgressHUD.dismiss()
     }
