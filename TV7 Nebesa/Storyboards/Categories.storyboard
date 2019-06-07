@@ -317,6 +317,7 @@
                             <constraint firstItem="xeX-VD-1Q0" firstAttribute="top" secondItem="s6n-6j-4AS" secondAttribute="top" constant="437" id="5Ka-ff-vav"/>
                             <constraint firstItem="1zM-Oi-ONN" firstAttribute="trailing" secondItem="pWB-nK-4gw" secondAttribute="trailing" constant="5" id="6Dv-38-WqC"/>
                             <constraint firstItem="pWB-nK-4gw" firstAttribute="top" secondItem="cuT-nd-RyU" secondAttribute="bottom" constant="55.666666666666686" id="8oz-t5-8aK"/>
+                            <constraint firstItem="cuT-nd-RyU" firstAttribute="trailing" secondItem="1zM-Oi-ONN" secondAttribute="trailing" id="9Z8-0I-k8O"/>
                             <constraint firstItem="pWB-nK-4gw" firstAttribute="leading" secondItem="1zM-Oi-ONN" secondAttribute="leading" constant="5" id="Cr9-2i-4fI"/>
                             <constraint firstItem="cuT-nd-RyU" firstAttribute="leading" secondItem="1zM-Oi-ONN" secondAttribute="leading" id="NsB-z5-6jS"/>
                             <constraint firstItem="1zM-Oi-ONN" firstAttribute="bottom" secondItem="xeX-VD-1Q0" secondAttribute="bottom" constant="207.00000000000011" id="OtH-Pn-Chi"/>
@@ -324,6 +325,8 @@
                             <constraint firstItem="xeX-VD-1Q0" firstAttribute="top" secondItem="pWB-nK-4gw" secondAttribute="bottom" constant="9.6666666666665719" id="XhB-AK-s9E"/>
                             <constraint firstItem="cuT-nd-RyU" firstAttribute="top" secondItem="1zM-Oi-ONN" secondAttribute="top" id="eVy-N3-ncp"/>
                             <constraint firstItem="xeX-VD-1Q0" firstAttribute="leading" secondItem="1zM-Oi-ONN" secondAttribute="leading" constant="5" id="iFC-1F-uGw"/>
+                            <constraint firstItem="cuT-nd-RyU" firstAttribute="leading" secondItem="1zM-Oi-ONN" secondAttribute="leading" id="s0v-KX-RaN"/>
+                            <constraint firstItem="cuT-nd-RyU" firstAttribute="top" secondItem="1zM-Oi-ONN" secondAttribute="top" id="uyy-1t-ceb"/>
                             <constraint firstItem="cuT-nd-RyU" firstAttribute="centerX" secondItem="s6n-6j-4AS" secondAttribute="centerX" id="zy0-8B-AGX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1zM-Oi-ONN"/>
@@ -365,7 +368,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWP-Ec-Uzj">
-                                            <rect key="frame" x="19.999999999999996" y="10.666666666666666" width="41.666666666666657" height="22.333333333333336"/>
+                                            <rect key="frame" x="20.000000000000004" y="10.666666666666666" width="38.333333333333343" height="22.333333333333336"/>
                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

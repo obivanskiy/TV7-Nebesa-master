@@ -47,6 +47,9 @@ class Player: UIView {
         super.init(frame: frame)
         backgroundColor = .lightGray
         listenForCastConnection()
+        updatePlayerView()
+        
+        
         
         if CastManager.shared.hasConnectionEstablished {
             playbackState = .createdCast
@@ -60,6 +63,8 @@ class Player: UIView {
     override func removeFromSuperview() {
         super.removeFromSuperview()
         player.removeObserver(self, forKeyPath: timeObserver)
+        player.removeObserver(self, forKeyPath: NotificationEndpoints.webTVLandscape)
+        player.removeObserver(self, forKeyPath: NotificationEndpoints.webTVPortrait)
     }
     
     
@@ -71,12 +76,28 @@ class Player: UIView {
         player.addObserver(self, forKeyPath: timeObserver, options: .new, context: nil)
         playerViewController.player = player
         playerViewController.view.frame = bounds
+        playerViewController.entersFullScreenWhenPlaybackBegins = true
         addSubview(playerViewController.view)
+    }
+    
+    // Subscribe to orientation notifications
+    func updatePlayerView() {
+        NotificationCenter.default.addObserver(self, selector: #selector(setPlayerToLandscape(notification:)), name: NSNotification.Name(rawValue: NotificationEndpoints.webTVLandscape), object: nil)
+    }
+    
+    func updatePlayerToPortrait() {
+          NotificationCenter.default.addObserver(self, selector: #selector(setPlayerToPortrait), name: NSNotification.Name(rawValue: NotificationEndpoints.webTVPortrait), object: nil)
     }
     
     func stopPlayback() {
         playerViewController.player?.pause()
     }
+    
+    //MARK: TEST
+    
+//    func updateVideoBounds() {
+//        playerViewController.videoGravity = .resizeAspectFill
+//    }
     
     private func createSpinner() {
         spinner = UIActivityIndicatorView(style: .whiteLarge)
@@ -148,6 +169,17 @@ class Player: UIView {
         playerViewController.showsPlaybackControls = true
     }
     
+    //MARK: - Update player view according to an oriention
+    @objc func setPlayerToLandscape(notification: NSNotification) {
+        print("SET PLAYER TO LANDSCAPE")
+        
+        
+        playerViewController.player?.play()
+    }
+    
+    @objc func setPlayerToPortrait(notification: NSNotification) {
+        print("SET Player To Portrait")
+    }
     
     
     private func startCastPlay() {

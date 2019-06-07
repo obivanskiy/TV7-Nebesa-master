@@ -80,6 +80,25 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
         playerView.stopPlayback()
     }
     
+    override func viewWillLayoutSubviews() {
+        playerView.playerViewController.view.frame = webTVStreamView.bounds
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation.isLandscape {
+            let name = Notification.Name(rawValue: NotificationEndpoints.webTVLandscape)
+            NotificationCenter.default.post(name: name, object: nil)
+            
+        } else if UIDevice.current.orientation.isPortrait {
+            let name = Notification.Name(rawValue: NotificationEndpoints.webTVPortrait)
+            NotificationCenter.default.post(name: name, object: nil)
+        }
+}
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        playerView.removeFromSuperview()
+    }
+    
     //MARK: - Fetch current date and time zone
     
     private func getCurrentTimeAndDate() -> String {
@@ -96,18 +115,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
         var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
         self.currentTimeZone = "\(String(TimeZone.current.identifier)): \(localTimeZoneAbbreviation)"
     }
-    
-    
-    
-    //MARK: - transition to the landscape mode while rotating
-    
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        super.viewWillTransition(to: size, with: coordinator)
-//        coordinator.animate(alongsideTransition: { (context) in
-//        }) { (context) in
-//            self.playerView.bounds.size = self.playerView.bounds.size
-//        }
-//    }
     
     private func createPlayerView() {
         playerView = Player(frame: webTVStreamView.bounds)
