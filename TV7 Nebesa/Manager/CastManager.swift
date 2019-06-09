@@ -15,6 +15,7 @@ enum CastSessionStatus {
     case ended
     case failedToStart
     case alreadyConnected
+    case suspended
 }
 
 class CastManager: NSObject {
@@ -70,18 +71,17 @@ class CastManager: NSObject {
     private func style() {
         let castStyle = GCKUIStyle.sharedInstance()
         castStyle.castViews.backgroundColor = .white
-        castStyle.castViews.bodyTextColor = .nodesColor()
+        castStyle.castViews.bodyTextColor = .white
         castStyle.castViews.buttonTextColor = .white
-        castStyle.castViews.headingTextColor = .nodesColor()
-        castStyle.castViews.captionTextColor = .nodesColor()
-        castStyle.castViews.iconTintColor = .nodesColor()
-        
+        castStyle.castViews.headingTextColor = .white
+        castStyle.castViews.captionTextColor = .white
+        castStyle.castViews.iconTintColor = .white
         castStyle.apply()
     }
     
     private func styleConnectionController() {
         let castStyle = GCKUIStyle.sharedInstance()
-        castStyle.castViews.backgroundColor = .black
+        castStyle.castViews.backgroundColor = .nodesColor()
         castStyle.apply()
     }
     
@@ -149,10 +149,11 @@ class CastManager: NSObject {
                 options.interval = time
                 options.resumeState = .play
                 remoteClient?.seek(with: options)
+                completion(true)
             } else {
                 remoteClient?.play()
+                completion(true)
             }
-            completion(true)
         } else {
             completion(false)
         }
@@ -169,10 +170,11 @@ class CastManager: NSObject {
                 options.interval = time
                 options.resumeState = .pause
                 remoteClient?.seek(with: options)
+                completion(true)
             } else {
                 remoteClient?.pause()
+                completion(true)
             }
-            completion(true)
         } else {
             completion(false)
         }
@@ -222,6 +224,6 @@ extension CastManager: GCKSessionManagerListener {
     }
     
     public func sessionManager(_ sessionManager: GCKSessionManager, didSuspend session: GCKSession, with reason: GCKConnectionSuspendReason) {
-        sessionStatus = .ended
+        sessionStatus = .suspended
     }
 }

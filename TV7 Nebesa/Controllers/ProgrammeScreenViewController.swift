@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import AVKit
 import GoogleCast
+import Kingfisher
 
 final class ProgrammeScreenViewController: UIViewController, Castable {
     
@@ -39,6 +40,7 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
     
     override func viewWillAppear(_ animated: Bool) {
         createPlayerView()
+        print(playerView.mediaItem)
     }
     override func viewWillDisappear(_ animated: Bool) {
         playerView.stopPlayback()
@@ -72,7 +74,8 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
     private func createPlayerView() {
         playerView = Player(frame: programmeView.bounds)
         print(videoURLString)
-        playerView.mediaItem = MediaItem(name: ProgrammeScreenViewController.programmeData.seriesName, about: ProgrammeScreenViewController.programmeData.caption, videoUrl: videoURLString.encodeUrl()!, thumbnailUrl: nil)
+        
+        playerView.mediaItem = MediaItem(name: "\(ProgrammeScreenViewController.programmeData.seriesName): \(ProgrammeScreenViewController.programmeData.name)", about: ProgrammeScreenViewController.programmeData.description, videoUrl: videoURLString.encodeUrl()!, thumbnailUrl: ProgrammeScreenViewController.programmeData.imagePath)
         playerView.initPlayerLayer()
         programmeView.addSubview(playerView)
     }

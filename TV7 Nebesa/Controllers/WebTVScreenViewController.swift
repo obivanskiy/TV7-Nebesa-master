@@ -72,31 +72,19 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
         
         //MARK: -Add to extension or func
         navigationItem.rightBarButtonItem = googleCastButton
-        createPlayerView()
         filterDates(programmes: webTVProgrammesList)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        createPlayerView()
+    }
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         playerView.stopPlayback()
     }
     
     override func viewWillLayoutSubviews() {
         playerView.playerViewController.view.frame = webTVStreamView.bounds
-    }
-    
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        if UIDevice.current.orientation.isLandscape {
-            let name = Notification.Name(rawValue: NotificationEndpoints.webTVLandscape)
-            NotificationCenter.default.post(name: name, object: nil)
-            
-        } else if UIDevice.current.orientation.isPortrait {
-            let name = Notification.Name(rawValue: NotificationEndpoints.webTVPortrait)
-            NotificationCenter.default.post(name: name, object: nil)
-        }
-}
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        playerView.removeFromSuperview()
     }
     
     //MARK: - Fetch current date and time zone
@@ -119,7 +107,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
     private func createPlayerView() {
         playerView = Player(frame: webTVStreamView.bounds)
         
-        playerView.mediaItem = MediaItem(name: ProgrammeScreenViewController.programmeData.seriesName, about: ProgrammeScreenViewController.programmeData.caption, videoUrl: ruStreamLink.encodeUrl()!, thumbnailUrl: nil)
+        playerView.mediaItem = MediaItem(name: "Nebesa TV7 Live", about: nil, videoUrl: ruStreamLink.encodeUrl()!, thumbnailUrl: nil)
         playerView.initPlayerLayer()
         webTVStreamView.addSubview(playerView)
     }

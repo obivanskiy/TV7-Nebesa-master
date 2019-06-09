@@ -25,6 +25,7 @@ class Player: UIView {
     
     private let timeObserver = "currentItem.loadedTimeRanges"
     
+    
     var mediaItem: MediaItem!
     private var player: AVPlayer!
     private var playbackState: PlaybackState = .created
@@ -32,6 +33,8 @@ class Player: UIView {
     
     private var playPauseButton: UIButton!
     private var spinner: UIActivityIndicatorView!
+    
+    
     
     //MARK: - bottom controls
     private var buttonStackView: UIStackView!
@@ -47,9 +50,6 @@ class Player: UIView {
         super.init(frame: frame)
         backgroundColor = .lightGray
         listenForCastConnection()
-        updatePlayerView()
-        
-        
         
         if CastManager.shared.hasConnectionEstablished {
             playbackState = .createdCast
@@ -60,44 +60,23 @@ class Player: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func removeFromSuperview() {
-        super.removeFromSuperview()
-        player.removeObserver(self, forKeyPath: timeObserver)
-        player.removeObserver(self, forKeyPath: NotificationEndpoints.webTVLandscape)
-        player.removeObserver(self, forKeyPath: NotificationEndpoints.webTVPortrait)
-    }
-    
-    
-    
     func initPlayerLayer() {
-        guard let url = URL(string: mediaItem.videoUrl) else { return }
-        
-        player = AVPlayer(url: url)
-        player.addObserver(self, forKeyPath: timeObserver, options: .new, context: nil)
-        playerViewController.player = player
-        playerViewController.view.frame = bounds
-        playerViewController.entersFullScreenWhenPlaybackBegins = true
-        addSubview(playerViewController.view)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = `self`, let url = URL(string: self.mediaItem.videoUrl ?? "") else { return }
+            self.player = AVPlayer(url: url)
+            self.player.addObserver(self, forKeyPath: self.timeObserver, options: [.initial, .new], context: nil)
+            self.playerViewController.player = self.player
+            self.playerViewController.view.frame = self.bounds
+            self.playerViewController.entersFullScreenWhenPlaybackBegins = true
+            self.addSubview(self.playerViewController.view)
+        }
     }
     
     // Subscribe to orientation notifications
-    func updatePlayerView() {
-        NotificationCenter.default.addObserver(self, selector: #selector(setPlayerToLandscape(notification:)), name: NSNotification.Name(rawValue: NotificationEndpoints.webTVLandscape), object: nil)
-    }
-    
-    func updatePlayerToPortrait() {
-          NotificationCenter.default.addObserver(self, selector: #selector(setPlayerToPortrait), name: NSNotification.Name(rawValue: NotificationEndpoints.webTVPortrait), object: nil)
-    }
     
     func stopPlayback() {
         playerViewController.player?.pause()
     }
-    
-    //MARK: TEST
-    
-//    func updateVideoBounds() {
-//        playerViewController.videoGravity = .resizeAspectFill
-//    }
     
     private func createSpinner() {
         spinner = UIActivityIndicatorView(style: .whiteLarge)
@@ -124,7 +103,7 @@ class Player: UIView {
                 if buttonStackView == nil {
                     createButtonStackView()
                 }
-//                spinner.stopAnimating()
+                //                spinner.stopAnimating()
             }
         }
     }
@@ -132,81 +111,136 @@ class Player: UIView {
     // MARK: - Add Cast Connection Listener
     
     private func listenForCastConnection() {
-        let sessionStatusListener: (CastSessionStatus) -> Void = { status in
+        let sessionStatusListener: (CastSessionStatus) -> Void = { [weak self] status in
             switch status {
             case .started:
-                self.hideNativeControls()
-                self.startCastPlay()
+                self?.castSessionStarted()
             case .resumed:
-                self.hideNativeControls()
-                self.continueCastPlay()
-            case .ended, .failedToStart:
-                if self.playbackState == .playCast {
-                    self.showNativeControls()
-                    self.playbackState = .pause
-                    self.startPlayer(nil)
-                } else if self.playbackState == .pauseCast {
-                    self.hideNativeControls()
-                    self.playbackState = .play
-                    self.pausePlayer(nil)
-                }
-            default: break
+                self?.castSessionResumed()
+            case .ended:
+                self?.castSessionEnded()
+            case .failedToStart:
+                self?.castSessionFailedToStart()
+            case .alreadyConnected:
+                self?.castSessionAlreadyConnected()
+            case .suspended:
+                self?.castSessionSuspended()
             }
         }
         CastManager.shared.addSessionStatusListener(listener: sessionStatusListener)
     }
     
+    private func castSessionSuspended() {
+        showNativeControls()
+    }
+    
+    private func castSessionAlreadyConnected() {
+//        hideNativeControls()
+        pauseNativePlayer()
+        
+    }
+    
+    // MARK: - add an alert here
+    private func castSessionFailedToStart() {
+        showNativeControls()
+    }
+    
+    private func castSessionStarted() {
+//        hideNativeControls()
+        startCastPlay()
+    }
+    
+    private func castSessionResumed() {
+        hideNativeControls()
+        continueCastPlay()
+    }
+    
+    private func castSessionEnded() {
+        switch playbackState {
+        case .createdCast:
+//            hideNativeControls()
+            playVideo()
+        case .playCast:
+            playbackState = .pause
+            showNativeControls()
+            pauseVideo()
+        case .pauseCast:
+            playbackState = .play
+            hideNativeControls()
+            playVideo()
+            
+        default: break
+        }
+        //        if playbackState == .createdCast {
+        //                    }
+        //        if playbackState == .playCast {
+        //                    }
+        //
+        //        if playbackState == .pauseCast {
+        //                    }
+    }
+    
     //MARK: - Native controls functions
     private func hideNativeControls() {
-        playPauseButton.isHidden = false
-        buttonStackView.isHidden = false
+        if let playPauseButton = self.playPauseButton {
+            playPauseButton.isHidden = false
+        }
+        if let buttonStackView = self.buttonStackView {
+            buttonStackView.isHidden = false
+        }
         playerViewController.showsPlaybackControls = false
     }
     
     private func showNativeControls() {
-        playPauseButton.isHidden = true
-        buttonStackView.isHidden = true
+        if let playPauseButton = self.playPauseButton {
+            playPauseButton.isHidden = true
+        }
+        if let buttonStackView = self.buttonStackView {
+            buttonStackView.isHidden = true
+        }
         playerViewController.showsPlaybackControls = true
     }
-    
-    //MARK: - Update player view according to an oriention
-    @objc func setPlayerToLandscape(notification: NSNotification) {
-        print("SET PLAYER TO LANDSCAPE")
-        
-        
-        playerViewController.player?.play()
-    }
-    
-    @objc func setPlayerToPortrait(notification: NSNotification) {
-        print("SET Player To Portrait")
-    }
-    
     
     private func startCastPlay() {
         guard let currentItem = player.currentItem else { return }
         let currentTime = player.currentTime().seconds
         let duration = currentItem.asset.duration.seconds
-        playbackState = .playCast
-        player.pause()
-        let castMediaInfo = CastManager.shared.buildMediaInformation(with: mediaItem.name, with: mediaItem.about, with: "TV7-Nebesa", with: duration, with: mediaItem.videoUrl, with: GCKMediaStreamType.buffered, with: mediaItem.thumbnailUrl)
-        CastManager.shared.startSelectedItemRemotely(castMediaInfo, at: currentTime, completion: { done in
+        
+        
+        let castMediaInfo = CastManager.shared.buildMediaInformation(with: mediaItem.name ?? "", with: mediaItem.about ?? "" , with: "TV7-Nebesa", with: duration, with: mediaItem.videoUrl ?? "", with: GCKMediaStreamType.buffered, with: mediaItem.thumbnailUrl ?? "")
+        CastManager.shared.startSelectedItemRemotely(castMediaInfo, at: currentTime, completion: { [weak self] done in
             if !done {
-                self.playbackState = .pause
-                self.startPlayer(nil)
+                self?.hideNativeControls()
+                self?.playbackState = .playCast
+                self?.startCastTimer()
             } else {
-                self.scheduleCastTimer()
+                self?.playbackState = .finishedCast
+                self?.showNativeControls()
             }
         })
     }
     
     private func continueCastPlay() {
-        playbackState = .playCast
-        CastManager.shared.playSelectedItemRemotely(to: nil) { (done) in
+        CastManager.shared.playSelectedItemRemotely(to: nil) { [weak self] done in
             if !done {
-                self.playbackState = .pause
-                self.startPlayer(nil)
+                self?.hideNativeControls()
+                self?.playbackState = .playCast
+                self?.startCastTimer()
+            } else {
+                self?.playbackState = .finishedCast
+                self?.showNativeControls()
             }
         }
+    }
+    
+    private func playNativePlayer() {
+        playbackState = .play
+        player?.play()
+    }
+    
+    private func pauseNativePlayer() {
+        playbackState = .pause
+        player?.pause()
     }
     
     private func pauseCastPlay() {
@@ -214,7 +248,7 @@ class Player: UIView {
         CastManager.shared.pauseSelectedItemRemotely(to: nil) { (done) in
             if !done {
                 self.playbackState = .pause
-                self.startPlayer(nil)
+                self.playVideo()
             }
         }
     }
@@ -244,49 +278,49 @@ class Player: UIView {
         guard let playPauseButton = playPauseButton else { return }
         playPauseButton.removeTarget(self, action: nil, for: .allEvents)
         playPauseButton.setImage(#imageLiteral(resourceName: "icon_play"), for: .normal)
-        playPauseButton.addTarget(self, action: #selector(startPlayer(_:)), for: .touchUpInside)
+        playPauseButton.addTarget(self, action: #selector(playVideo), for: .touchUpInside)
     }
     
     // MARK: Pause Button Change
-
+    
     private func changeToPauseButton() {
         guard let playPauseButton = playPauseButton else { return }
         playPauseButton.removeTarget(self, action: nil, for: .allEvents)
         playPauseButton.setImage(#imageLiteral(resourceName: "icon_pause"), for: .normal)
-        playPauseButton.addTarget(self, action: #selector(pausePlayer(_:)), for: .touchUpInside)
+        playPauseButton.addTarget(self, action: #selector(pauseVideo), for: .touchUpInside)
     }
     
     // MARK: Start Player
     
-    @objc private func startPlayer(_ sender: Any?) {
-        if playbackState == .pause || playbackState == .created {
-            scheduleLocalTimer()
-            player?.play()
-            playbackState = .play
-        } else if playbackState == .createdCast {
-            scheduleCastTimer()
+    @objc private func playVideo() {
+        switch playbackState {
+        case .pause:
+            playNativePlayer()
+            stopLocalTimer()
+            changeToPauseButton()
+        case .pauseCast:
+            pauseVideo()
             startCastPlay()
-        } else {
-            scheduleCastTimer()
-            player?.pause()
-            playbackState = .playCast
-            continueCastPlay()
+            changeToPauseButton()
+        default: break
         }
-        changeToPauseButton()
     }
     
     // MARK: Pause Player
     
-    @objc private func pausePlayer(_ sender: Any?) {
-        if playbackState == .play {
-            player?.pause()
-            playbackState = .pause
-        } else {
-            player?.pause()
-            playbackState = .pauseCast
+    @objc private func pauseVideo() {
+        switch playbackState {
+        case .playCast:
             pauseCastPlay()
+            changeToPlayButton()
+        case .play:
+            pauseNativePlayer()
+            changeToPlayButton()
+        case .finishedCast, .finished:
+            stopLocalTimer()
+            stopCastTimer()
+        default: break
         }
-        changeToPlayButton()
     }
     
     // MARK: - Bottom Controls
@@ -304,15 +338,15 @@ class Player: UIView {
         buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         buttonStackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-
+        
         createcurrentTimeLabel()
         createSlider()
         createTotalTimeLabel()
         buttonStackView.isHidden = true
     }
     
-//     MARK: - Current Time Gradient Label
-
+    //     MARK: - Current Time Gradient Label
+    
     private func createcurrentTimeLabel() {
         currentTimeLabel = UILabel()
         currentTimeLabel.textAlignment = .right
@@ -322,8 +356,8 @@ class Player: UIView {
         currentTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-//     MARK: - Total Time Gradient Label
-//
+    //     MARK: - Total Time Gradient Label
+    
     private func createTotalTimeLabel() {
         totalTimeLabel = UILabel()
         totalTimeLabel.textAlignment = .left
@@ -333,7 +367,7 @@ class Player: UIView {
         totalTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-//     MARK: - Player Slider
+    //     MARK: - Player Slider
     
     private func createSlider() {
         slider = UISlider()
@@ -349,23 +383,26 @@ class Player: UIView {
     }
     // MARK: - Update slider on Local
     
-    private func scheduleLocalTimer() {
-        DispatchQueue.main.async {
-            switch self.playbackState {
-            case .play, .pause, .created:
-                self.castTimer?.invalidate()
-                self.castTimer = nil
-                self.localTimer?.invalidate()
-                self.localTimer = Timer.scheduledTimer(timeInterval: 1,
-                                                       target: self,
-                                                       selector: #selector(self.updateInfoContent),
-                                                       userInfo: nil,
-                                                       repeats: true)
-            default:
-                self.localTimer?.invalidate()
-                self.localTimer = nil
-            }
-        }
+    private func startLocalTimer() {
+        stopCastTimer()
+        stopLocalTimer()
+        localTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateInfoContent), userInfo: nil, repeats: true)
+    }
+    
+    private func stopLocalTimer() {
+        localTimer?.invalidate()
+        localTimer = nil
+    }
+    
+    private func startCastTimer() {
+        stopLocalTimer()
+        stopCastTimer()
+        castTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.sendCurrentTimeCastSessionRequest), userInfo: nil, repeats: true)
+    }
+    
+    private func stopCastTimer() {
+        castTimer?.invalidate()
+        castTimer = nil
     }
     
     @objc private func updateInfoContent() {
@@ -385,31 +422,13 @@ class Player: UIView {
     }
     
     // MARK: - Update slider on Cast
-    private func scheduleCastTimer() {
-        DispatchQueue.main.async {
-            switch self.playbackState {
-            case .playCast, .pauseCast, .createdCast:
-                self.localTimer?.invalidate()
-                self.localTimer = nil
-                self.castTimer?.invalidate()
-                self.castTimer = Timer.scheduledTimer(timeInterval: 0.5,
-                                                      target: self,
-                                                      selector: #selector(self.sendCurrentTimeCastSessionRequest),
-                                                      userInfo: nil,
-                                                      repeats: true)
-            default:
-                self.castTimer?.invalidate()
-                self.castTimer = nil
-            }
-        }
-    }
     
     @objc private func sendCurrentTimeCastSessionRequest() {
         CastManager.shared.getSessionCurrentTime { (time) in
             guard var time = time,
                 let currentItem = player.currentItem else { return }
             var duration = currentItem.asset.duration.seconds
-//            self.slider.value = Float(time / duration)
+            //            self.slider.value = Float(time / duration)
             
             guard (time.isNaN || time.isInfinite && duration.isNaN || duration.isInfinite) else {
                 return
@@ -418,7 +437,7 @@ class Player: UIView {
             time = 0
             self.totalTimeLabel.text = duration.toTimeString() as String
             self.currentTimeLabel.text = time.toTimeString() as String
-
+            
         }
     }
     
@@ -444,7 +463,7 @@ class Player: UIView {
         
         let positionOfSlider: CGPoint = slider.frame.origin
         let widthOfSlider: CGFloat = slider.frame.size.width
-
+        
         let newValue = ((pointTapped.x - positionOfSlider.x) * CGFloat(slider.maximumValue) / widthOfSlider)
         
         slider.setValue(Float(newValue), animated: true)
@@ -463,7 +482,7 @@ class Player: UIView {
             CastManager.shared.playSelectedItemRemotely(to: currentTime, completion: { (done) in
                 if !done {
                     self.playbackState = .pause
-                    self.startPlayer(nil)
+                    self.playVideo()
                 }
             })
         }
