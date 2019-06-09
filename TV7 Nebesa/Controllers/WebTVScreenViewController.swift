@@ -77,26 +77,12 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         playerView.stopPlayback()
     }
     
     override func viewWillLayoutSubviews() {
         playerView.playerViewController.view.frame = webTVStreamView.bounds
-    }
-    
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        if UIDevice.current.orientation.isLandscape {
-            let name = Notification.Name(rawValue: NotificationEndpoints.webTVLandscape)
-            NotificationCenter.default.post(name: name, object: nil)
-            
-        } else if UIDevice.current.orientation.isPortrait {
-            let name = Notification.Name(rawValue: NotificationEndpoints.webTVPortrait)
-            NotificationCenter.default.post(name: name, object: nil)
-        }
-}
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        playerView.removeFromSuperview()
     }
     
     //MARK: - Fetch current date and time zone

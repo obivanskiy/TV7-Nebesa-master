@@ -15,6 +15,7 @@ enum CastSessionStatus {
     case ended
     case failedToStart
     case alreadyConnected
+    case suspended
 }
 
 class CastManager: NSObject {
@@ -149,10 +150,11 @@ class CastManager: NSObject {
                 options.interval = time
                 options.resumeState = .play
                 remoteClient?.seek(with: options)
+                completion(true)
             } else {
                 remoteClient?.play()
+                completion(true)
             }
-            completion(true)
         } else {
             completion(false)
         }
@@ -169,10 +171,11 @@ class CastManager: NSObject {
                 options.interval = time
                 options.resumeState = .pause
                 remoteClient?.seek(with: options)
+                completion(true)
             } else {
                 remoteClient?.pause()
+                completion(true)
             }
-            completion(true)
         } else {
             completion(false)
         }
@@ -222,6 +225,6 @@ extension CastManager: GCKSessionManagerListener {
     }
     
     public func sessionManager(_ sessionManager: GCKSessionManager, didSuspend session: GCKSession, with reason: GCKConnectionSuspendReason) {
-        sessionStatus = .ended
+        sessionStatus = .suspended
     }
 }
