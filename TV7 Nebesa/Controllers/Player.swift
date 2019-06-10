@@ -23,9 +23,8 @@ enum PlaybackState {
 
 class Player: UIView {
     
+
     private let timeObserver = "currentItem.loadedTimeRanges"
-    
-    
     var mediaItem: MediaItem!
     private var player: AVPlayer!
     private var playbackState: PlaybackState = .created
@@ -62,6 +61,7 @@ class Player: UIView {
     
     func initPlayerLayer() {
         DispatchQueue.main.async { [weak self] in
+
             guard let self = `self`, let url = URL(string: self.mediaItem.videoUrl ?? "") else { return }
             self.player = AVPlayer(url: url)
             self.player.addObserver(self, forKeyPath: self.timeObserver, options: [.initial, .new], context: nil)
@@ -132,6 +132,7 @@ class Player: UIView {
     
     private func castSessionSuspended() {
         showNativeControls()
+
     }
     
     private func castSessionAlreadyConnected() {
@@ -155,6 +156,7 @@ class Player: UIView {
         continueCastPlay()
     }
     
+
     private func castSessionEnded() {
         switch playbackState {
         case .createdCast:
@@ -207,6 +209,7 @@ class Player: UIView {
         let duration = currentItem.asset.duration.seconds
         
         
+
         let castMediaInfo = CastManager.shared.buildMediaInformation(with: mediaItem.name ?? "", with: mediaItem.about ?? "" , with: "TV7-Nebesa", with: duration, with: mediaItem.videoUrl ?? "", with: GCKMediaStreamType.buffered, with: mediaItem.thumbnailUrl ?? "")
         CastManager.shared.startSelectedItemRemotely(castMediaInfo, at: currentTime, completion: { [weak self] done in
             if !done {
@@ -356,6 +359,7 @@ class Player: UIView {
         currentTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
+
     //     MARK: - Total Time Gradient Label
     
     private func createTotalTimeLabel() {
