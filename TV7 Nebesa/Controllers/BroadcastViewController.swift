@@ -45,6 +45,10 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
         firstAppearSelectedItem()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+
     // MARK: - Table View Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tvGuideSeries.tvGuideDates.count

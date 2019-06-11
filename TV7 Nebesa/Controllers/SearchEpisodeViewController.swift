@@ -57,6 +57,7 @@ final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, 
     private func setupTableView() {
         episodeTableView.delegate = self
         episodeTableView.dataSource = self
+        episodeTableView.tableFooterView = UIView()
         presenter = SearchEpisodePresenter(with: self, episodeId: episodeId)
         //Register for EpisodeCell.xib
         episodeTableView.register(UINib(nibName: EpisodeCell.identifier, bundle: .none), forCellReuseIdentifier: EpisodeCell.identifier)

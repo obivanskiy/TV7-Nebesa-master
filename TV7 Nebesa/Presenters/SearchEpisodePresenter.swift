@@ -21,6 +21,7 @@ class SearchEpisodePresenter {
 
     private func request() {
         NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchSearchEpisode) { (result) in
+            self.viewController.removeActivityIndicator()
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -39,6 +40,7 @@ class SearchEpisodePresenter {
     }
 
     private func fetchSearchEpisode(_ episodeId: String) {
+        viewController.showActivityIndicator(onView: viewController.view)
         NetworkService.requestURL[.fetchSearchEpisode] = NetworkEndpoints.baseURL + NetworkEndpoints.searchEpisodeURL + episodeId
     }
 }

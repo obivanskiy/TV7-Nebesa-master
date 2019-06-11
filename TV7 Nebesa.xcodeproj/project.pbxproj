@@ -144,6 +144,7 @@
 		FA29D6AF2264B79800B39250 /* SearchResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */; };
 		FA29D6B12264C94E00B39250 /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */; };
 		FA4F347D2260A010000508B9 /* TVProgramPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */; };
+		FA51ED1D22A860B300A5A1FB /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA51ED1C22A860B300A5A1FB /* NSObject+Extension.swift */; };
 		FA8A42A3226622E8000F35B5 /* SearchSeriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A42A1226622E8000F35B5 /* SearchSeriesCell.swift */; };
 		FA8A42A4226622E8000F35B5 /* SearchSeriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8A42A2226622E8000F35B5 /* SearchSeriesCell.xib */; };
 		FA8A42A722672BF7000F35B5 /* SearchEpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A42A522672BF7000F35B5 /* SearchEpisodeCell.swift */; };
@@ -306,6 +307,7 @@
 		FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsModel.swift; sourceTree = "<group>"; };
 		FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
 		FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProgramPresenter.swift; sourceTree = "<group>"; };
+		FA51ED1C22A860B300A5A1FB /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		FA8A42A1226622E8000F35B5 /* SearchSeriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSeriesCell.swift; sourceTree = "<group>"; };
 		FA8A42A2226622E8000F35B5 /* SearchSeriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchSeriesCell.xib; sourceTree = "<group>"; };
 		FA8A42A522672BF7000F35B5 /* SearchEpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEpisodeCell.swift; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 				15CD9CDD22534BAE0014E326 /* String+Extension.swift */,
 				154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */,
 				FA1D633222801DA800C2AA13 /* UIViewController+Extension.swift */,
+				FA51ED1C22A860B300A5A1FB /* NSObject+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -962,6 +965,7 @@
 				153406BD226EF4CB002BEB9F /* UIColor+NodeColor.swift in Sources */,
 				1103F69222721D870016A3C8 /* BaseHomeController.swift in Sources */,
 				15E0FD162238F851005A41DD /* ParentCategoryNameTableViewCell.swift in Sources */,
+				FA51ED1D22A860B300A5A1FB /* NSObject+Extension.swift in Sources */,
 				1103F69B22721D880016A3C8 /* HomeScreenNewestProgrammes.swift in Sources */,
 				15D2F12922661827009BE3D3 /* Castable+Extension.swift in Sources */,
 				1103F6A322721D880016A3C8 /* VideoPresenter.swift in Sources */,
