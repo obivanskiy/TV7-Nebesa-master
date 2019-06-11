@@ -70,7 +70,7 @@ class CastManager: NSObject {
     
     private func style() {
         let castStyle = GCKUIStyle.sharedInstance()
-        castStyle.castViews.backgroundColor = .white
+        castStyle.castViews.backgroundColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
         castStyle.castViews.bodyTextColor = .white
         castStyle.castViews.buttonTextColor = .white
         castStyle.castViews.headingTextColor = .white
@@ -81,17 +81,18 @@ class CastManager: NSObject {
     
     private func styleConnectionController() {
         let castStyle = GCKUIStyle.sharedInstance()
-        castStyle.castViews.backgroundColor = .nodesColor()
+        castStyle.castViews.backgroundColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
         castStyle.apply()
     }
     
     private func miniControllerStyle() {
         let castStyle = GCKUIStyle.sharedInstance()
-        castStyle.castViews.mediaControl.miniController.backgroundColor = .nodesColor()
+        castStyle.castViews.mediaControl.miniController.backgroundColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
+        castStyle.castViews.mediaControl.miniController.sliderProgressColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
         castStyle.castViews.mediaControl.miniController.bodyTextColor = .blue
         castStyle.castViews.mediaControl.miniController.buttonTextColor = .blue
         castStyle.castViews.mediaControl.miniController.headingTextColor = .white
-        castStyle.castViews.mediaControl.miniController.captionTextColor = .black
+        castStyle.castViews.mediaControl.miniController.captionTextColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
         castStyle.castViews.mediaControl.miniController.iconTintColor = .blue
         
         castStyle.apply()
