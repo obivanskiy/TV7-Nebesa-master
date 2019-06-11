@@ -9,8 +9,8 @@
 import Foundation
 
 struct MediaItem {
-    var name: String!
-    var about: String!
-    var videoUrl: String!
-    var thumbnailUrl: String!
+    var name: String?
+    var about: String?
+    var videoUrl: String?
+    var thumbnailUrl: String?
 }

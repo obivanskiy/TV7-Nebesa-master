@@ -15,6 +15,7 @@ enum CastSessionStatus {
     case ended
     case failedToStart
     case alreadyConnected
+    case suspended
 }
 
 class CastManager: NSObject {
@@ -23,6 +24,7 @@ class CastManager: NSObject {
     
     private let appID: String = "54B61D58"
     private var sessionManager: GCKSessionManager!
+    
     var hasConnectionEstablished: Bool {
         let castSession = sessionManager.currentCastSession
         if castSession != nil {
@@ -40,7 +42,6 @@ class CastManager: NSObject {
     }
     
     // MARK: - Init
-    
     func initialise() {
         initialiseContext()
         createSessionManager()
@@ -53,7 +54,7 @@ class CastManager: NSObject {
         sessionManager = GCKCastContext.sharedInstance().sessionManager
         sessionManager.add(self)
     }
-    //B21B9F3A
+    
     private func initialiseContext() {
         //application Id registered
         let options = GCKCastOptions(discoveryCriteria: GCKDiscoveryCriteria.init(applicationID: appID))
@@ -69,30 +70,30 @@ class CastManager: NSObject {
     
     private func style() {
         let castStyle = GCKUIStyle.sharedInstance()
-        castStyle.castViews.backgroundColor = .white
-        castStyle.castViews.bodyTextColor = .nodesColor()
+        castStyle.castViews.backgroundColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
+        castStyle.castViews.bodyTextColor = .white
         castStyle.castViews.buttonTextColor = .white
-        castStyle.castViews.headingTextColor = .nodesColor()
-        castStyle.castViews.captionTextColor = .nodesColor()
-        castStyle.castViews.iconTintColor = .nodesColor()
-        
+        castStyle.castViews.headingTextColor = .white
+        castStyle.castViews.captionTextColor = .white
+        castStyle.castViews.iconTintColor = .white
         castStyle.apply()
     }
     
     private func styleConnectionController() {
         let castStyle = GCKUIStyle.sharedInstance()
-        //castStyle.castViews.deviceControl.connectionController.buttonTextColor = .nodesColor
+        castStyle.castViews.backgroundColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
         castStyle.apply()
     }
     
     private func miniControllerStyle() {
         let castStyle = GCKUIStyle.sharedInstance()
-        castStyle.castViews.mediaControl.miniController.backgroundColor = .nodesColor()
-        castStyle.castViews.mediaControl.miniController.bodyTextColor = .white
-        castStyle.castViews.mediaControl.miniController.buttonTextColor = .white
+        castStyle.castViews.mediaControl.miniController.backgroundColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
+        castStyle.castViews.mediaControl.miniController.sliderProgressColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
+        castStyle.castViews.mediaControl.miniController.bodyTextColor = .blue
+        castStyle.castViews.mediaControl.miniController.buttonTextColor = .blue
         castStyle.castViews.mediaControl.miniController.headingTextColor = .white
-        castStyle.castViews.mediaControl.miniController.captionTextColor = .white
-        castStyle.castViews.mediaControl.miniController.iconTintColor = .white
+        castStyle.castViews.mediaControl.miniController.captionTextColor = UIColor(red: 12/255 , green: 100/255 , blue: 194/255 , alpha: 1)
+        castStyle.castViews.mediaControl.miniController.iconTintColor = .blue
         
         castStyle.apply()
     }
@@ -123,7 +124,7 @@ class CastManager: NSObject {
     
     // MARK: - Start
     
-    func startSelectedItemRemotely(_ mediaInfo: GCKMediaInformation, at time: TimeInterval, completion: (Bool) -> Void) {
+    func startSelectedItemRemotely(_ mediaInfo: GCKMediaInformation, at time: TimeInterval, completion: @escaping (Bool) -> Void) {
         let castSession = sessionManager.currentCastSession
         
         if castSession != nil {
@@ -140,7 +141,7 @@ class CastManager: NSObject {
     
     // MARK: - Play/Resume
     
-    func playSelectedItemRemotely(to time: TimeInterval?, completion: (Bool) -> Void) {
+    func playSelectedItemRemotely(to time: TimeInterval?, completion: @escaping (Bool) -> Void) {
         let castSession = sessionManager.currentCastSession
         if castSession != nil {
             let remoteClient = castSession?.remoteMediaClient
@@ -149,10 +150,11 @@ class CastManager: NSObject {
                 options.interval = time
                 options.resumeState = .play
                 remoteClient?.seek(with: options)
+                completion(true)
             } else {
                 remoteClient?.play()
+                completion(true)
             }
-            completion(true)
         } else {
             completion(false)
         }
@@ -169,10 +171,11 @@ class CastManager: NSObject {
                 options.interval = time
                 options.resumeState = .pause
                 remoteClient?.seek(with: options)
+                completion(true)
             } else {
                 remoteClient?.pause()
+                completion(true)
             }
-            completion(true)
         } else {
             completion(false)
         }
@@ -222,6 +225,6 @@ extension CastManager: GCKSessionManagerListener {
     }
     
     public func sessionManager(_ sessionManager: GCKSessionManager, didSuspend session: GCKSession, with reason: GCKConnectionSuspendReason) {
-        sessionStatus = .ended
+        sessionStatus = .suspended
     }
 }

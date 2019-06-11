@@ -111,6 +111,7 @@
 		154B7F53223ADAE40020A4E4 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */; };
 		154B7F55223ADCA90020A4E4 /* NetworkEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */; };
 		154F6D5C224A637A00043BBD /* ParentCategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154F6D5B224A637A00043BBD /* ParentCategoriesPresenter.swift */; };
+		15736CB622AA6A4E004B9FBA /* NotificationEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15736CB522AA6A4E004B9FBA /* NotificationEndpoints.swift */; };
 		157E83CD224D19E700993933 /* CategoryDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157E83CC224D19E700993933 /* CategoryDataPresenter.swift */; };
 		1593B35F224CC915002E08AC /* SubCategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1593B35E224CC915002E08AC /* SubCategoriesPresenter.swift */; };
 		15A60115226DB5EC00E99878 /* CastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A60114226DB5EC00E99878 /* CastManager.swift */; };
@@ -122,7 +123,6 @@
 		15CD9CDE22534BAE0014E326 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CDD22534BAE0014E326 /* String+Extension.swift */; };
 		15CD9CE0225379980014E326 /* WebTVScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CDF225379980014E326 /* WebTVScreenViewController.swift */; };
 		15CD9CE2225380870014E326 /* WebTVDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CE1225380870014E326 /* WebTVDateTableViewCell.swift */; };
-		15CD9CE4225380BF0014E326 /* WebTVTimeZoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CE3225380BF0014E326 /* WebTVTimeZoneTableViewCell.swift */; };
 		15CD9CE6225380E70014E326 /* WebTVMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CE5225380E70014E326 /* WebTVMainTableViewCell.swift */; };
 		15CE9DC52244DF2F00362B40 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CE9DC42244DF2F00362B40 /* URL+Extension.swift */; };
 		15CF8F732237E03D008424E9 /* ParentCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CF8F722237E03D008424E9 /* ParentCategoriesModel.swift */; };
@@ -272,6 +272,7 @@
 		154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		154B7F54223ADCA90020A4E4 /* NetworkEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoints.swift; sourceTree = "<group>"; };
 		154F6D5B224A637A00043BBD /* ParentCategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCategoriesPresenter.swift; sourceTree = "<group>"; };
+		15736CB522AA6A4E004B9FBA /* NotificationEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationEndpoints.swift; sourceTree = "<group>"; };
 		157E83CC224D19E700993933 /* CategoryDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataPresenter.swift; sourceTree = "<group>"; };
 		1593B35E224CC915002E08AC /* SubCategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubCategoriesPresenter.swift; path = "TV7 Nebesa/Presenters/SubCategoriesPresenter.swift"; sourceTree = SOURCE_ROOT; };
 		15A60114226DB5EC00E99878 /* CastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastManager.swift; sourceTree = "<group>"; };
@@ -284,7 +285,6 @@
 		15CD9CDD22534BAE0014E326 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		15CD9CDF225379980014E326 /* WebTVScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTVScreenViewController.swift; sourceTree = "<group>"; };
 		15CD9CE1225380870014E326 /* WebTVDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTVDateTableViewCell.swift; sourceTree = "<group>"; };
-		15CD9CE3225380BF0014E326 /* WebTVTimeZoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTVTimeZoneTableViewCell.swift; sourceTree = "<group>"; };
 		15CD9CE5225380E70014E326 /* WebTVMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTVMainTableViewCell.swift; sourceTree = "<group>"; };
 		15CE9DC42244DF2F00362B40 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		15CF8F722237E03D008424E9 /* ParentCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCategoriesModel.swift; sourceTree = "<group>"; };
@@ -523,6 +523,7 @@
 				1103F67F22721D870016A3C8 /* HomeCollectionPages */,
 				153E4DD1223BA83D005255B5 /* TableViewCells */,
 				FAFDE8092241281200006FEE /* CollectionViewCells */,
+				15736CB422AA6A1A004B9FBA /* Notification */,
 				15CF8F6D2237BCE8008424E9 /* Network */,
 				15CF8F6C2237BCDD008424E9 /* Models */,
 				154F6D60224AA60200043BBD /* Services */,
@@ -551,7 +552,6 @@
 				15D626ED22411C2C00449F8B /* EpisodeInfoTableViewCell.swift */,
 				15CD9CE1225380870014E326 /* WebTVDateTableViewCell.swift */,
 				15CD9CE5225380E70014E326 /* WebTVMainTableViewCell.swift */,
-				15CD9CE3225380BF0014E326 /* WebTVTimeZoneTableViewCell.swift */,
 				FA8A42A022662222000F35B5 /* SearchCells */,
 				FAFDE7FD223FC67500006FEE /* TVGuideCell */,
 			);
@@ -599,6 +599,14 @@
 				15EF79AD224B757A003C9BEF /* NetworkService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		15736CB422AA6A1A004B9FBA /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				15736CB522AA6A4E004B9FBA /* NotificationEndpoints.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		1580F7A1225DF1A1003158A8 /* Player */ = {
@@ -960,7 +968,6 @@
 				1103F73622721F630016A3C8 /* MenuTableViewCell.swift in Sources */,
 				1103F69E22721D880016A3C8 /* ProgramInfoModel.swift in Sources */,
 				15D626F0224125B200449F8B /* SeriesInfoModel.swift in Sources */,
-				15CD9CE4225380BF0014E326 /* WebTVTimeZoneTableViewCell.swift in Sources */,
 				15B0816C223A4F6A00826057 /* CategoriesDataModel.swift in Sources */,
 				110F9DA82237A6A50020BABC /* BroadcastViewController.swift in Sources */,
 				15D626EC22411C1E00449F8B /* SeriesInfoTableViewCell.swift in Sources */,
@@ -991,6 +998,7 @@
 				15E398C1225F78F700E4AC55 /* UILabel+Extension.swift in Sources */,
 				1103F6A022721D880016A3C8 /* HomeNewestPresenter.swift in Sources */,
 				15D626EE22411C2C00449F8B /* EpisodeInfoTableViewCell.swift in Sources */,
+				15736CB622AA6A4E004B9FBA /* NotificationEndpoints.swift in Sources */,
 				15CD9CD8225217FD0014E326 /* ProgrammeScreenViewController.swift in Sources */,
 				110F9DAE2237A7610020BABC /* HighlightsViewController.swift in Sources */,
 				15F5DA32225F7D1900B989A1 /* Player.swift in Sources */,
