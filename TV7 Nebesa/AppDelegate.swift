@@ -9,6 +9,7 @@
 import UIKit
 import GoogleCast
 import AVFoundation
+import Kingfisher
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,7 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         catch {
             print("Setting category to AVAudioSessionCategoryPlayback failed.")
         }
-        
+
+        // Restrict size and expiration for cache
+        let cache = ImageCache.default
+        cache.memoryStorage.config.totalCostLimit = 300 * 1024 * 1024
+        cache.diskStorage.config.sizeLimit = 1000 * 1024 * 1024
+        cache.memoryStorage.config.expiration = .days(1)
+
         CastManager.shared.initialise()
         
         return true

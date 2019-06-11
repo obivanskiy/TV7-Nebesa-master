@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import AVFoundation
-import AVKit
 
-class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Castable {
+final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Castable {
 
-    //MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet weak var episodeTableView: UITableView!
     
-    //MARK: - Properties
+    // MARK: - Properties
     var episodeId = ""
     var searchEpisodeData: SearchEpisode = SearchEpisode() {
         didSet {
@@ -28,7 +26,7 @@ class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITabl
     private var presenter: SearchEpisodePresenter?
     private var screenTitle = "ВИДЕО"
 
-    //MARK: - Lifecycle methods
+    // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -36,11 +34,11 @@ class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        let cell = EpisodeCell()
-        cell.stopPlayback()
+//        let cell = EpisodeCell()
+//        cell.stopPlayback()
     }
 
-    //MARK: - Table View Data Source Methods
+    // MARK: - Table View Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchEpisodeData.results.count
     }
@@ -50,14 +48,16 @@ class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITabl
             return UITableViewCell()
         }
         cell.cellModel = searchEpisodeData.results[indexPath.row]
-        videoURLString = NetworkEndpoints.baseURLForVideoPlayback + cell.cellModel!.path + NetworkEndpoints.playlistEndpoint
+        guard let path = cell.cellModel?.path else { return UITableViewCell() }
+        videoURLString = NetworkEndpoints.baseURLForVideoPlayback + path + NetworkEndpoints.playlistEndpoint
         return cell
     }
 
-    //MARK: - Private Methods
+    // MARK: - Private Methods
     private func setupTableView() {
         episodeTableView.delegate = self
         episodeTableView.dataSource = self
+        episodeTableView.tableFooterView = UIView()
         presenter = SearchEpisodePresenter(with: self, episodeId: episodeId)
         //Register for EpisodeCell.xib
         episodeTableView.register(UINib(nibName: EpisodeCell.identifier, bundle: .none), forCellReuseIdentifier: EpisodeCell.identifier)
