@@ -141,14 +141,14 @@ class MenuCell: BaseCell {
             let scale = CGAffineTransform(scaleX: 1.2, y: 1.2)
             let rotate = CGAffineTransform(rotationAngle: .pi*2)
             UIView.animate(withDuration: 1, delay: 0.0, options: .allowUserInteraction, animations: {
-                self.imageView.transform = CGAffineTransform(scaleX: 1.7, y: 1.7)
+                self.imageView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
 //                self.imageView.transform = scale.concatenating(rotate)
                 print(self.isHighlighted.description)
             }) { (isSelected) in
 //                self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
             UIView.animate(withDuration: 1, delay: 0.0, options: .allowUserInteraction, animations: {
-                self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                self.imageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
                 //                self.imageView.transform = scale.concatenating(rotate)
                 print(self.isHighlighted.description)
             }) { (isSelected) in

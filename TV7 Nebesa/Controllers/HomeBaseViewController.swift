@@ -34,6 +34,11 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         setupNavigationItems()
 //        showCenterPage(collectionViewIndex: 1)
         
+//        let width = view.frame.width
+//        let height = view.frame.height - 50
+//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        layout.itemSize = CGSize(width: width, height: height)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         self.title = "Небеса ТВ7"
@@ -82,15 +87,15 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
        
         if indexPath.item == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mostViewedCellId, for: indexPath) as! HomeMostViewedCell
-//            vc.titleItem = "Топовые"
+          //  vc.titleItem = "Топовые"
             return cell
         } else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newestCellId, for: indexPath) as! HomeNewestCell
-//            vc.vctitleItem = "Новые"
+          //  vc.vctitleItem = "Новые"
             return cell
         } 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeRecommendCell
-//        vc.titleItem = "Рекомедованные"
+       // vc.titleItem = "Рекомедованные"
         return cell
     }
     
@@ -98,7 +103,8 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         return CGSize(width: view.frame.width , height: view.frame.height - 50)
 
     }
-            //TODO: - landscape orientation
+  
+       //TODO: - landscape orientation
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         print(UIDevice.current.orientation.isLandscape)
         collectionView.collectionViewLayout.invalidateLayout()
