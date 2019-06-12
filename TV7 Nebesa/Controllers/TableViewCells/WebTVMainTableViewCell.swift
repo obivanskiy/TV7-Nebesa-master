@@ -9,12 +9,15 @@
 import UIKit
 
 class WebTVMainTableViewCell: UITableViewCell {
-    @IBOutlet weak var programmeTimeLabel: UILabel!
-    @IBOutlet weak var programmeNameLabel: UILabel!
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    
     
     override func awakeFromNib() {
         self.isUserInteractionEnabled = false
-        programmeNameLabel.sizeToFit()
+        
     }
 }
 

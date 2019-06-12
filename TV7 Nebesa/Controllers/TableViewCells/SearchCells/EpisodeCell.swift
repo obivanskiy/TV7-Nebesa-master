@@ -12,7 +12,7 @@ import AVKit
 
 class EpisodeCell: UITableViewCell {
 
-    //MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet weak var episodeVideoView: UIView!
     @IBOutlet weak var seriesNameLabel: UILabel! {
         didSet {
@@ -28,10 +28,10 @@ class EpisodeCell: UITableViewCell {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var firstBroadcast: UILabel!
 
-    //MARK: - Properties
+    // MARK: - Properties
     private var videoURL = ""
     private var player: Player!
-    var playerViewController = AVPlayerViewController()
+//    var playerViewController = AVPlayerViewController()
 
     var cellModel: SearchEpisodeData? {
         didSet {
@@ -40,6 +40,7 @@ class EpisodeCell: UITableViewCell {
         }
     }
 
+    // MARK: Private Methods
     private func setupUI(cellModel: SearchEpisodeData) {
         let attributedText = NSMutableAttributedString(string: cellModel.sname, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16)])
         attributedText.append(NSAttributedString(string: " \(cellModel.name)", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)]))
@@ -70,8 +71,5 @@ class EpisodeCell: UITableViewCell {
         player.initPlayerLayer()
         episodeVideoView.addSubview(player)
     }
-
-    func stopPlayback() {
-//        player.stopPlayback()
-    }
+    
 }

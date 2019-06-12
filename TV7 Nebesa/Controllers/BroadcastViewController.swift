@@ -7,15 +7,15 @@
 import UIKit
 
 
-class BroadcastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+final class BroadcastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    //MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet weak var tvGuideTableView: UITableView!
     @IBOutlet weak var dateCollectionView: UICollectionView!
     @IBOutlet weak var dateStackView: UIStackView!
     @IBOutlet weak var tvGuideTableViewConstraintToTop: NSLayoutConstraint!
 
-    //MARK: - TVProgram properties
+    // MARK: - Properties
     var tvGuideSeries: TVGuideDates = TVGuideDates() {
         didSet {
             DispatchQueue.main.async {
@@ -24,12 +24,18 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     private var presenter: TVProgramPresenter?
-    private var arrayOfDates = [Date]()
-    private var arrayOfDatesStrings = [String]()
-    private var expandedRows = Set<Int>()
+    private var arrayOfDates: [Date] = []
+    private var arrayOfDatesStrings: [String] = []
+    private var expandedRows: Set<Int> = []
     private var lastContentOffset: CGFloat = 0
+    private enum Constants {
+        static let programmeScreen = "ProgrammeScreen"
+        static let searchVC = "SearchViewController"
+        static let dataCell = "DateCell"
+    }
+    private var scrollToTime = true
 
-    //MARK: - Lifecycle methods
+    // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = TVProgramPresenter(with: self)
@@ -39,7 +45,11 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         firstAppearSelectedItem()
     }
 
-    //MARK: - Table View Data Source Methods
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+
+    // MARK: - Table View Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tvGuideSeries.tvGuideDates.count
     }
@@ -48,27 +58,17 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TVGuideCell.identifier, for: indexPath) as? TVGuideCell else {
             return UITableViewCell()
         }
-        let data = tvGuideSeries.tvGuideDates
-
-        if !data.isEmpty {
-            switch data[indexPath.row] {
-            case let (x) where x.series == "":
-                cell.seriesLabel.text = data[indexPath.row].name
-            case let (x) where x.name != "":
-                cell.seriesLabel.text = "\(data[indexPath.row].series): " + "\(data[indexPath.row].name)"
-            default:
-                cell.seriesLabel.text = data[indexPath.row].series
-            }
-            cell.timeLabel.text = dateFormatter(data[indexPath.row].date)
-            cell.captionLabel.text = data[indexPath.row].caption
-        } else {
-            displayMessage("Sorry, we have no data on this date")
-        }
+        cell.cellModel = tvGuideSeries.tvGuideDates[indexPath.row]
         cell.isExpanded = self.expandedRows.contains(indexPath.row)
+        if cell.cellModel?.caption == "" {
+            cell.expandRowButton.isHidden = true
+        } else {
+            cell.expandRowButton.isHidden = false
+        }
         return cell
     }
 
-    //MARK: - Table View Delegate Methods
+    // MARK: - Table View Delegate Methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
 
@@ -82,19 +82,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         case false:
             self.expandedRows.insert(indexPath.row)
         }
-
-        // ******** Expanded cells haven't work yet *********
-        switch cell.captionLabel.calculateMaxLines() {
-        case 1:
-            print("1")
-        case 2:
-            print("2")
-        case 3:
-            print("3")
-        default:
-            print("default")
-        }
-
         cell.isExpanded = !cell.isExpanded
         self.tvGuideTableView.beginUpdates()
         self.tvGuideTableView.endUpdates()
@@ -108,6 +95,37 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         self.tvGuideTableView.endUpdates()
     }
 
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // This fu*king stuff is for scrolling to current time for the first loading app
+        let lastRow = tableView.indexPathsForVisibleRows?.last
+        let nowUnix = Date().timeIntervalSince1970
+        var nearestTime = Double()
+        var arrayOfTimes: [String] = []
+
+        // 1.Appending value of "time" to array; 2. Looking for the nearest time of TV program
+        for time in tvGuideSeries.tvGuideDates {
+            arrayOfTimes.append(time.time)
+            guard let checkTime = Double(time.date) else { return }
+            if checkTime > nowUnix {
+                nearestTime = checkTime
+                break
+            }
+        }
+        let nearestTimeString = "\(Int(nearestTime))" + "000"
+        guard let firstIndex = arrayOfTimes.firstIndex(of: nearestTimeString) else { return }
+
+        if indexPath.row == lastRow?.row {
+            if scrollToTime == true {
+                let indexPath = IndexPath(row: firstIndex, section: 0)
+                tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                tableView.cellForRow(at: indexPath)?.isHighlighted = true
+                scrollToTime = false
+            }
+        }
+
+    }
+
+    // MARK: - Scroll View Delegate Methods
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == tvGuideTableView {
             self.lastContentOffset = scrollView.contentOffset.y
@@ -127,31 +145,34 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
 
-    //MARK: - Collection View Data Source Methods
+    // MARK: - Collection View Data Source Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayOfDatesStrings.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DateCell", for: indexPath) as! DateCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.dataCell, for: indexPath) as! DateCollectionViewCell
         let dates = self.arrayOfDatesStrings[indexPath.row]
         cell.dateLabel.text = dates
         return cell
     }
 
-    //MARK: - Collection View Delegate Methods
+    // MARK: - Collection View Delegate Methods
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter = TVProgramPresenter(with: self, chosenDate: arrayOfDates[indexPath.row])
+        expandedRows.removeAll()
         tvGuideTableView.reloadData()
     }
 
-    //MARK: - Actions
+    // MARK: - Actions
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
+        guard let searchVC = UIStoryboard(name: Constants.programmeScreen, bundle: nil).instantiateViewController(withIdentifier: Constants.searchVC) as? SearchViewController else { return }
+        self.navigationController?.pushViewController(searchVC, animated: true)
     }
 
-    //MARK: - Private Methods
-    // Formates Unix date into the normal format
-    fileprivate func dateFormatter(_ dateIn: String) -> String {
+    // MARK: - Private Methods
+    // Formates Unix date to appropriate format
+    private func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }
         let date = Date(timeIntervalSince1970: unixDate)
         let dateFormatter = DateFormatter()
@@ -164,9 +185,15 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         tvGuideTableView.dataSource = self
         tvGuideTableView.delegate = self
         //Register for TVGuideCell.xib
-        tvGuideTableView.register(UINib(nibName: "TVGuideCell", bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
-        tvGuideTableView.allowsSelection = true
+        tvGuideTableView.register(UINib(nibName: TVGuideCell.identifier, bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
         tvGuideTableView.rowHeight = UITableView.automaticDimension
+        // Checking for an internet connection
+        if Reachability.isConnectedToNetwork() {
+            print("Internet Connection Available!")
+        } else {
+            showDefaultAlert(title: "Sorry", message: "You have no internet connection.")
+            print("Internet Connection not Available!")
+        }
     }
 
     private func setupDateCollectionView() {
@@ -194,21 +221,6 @@ class BroadcastViewController: UIViewController, UITableViewDataSource, UITableV
         let selectedIndexPath = IndexPath(item: firstAppearSelectedItem, section: 0)
         dateCollectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
     }
-
-    //Need to think about this. Isn't working now
-    private func scrollToCurrentTime() {
-        let selectedIndexPath = IndexPath(item: 12, section: 0)
-        self.tvGuideTableView.scrollToRow(at: selectedIndexPath, at: .top, animated: true)
-    }
-
-    // Display Alert Message
-    private func displayMessage(_ userMessage: String) -> Void {
-        let alertController = UIAlertController(title: "Oops", message: userMessage, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-
 
 }
 

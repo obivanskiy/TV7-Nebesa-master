@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct TVGuideDates: Decodable {
     let tvGuideDates: [TVGuideDatesData]
 
