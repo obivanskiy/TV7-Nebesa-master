@@ -14,13 +14,19 @@ import GoogleCast
 class HomeVideoPlayerController: UIViewController, Castable {
     
     private var presenter: VideoPresenter?
+   
     //MARK: - Stored properties
     private var player: Player!
     private var playerViewController = AVPlayerViewController()
-//    static var programInfo : HomeScreenData = HomeScreenData()
-//    static var newestInfo: HomeNewestData = HomeNewestData()
     
     static var videoData : HomeScreenProgrammeInformation = HomeScreenProgrammeInformation()
+    
+    static var programInfo: ProgrammeInfo = ProgrammeInfo() {
+        didSet {
+            
+            print(programInfo)
+        }
+    }
     var videoID: String = ""
     private var screenTitle: String = "ВИДЕО"
     var videoTitle: String? = ""
@@ -41,16 +47,11 @@ class HomeVideoPlayerController: UIViewController, Castable {
     @IBOutlet weak var VideoDurationLabel: UILabel!
     @IBOutlet weak var VideoFirstBroadcastLabel: UILabel!
 
-    static var programInfo: ProgrammeInfo = ProgrammeInfo() {
-        didSet {
-
-            print(programInfo)
-        }
-    }
+   
     //MARK: - View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter = VideoPresenter(with: self)
+//        self.presenter = VideoPresenter(with: self)
         setUpUI()
     }
     

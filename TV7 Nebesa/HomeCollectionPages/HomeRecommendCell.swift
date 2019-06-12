@@ -29,11 +29,22 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
     
    
     override func awakeFromNib() {
+       
+        NetworkService.requestURL[.fetchHomeScreenMainData] = NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenDataURL + currentDate()
         self.presenterForRecommend = HomeRecommendPresenter(with: self)
         recommendTableView.dataSource = self
         recommendTableView.delegate = self
         
         setupTableView()
+    }
+    private func currentDate() -> String {
+        let dateFormatter = DateFormatter()
+        let date = Date()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        print("current Date ------>", dateFormatter.string(from: date))
+        let currentDate = dateFormatter.string(from: date)
+        print(currentDate)
+        return currentDate
     }
     
     func setupTableView() {
@@ -61,6 +72,8 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
         return cell
     
 }
+ 
+    
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //                tableView.deselectRow(at: indexPath, animated: true)
 //                let cell = tableView.cellForRow(at: indexPath) as! RecommendTableViewCell

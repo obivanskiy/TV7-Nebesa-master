@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import AVKit
 import GoogleCast
+import Kingfisher
 
 final class ProgrammeScreenViewController: UIViewController, Castable {
     
@@ -37,14 +38,23 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
         setUpUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        //player(urlString: videoURLString)
-       createPlayerView()
+    override func viewWillAppear(_ animated: Bool) {
+        createPlayerView()
+        print(playerView.mediaItem)
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         playerView.stopPlayback()
     }
+    
+    override func viewWillLayoutSubviews() {
+        playerView.playerViewController.view.frame = programmeView.bounds
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        playerView.removeFromSuperview()
+    }
+
+
 
     //MARK: -Set up the UI
     private func setUpUI() {
@@ -52,35 +62,24 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
         seriesProgrammeName.text = ProgrammeScreenViewController.programmeData.name
         programmeCaption.text = ProgrammeScreenViewController.programmeData.caption
         programmeNumberLabel.text = "Эпизод: \(ProgrammeScreenViewController.programmeData.episodeNumber)"
+        createPlayerView()
         programmeLenghtLabel.text = "Длительность: \(dateFormatter(ProgrammeScreenViewController.programmeData.duration))"
         // set up url from the data source
         self.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + ProgrammeScreenViewController.programmeData.linkPath + NetworkEndpoints.playlistEndpoint
         self.title = self.screenTitle
         navigationItem.rightBarButtonItem = googleCastButton
+        
     }
     
     private func createPlayerView() {
         playerView = Player(frame: programmeView.bounds)
         print(videoURLString)
-        playerView.mediaItem = MediaItem(name: ProgrammeScreenViewController.programmeData.seriesName, about: ProgrammeScreenViewController.programmeData.caption, videoUrl: videoURLString.encodeUrl()!, thumbnailUrl: nil)
+        
+        playerView.mediaItem = MediaItem(name: "\(ProgrammeScreenViewController.programmeData.seriesName): \(ProgrammeScreenViewController.programmeData.name)", about: ProgrammeScreenViewController.programmeData.description, videoUrl: videoURLString.encodeUrl()!, thumbnailUrl: ProgrammeScreenViewController.programmeData.imagePath)
         playerView.initPlayerLayer()
         programmeView.addSubview(playerView)
     }
 
-    
-    //MARK: - Player function
-//    private func player(urlString: String) {
-//        if let  videoURL = URL(string: urlString.encodeUrl()!) {
-//            self.player = AVPlayer(url: videoURL)
-//            playerViewController.player = self.player
-//            playerViewController.view.frame = programmeView.bounds
-//            self.addChild(playerViewController)
-//            programmeView.addSubview(playerViewController.view)
-//            playerViewController.didMove(toParent: self)
-//            playerViewController.player?.pause()
-//
-//        }
-//    }
     
     //MARK: - Date formatter
     private func dateFormatter(_ dateIn: String) -> String {

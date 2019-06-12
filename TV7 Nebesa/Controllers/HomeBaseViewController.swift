@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 let cellId = "homeCell"
 let newestCellId = "homeNewestCell"
 let mostViewedCellId = "mostViewedCell"
@@ -16,6 +17,8 @@ var titleItem = ""
 class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate {
     
     @IBOutlet weak var homePageCollectionView: UICollectionView!
+    
+    var controller: HomeBaseViewController?
     
     private var homeScreenProgrammeDataSegue: String = "HomeScreenProgrammePageSegue"
     //    private var presenterForRecommend: HomeRecommendPresenter?
@@ -29,6 +32,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         setupMenuBar()
         setupNavigationItems()
+//        showCenterPage(collectionViewIndex: 1)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +66,11 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         homePageCollectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
+    func showCenterPage(collectionViewIndex: Int) {
+        let indexPath = IndexPath(item: collectionViewIndex, section: 0)
+        homePageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
 }
@@ -84,7 +93,26 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width , height: view.frame.height - 50)
-        //TODO: - landscape orientation
+
+    }
+            //TODO: - landscape orientation
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        print(UIDevice.current.orientation.isLandscape)
+        collectionView.collectionViewLayout.invalidateLayout()
+        var visibleRect = CGRect()
+        
+        visibleRect.origin = collectionView.contentOffset
+        visibleRect.size = collectionView.bounds.size
+        
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        
+        guard let indexPath = collectionView.indexPathForItem(at: visiblePoint) else { return }
+        //scroll to indexPath after the rotation is going
+        DispatchQueue.main.async {
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            self.collectionView.reloadData()
+        }
+        
     }
     
     
@@ -161,8 +189,10 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         switch identifier {
         case .videoDataSegue:
             guard let sender = sender else { return }
-            let destination = segue.destination as! HomeVideoPlayerController
+            let destination = segue.destination as! VideoPlayer
             switch sender {
+                
+                
             case let tableCell as RecommendTableViewCell:
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! HomeRecommendCell
                 let indexPath = collectionCell.recommendTableView.indexPath(for: tableCell)
@@ -171,51 +201,61 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 if data.description != "" {
                     destination.videoCaption = data.description
                 } else {
-                     destination.videoCaption = data.caption
+                    destination.videoCaption = data.caption
                 }
                 destination.videoTitle = data.name
                 destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.linkPath + NetworkEndpoints.playlistEndpoint
-                print(destination.videoURLString)
+                print(destination.videoURLString, data.id)
                 destination.videoDuration = data.duration
                 destination.videoFirstBroadcast = data.firstBroadcast
                 destination.videoEpisodeNumber = data.episodeNumber
+
+                
+                /// New
+//                let videoID = data.id
+//                destination.videoID = videoID
+//                print(videoID)
+//                ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
+//
+                
+                //:TODO - Force unwrapping!!!
                 
             case let tableCell as NewestTableViewCell:
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 1, section: 0)) as! HomeNewestCell
                 let indexPath = collectionCell.newestTableView.indexPath(for: tableCell)
-                let data = collectionCell.homeScreenNewestData.homeScreenNewestProgrammes[indexPath!.row]
-                destination.title = data.seriesName
-//                if data.description != "" {
-//                    destination.videoCaption = data.description
-//                } else {
-                    destination.videoCaption = data.caption
-                
-                destination.videoTitle = data.name
-                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.linkPath! + NetworkEndpoints.playlistEndpoint
-                print(destination.videoURLString)
-                destination.videoDuration = data.duration!
-                destination.videoFirstBroadcast = data.firstBroadcast
-                destination.videoEpisodeNumber = data.episodeNumber!
-           
+                let data = collectionCell.videos![indexPath!.row]
+                let videoID = data.id
+                destination.videoID = videoID
+                print(videoID)
+                ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
+
+//
             case let tableCell as MostViewedTableViewCell:
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 2, section: 0)) as! HomeMostViewedCell
                 let indexPath = collectionCell.mostViewedTableView.indexPath(for: tableCell)
                 let data = collectionCell.homeMostViewedData.homeScreenMostViewedProgrammes[indexPath!.row]
-                destination.title = data.seriesName
-                //                if data.description != "" {
-                //                    destination.videoCaption = data.description
-                //                } else {
-                destination.videoCaption = data.caption
+                let videoID = data.id!
+                destination.videoID = videoID
+                print(videoID)
+                  ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
+                ApiService.shared.requestVideoInfo { (videoData: HomeScreenProgrammeInformation) in
+                    destination.videoData = videoData
+                }
                 
-                destination.videoTitle = data.programName
-//                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.! + NetworkEndpoints.playlistEndpoint
-//                print(destination.videoURLString)
-                destination.videoDuration = data.time!
-//                destination.videoFirstBroadcast = data.
-                destination.videoEpisodeNumber = data.episodeNumber!
+//                let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+//                activityIndicator.center = self.view.center
+//                activityIndicator.hidesWhenStopped = true
+//                activityIndicator.style = .gray
+//                self.view.addSubview(activityIndicator)
+//                activityIndicator.startAnimating()
+                
+//
             default:
                 break
             }
         }
     }
 }
+
+
+

@@ -65,12 +65,10 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     //1) init frame
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+       
         //9
         collectionView.register(MenuCell.self, forCellWithReuseIdentifier: cellId)
         //17
-        
-        
         //6 add subview/constraints
         addSubview(collectionView)
         addConstraintsWithFormat(withVisualFormat: "H:|[v0]|", views: collectionView)

@@ -9,6 +9,8 @@
 import UIKit
 
 class SearchEpisodeCell: UITableViewCell {
+
+    // MARK: - Outlets
     @IBOutlet weak var episodePreviewImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel! {
         didSet {
@@ -21,6 +23,7 @@ class SearchEpisodeCell: UITableViewCell {
         }
     }
 
+    // MARK: - Properties
     var cellModel: SearchResultsData? {
         didSet {
             guard let cellModel = cellModel else { return }
@@ -36,11 +39,7 @@ class SearchEpisodeCell: UITableViewCell {
         }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-
+    // MARK: - Private Methods
     private func setupUI(cellModel: SearchResultsData) {
         let attributedText = NSMutableAttributedString(string: cellModel.seriesName, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)])
         attributedText.append(NSAttributedString(string: " \(cellModel.name)", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13)]))
@@ -48,7 +47,7 @@ class SearchEpisodeCell: UITableViewCell {
         captionLabel.text = cellModel.caption
         guard let previewImageURL = URL.init(string: cellModel.imagePath) else { return }
         episodePreviewImage.kf.setImage(with: previewImageURL)
-        self.selectionStyle = .none
+        selectionStyle = .none
     }
 
     private func setupUISeries(seriesCellModel: ProgrammesData) {
@@ -58,7 +57,7 @@ class SearchEpisodeCell: UITableViewCell {
         captionLabel.text = seriesCellModel.caption
         guard let previewImageURL = URL.init(string: seriesCellModel.imagePath) else { return }
         episodePreviewImage.kf.setImage(with: previewImageURL)
-        self.selectionStyle = .none
+        selectionStyle = .none
     }
     
 }

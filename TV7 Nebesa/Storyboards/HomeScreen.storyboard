@@ -167,10 +167,10 @@
             </objects>
             <point key="canvasLocation" x="1920.289855072464" y="416.51785714285711"/>
         </scene>
-        <!--Home Video Player Controller-->
+        <!--Video Player-->
         <scene sceneID="BRJ-TB-4bS">
             <objects>
-                <viewController id="MBD-vz-poy" customClass="HomeVideoPlayerController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MBD-vz-poy" customClass="VideoPlayer" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bVc-bn-SfI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,7 +185,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="AqJ-gd-Pml">
                                 <rect key="frame" x="15" y="243" width="384" height="99"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="videoTitle" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5w-82-Kt8" userLabel="VideoTitle">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5w-82-Kt8" userLabel="VideoTitle">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Dkk-bA-OLn"/>
@@ -194,7 +194,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="videoDescription" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xio-FU-gBQ" userLabel="VideoDescription">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xio-FU-gBQ" userLabel="VideoDescription">
                                         <rect key="frame" x="0.0" y="39" width="384" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="3Az-3p-uCw"/>
@@ -206,9 +206,9 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XZe-gd-H0l">
-                                <rect key="frame" x="15" y="347" width="384" height="62.5"/>
+                                <rect key="frame" x="15" y="347" width="384" height="42"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EpisodeNumber" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGL-5C-7bP" userLabel="EpisodeNumber">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGL-5C-7bP" userLabel="EpisodeNumber">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="As6-da-2bX"/>
@@ -217,7 +217,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baH-su-eJa" userLabel="Duration">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baH-su-eJa" userLabel="Duration">
                                         <rect key="frame" x="0.0" y="21" width="384" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="A14-qa-CSH"/>
@@ -226,8 +226,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LiveBroadcast" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvH-J4-xYA" userLabel="FirstBroadcast">
-                                        <rect key="frame" x="0.0" y="42" width="384" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvH-J4-xYA" userLabel="FirstBroadcast">
+                                        <rect key="frame" x="0.0" y="42" width="384" height="0.0"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Ultralight" family="SF Pro Display" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -712,8 +712,8 @@
                             <constraint firstItem="vNz-Q3-nZE" firstAttribute="top" secondItem="R5s-p0-r2x" secondAttribute="top" id="9zH-M5-ew1"/>
                             <constraint firstItem="KW3-sO-5wA" firstAttribute="top" secondItem="vNz-Q3-nZE" secondAttribute="bottom" id="Bxw-M1-cOQ"/>
                             <constraint firstItem="R5s-p0-r2x" firstAttribute="trailing" secondItem="KW3-sO-5wA" secondAttribute="trailing" id="NlU-BX-t2a"/>
-                            <constraint firstItem="vNz-Q3-nZE" firstAttribute="leading" secondItem="R5s-p0-r2x" secondAttribute="leading" id="U9v-uV-AHP"/>
-                            <constraint firstItem="vNz-Q3-nZE" firstAttribute="trailing" secondItem="R5s-p0-r2x" secondAttribute="trailing" id="Y51-Ae-Zdo"/>
+                            <constraint firstItem="vNz-Q3-nZE" firstAttribute="leading" secondItem="y2N-ue-twT" secondAttribute="leading" id="U9v-uV-AHP"/>
+                            <constraint firstItem="vNz-Q3-nZE" firstAttribute="trailing" secondItem="y2N-ue-twT" secondAttribute="trailing" id="Y51-Ae-Zdo"/>
                             <constraint firstItem="KW3-sO-5wA" firstAttribute="leading" secondItem="R5s-p0-r2x" secondAttribute="leading" id="Ycu-jd-65k"/>
                             <constraint firstItem="R5s-p0-r2x" firstAttribute="bottom" secondItem="KW3-sO-5wA" secondAttribute="bottom" id="rqB-tS-b8e"/>
                         </constraints>

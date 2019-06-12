@@ -26,10 +26,12 @@ class SearchSeriesCell: UITableViewCell {
     }
 
     private func setupUI(cellModel: SearchResultsData) {
+        guard let imageURL = URL(string: cellModel.imagePath) else { return }
+//        let resourse = ImageResource(downloadURL: imageURL, cacheKey: "SearchSeriesCellCache")
+        seriesPreviewImage.kf.indicatorType = .activity
+        seriesPreviewImage.kf.setImage(with: imageURL)
         seriesNameLabel.text = cellModel.name
         captionLabel.text = cellModel.caption
-        guard let previewImageURL = URL.init(string: cellModel.imagePath) else { return }
-        seriesPreviewImage.kf.setImage(with: previewImageURL)
         self.selectionStyle = .none
     }
 

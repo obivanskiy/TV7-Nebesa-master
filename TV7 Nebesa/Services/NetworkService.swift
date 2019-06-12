@@ -30,6 +30,10 @@ class NetworkService {
         case fetchSearchSeries
     }
     
+   
+  
+    
+    
     static var requestURL: [NetworkRequestType : String] = [
         .fetchParentCategories : NetworkEndpoints.baseURL + NetworkEndpoints.parentCategoriesURL,
         .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL,
@@ -39,6 +43,7 @@ class NetworkService {
         //Most Viewed/ Newest programmes URL's on the homeScreen
         .fetchHomeScreenNewestProgrammes : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenNewestProgrammesURL,
         .fetchHomeScreenMostViewedProgrammes : NetworkEndpoints.baseURL + NetworkEndpoints.homeScreenMostViewedProgrammesURL,
+        .fetchVideoData: NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL,
         
         //        .fetchWebTVProgrammesList: NetworkEndpoints.baseURL + NetworkEndpoints.webTVGuideURL
         .fetchTVProgram: NetworkEndpoints.baseURL + NetworkEndpoints.tvGuide,
@@ -78,5 +83,7 @@ class NetworkService {
         }
         urlSessionTask.resume()
     }
+   
+    
 }
 

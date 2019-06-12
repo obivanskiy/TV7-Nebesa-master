@@ -34,16 +34,31 @@ class RecommendTableViewCell: UITableViewCell {
        
         RecommendImageView.sizeToFit()
         RecommendTitleLabel.sizeToFit()
-        RecommendTitleLabel.text = cellModel.seriesName
-        
+        if cellModel.name.isEmpty {
+           RecommendTitleLabel.text = cellModel.seriesName
+        } else {
+           RecommendTitleLabel.text = cellModel.name
+        }
         RecommendDateLabel.text = "\(dateFormatter(cellModel.firstBroadcast))"
-        
+        if cellModel.caption.isEmpty {
+          RecommendCaptionLabel.text = cellModel.description
+        } else {
         RecommendCaptionLabel.text = cellModel.caption
-        
+        }
         guard let previewImageURL = URL.init(string: cellModel.homeScreenVideoPreviewImageURLString) else {
             return
         }
-        RecommendImageView.kf.setImage(with: previewImageURL)
+        let cacheKey = cellModel.homeScreenVideoPreviewImageURLString
+        let resource = ImageResource(downloadURL: previewImageURL, cacheKey: cacheKey)
+        //        imageView.kf.setImage(with: resource)
+        let cache = ImageCache.default
+        let cached = cache.isCached(forKey: cacheKey)
+        
+        // To know where the cached image is:
+        let cacheType = cache.imageCachedType(forKey: cacheKey)
+        print(cacheType, cached)
+        RecommendImageView.kf.setImage(with: resource)
+//        RecommendImageView.kf.setImage(with: previewImageURL)
     }
     
     private func dateFormatter(_ dateIn: String) -> String {

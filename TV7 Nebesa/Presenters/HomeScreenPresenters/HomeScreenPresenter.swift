@@ -20,7 +20,9 @@ final class HomeRecommendPresenter {
     
     
     private func requestHomeScreenMainInformation() {
-        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMainData) { result in
+        
+       
+        NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchHomeScreenMainData ) { result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)

@@ -27,24 +27,36 @@ class MostViewedTableViewCell: UITableViewCell {
     }
     
     func setupUI(cellModel: HomeMostViewedData) {
-       mostViewedImageView.sizeToFit()
-        mostViewedTitle.sizeToFit()
-        mostViewedTitle.text = cellModel.seriesName
         
-        mostViewedDateLabel.text = "Длительность: \(dateFormatter(cellModel.time!))"
+        if cellModel.programName!.isEmpty {
+            mostViewedTitle.text = cellModel.seriesName
+        } else {
+            mostViewedTitle.text = cellModel.programName
+        }
+        mostViewedDateLabel.text = "Доступно с: \(dateFormatter(cellModel.time!))"
         
-        mostViewedCaption.text = cellModel.caption
+            mostViewedCaption.text = cellModel.caption
         
         guard let previewImageURL = URL.init(string: cellModel.homeScreenMostViewedPreviewImageURLString) else {
             return
         }
-        mostViewedImageView.kf.setImage(with: previewImageURL)
+        let cacheKey = cellModel.homeScreenMostViewedPreviewImageURLString
+        let resource = ImageResource(downloadURL: previewImageURL, cacheKey: cacheKey)
+        //        imageView.kf.setImage(with: resource)
+        let cache = ImageCache.default
+        let cached = cache.isCached(forKey: cacheKey)
+        
+        // To know where the cached image is:
+        let cacheType = cache.imageCachedType(forKey: cacheKey)
+        print(cacheType, cached)
+        mostViewedImageView.kf.setImage(with: resource)
+        
     }
     private func dateFormatter(_ dateIn: String) -> String {
         guard let unixDate = Double(dateIn) else { return "" }
         let date = Date(timeIntervalSince1970: unixDate/1000.0 )
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.dateFormat = "dd/MM/YYYY"
         
         let newDate = dateFormatter.string(from: date)
         return newDate

@@ -8,15 +8,15 @@
 
 import UIKit
 
-class SearchSeriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class SearchSeriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    //MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet weak var seriesTableView: UITableView!
     @IBOutlet weak var seriesImage: UIImageView!
     @IBOutlet weak var seriesNameLabel: UILabel!
     @IBOutlet weak var seriesCaptionLabel: UILabel!
 
-    //MARK: - Properties
+    // MARK: - Properties
     var dataForTopContentDictionary: [String: String] = [:]
     var episodeId = ""
     var searchSeriesData: SeriesProgrammes = SeriesProgrammes() {
@@ -26,16 +26,18 @@ class SearchSeriesViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
     }
-    private var episodeSegue = "episodeSegue"
+    private enum Constants {
+        static let episodeSegue = "episodeSegue"
+    }
     private var presenter: SearchSeriesPresenter?
 
-    //MARK: - Lifecycle Methods
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
 
-    //MARK: - Table View Data Source Methods
+    // MARK: - Table View Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchSeriesData.seriesProgrammes.count
     }
@@ -48,12 +50,12 @@ class SearchSeriesViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
 
-    //MARK: - Table View Delegate Methods
+    // MARK: - Table View Delegate Methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: episodeSegue, sender: self)
+        performSegue(withIdentifier: Constants.episodeSegue, sender: self)
     }
 
-    //MARK: - Navigation
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = self.seriesTableView.indexPathForSelectedRow else { return }
         guard let destVC = segue.destination as? SearchEpisodeViewController else { return }
@@ -61,7 +63,7 @@ class SearchSeriesViewController: UIViewController, UITableViewDelegate, UITable
         print("Episode id for EpisodeVC: \(destVC.episodeId)")
     }
 
-    //MARK: - Private Methods
+    // MARK: - Private Methods
     private func setupUI() {
         seriesTableView.delegate = self
         seriesTableView.dataSource = self

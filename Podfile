@@ -7,6 +7,6 @@ target 'TV7 Nebesa' do
 
   pod 'Kingfisher'
   pod 'google-cast-sdk'
-
+  pod 'SVProgressHUD'
 
 end

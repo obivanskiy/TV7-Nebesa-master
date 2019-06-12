@@ -34,7 +34,7 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
         mostViewedTableView.dataSource = self
         mostViewedTableView.delegate = self
         
-        print(homeMostViewedData.homeScreenMostViewedProgrammes)
+//        print(homeMostViewedData.homeScreenMostViewedProgrammes)
 
     }
     
@@ -59,7 +59,7 @@ class HomeMostViewedCell: UICollectionViewCell, UITableViewDataSource, UITableVi
 //        cell.cellModel = homeMostViewedData.homeScreenMostViewedProgrammes[indexPath.row]
 //        print(homeMostViewedData.homeScreenMostViewedProgrammes)
         cell.cellModel = homeMostViewedData.homeScreenMostViewedProgrammes[indexPath.row]
-        print(homeMostViewedData.homeScreenMostViewedProgrammes)
+//        print(homeMostViewedData.homeScreenMostViewedProgrammes)
         
         return cell
         
