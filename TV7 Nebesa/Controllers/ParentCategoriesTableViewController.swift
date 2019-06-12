@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 final class ParentCategoriesTableViewController: UITableViewController {
     
@@ -19,6 +20,7 @@ final class ParentCategoriesTableViewController: UITableViewController {
     var parentCategories: ParentCategories = ParentCategories() {
         didSet {
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 self.tableView.reloadData()
             }
         }
@@ -28,6 +30,7 @@ final class ParentCategoriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.parentCategoriespresenter = ParentCategoriesPresenter(with: self)
+        SVProgressHUD.show()
     }
     
     //MARK: - Table View Data Source

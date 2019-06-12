@@ -88,6 +88,8 @@
 		1103F73B22721F630016A3C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1103F73322721F630016A3C8 /* Extensions.swift */; };
 		1103F73C22721F630016A3C8 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1103F73422721F630016A3C8 /* System.swift */; };
 		1103F73E2272219D0016A3C8 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1103F73D2272219C0016A3C8 /* VideoCell.swift */; };
+		11088CCF22AE82D6001A12B0 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11088CCD22AE82D6001A12B0 /* HomeCollectionViewCell.swift */; };
+		11088CD022AE82D6001A12B0 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11088CCE22AE82D6001A12B0 /* HomeCollectionViewCell.xib */; };
 		110F9D932237A6310020BABC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9D922237A6310020BABC /* AppDelegate.swift */; };
 		110F9D952237A6310020BABC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F9D942237A6310020BABC /* ViewController.swift */; };
 		110F9D982237A6310020BABC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110F9D962237A6310020BABC /* Main.storyboard */; };
@@ -247,6 +249,8 @@
 		1103F73322721F630016A3C8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1103F73422721F630016A3C8 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		1103F73D2272219C0016A3C8 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		11088CCD22AE82D6001A12B0 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		11088CCE22AE82D6001A12B0 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		110F9D8F2237A6310020BABC /* TV7 Nebesa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV7 Nebesa.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		110F9D922237A6310020BABC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		110F9D942237A6310020BABC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -670,6 +674,8 @@
 			isa = PBXGroup;
 			children = (
 				1103F67922721D1A0016A3C8 /* HomeScreen.storyboard */,
+				11088CCD22AE82D6001A12B0 /* HomeCollectionViewCell.swift */,
+				11088CCE22AE82D6001A12B0 /* HomeCollectionViewCell.xib */,
 				152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */,
 				152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */,
 				152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */,
@@ -826,6 +832,7 @@
 				1103F6F722721EC50016A3C8 /* SF-Pro-Display-Light.otf in Resources */,
 				1103F70C22721EC50016A3C8 /* SF-Compact-Display-Ultralight.otf in Resources */,
 				1103F70A22721EC50016A3C8 /* SF-Compact-Display-Black.otf in Resources */,
+				11088CD022AE82D6001A12B0 /* HomeCollectionViewCell.xib in Resources */,
 				1103F71222721EC50016A3C8 /* SF-Compact-Text-BoldItalic.otf in Resources */,
 				1103F72522721EC50016A3C8 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				1103F71022721EC50016A3C8 /* SF-Compact-Display-Regular.otf in Resources */,
@@ -981,6 +988,7 @@
 				15E0FD162238F851005A41DD /* ParentCategoryNameTableViewCell.swift in Sources */,
 				FA51ED1D22A860B300A5A1FB /* NSObject+Extension.swift in Sources */,
 				1103F69B22721D880016A3C8 /* HomeScreenNewestProgrammes.swift in Sources */,
+				11088CCF22AE82D6001A12B0 /* HomeCollectionViewCell.swift in Sources */,
 				15D2F12922661827009BE3D3 /* Castable+Extension.swift in Sources */,
 				1103F6A322721D880016A3C8 /* VideoPresenter.swift in Sources */,
 				15F1580B223FD39C005047CD /* SubCategoryTableViewCell.swift in Sources */,
