@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 final class SubCategoriesTableViewController: UITableViewController {
     
@@ -17,6 +18,7 @@ final class SubCategoriesTableViewController: UITableViewController {
     var subCategoriesData: SubCategories = SubCategories() {
         didSet {
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 self.tableView.reloadData()
             }
         }
@@ -26,6 +28,7 @@ final class SubCategoriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.subCategoriesPresenter = SubCategoriesPresenter(with: self)
+        SVProgressHUD.show()
         self.title = SubCategoriesTableViewController.subCategoryTitle
     }
     
