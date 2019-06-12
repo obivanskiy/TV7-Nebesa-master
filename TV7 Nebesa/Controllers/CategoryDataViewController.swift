@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 final class CategoryDataTableViewController: UITableViewController {
     
@@ -15,6 +16,7 @@ final class CategoryDataTableViewController: UITableViewController {
     var categoryData: CategoryProgrammes = CategoryProgrammes() {
         didSet {
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 self.tableView.reloadData()
             }
         }
@@ -22,6 +24,7 @@ final class CategoryDataTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         self.categoryDataPresenter = CategoryDataPresenter(with: self)
+        SVProgressHUD.show()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 122
     }
