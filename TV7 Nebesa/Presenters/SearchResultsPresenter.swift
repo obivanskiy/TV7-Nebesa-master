@@ -22,7 +22,6 @@ class SearchResultsPresenter {
 
     private func request() {
         NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchSearchResults) { (result) in
-            self.viewController.removeActivityIndicator()
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)

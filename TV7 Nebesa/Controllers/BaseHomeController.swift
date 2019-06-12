@@ -10,6 +10,10 @@ import UIKit
 
 class BaseHomeController: UIViewController {
 
+    private enum Constants {
+        static let programmeScreen = "ProgrammeScreen"
+        static let searchVC = "SearchViewController"
+    }
   
 
     override func viewDidLoad() {
@@ -56,6 +60,8 @@ class BaseHomeController: UIViewController {
     }
     
     @objc func handleSearch() {
+        guard let searchVC = UIStoryboard(name: Constants.programmeScreen, bundle: nil).instantiateViewController(withIdentifier: Constants.searchVC) as? SearchViewController else { return }
+        self.navigationController?.pushViewController(searchVC, animated: true)
         print("Search")
     }
     

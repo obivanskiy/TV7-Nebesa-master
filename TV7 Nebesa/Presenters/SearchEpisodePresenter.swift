@@ -34,6 +34,7 @@ class SearchEpisodePresenter {
     private func serializeData(requestData: Data) {
         do {
             viewController.self.searchEpisodeData = try JSONDecoder().decode(SearchEpisode.self, from: requestData)
+            viewController.self.episodeData = try JSONDecoder().decode(SearchEpisodeData.self, from: requestData)
         } catch let error {
             print(error.localizedDescription)
         }

@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
+import GoogleCast
+import Kingfisher
 
 final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Castable {
 
     // MARK: - Outlets
     @IBOutlet weak var episodeTableView: UITableView!
-    
+    @IBOutlet weak var episodeVideoView: UIView!
+
     // MARK: - Properties
     var episodeId = ""
     var searchEpisodeData: SearchEpisode = SearchEpisode() {
@@ -22,20 +27,40 @@ final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, 
             }
         }
     }
+    var episodeData: SearchEpisodeData = SearchEpisodeData()
     private var videoURLString = ""
     private var presenter: SearchEpisodePresenter?
     private var screenTitle = "ВИДЕО"
+    private var playerView: Player!
 
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        navigationItem.rightBarButtonItem = googleCastButton
+        createPlayerView()
+    }
+
+    override func viewWillLayoutSubviews() {
+        playerView.playerViewController.view.frame = episodeVideoView.bounds
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        if UIDevice.current.orientation.isPortrait {
+
+        } else if UIDevice.current.orientation.isLandscape {
+            
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-//        let cell = EpisodeCell()
-//        cell.stopPlayback()
+        super.viewWillDisappear(animated)
+        playerView.stopPlayback()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        playerView.removeFromSuperview()
     }
 
     // MARK: - Table View Data Source Methods
@@ -50,6 +75,7 @@ final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, 
         cell.cellModel = searchEpisodeData.results[indexPath.row]
         guard let path = cell.cellModel?.path else { return UITableViewCell() }
         videoURLString = NetworkEndpoints.baseURLForVideoPlayback + path + NetworkEndpoints.playlistEndpoint
+        createPlayerView()
         return cell
     }
 
@@ -62,6 +88,14 @@ final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, 
         //Register for EpisodeCell.xib
         episodeTableView.register(UINib(nibName: EpisodeCell.identifier, bundle: .none), forCellReuseIdentifier: EpisodeCell.identifier)
         self.title = screenTitle
+    }
+
+    private func createPlayerView() {
+        navigationItem.rightBarButtonItem = googleCastButton
+        playerView = Player(frame: episodeVideoView.bounds)
+        playerView.mediaItem = MediaItem(name: "\(self.episodeData.name): \(self.episodeData.caption)", about: self.episodeData.description, videoUrl: videoURLString.encodeUrl(), thumbnailUrl: self.episodeData.imagePath)
+        playerView.initPlayerLayer()
+        episodeVideoView.addSubview(playerView)
     }
 
 }
