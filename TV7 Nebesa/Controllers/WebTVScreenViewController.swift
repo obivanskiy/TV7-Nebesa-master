@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import  AVKit
 import GoogleCast
+import SVProgressHUD
 
 enum PlaybackMode: Int {
     case none = 0
@@ -41,17 +42,17 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
     
     var webTVProgrammesList: TVGuideDates = TVGuideDates() {
         didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            filterDates(programmes: webTVProgrammesList)
         }
     }
+    
     private var currentTimeZone: String!
     
     private(set) var sortedDates: [TVGuideDatesData] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                SVProgressHUD.dismiss()
             }
         }
     }
@@ -67,12 +68,13 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
         tableView.dataSource = self
         self.title = "ВЕБ-ТВ"
         self.presenter = TVGuidePresenter(with: self)
+        SVProgressHUD.show()
         getCurrentTimeZone()
         self.dateAndTimeZone.text = getCurrentTimeAndDate() + " " + currentTimeZone
         
         //MARK: -Add to extension or func
         navigationItem.rightBarButtonItem = googleCastButton
-        filterDates(programmes: webTVProgrammesList)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

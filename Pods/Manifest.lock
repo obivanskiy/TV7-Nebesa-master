@@ -1,11 +1,11 @@
 PODS:
-  - google-cast-sdk (4.4.1):
-    - google-cast-sdk/Core (= 4.4.1)
+  - google-cast-sdk (4.4.2):
+    - google-cast-sdk/Core (= 4.4.2)
     - Protobuf (~> 3.0)
-  - google-cast-sdk/Core (4.4.1):
+  - google-cast-sdk/Core (4.4.2):
     - Protobuf (~> 3.0)
-  - Kingfisher (5.5.0)
-  - Protobuf (3.7.0)
+  - Kingfisher (5.6.0)
+  - Protobuf (3.8.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -21,11 +21,11 @@ SPEC REPOS:
     - SVProgressHUD
 
 SPEC CHECKSUMS:
-  google-cast-sdk: b4583a1591a94b693be5e913e0ae84447fbd6b9d
-  Kingfisher: 6fe5e67a90fd335e49b0f5c075ff55ac5ebedd94
-  Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  google-cast-sdk: ac9ea41d61026406869bf696b2e7f87971a4cf1f
+  Kingfisher: 1a50df6880a60bae26f3e21a0df3d17b892f5e0b
+  Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
 PODFILE CHECKSUM: 42ec6e3cc38c369712743299669b3c83e83aa4fb
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.6.2
