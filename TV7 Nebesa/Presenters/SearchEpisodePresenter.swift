@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SVProgressHUD
 
 class SearchEpisodePresenter {
     let viewController: SearchEpisodeViewController!
@@ -40,7 +41,7 @@ class SearchEpisodePresenter {
     }
 
     private func fetchSearchEpisode(_ episodeId: String) {
-        viewController.showActivityIndicator(onView: viewController.view)
+        SVProgressHUD.show()
         NetworkService.requestURL[.fetchSearchEpisode] = NetworkEndpoints.baseURL + NetworkEndpoints.searchEpisodeURL + episodeId
     }
 }

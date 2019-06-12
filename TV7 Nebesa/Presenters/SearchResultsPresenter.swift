@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SVProgressHUD
 
 class SearchResultsPresenter {
     let viewController: SearchViewController!
@@ -40,7 +40,7 @@ class SearchResultsPresenter {
     }
 
     private func fetchSearchResults(_ userText: String) {
-        viewController.showActivityIndicator(onView: viewController.view)
+        SVProgressHUD.show()
         guard let userText = userText.encodeUrl() else { return }
         NetworkService.requestURL[.fetchSearchResults] = NetworkEndpoints.searchBaseURL + NetworkEndpoints.searchResultsURL + userText
     }

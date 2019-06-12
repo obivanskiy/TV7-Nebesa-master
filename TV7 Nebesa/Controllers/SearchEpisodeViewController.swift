@@ -11,6 +11,7 @@ import AVKit
 import AVFoundation
 import GoogleCast
 import Kingfisher
+import SVProgressHUD
 
 final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Castable {
 
@@ -23,8 +24,8 @@ final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, 
     var searchEpisodeData: SearchEpisode = SearchEpisode() {
         didSet {
             DispatchQueue.main.async {
-                self.removeActivityIndicator()
                 self.episodeTableView.reloadData()
+                SVProgressHUD.dismiss()
             }
         }
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 final class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
@@ -19,8 +20,8 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     var searchResults: SearchResults = SearchResults() {
         didSet {
             DispatchQueue.main.async {
-                self.removeActivityIndicator()
                 self.searchResultsTableView.reloadData()
+                SVProgressHUD.dismiss()
             }
         }
     }
