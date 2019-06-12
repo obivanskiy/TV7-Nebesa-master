@@ -11,7 +11,7 @@ import Foundation
 
 class TVGuidePresenter {
     
-    let viewController: WebTVScreenViewController!
+    weak var viewController: WebTVScreenViewController?
     
     init(with viewController: WebTVScreenViewController){
         self.viewController = viewController
@@ -32,7 +32,8 @@ class TVGuidePresenter {
     
     private func serializeData(requestData: (Data)) {
         do {
-            viewController.self.webTVProgrammesList  = try JSONDecoder().decode(TVGuideDates.self, from: requestData)
+            viewController?.self.webTVProgrammesList  = try JSONDecoder().decode(TVGuideDates.self, from: requestData)
+            print("PRESENTER DATA FETCHED", viewController?.self.webTVProgrammesList)
         } catch {
             print(error.localizedDescription)
         }

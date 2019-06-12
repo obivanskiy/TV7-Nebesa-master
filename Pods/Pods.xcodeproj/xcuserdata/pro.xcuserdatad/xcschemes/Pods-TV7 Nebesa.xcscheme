@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "41456643054D52B75C7EE1F32287CDCE"
+               BlueprintIdentifier = "580CA0752CFEB1A4292C748261381E6F"
                BuildableName = "Pods_TV7_Nebesa.framework"
                BlueprintName = "Pods-TV7 Nebesa"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41456643054D52B75C7EE1F32287CDCE"
+            BlueprintIdentifier = "580CA0752CFEB1A4292C748261381E6F"
             BuildableName = "Pods_TV7_Nebesa.framework"
             BlueprintName = "Pods-TV7 Nebesa"
             ReferencedContainer = "container:Pods.xcodeproj">
