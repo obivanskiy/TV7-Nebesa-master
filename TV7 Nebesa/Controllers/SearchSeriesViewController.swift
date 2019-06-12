@@ -22,6 +22,7 @@ final class SearchSeriesViewController: UIViewController, UITableViewDelegate, U
     var searchSeriesData: SeriesProgrammes = SeriesProgrammes() {
         didSet {
             DispatchQueue.main.async {
+                self.removeActivityIndicator()
                 self.seriesTableView.reloadData()
             }
         }

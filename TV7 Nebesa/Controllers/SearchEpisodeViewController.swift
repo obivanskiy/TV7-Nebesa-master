@@ -23,6 +23,7 @@ final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, 
     var searchEpisodeData: SearchEpisode = SearchEpisode() {
         didSet {
             DispatchQueue.main.async {
+                self.removeActivityIndicator()
                 self.episodeTableView.reloadData()
             }
         }
