@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import UIKit
 import SystemConfiguration
+import SVProgressHUD
 
 class Reachability {
 
@@ -34,5 +36,19 @@ class Reachability {
 
         return ret
 
+    }
+}
+
+protocol InternetConnection: UIViewController {
+    func checkInternetConnection()
+}
+
+extension InternetConnection {
+    func checkInternetConnection() {
+        if !Reachability.isConnectedToNetwork() {
+            SVProgressHUD.dismiss()
+            showDefaultAlert(title: "Sorry", message: "You have no internet connection")
+            print("Internet Connection not Available!")
+        }
     }
 }

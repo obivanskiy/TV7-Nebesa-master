@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-final class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+final class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, InternetConnection {
 
 
     // MARK: - Outlets
@@ -42,6 +42,11 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         setupSearchBar()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+    }
+
     // MARK: Search Bar Delegate Methods
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.tintColor = .clear
@@ -56,6 +61,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         presenter = SearchResultsPresenter(with: self, userText: userText ?? "")
         searchResultsTableView.reloadData()
         searchResultsTableView.endEditing(true)
+        checkInternetConnection()
     }
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -141,12 +147,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         //Register for SearchSeriesCell.xib and SearchEpisodeCell.xib
         searchResultsTableView.register(UINib(nibName: SearchSeriesCell.identifier, bundle: .none), forCellReuseIdentifier: SearchSeriesCell.identifier)
         searchResultsTableView.register(UINib(nibName: SearchEpisodeCell.identifier, bundle: .none), forCellReuseIdentifier: SearchEpisodeCell.identifier)
-        if Reachability.isConnectedToNetwork() {
-            print("Internet Connection Available!")
-        } else {
-            showDefaultAlert(title: "Sorry", message: "You have no internet connection.")
-            print("Internet Connection not Available!")
-        }
+        checkInternetConnection()
     }
 
     // Make search when user stop typing
@@ -155,6 +156,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         if searchDelayer.userInfo != nil && searchText != "" {
             presenter = SearchResultsPresenter(with: self, userText: searchDelayer.userInfo as! String)
         }
+        checkInternetConnection()
         searchDelayer.invalidate()
         searchResultsTableView.reloadData()
     }

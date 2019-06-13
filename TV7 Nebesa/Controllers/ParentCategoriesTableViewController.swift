@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-final class ParentCategoriesTableViewController: UITableViewController {
+final class ParentCategoriesTableViewController: UITableViewController, InternetConnection {
     
     //MARK: - Private properties
     private var parentCategoriespresenter: ParentCategoriesPresenter?
@@ -31,6 +31,7 @@ final class ParentCategoriesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.parentCategoriespresenter = ParentCategoriesPresenter(with: self)
         SVProgressHUD.show()
+        checkInternetConnection()
     }
     
     //MARK: - Table View Data Source
@@ -39,6 +40,7 @@ final class ParentCategoriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        checkInternetConnection()
         if (quickNavigationSections.contains(parentCategories.parentCategories[indexPath.row].id)) {
             self.performSegue(withIdentifier: subCategoriesSegue, sender: self)
             tableView.deselectRow(at: indexPath, animated: true)

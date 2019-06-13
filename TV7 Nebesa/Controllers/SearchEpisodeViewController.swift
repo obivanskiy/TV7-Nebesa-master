@@ -49,9 +49,9 @@ final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isPortrait {
-
+            print("Portrait")
         } else if UIDevice.current.orientation.isLandscape {
-            
+            print("Landscape")
         }
     }
 

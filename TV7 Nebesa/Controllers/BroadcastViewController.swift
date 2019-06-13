@@ -7,7 +7,7 @@
 import UIKit
 
 
-final class BroadcastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+final class BroadcastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, InternetConnection {
 
     // MARK: - Outlets
     @IBOutlet weak var tvGuideTableView: UITableView!
@@ -159,6 +159,7 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
 
     // MARK: - Collection View Delegate Methods
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        checkInternetConnection()
         presenter = TVProgramPresenter(with: self, chosenDate: arrayOfDates[indexPath.row])
         expandedRows.removeAll()
         tvGuideTableView.reloadData()
@@ -188,12 +189,7 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
         tvGuideTableView.register(UINib(nibName: TVGuideCell.identifier, bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
         tvGuideTableView.rowHeight = UITableView.automaticDimension
         // Checking for an internet connection
-        if Reachability.isConnectedToNetwork() {
-            print("Internet Connection Available!")
-        } else {
-            showDefaultAlert(title: "Sorry", message: "You have no internet connection.")
-            print("Internet Connection not Available!")
-        }
+        checkInternetConnection()
     }
 
     private func setupDateCollectionView() {

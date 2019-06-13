@@ -21,7 +21,7 @@ enum PlaybackMode: Int {
 private var playbackMode = PlaybackMode.none
 
 class WebTVScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GCKSessionManagerListener,
-GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
+GCKRemoteMediaClientListener, GCKRequestDelegate, Castable, InternetConnection {
     //MARK: - Outlets
     @IBOutlet weak var webTVStreamView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -69,6 +69,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
         self.title = "ВЕБ-ТВ"
         self.presenter = TVGuidePresenter(with: self)
         SVProgressHUD.show()
+        checkInternetConnection()
         getCurrentTimeZone()
         self.dateAndTimeZone.text = getCurrentTimeAndDate() + " " + currentTimeZone
         
@@ -134,7 +135,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
         // if name in request comes as empty string, use caption instead of it
         if sortedDates[indexPath.row].name == "" {
             cell.nameLabel.text = sortedDates[indexPath.row].series
-        } else if sortedDates[indexPath.row].name != "" && sortedDates[indexPath.row].name != "" {
+        } else if sortedDates[indexPath.row].name != "" {
             cell.nameLabel.text = sortedDates[indexPath.row].series + ": " + sortedDates[indexPath.row].name
         } else {
             cell.nameLabel.text = sortedDates[indexPath.row].name
