@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-import  AVKit
+import AVKit
 import GoogleCast
 import SVProgressHUD
 
@@ -75,7 +75,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable, InternetConnection {
         
         //MARK: -Add to extension or func
         navigationItem.rightBarButtonItem = googleCastButton
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

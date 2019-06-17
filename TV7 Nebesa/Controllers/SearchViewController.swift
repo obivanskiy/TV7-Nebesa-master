@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-final class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, InternetConnection {
+final class SearchViewController: UIViewController, InternetConnection {
 
 
     // MARK: - Outlets
@@ -35,7 +35,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     }
     private var searchDelayer = Timer()
 
-    // MARK: - Lifecycle methods
+    // MARK: - Lifecycle <ethods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -45,72 +45,6 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         SVProgressHUD.dismiss()
-    }
-
-    // MARK: Search Bar Delegate Methods
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.tintColor = .clear
-        self.searchBar.backgroundColor = .clear
-        self.searchBar.showsCancelButton = false
-        self.searchBar.text?.removeAll()
-        searchResultsTableView.endEditing(true)
-    }
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let userText = searchBar.text
-        presenter = SearchResultsPresenter(with: self, userText: userText ?? "")
-        searchResultsTableView.reloadData()
-        searchResultsTableView.endEditing(true)
-        checkInternetConnection()
-    }
-
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-        self.definesPresentationContext = true
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchDelayer.invalidate()
-        searchDelayer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(search(_:)), userInfo: searchText, repeats: false)
-    }
-
-    // MARK: - Table View Data Source Methodsa
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.results.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if searchResults.results[indexPath.row].type == "series" {
-            guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: SearchSeriesCell.identifier, for: indexPath) as? SearchSeriesCell else {
-                return UITableViewCell()
-            }
-            cell.cellModel = searchResults.results[indexPath.row]
-            return cell
-        }
-        guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: SearchEpisodeCell.identifier, for: indexPath) as? SearchEpisodeCell else {
-            return UITableViewCell()
-        }
-        cell.cellModel = searchResults.results[indexPath.row]
-        return cell
-    }
-
-    // MARK: - Table View Delegate Methods
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let typeOfContent = searchResults.results[indexPath.row].type
-        switch typeOfContent {
-        case "episode":
-            performSegue(withIdentifier: Constants.episodeSegue, sender: self)
-            print("Did select = episode")
-        case "series":
-            performSegue(withIdentifier: Constants.seriesSegue, sender: self)
-            print("Did select = series")
-        default:
-            print("There is no type found")
-        }
-    }
-
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchBar.showsCancelButton = false
     }
 
     // MARK: - Navigation
@@ -165,6 +99,76 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         searchBar.delegate = self
     }
 
+}
 
+// MARK: - Table View Data Source Methods
+extension SearchViewController: UITableViewDataSource {
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.results.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if searchResults.results[indexPath.row].type == "series" {
+            guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: SearchSeriesCell.identifier, for: indexPath) as? SearchSeriesCell else {
+                return UITableViewCell()
+            }
+            cell.cellModel = searchResults.results[indexPath.row]
+            return cell
+        }
+        guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: SearchEpisodeCell.identifier, for: indexPath) as? SearchEpisodeCell else {
+            return UITableViewCell()
+        }
+        cell.cellModel = searchResults.results[indexPath.row]
+        return cell
+    }
+}
+
+// MARK: - Table View Delegate Methods
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let typeOfContent = searchResults.results[indexPath.row].type
+        switch typeOfContent {
+        case "episode":
+            performSegue(withIdentifier: Constants.episodeSegue, sender: self)
+            print("Did select = episode")
+        case "series":
+            performSegue(withIdentifier: Constants.seriesSegue, sender: self)
+            print("Did select = series")
+        default:
+            print("There is no type found")
+        }
+    }
+}
+
+// MARK: Search Bar Delegate Methods
+extension SearchViewController: UISearchBarDelegate {
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.tintColor = .clear
+        self.searchBar.backgroundColor = .clear
+        self.searchBar.text?.removeAll()
+        searchResultsTableView.endEditing(true)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let userText = searchBar.text
+        presenter = SearchResultsPresenter(with: self, userText: userText ?? "")
+        searchResultsTableView.reloadData()
+        searchResultsTableView.endEditing(true)
+        checkInternetConnection()
+        if searchResults.results.isEmpty {
+            showDefaultAlert(title: "Sorry", message: "There is no information for your request '\(String(describing: searchBar.text))'")
+        }
+    }
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+        self.definesPresentationContext = true
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchDelayer.invalidate()
+        searchDelayer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(search(_:)), userInfo: searchText, repeats: false)
+    }
 }

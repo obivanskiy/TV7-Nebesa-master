@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-final class SearchSeriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class SearchSeriesViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var seriesTableView: UITableView!
@@ -39,24 +39,6 @@ final class SearchSeriesViewController: UIViewController, UITableViewDelegate, U
         setupUI()
     }
 
-    // MARK: - Table View Data Source Methods
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchSeriesData.seriesProgrammes.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = seriesTableView.dequeueReusableCell(withIdentifier: SearchEpisodeCell.identifier, for: indexPath) as? SearchEpisodeCell else {
-            return UITableViewCell()
-        }
-        cell.seriesCellModel = searchSeriesData.seriesProgrammes[indexPath.row]
-        return cell
-    }
-
-    // MARK: - Table View Delegate Methods
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Constants.episodeSegue, sender: self)
-    }
-
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = self.seriesTableView.indexPathForSelectedRow else { return }
@@ -79,4 +61,27 @@ final class SearchSeriesViewController: UIViewController, UITableViewDelegate, U
         seriesTableView.register(UINib(nibName: SearchEpisodeCell.identifier, bundle: .none), forCellReuseIdentifier: SearchEpisodeCell.identifier)
     }
 
+}
+
+// MARK: - Table View Data Source Methods
+extension SearchSeriesViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchSeriesData.seriesProgrammes.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = seriesTableView.dequeueReusableCell(withIdentifier: SearchEpisodeCell.identifier, for: indexPath) as? SearchEpisodeCell else {
+            return UITableViewCell()
+        }
+        cell.seriesCellModel = searchSeriesData.seriesProgrammes[indexPath.row]
+        return cell
+    }
+}
+
+// MARK: - Table View Delegate Methods
+extension SearchSeriesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Constants.episodeSegue, sender: self)
+    }
 }

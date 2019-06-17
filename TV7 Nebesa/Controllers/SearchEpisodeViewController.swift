@@ -13,7 +13,7 @@ import GoogleCast
 import Kingfisher
 import SVProgressHUD
 
-final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Castable {
+final class SearchEpisodeViewController: UIViewController, Castable {
 
     // MARK: - Outlets
     @IBOutlet weak var episodeTableView: UITableView!
@@ -35,7 +35,7 @@ final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, 
     private var screenTitle = "ВИДЕО"
     private var playerView: Player!
 
-    // MARK: - Lifecycle methods
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -65,25 +65,8 @@ final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, 
         playerView.removeFromSuperview()
     }
 
-    // MARK: - Table View Data Source Methods
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchEpisodeData.results.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = episodeTableView.dequeueReusableCell(withIdentifier: EpisodeCell.identifier, for: indexPath) as? EpisodeCell else {
-            return UITableViewCell()
-        }
-        cell.cellModel = searchEpisodeData.results[indexPath.row]
-        guard let path = cell.cellModel?.path else { return UITableViewCell() }
-        videoURLString = NetworkEndpoints.baseURLForVideoPlayback + path + NetworkEndpoints.playlistEndpoint
-        createPlayerView()
-        return cell
-    }
-
     // MARK: - Private Methods
     private func setupTableView() {
-        episodeTableView.delegate = self
         episodeTableView.dataSource = self
         episodeTableView.tableFooterView = UIView()
         presenter = SearchEpisodePresenter(with: self, episodeId: episodeId)
@@ -99,5 +82,23 @@ final class SearchEpisodeViewController: UIViewController, UITableViewDelegate, 
         playerView.initPlayerLayer()
         episodeVideoView.addSubview(playerView)
     }
+}
 
+// MARK: - Table View Data Source Methods
+extension SearchEpisodeViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchEpisodeData.results.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = episodeTableView.dequeueReusableCell(withIdentifier: EpisodeCell.identifier, for: indexPath) as? EpisodeCell else {
+            return UITableViewCell()
+        }
+        cell.cellModel = searchEpisodeData.results[indexPath.row]
+        guard let path = cell.cellModel?.path else { return UITableViewCell() }
+        videoURLString = NetworkEndpoints.baseURLForVideoPlayback + path + NetworkEndpoints.playlistEndpoint
+        createPlayerView()
+        return cell
+    }
 }

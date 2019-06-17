@@ -40,9 +40,8 @@ class EpisodeCell: UITableViewCell {
         seriesNameLabel.attributedText = attributedText
         captionLabel.text = cellModel.caption
         episodeNumberLabel.text = "Эпизод: " + cellModel.episodeNumber
-        let duration = Int(cellModel.duration)
-        guard let durationInMinutes = duration else { return }
-        durationLabel.text = "Длительность: " + String(durationInMinutes/1000/60) + " Мин"
+        guard let duration = Int(cellModel.duration) else { return }
+        durationLabel.text = "Длительность: " + String(duration/1000/60) + " Мин"
         firstBroadcast.text = "Первая трансляция: " + dateFormatter(cellModel.visibleOnVodSince)
     }
 

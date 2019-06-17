@@ -7,7 +7,7 @@
 import UIKit
 
 
-final class BroadcastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, InternetConnection {
+final class BroadcastViewController: UIViewController, InternetConnection {
 
     // MARK: - Outlets
     @IBOutlet weak var tvGuideTableView: UITableView!
@@ -49,82 +49,6 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
         super.viewWillAppear(animated)
     }
 
-    // MARK: - Table View Data Source Methods
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tvGuideSeries.tvGuideDates.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TVGuideCell.identifier, for: indexPath) as? TVGuideCell else {
-            return UITableViewCell()
-        }
-        cell.cellModel = tvGuideSeries.tvGuideDates[indexPath.row]
-        cell.isExpanded = self.expandedRows.contains(indexPath.row)
-        if cell.cellModel?.caption == "" {
-            cell.expandRowButton.isHidden = true
-        } else {
-            cell.expandRowButton.isHidden = false
-        }
-        return cell
-    }
-
-    // MARK: - Table View Delegate Methods
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
-
-        if cell.captionLabel.text == "" {
-            cell.isExpanded = true
-        }
-
-        switch cell.isExpanded {
-        case true:
-            self.expandedRows.remove(indexPath.row)
-        case false:
-            self.expandedRows.insert(indexPath.row)
-        }
-        cell.isExpanded = !cell.isExpanded
-        self.tvGuideTableView.beginUpdates()
-        self.tvGuideTableView.endUpdates()
-    }
-
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
-        self.expandedRows.remove(indexPath.row)
-        cell.isExpanded = false
-        self.tvGuideTableView.beginUpdates()
-        self.tvGuideTableView.endUpdates()
-    }
-
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        // This fu*king stuff is for scrolling to current time for the first loading app
-        let lastRow = tableView.indexPathsForVisibleRows?.last
-        let nowUnix = Date().timeIntervalSince1970
-        var nearestTime = Double()
-        var arrayOfTimes: [String] = []
-
-        // 1.Appending value of "time" to array; 2. Looking for the nearest time of TV program
-        for time in tvGuideSeries.tvGuideDates {
-            arrayOfTimes.append(time.time)
-            guard let checkTime = Double(time.date) else { return }
-            if checkTime > nowUnix {
-                nearestTime = checkTime
-                break
-            }
-        }
-        let nearestTimeString = "\(Int(nearestTime))" + "000"
-        guard let firstIndex = arrayOfTimes.firstIndex(of: nearestTimeString) else { return }
-
-        if indexPath.row == lastRow?.row {
-            if scrollToTime == true {
-                let indexPath = IndexPath(row: firstIndex, section: 0)
-                tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-                tableView.cellForRow(at: indexPath)?.isHighlighted = true
-                scrollToTime = false
-            }
-        }
-
-    }
-
     // MARK: - Scroll View Delegate Methods
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == tvGuideTableView {
@@ -143,26 +67,6 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
                 tvGuideTableViewConstraintToTop.constant = 36
             }
         }
-    }
-
-    // MARK: - Collection View Data Source Methods
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayOfDatesStrings.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.dataCell, for: indexPath) as! DateCollectionViewCell
-        let dates = self.arrayOfDatesStrings[indexPath.row]
-        cell.dateLabel.text = dates
-        return cell
-    }
-
-    // MARK: - Collection View Delegate Methods
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        checkInternetConnection()
-        presenter = TVProgramPresenter(with: self, chosenDate: arrayOfDates[indexPath.row])
-        expandedRows.removeAll()
-        tvGuideTableView.reloadData()
     }
 
     // MARK: - Actions
@@ -220,3 +124,108 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
 
 }
 
+
+// MARK: - Table View Data Source Methods
+extension BroadcastViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tvGuideSeries.tvGuideDates.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TVGuideCell.identifier, for: indexPath) as? TVGuideCell else {
+            return UITableViewCell()
+        }
+        cell.cellModel = tvGuideSeries.tvGuideDates[indexPath.row]
+        cell.isExpanded = self.expandedRows.contains(indexPath.row)
+        if cell.cellModel?.caption == "" {
+            cell.expandRowButton.isHidden = true
+        } else {
+            cell.expandRowButton.isHidden = false
+        }
+        return cell
+    }
+}
+
+
+// MARK: - Table View Delegate Methods
+extension BroadcastViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
+
+        if cell.captionLabel.text == "" {
+            cell.isExpanded = true
+        }
+
+        switch cell.isExpanded {
+        case true:
+            self.expandedRows.remove(indexPath.row)
+        case false:
+            self.expandedRows.insert(indexPath.row)
+        }
+        cell.isExpanded = !cell.isExpanded
+        self.tvGuideTableView.beginUpdates()
+        self.tvGuideTableView.endUpdates()
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
+        self.expandedRows.remove(indexPath.row)
+        cell.isExpanded = false
+        self.tvGuideTableView.beginUpdates()
+        self.tvGuideTableView.endUpdates()
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // This fu*king stuff is for scrolling to current time for the first loading app
+        let lastRow = tableView.indexPathsForVisibleRows?.last
+        let nowUnix = Date().timeIntervalSince1970
+        var nearestTime = Double()
+        var arrayOfTimes: [String] = []
+
+        // 1.Appending value of "time" to array; 2. Looking for the nearest time of TV program
+        for time in tvGuideSeries.tvGuideDates {
+            arrayOfTimes.append(time.time)
+            guard let checkTime = Double(time.date) else { return }
+            if checkTime > nowUnix {
+                nearestTime = checkTime
+                break
+            }
+        }
+        let nearestTimeString = "\(Int(nearestTime))" + "000"
+        guard let firstIndex = arrayOfTimes.firstIndex(of: nearestTimeString) else { return }
+
+        if indexPath.row == lastRow?.row {
+            if scrollToTime == true {
+                let indexPath = IndexPath(row: firstIndex, section: 0)
+                tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                tableView.cellForRow(at: indexPath)?.isHighlighted = true
+                scrollToTime = false
+            }
+        }
+    }
+}
+
+// MARK: - Collection View Data Source Methods
+extension BroadcastViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return arrayOfDatesStrings.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.dataCell, for: indexPath) as! DateCollectionViewCell
+        let dates = self.arrayOfDatesStrings[indexPath.row]
+        cell.dateLabel.text = dates
+        return cell
+    }
+}
+
+// MARK: - Collection View Delegate Methods
+extension BroadcastViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        checkInternetConnection()
+        presenter = TVProgramPresenter(with: self, chosenDate: arrayOfDates[indexPath.row])
+        expandedRows.removeAll()
+        tvGuideTableView.setContentOffset(.zero, animated: false)
+        tvGuideTableView.reloadData()
+    }
+}
