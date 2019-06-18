@@ -33,7 +33,7 @@ class MostViewedTableViewCell: UITableViewCell {
         } else {
             mostViewedTitle.text = cellModel.programName
         }
-        mostViewedDateLabel.text = "Доступно с: \(dateFormatter(cellModel.time!))"
+        mostViewedDateLabel.text = "\(dateFormatter(cellModel.time!))"
         
             mostViewedCaption.text = cellModel.caption
         
