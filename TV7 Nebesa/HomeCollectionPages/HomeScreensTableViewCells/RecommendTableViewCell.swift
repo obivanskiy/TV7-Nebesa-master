@@ -39,7 +39,7 @@ class RecommendTableViewCell: UITableViewCell {
         } else {
            RecommendTitleLabel.text = cellModel.name
         }
-        RecommendDateLabel.text = "\(dateFormatter(cellModel.firstBroadcast))"
+        RecommendDateLabel.text = "\(dateFormatter(cellModel.visibleOnVodSince))"
         if cellModel.caption.isEmpty {
           RecommendCaptionLabel.text = cellModel.description
         } else {
