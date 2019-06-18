@@ -47,7 +47,6 @@ class SearchEpisodeCell: UITableViewCell {
         captionLabel.text = cellModel.caption
         guard let previewImageURL = URL.init(string: cellModel.imagePath) else { return }
         episodePreviewImage.kf.setImage(with: previewImageURL)
-        selectionStyle = .none
     }
 
     private func setupUISeries(seriesCellModel: ProgrammesData) {
@@ -58,7 +57,6 @@ class SearchEpisodeCell: UITableViewCell {
         captionLabel.text = "Длительность: " + String(duration/1000/60) + " Мин"
         guard let previewImageURL = URL.init(string: seriesCellModel.imagePath) else { return }
         episodePreviewImage.kf.setImage(with: previewImageURL)
-        selectionStyle = .none
     }
     
 }

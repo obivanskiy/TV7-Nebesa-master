@@ -12,7 +12,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="uEa-Aj-Bwk">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="dwb-CS-2RT" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="dwb-CS-2RT" customClass="TabBarController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" alpha="0.90000000000000002" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="w7T-zS-P96">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

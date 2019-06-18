@@ -11,7 +11,6 @@ import SVProgressHUD
 
 final class SearchViewController: UIViewController, InternetConnection {
 
-
     // MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResultsTableView: UITableView!
@@ -138,6 +137,7 @@ extension SearchViewController: UITableViewDelegate {
         default:
             print("There is no type found")
         }
+        searchResultsTableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

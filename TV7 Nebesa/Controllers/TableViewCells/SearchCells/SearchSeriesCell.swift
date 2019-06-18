@@ -32,7 +32,6 @@ class SearchSeriesCell: UITableViewCell {
         seriesPreviewImage.kf.setImage(with: imageURL)
         seriesNameLabel.text = cellModel.name
         captionLabel.text = cellModel.caption
-        self.selectionStyle = .none
     }
 
 }
