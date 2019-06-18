@@ -21,6 +21,10 @@ final class SearchViewController: UIViewController, InternetConnection {
             DispatchQueue.main.async {
                 self.searchResultsTableView.reloadData()
                 SVProgressHUD.dismiss()
+                if self.searchResults.results.isEmpty {
+                    guard let searchText = self.searchBar.text else { return }
+                    self.showDefaultAlert(title: "Sorry", message: "There is no information for your request: '\(searchText)'")
+                }
             }
         }
     }
@@ -145,9 +149,8 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchBarDelegate {
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.tintColor = .clear
-        self.searchBar.backgroundColor = .clear
         self.searchBar.text?.removeAll()
+        self.searchBar.showsCancelButton = true
         searchResultsTableView.endEditing(true)
     }
 
@@ -157,13 +160,10 @@ extension SearchViewController: UISearchBarDelegate {
         searchResultsTableView.reloadData()
         searchResultsTableView.endEditing(true)
         checkInternetConnection()
-        if searchResults.results.isEmpty {
-            showDefaultAlert(title: "Sorry", message: "There is no information for your request '\(String(describing: searchBar.text))'")
-        }
     }
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
+        self.searchBar.showsCancelButton = true
         self.definesPresentationContext = true
     }
 
@@ -171,4 +171,5 @@ extension SearchViewController: UISearchBarDelegate {
         searchDelayer.invalidate()
         searchDelayer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(search(_:)), userInfo: searchText, repeats: false)
     }
+
 }

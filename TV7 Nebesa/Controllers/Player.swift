@@ -77,6 +77,10 @@ class Player: UIView {
     func stopPlayback() {
         playerViewController.player?.pause()
     }
+
+    func play() {
+        playerViewController.player?.play()
+    }
     
     private func createSpinner() {
         spinner = UIActivityIndicatorView(style: .whiteLarge)

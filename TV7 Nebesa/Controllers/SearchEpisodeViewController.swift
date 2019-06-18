@@ -47,11 +47,14 @@ final class SearchEpisodeViewController: UIViewController, Castable {
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isPortrait {
             print("Portrait")
+            playerView.stopPlayback()
         } else if UIDevice.current.orientation.isLandscape {
             print("Landscape")
+            DispatchQueue.main.async {
+                self.playerView.play()
+            }
         }
     }
 
