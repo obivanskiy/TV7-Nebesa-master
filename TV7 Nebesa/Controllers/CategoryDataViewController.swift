@@ -10,7 +10,8 @@ import UIKit
 import SVProgressHUD
 
 final class CategoryDataTableViewController: UITableViewController {
-    
+
+    // MARK: - Properties
     private let seriesDataSegue: String = "SeriesDataSegue"
     private var categoryDataPresenter: CategoryDataPresenter?
     var categoryData: CategoryProgrammes = CategoryProgrammes() {
@@ -28,7 +29,8 @@ final class CategoryDataTableViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 122
     }
-    
+
+    // MARK: - Table View Data Source Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryData.categoryProgrammes.count
     }
@@ -41,7 +43,7 @@ final class CategoryDataTableViewController: UITableViewController {
         return cell
     }
     
-//    MARK: - Navigation
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == seriesDataSegue {
             guard segue.destination is CategorySeriesTableViewController else {

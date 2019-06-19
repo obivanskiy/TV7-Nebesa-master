@@ -14,8 +14,12 @@ final class ParentCategoriesTableViewController: UITableViewController, Internet
     //MARK: - Private properties
     private var parentCategoriespresenter: ParentCategoriesPresenter?
     private let quickNavigationSections = ["5", "4", "9", "10"]
-    private let subCategoriesSegue = "SubCategoriesSegue"
-    private let programmeSegue = "ProgrammeSegue"
+    private enum Constants {
+        static let programmeSegue = "ProgrammeSegue"
+        static let searchVC = "SearchViewController"
+        static let subCategoriesSegue = "SubCategoriesSegue"
+        static let programmeScreen = "ProgrammeScreen"
+    }
     
     var parentCategories: ParentCategories = ParentCategories() {
         didSet {
@@ -32,9 +36,11 @@ final class ParentCategoriesTableViewController: UITableViewController, Internet
         self.parentCategoriespresenter = ParentCategoriesPresenter(with: self)
         SVProgressHUD.show()
         checkInternetConnection()
+        title = "Архив"
+        setupNavBarButtons()
     }
-    
-    //MARK: - Table View Data Source
+
+    //MARK: - Table View Data Source and Delegate Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return parentCategories.parentCategories.count
     }
@@ -42,10 +48,10 @@ final class ParentCategoriesTableViewController: UITableViewController, Internet
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         checkInternetConnection()
         if (quickNavigationSections.contains(parentCategories.parentCategories[indexPath.row].id)) {
-            self.performSegue(withIdentifier: subCategoriesSegue, sender: self)
+            self.performSegue(withIdentifier: Constants.subCategoriesSegue, sender: self)
             tableView.deselectRow(at: indexPath, animated: true)
         } else {
-            self.performSegue(withIdentifier: programmeSegue, sender: self)
+            self.performSegue(withIdentifier: Constants.programmeSegue, sender: self)
         }
     }
     
@@ -64,13 +70,13 @@ final class ParentCategoriesTableViewController: UITableViewController, Internet
             return
         }
         switch identifier {
-        case subCategoriesSegue:
+        case Constants.subCategoriesSegue:
             guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
             NetworkService.requestURL[.fetchSubCategories] = NetworkEndpoints.baseURL + NetworkEndpoints.subCategoriesURL + parentCategories.parentCategories[indexPath.row].id
             SubCategoriesTableViewController.subCategoryTitle = parentCategories.parentCategories[indexPath.row].name
-        case programmeSegue:
+        case Constants.programmeSegue:
             guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
@@ -81,4 +87,18 @@ final class ParentCategoriesTableViewController: UITableViewController, Internet
             assertionFailure("Identifier was not recognized")
         }
     }
+
+    private func setupNavBarButtons() {
+        let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
+        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(searchPressed))
+        navigationItem.rightBarButtonItems = [searchBarButtonItem]
+    }
+
+    @objc private func searchPressed() {
+        guard let searchVC = UIStoryboard(name: Constants.programmeScreen, bundle: nil).instantiateViewController(withIdentifier: Constants.searchVC) as? SearchViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(searchVC, animated: true)
+    }
+
 }

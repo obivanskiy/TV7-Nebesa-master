@@ -40,7 +40,7 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
     
     override func viewWillAppear(_ animated: Bool) {
         createPlayerView()
-        print(playerView.mediaItem)
+        print(playerView.mediaItem as Any)
     }
     override func viewWillDisappear(_ animated: Bool) {
         playerView.stopPlayback()
@@ -56,7 +56,7 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
 
 
 
-    //MARK: -Set up the UI
+    //MARK: - Private Methods
     private func setUpUI() {
         seriesNameLabel.text = ProgrammeScreenViewController.programmeData.seriesName
         seriesProgrammeName.text = ProgrammeScreenViewController.programmeData.name
