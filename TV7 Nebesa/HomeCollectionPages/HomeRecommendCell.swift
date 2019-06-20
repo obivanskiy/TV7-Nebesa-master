@@ -73,14 +73,12 @@ class HomeRecommendCell: UICollectionViewCell, UITableViewDelegate, UITableViewD
     
 }
  
-    
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//                tableView.deselectRow(at: indexPath, animated: true)
-//                let cell = tableView.cellForRow(at: indexPath) as! RecommendTableViewCell
-//
-//                HomeVideoPlayerController.programInfo = cell.cellModel!
-////                self.performSegue(withIdentifier: homeScreenProgrammeDataSegue, sender: self)
-//            }
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        _ = tableView.cellForRow(at: indexPath) as! RecommendTableViewCell
+//        //        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
+//    }
+
     
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -197,27 +197,14 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
                 let collectionCell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! HomeRecommendCell
                 let indexPath = collectionCell.recommendTableView.indexPath(for: tableCell)
                 let data = collectionCell.homeScreenData.homeScreenProgrammes[indexPath!.row]
-                destination.title = data.seriesName
-                if data.description != "" {
-                    destination.videoCaption = data.description
-                } else {
-                    destination.videoCaption = data.caption
+                let videoID = data.id
+                destination.videoID = videoID
+                print(videoID)
+                ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
+                ApiService.shared.requestVideoInfo { (videoData: HomeScreenProgrammeInformation) in
+                    destination.videoData = videoData
                 }
-                destination.videoTitle = data.name
-                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.linkPath + NetworkEndpoints.playlistEndpoint
-                print(destination.videoURLString, data.id)
-                destination.videoDuration = data.duration
-                destination.videoFirstBroadcast = data.firstBroadcast
-                destination.videoEpisodeNumber = data.episodeNumber
 
-                
-                /// New
-//                let videoID = data.id
-//                destination.videoID = videoID
-//                print(videoID)
-//                ApiService.shared.requestURL[.fetchVideoData] = NetworkEndpoints.baseURL + NetworkEndpoints.programmeInfoURL + videoID
-//
-                
                 //:TODO - Force unwrapping!!!
                 
             case let tableCell as NewestTableViewCell:
@@ -248,6 +235,23 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
 //                activityIndicator.style = .gray
 //                self.view.addSubview(activityIndicator)
 //                activityIndicator.startAnimating()
+                
+                //                destination.title = data.seriesName
+                //                if data.description != "" {
+                //                    destination.videoCaption = data.description
+                //                } else {
+                //                    destination.videoCaption = data.caption
+                //                }
+                //                destination.videoTitle = data.name
+                //                destination.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + data.linkPath + NetworkEndpoints.playlistEndpoint
+                //                print(destination.videoURLString, data.id)
+                //                destination.videoDuration = data.duration
+                //                destination.videoFirstBroadcast = data.firstBroadcast
+                //                destination.videoEpisodeNumber = data.episodeNumber
+                
+                
+                /// New
+                
                 
 //
             default:

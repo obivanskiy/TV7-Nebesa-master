@@ -12,6 +12,12 @@ class ApiService: NSObject {
     
     static let shared = ApiService()
     let baseUrl = NetworkEndpoints.baseURL
+//    var data: Codable
+//    var url: String
+//
+    
+
+    
     
     enum dataModel {
         case homeScreenProgrammeInformation
@@ -67,7 +73,7 @@ class ApiService: NSObject {
             guard let data = data else {return}
                 let videos = try JSONDecoder().decode(HomeScreenProgrammeInformation.self, from: data)
                 print(data)
-                DispatchQueue.main.async {
+                DispatchQueue.main.sync {
                     completion(videos)
                 }
             

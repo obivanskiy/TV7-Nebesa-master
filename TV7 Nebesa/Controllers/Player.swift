@@ -60,9 +60,11 @@ class Player: UIView {
     }
     
     func initPlayerLayer() {
+        
         DispatchQueue.main.async { [weak self] in
 
             guard let self = `self`, let url = URL(string: self.mediaItem.videoUrl ?? "") else { return }
+            
             self.player = AVPlayer(url: url)
             self.player.addObserver(self, forKeyPath: self.timeObserver, options: [.initial, .new], context: nil)
             self.playerViewController.player = self.player
@@ -76,6 +78,7 @@ class Player: UIView {
     
     func stopPlayback() {
         playerViewController.player?.pause()
+ 
     }
     
     private func createSpinner() {

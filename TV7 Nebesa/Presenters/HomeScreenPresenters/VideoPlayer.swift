@@ -40,9 +40,7 @@ class VideoPlayer: UIViewController, Castable {
         SVProgressHUD.show()
         ApiService.shared.requestVideoInfo { (videoData: HomeScreenProgrammeInformation) in
             self.videoData = videoData
-        }
-        
-        
+        } 
     }
     
     
@@ -72,7 +70,7 @@ class VideoPlayer: UIViewController, Castable {
     @IBOutlet weak var VideoDurationLabel: UILabel!
     @IBOutlet weak var VideoFirstBroadcastLabel: UILabel!
     
-    
+   
     //MARK: - View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +94,7 @@ class VideoPlayer: UIViewController, Castable {
         player.stopPlayback()
     }
     
+  
     //MARK: -Set up the UI
     private func setUpVideoData() {
         

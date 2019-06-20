@@ -99,6 +99,7 @@
 		111F951D22730A7300C35737 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F951C22730A7300C35737 /* TabBarController.swift */; };
 		112EB591229D307B003B2EAA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112EB590229D307B003B2EAA /* APIService.swift */; };
 		115B77572296EB3100B0EC3E /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B77562296EB3100B0EC3E /* VideoPlayer.swift */; };
+		1185D65D22BBC0D80050A9FA /* OldVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1185D65C22BBC0D80050A9FA /* OldVideoController.swift */; };
 		11955C3E22A6737600FE659B /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11955C3D22A6737600FE659B /* VideoModel.swift */; };
 		1511D8DE2272F106007EFD45 /* Pods_TV7_Nebesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */; };
 		152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */; };
@@ -260,6 +261,7 @@
 		111F951C22730A7300C35737 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		112EB590229D307B003B2EAA /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		115B77562296EB3100B0EC3E /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
+		1185D65C22BBC0D80050A9FA /* OldVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldVideoController.swift; sourceTree = "<group>"; };
 		11955C3D22A6737600FE659B /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 				110F9D942237A6310020BABC /* ViewController.swift */,
 				1103F67C22721D870016A3C8 /* BaseHomeController.swift */,
 				1103F67D22721D870016A3C8 /* HomeVideoPlayerController.swift */,
+				1185D65C22BBC0D80050A9FA /* OldVideoController.swift */,
 				1103F67E22721D870016A3C8 /* HomeBaseViewController.swift */,
 				110F9DA72237A6A50020BABC /* BroadcastViewController.swift */,
 				FAF046712268653B00078B4F /* SearchViewController.swift */,
@@ -973,6 +976,7 @@
 				15D626EC22411C1E00449F8B /* SeriesInfoTableViewCell.swift in Sources */,
 				15CE9DC52244DF2F00362B40 /* URL+Extension.swift in Sources */,
 				110F9D952237A6310020BABC /* ViewController.swift in Sources */,
+				1185D65D22BBC0D80050A9FA /* OldVideoController.swift in Sources */,
 				1103F73822721F630016A3C8 /* MenuBar.swift in Sources */,
 				15A60115226DB5EC00E99878 /* CastManager.swift in Sources */,
 				15CD9CE2225380870014E326 /* WebTVDateTableViewCell.swift in Sources */,

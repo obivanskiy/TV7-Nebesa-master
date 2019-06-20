@@ -40,11 +40,6 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
     }
     
     override func awakeFromNib() {
-        activityIndicator.center = self.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .gray
-        self.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
         self.presenterForNewest = HomeNewestPresenter(with: self)
         setupTableView()
         
@@ -75,6 +70,11 @@ class HomeNewestCell: UICollectionViewCell, UITableViewDataSource, UITableViewDe
         return cell
         
     }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        _ = tableView.cellForRow(at: indexPath) as! NewestTableViewCell
+//        //        HomeVideoPlayerController.programInfo = cell.cellModel ?? HomeScreenData()
+//    }
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        tableView.deselectRow(at: indexPath, animated: true)
 //        let cell = tableView.cellForRow(at: indexPath) as! NewestTableViewCell
