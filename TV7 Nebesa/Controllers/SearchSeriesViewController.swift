@@ -83,5 +83,6 @@ extension SearchSeriesViewController: UITableViewDataSource {
 extension SearchSeriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: Constants.episodeSegue, sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

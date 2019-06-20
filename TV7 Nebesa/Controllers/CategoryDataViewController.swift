@@ -12,7 +12,7 @@ import SVProgressHUD
 final class CategoryDataTableViewController: UITableViewController {
 
     // MARK: - Properties
-    private let seriesDataSegue: String = "SeriesDataSegue"
+    private let seriesDataSegue = "SeriesDataSegue"
     private var categoryDataPresenter: CategoryDataPresenter?
     var categoryData: CategoryProgrammes = CategoryProgrammes() {
         didSet {
@@ -27,7 +27,6 @@ final class CategoryDataTableViewController: UITableViewController {
         self.categoryDataPresenter = CategoryDataPresenter(with: self)
         SVProgressHUD.show()
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 122
     }
 
     // MARK: - Table View Data Source Methods
@@ -45,11 +44,12 @@ final class CategoryDataTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = self.tableView.indexPathForSelectedRow else {
+            return
+        }
+
         if segue.identifier == seriesDataSegue {
             guard segue.destination is CategorySeriesTableViewController else {
-                return
-            }
-            guard let indexPath = self.tableView.indexPathForSelectedRow else {
                 return
             }
             NetworkService.requestURL[.fetchSeriesMainData] = NetworkEndpoints.baseURL + NetworkEndpoints.seriesInfoURL + categoryData.categoryProgrammes[indexPath.row].id

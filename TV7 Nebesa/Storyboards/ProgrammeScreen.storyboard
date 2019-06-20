@@ -209,7 +209,7 @@
         <!--Search Episode View Controller-->
         <scene sceneID="e1T-c3-rX4">
             <objects>
-                <viewController id="688-hz-42c" customClass="SearchEpisodeViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchEpisodeViewController" id="688-hz-42c" customClass="SearchEpisodeViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DaI-wX-MRy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

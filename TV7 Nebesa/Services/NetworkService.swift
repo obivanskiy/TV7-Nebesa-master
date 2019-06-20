@@ -65,7 +65,6 @@ class NetworkService {
             completion(.failure(networkResult.wrongPath))
             return
         }
-        print(urlString)
         guard let url = URL(string: urlString) else {
             completion(.failure(networkResult.noValidUrl))
             return
