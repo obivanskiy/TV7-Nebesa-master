@@ -100,7 +100,6 @@
                                 <connections>
                                     <outlet property="categoryVideoNameLabel" destination="745-gb-jEF" id="9Ih-FL-6pP"/>
                                     <outlet property="videoPreviewImageView" destination="LMz-q7-ush" id="wrR-fK-YSh"/>
-                                    <segue destination="SZL-Bl-PiV" kind="show" identifier="SeriesDataSegue" id="iny-o7-yWf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -110,6 +109,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="2kt-X5-mZq"/>
+                    <connections>
+                        <segue destination="aLv-TM-TSi" kind="show" identifier="programmeSegue" id="xiL-Ks-74g"/>
+                        <segue destination="SZL-Bl-PiV" kind="show" identifier="SeriesDataSegue" id="dU7-Ob-heG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e15-2P-kxK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -338,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbb-qz-pjg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4824.6376811594209" y="2372.2826086956525"/>
+            <point key="canvasLocation" x="3284" y="3172"/>
         </scene>
         <!--АРХИВ-->
         <scene sceneID="Cbc-3d-D3N">
@@ -458,6 +461,7 @@
         <image name="archiveTab" width="30" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="xiL-Ks-74g"/>
         <segue reference="K9b-GK-uNn"/>
     </inferredMetricsTieBreakers>
 </document>

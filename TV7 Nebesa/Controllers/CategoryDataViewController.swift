@@ -13,6 +13,10 @@ final class CategoryDataTableViewController: UITableViewController {
 
     // MARK: - Properties
     private let seriesDataSegue = "SeriesDataSegue"
+    private struct Constants {
+        static let seriesDataSegue = "SeriesDataSegue"
+        static let programmeSegue = "programmeSegue"
+    }
     private var categoryDataPresenter: CategoryDataPresenter?
     var categoryData: CategoryProgrammes = CategoryProgrammes() {
         didSet {
@@ -41,6 +45,14 @@ final class CategoryDataTableViewController: UITableViewController {
         cell.cellModel = categoryData.categoryProgrammes[indexPath.row]
         return cell
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if categoryData.categoryProgrammes[indexPath.row].play == "true" {
+            performSegue(withIdentifier: Constants.programmeSegue, sender: self)
+        } else {
+            performSegue(withIdentifier: Constants.seriesDataSegue, sender: self)
+        }
+    }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,12 +60,14 @@ final class CategoryDataTableViewController: UITableViewController {
             return
         }
 
-        if segue.identifier == seriesDataSegue {
+        if segue.identifier == Constants.seriesDataSegue {
             guard segue.destination is CategorySeriesTableViewController else {
                 return
             }
             NetworkService.requestURL[.fetchSeriesMainData] = NetworkEndpoints.baseURL + NetworkEndpoints.seriesInfoURL + categoryData.categoryProgrammes[indexPath.row].id
             NetworkService.requestURL[.fetchSeriesProgrammes] = NetworkEndpoints.baseURL + NetworkEndpoints.seriesProgrammesURL + categoryData.categoryProgrammes[indexPath.row].id
+        } else if segue.identifier == Constants.programmeSegue {
+            print("Hello")
         }
     }
 }
