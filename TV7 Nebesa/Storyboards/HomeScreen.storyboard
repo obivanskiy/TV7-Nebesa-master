@@ -97,14 +97,33 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAT-fM-Via">
+                                <rect key="frame" x="164" y="504" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="loadVideoWithSender:" destination="MBD-vz-poy" eventType="touchUpInside" id="7Pd-Sz-mQp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSx-4C-KoL">
+                                <rect key="frame" x="8" y="475.5" width="359" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="XZe-gd-H0l" firstAttribute="top" secondItem="AqJ-gd-Pml" secondAttribute="bottom" constant="5" id="2dh-NO-Tjf"/>
                             <constraint firstItem="UVY-0R-sdG" firstAttribute="top" secondItem="4yb-VM-feC" secondAttribute="top" id="9ck-fs-k5t"/>
                             <constraint firstItem="4yb-VM-feC" firstAttribute="trailing" secondItem="XZe-gd-H0l" secondAttribute="trailing" constant="15" id="B6r-fh-AWi"/>
+                            <constraint firstItem="EAT-fM-Via" firstAttribute="top" secondItem="mSx-4C-KoL" secondAttribute="bottom" constant="8" id="H4d-74-SZh"/>
+                            <constraint firstItem="4yb-VM-feC" firstAttribute="trailing" secondItem="mSx-4C-KoL" secondAttribute="trailing" constant="8" id="Iwh-9w-Z9d"/>
+                            <constraint firstItem="mSx-4C-KoL" firstAttribute="leading" secondItem="4yb-VM-feC" secondAttribute="leading" constant="8" id="NI0-dp-RD5"/>
                             <constraint firstItem="UVY-0R-sdG" firstAttribute="leading" secondItem="4yb-VM-feC" secondAttribute="leading" id="QpX-cv-bF7"/>
                             <constraint firstItem="UVY-0R-sdG" firstAttribute="trailing" secondItem="4yb-VM-feC" secondAttribute="trailing" id="Rxo-SO-e8o"/>
+                            <constraint firstItem="4yb-VM-feC" firstAttribute="trailing" secondItem="EAT-fM-Via" secondAttribute="trailing" constant="165" id="WeJ-7b-A9F"/>
+                            <constraint firstItem="4yb-VM-feC" firstAttribute="bottom" secondItem="EAT-fM-Via" secondAttribute="bottom" constant="20" id="XvS-45-tmh"/>
+                            <constraint firstItem="EAT-fM-Via" firstAttribute="leading" secondItem="4yb-VM-feC" secondAttribute="leading" constant="164" id="c42-wW-lnH"/>
                             <constraint firstItem="4yb-VM-feC" firstAttribute="trailing" secondItem="AqJ-gd-Pml" secondAttribute="trailing" constant="15" id="jV5-uh-DjH"/>
                             <constraint firstItem="AqJ-gd-Pml" firstAttribute="top" secondItem="UVY-0R-sdG" secondAttribute="bottom" constant="10" id="jiE-5t-Vm8"/>
                             <constraint firstItem="XZe-gd-H0l" firstAttribute="leading" secondItem="4yb-VM-feC" secondAttribute="leading" constant="15" id="vhX-Kb-OI8"/>
@@ -119,6 +138,8 @@
                         <outlet property="VideoEpisodeNumberLabel" destination="VGL-5C-7bP" id="Sm1-7m-TKg"/>
                         <outlet property="VideoFirstBroadcastLabel" destination="AvH-J4-xYA" id="UKI-t0-D4l"/>
                         <outlet property="VideoTitleLabel" destination="B5w-82-Kt8" id="2Ir-mm-zwZ"/>
+                        <outlet property="castInstructionLabel" destination="mSx-4C-KoL" id="meg-F4-rh8"/>
+                        <outlet property="castVideoButton" destination="EAT-fM-Via" id="e3T-8D-LIn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkL-AW-vFr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -476,7 +497,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Ix5-uq-WVx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UCu-H1-aMA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigation" automaticallyAdjustsScrollViewInsets="NO" id="UCu-H1-aMA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="BtB-Ha-sQE" customClass="CustomNavigationBar" customModule="TV7_Nebesa" customModuleProvider="target">
