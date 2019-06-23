@@ -48,19 +48,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GCKLoggerDelegate{
         let filter = GCKLoggerFilter()
         filter.minimumLevel = .error
         GCKLogger.sharedInstance().filter = filter
-        
+        // RootTabBarController
         // Wrap main view in the GCKUICastContainerViewController and display the mini controller.
-        let appStoryboard = UIStoryboard(name: "HomeScreen", bundle: nil)
-        let navigationController = appStoryboard.instantiateViewController(withIdentifier: "MainNavigation")
-        let castContainerVC = GCKCastContext.sharedInstance().createCastContainerController(for: navigationController)
-        castContainerVC.miniMediaControlsItemEnabled = true
-        // Color the background to match the embedded content
-        castContainerVC.view.backgroundColor = .white
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = castContainerVC
-        window?.makeKeyAndVisible()
-        
+        let appStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = appStoryboard.instantiateViewController(withIdentifier: "RootTabBarController")
+//        let castContainerVC = GCKCastContext.sharedInstance().createCastContainerController(for: navigationController)
+//        castContainerVC.miniMediaControlsItemEnabled = false
+//        
+//        // Color the background to match the embedded content
+//        castContainerVC.view.backgroundColor = .black
+       
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.rootViewController = castContainerVC
+//        window?.makeKeyAndVisible()
+//        
         
         
         

@@ -76,6 +76,7 @@ class CastManager: NSObject {
         castStyle.castViews.headingTextColor = .white
         castStyle.castViews.captionTextColor = .white
         castStyle.castViews.iconTintColor = .white
+        
         castStyle.apply()
     }
     

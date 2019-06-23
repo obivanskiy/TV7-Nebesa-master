@@ -35,7 +35,7 @@
             <objects>
                 <viewController id="MBD-vz-poy" customClass="VideoPlayer" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bVc-bn-SfI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-0R-sdG" userLabel="ProgramView">
@@ -98,21 +98,31 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAT-fM-Via">
-                                <rect key="frame" x="164" y="504" width="46" height="30"/>
+                                <rect key="frame" x="164" y="493" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="loadVideoWithSender:" destination="MBD-vz-poy" eventType="touchUpInside" id="7Pd-Sz-mQp"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSx-4C-KoL">
-                                <rect key="frame" x="8" y="475.5" width="359" height="20.5"/>
+                                <rect key="frame" x="8" y="464.5" width="359" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nz1-dQ-sWZ">
+                                <rect key="frame" x="0.0" y="553" width="375" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="O0Y-cr-bgS"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="DbE-mg-7aQ" kind="embed" id="Gfj-Zg-FHV"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Nz1-dQ-sWZ" firstAttribute="centerX" secondItem="bVc-bn-SfI" secondAttribute="centerX" id="0ju-3x-EJY"/>
                             <constraint firstItem="XZe-gd-H0l" firstAttribute="top" secondItem="AqJ-gd-Pml" secondAttribute="bottom" constant="5" id="2dh-NO-Tjf"/>
                             <constraint firstItem="UVY-0R-sdG" firstAttribute="top" secondItem="4yb-VM-feC" secondAttribute="top" id="9ck-fs-k5t"/>
                             <constraint firstItem="4yb-VM-feC" firstAttribute="trailing" secondItem="XZe-gd-H0l" secondAttribute="trailing" constant="15" id="B6r-fh-AWi"/>
@@ -122,8 +132,10 @@
                             <constraint firstItem="UVY-0R-sdG" firstAttribute="leading" secondItem="4yb-VM-feC" secondAttribute="leading" id="QpX-cv-bF7"/>
                             <constraint firstItem="UVY-0R-sdG" firstAttribute="trailing" secondItem="4yb-VM-feC" secondAttribute="trailing" id="Rxo-SO-e8o"/>
                             <constraint firstItem="4yb-VM-feC" firstAttribute="trailing" secondItem="EAT-fM-Via" secondAttribute="trailing" constant="165" id="WeJ-7b-A9F"/>
-                            <constraint firstItem="4yb-VM-feC" firstAttribute="bottom" secondItem="EAT-fM-Via" secondAttribute="bottom" constant="20" id="XvS-45-tmh"/>
+                            <constraint firstItem="4yb-VM-feC" firstAttribute="bottom" secondItem="EAT-fM-Via" secondAttribute="bottom" constant="80" id="XvS-45-tmh"/>
                             <constraint firstItem="EAT-fM-Via" firstAttribute="leading" secondItem="4yb-VM-feC" secondAttribute="leading" constant="164" id="c42-wW-lnH"/>
+                            <constraint firstItem="Nz1-dQ-sWZ" firstAttribute="top" secondItem="bVc-bn-SfI" secondAttribute="bottom" constant="-50" id="eHh-x6-K9o"/>
+                            <constraint firstItem="Nz1-dQ-sWZ" firstAttribute="width" secondItem="bVc-bn-SfI" secondAttribute="width" id="h6K-aZ-Jg4"/>
                             <constraint firstItem="4yb-VM-feC" firstAttribute="trailing" secondItem="AqJ-gd-Pml" secondAttribute="trailing" constant="15" id="jV5-uh-DjH"/>
                             <constraint firstItem="AqJ-gd-Pml" firstAttribute="top" secondItem="UVY-0R-sdG" secondAttribute="bottom" constant="10" id="jiE-5t-Vm8"/>
                             <constraint firstItem="XZe-gd-H0l" firstAttribute="leading" secondItem="4yb-VM-feC" secondAttribute="leading" constant="15" id="vhX-Kb-OI8"/>
@@ -138,20 +150,22 @@
                         <outlet property="VideoEpisodeNumberLabel" destination="VGL-5C-7bP" id="Sm1-7m-TKg"/>
                         <outlet property="VideoFirstBroadcastLabel" destination="AvH-J4-xYA" id="UKI-t0-D4l"/>
                         <outlet property="VideoTitleLabel" destination="B5w-82-Kt8" id="2Ir-mm-zwZ"/>
+                        <outlet property="_miniMediaControlsContainerView" destination="Nz1-dQ-sWZ" id="Z23-Ey-ser"/>
+                        <outlet property="_miniMediaControlsHeightConstraint" destination="O0Y-cr-bgS" id="Hec-n2-FD2"/>
                         <outlet property="castInstructionLabel" destination="mSx-4C-KoL" id="meg-F4-rh8"/>
                         <outlet property="castVideoButton" destination="EAT-fM-Via" id="e3T-8D-LIn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkL-AW-vFr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4221.739130434783" y="1218.75"/>
+            <point key="canvasLocation" x="4221.6000000000004" y="1218.440779610195"/>
         </scene>
         <!--Небеса ТВ7-->
         <scene sceneID="JbI-H1-iH9">
             <objects>
                 <viewController title="Небеса ТВ7" id="HXY-pw-zdd" customClass="HomeBaseViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y2N-ue-twT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNz-Q3-nZE">
@@ -162,7 +176,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KW3-sO-5wA">
-                                <rect key="frame" x="0.0" y="50" width="375" height="504"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="eqW-mo-UWI">
                                     <size key="itemSize" width="92" height="10"/>
@@ -479,7 +493,7 @@
                             <constraint firstItem="vNz-Q3-nZE" firstAttribute="leading" secondItem="R5s-p0-r2x" secondAttribute="leading" id="U9v-uV-AHP"/>
                             <constraint firstItem="vNz-Q3-nZE" firstAttribute="trailing" secondItem="R5s-p0-r2x" secondAttribute="trailing" id="Y51-Ae-Zdo"/>
                             <constraint firstItem="KW3-sO-5wA" firstAttribute="leading" secondItem="vNz-Q3-nZE" secondAttribute="leading" id="Ycu-jd-65k"/>
-                            <constraint firstItem="R5s-p0-r2x" firstAttribute="bottom" secondItem="KW3-sO-5wA" secondAttribute="bottom" id="rqB-tS-b8e"/>
+                            <constraint firstItem="KW3-sO-5wA" firstAttribute="bottom" secondItem="y2N-ue-twT" secondAttribute="bottom" priority="249" id="pJm-x3-MD0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R5s-p0-r2x"/>
                     </view>
@@ -494,12 +508,50 @@
             </objects>
             <point key="canvasLocation" x="2640.8000000000002" y="1218.440779610195"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="vjD-SR-Xvt">
+            <objects>
+                <viewController id="H2x-yQ-a9k" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b3s-Fn-9Hf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1x-rT-5ku">
+                                <rect key="frame" x="0.0" y="20" width="375" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQT-Hz-sEi">
+                                <rect key="frame" x="0.0" y="568" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="vGg-4B-plZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="r1x-rT-5ku" firstAttribute="top" secondItem="4H8-K6-cM8" secondAttribute="top" id="ZAg-Km-H8x"/>
+                            <constraint firstItem="4H8-K6-cM8" firstAttribute="trailing" secondItem="r1x-rT-5ku" secondAttribute="trailing" id="ZvG-R4-eP1"/>
+                            <constraint firstItem="gQT-Hz-sEi" firstAttribute="bottom" secondItem="4H8-K6-cM8" secondAttribute="bottom" id="fkg-tW-laT"/>
+                            <constraint firstItem="gQT-Hz-sEi" firstAttribute="top" secondItem="r1x-rT-5ku" secondAttribute="bottom" id="p5t-Go-eT1"/>
+                            <constraint firstItem="4H8-K6-cM8" firstAttribute="trailing" secondItem="gQT-Hz-sEi" secondAttribute="trailing" id="wQ5-qf-8HP"/>
+                            <constraint firstItem="r1x-rT-5ku" firstAttribute="leading" secondItem="4H8-K6-cM8" secondAttribute="leading" id="xp7-Ez-zpC"/>
+                            <constraint firstItem="gQT-Hz-sEi" firstAttribute="leading" secondItem="4H8-K6-cM8" secondAttribute="leading" id="xxo-To-I7N"/>
+                            <constraint firstItem="r1x-rT-5ku" firstAttribute="top" secondItem="4H8-K6-cM8" secondAttribute="top" id="yHp-tU-bg9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4H8-K6-cM8"/>
+                    </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DLR-9w-lIG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="534" y="1208"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ix5-uq-WVx">
             <objects>
                 <navigationController storyboardIdentifier="MainNavigation" automaticallyAdjustsScrollViewInsets="NO" id="UCu-H1-aMA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="BtB-Ha-sQE" customClass="CustomNavigationBar" customModule="TV7_Nebesa" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -511,7 +563,20 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyD-h1-MKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="1220"/>
+            <point key="canvasLocation" x="1596" y="1218"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1hg-5r-E9a">
+            <objects>
+                <viewController id="DbE-mg-7aQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eSW-d9-KqO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w4J-5J-HaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
