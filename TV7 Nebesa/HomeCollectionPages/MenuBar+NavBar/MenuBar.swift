@@ -12,6 +12,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     var homeController: HomeBaseViewController?
     var horizontalBarLeftAnchorConstraint: NSLayoutConstraint?
+    var bottomYConstraint: NSLayoutConstraint?
     
     func setupHorizontalBar() {
         let horizontalBarView = UIView()
@@ -76,7 +77,8 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         
         let selectedIndexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .bottom)
-   
+        bottomYConstraint = collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        bottomYConstraint?.isActive = true
 //
         setupHorizontalBar()
     }

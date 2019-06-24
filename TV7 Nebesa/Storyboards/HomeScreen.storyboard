@@ -133,13 +133,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNz-Q3-nZE">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="MNg-C0-rC3"/>
-                                </constraints>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KW3-sO-5wA">
                                 <rect key="frame" x="0.0" y="50" width="375" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -452,12 +445,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vNz-Q3-nZE" firstAttribute="top" secondItem="R5s-p0-r2x" secondAttribute="top" id="9zH-M5-ew1"/>
-                            <constraint firstItem="KW3-sO-5wA" firstAttribute="top" secondItem="vNz-Q3-nZE" secondAttribute="bottom" id="Bxw-M1-cOQ"/>
-                            <constraint firstItem="vNz-Q3-nZE" firstAttribute="trailing" secondItem="KW3-sO-5wA" secondAttribute="trailing" id="NlU-BX-t2a"/>
-                            <constraint firstItem="vNz-Q3-nZE" firstAttribute="leading" secondItem="R5s-p0-r2x" secondAttribute="leading" id="U9v-uV-AHP"/>
-                            <constraint firstItem="vNz-Q3-nZE" firstAttribute="trailing" secondItem="R5s-p0-r2x" secondAttribute="trailing" id="Y51-Ae-Zdo"/>
-                            <constraint firstItem="KW3-sO-5wA" firstAttribute="leading" secondItem="vNz-Q3-nZE" secondAttribute="leading" id="Ycu-jd-65k"/>
+                            <constraint firstItem="KW3-sO-5wA" firstAttribute="top" secondItem="R5s-p0-r2x" secondAttribute="top" constant="50" id="9zH-M5-ew1"/>
+                            <constraint firstItem="KW3-sO-5wA" firstAttribute="trailing" secondItem="R5s-p0-r2x" secondAttribute="trailing" id="NlU-BX-t2a"/>
+                            <constraint firstItem="KW3-sO-5wA" firstAttribute="leading" secondItem="R5s-p0-r2x" secondAttribute="leading" id="Ycu-jd-65k"/>
                             <constraint firstItem="R5s-p0-r2x" firstAttribute="bottom" secondItem="KW3-sO-5wA" secondAttribute="bottom" id="rqB-tS-b8e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R5s-p0-r2x"/>

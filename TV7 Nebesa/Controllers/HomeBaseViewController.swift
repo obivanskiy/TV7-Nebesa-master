@@ -16,6 +16,7 @@ var titleItem = ""
 
 class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate {
     
+    @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var homePageCollectionView: UICollectionView!
     
     var controller: HomeBaseViewController?
@@ -32,6 +33,8 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         setupMenuBar()
         setupNavigationItems()
+        homePageCollectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        homePageCollectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
 //        showCenterPage(collectionViewIndex: 1)
         
     }
@@ -92,7 +95,7 @@ class HomeBaseViewController: BaseHomeController, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width , height: view.frame.height - 50)
+        return CGSize(width: view.frame.width , height: view.frame.height - 160)
 
     }
             //TODO: - landscape orientation
