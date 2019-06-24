@@ -32,7 +32,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
     private var sessionManager: GCKSessionManager!
     
     //MARK: - player properties
-    private var webTVPLayer: AVPlayer!
+//    private var webTVPLayer: AVPlayer!
     private var webTVPlayerViewController = AVPlayerViewController()
     
     private var presenter: TVGuidePresenter?

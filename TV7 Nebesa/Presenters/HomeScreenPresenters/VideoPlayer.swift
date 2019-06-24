@@ -69,7 +69,7 @@ class VideoPlayer: UIViewController, GCKSessionManagerListener, GCKRemoteMediaCl
     var miniMediaControlsViewEnabled = false {
         didSet {
             if isViewLoaded {
-                updateControlBarsVisibility()
+//                updateControlBarsVisibility()
             }
         }
     }
@@ -82,9 +82,9 @@ class VideoPlayer: UIViewController, GCKSessionManagerListener, GCKRemoteMediaCl
 //        _miniMediaControlsHeightConstraint.constant = 45
         let castContext = GCKCastContext.sharedInstance()
         miniMediaControlsViewController = castContext.createMiniMediaControlsViewController()
-        updateControlBarsVisibility()
-        installViewController(miniMediaControlsViewController,
-                              inContainerView: _miniMediaControlsContainerView)
+//        updateControlBarsVisibility()
+//        installViewController(miniMediaControlsViewController,
+//                              inContainerView: _miniMediaControlsContainerView)
         
         if videoID != "" {
         fetchVideos()
@@ -177,6 +177,7 @@ class VideoPlayer: UIViewController, GCKSessionManagerListener, GCKRemoteMediaCl
         VideoFirstBroadcastLabel.text = "Доступен с: \(broadcastDateFormatter(videoFirstBroadcast))"
 //        navigationItem.rightBarButtonItem = googleCastButton
     }
+    
     
     //MARK: - Player function
 //    private func createPlayerView() {
@@ -369,7 +370,7 @@ class VideoPlayer: UIViewController, GCKSessionManagerListener, GCKRemoteMediaCl
             view.bringSubviewToFront(_miniMediaControlsContainerView)
         } else {
             
-            _miniMediaControlsHeightConstraint.constant = 0
+            _miniMediaControlsHeightConstraint.constant = 50
             
             
         }

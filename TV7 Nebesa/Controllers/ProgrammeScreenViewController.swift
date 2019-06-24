@@ -15,8 +15,8 @@ import Kingfisher
 final class ProgrammeScreenViewController: UIViewController, Castable {
     
     //MARK: - Stored properties
-    private var player: AVPlayer?
-    private var playerViewController = AVPlayerViewController()
+//    private var player: AVPlayer?
+//    private var playerViewController = AVPlayerViewController()
     static var programmeData: ProgrammesData = ProgrammesData()
     private var videoURLString: String = ""
     private var screenTitle: String = "ВИДЕО"

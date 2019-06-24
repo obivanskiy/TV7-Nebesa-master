@@ -8,10 +8,30 @@
 
 import UIKit
 
-class TabBarController: UIViewController {
+class TabBarController: UITabBarController {
 
+    @IBOutlet var miniMediaControlls: UIView!
+    var heightConstraint: NSLayoutConstraint?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+       miniMediaControlls.frame.size.width = self.view.frame.width
+      
+        if let tempTabBar = self.tabBarController {
+            let height: CGFloat = 49
+            let frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 2*height, width: UIScreen.main.bounds.width, height: height)
+            let miniMedia = UIView(frame: frame)
+            tempTabBar.view.addSubview(miniMedia)
+        }
+        
+//        miniMediaControlls.translatesAutoresizingMaskIntoConstraints = false
+        heightConstraint = NSLayoutConstraint(item: miniMediaControlls, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 200)
+       
+//        miniMediaControlls.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+//        heightConstraint?.isActive = true
+        NSLayoutConstraint.activate([heightConstraint!])
+        
 
      
     }

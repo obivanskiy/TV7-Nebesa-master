@@ -101,6 +101,8 @@
 		115B77572296EB3100B0EC3E /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B77562296EB3100B0EC3E /* VideoPlayer.swift */; };
 		1185D65D22BBC0D80050A9FA /* OldVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1185D65C22BBC0D80050A9FA /* OldVideoController.swift */; };
 		11955C3E22A6737600FE659B /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11955C3D22A6737600FE659B /* VideoModel.swift */; };
+		11CA075822C0D4280096F111 /* MiniMediaControllsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CA075722C0D4280096F111 /* MiniMediaControllsView.swift */; };
+		11CA075A22C0F58C0096F111 /* RootContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CA075922C0F58C0096F111 /* RootContainerViewController.swift */; };
 		1511D8DE2272F106007EFD45 /* Pods_TV7_Nebesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0D2B7D97C477EAA3C15E9D /* Pods_TV7_Nebesa.framework */; };
 		152DF3B222426FFF00BDC90B /* WebTVScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */; };
 		152DF3B42242715A00BDC90B /* ProgrammeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */; };
@@ -263,6 +265,8 @@
 		115B77562296EB3100B0EC3E /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		1185D65C22BBC0D80050A9FA /* OldVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldVideoController.swift; sourceTree = "<group>"; };
 		11955C3D22A6737600FE659B /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		11CA075722C0D4280096F111 /* MiniMediaControllsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniMediaControllsView.swift; sourceTree = "<group>"; };
+		11CA075922C0F58C0096F111 /* RootContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootContainerViewController.swift; sourceTree = "<group>"; };
 		152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebTVScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B32242715A00BDC90B /* ProgrammeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProgrammeScreen.storyboard; sourceTree = "<group>"; };
 		152DF3B5224271E400BDC90B /* BestScenesScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BestScenesScreen.storyboard; sourceTree = "<group>"; };
@@ -678,6 +682,8 @@
 				152DF3B122426FFF00BDC90B /* WebTVScreen.storyboard */,
 				15D626F2224142B900449F8B /* Categories.storyboard */,
 				110F9D962237A6310020BABC /* Main.storyboard */,
+				11CA075922C0F58C0096F111 /* RootContainerViewController.swift */,
+				11CA075722C0D4280096F111 /* MiniMediaControllsView.swift */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -982,6 +988,7 @@
 				15CD9CE2225380870014E326 /* WebTVDateTableViewCell.swift in Sources */,
 				153406BD226EF4CB002BEB9F /* UIColor+NodeColor.swift in Sources */,
 				1103F69222721D870016A3C8 /* BaseHomeController.swift in Sources */,
+				11CA075822C0D4280096F111 /* MiniMediaControllsView.swift in Sources */,
 				15E0FD162238F851005A41DD /* ParentCategoryNameTableViewCell.swift in Sources */,
 				FA51ED1D22A860B300A5A1FB /* NSObject+Extension.swift in Sources */,
 				1103F69B22721D880016A3C8 /* HomeScreenNewestProgrammes.swift in Sources */,
@@ -992,6 +999,7 @@
 				1103F73A22721F630016A3C8 /* CustomNavigationController.swift in Sources */,
 				1103F69A22721D880016A3C8 /* HomeRecommendCell.swift in Sources */,
 				FA8A42A3226622E8000F35B5 /* SearchSeriesCell.swift in Sources */,
+				11CA075A22C0F58C0096F111 /* RootContainerViewController.swift in Sources */,
 				FAF04678226F1D9B00078B4F /* SearchEpisodeViewController.swift in Sources */,
 				FA1D633322801DA800C2AA13 /* UIViewController+Extension.swift in Sources */,
 				154B7F55223ADCA90020A4E4 /* NetworkEndpoints.swift in Sources */,
