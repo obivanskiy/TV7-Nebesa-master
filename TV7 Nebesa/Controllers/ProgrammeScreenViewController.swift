@@ -40,7 +40,6 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
     
     override func viewWillAppear(_ animated: Bool) {
         createPlayerView()
-        print(playerView.mediaItem as Any)
     }
     override func viewWillDisappear(_ animated: Bool) {
         playerView.stopPlayback()
@@ -62,7 +61,7 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
         seriesProgrammeName.text = ProgrammeScreenViewController.programmeData.name
         programmeCaption.text = ProgrammeScreenViewController.programmeData.caption
         programmeNumberLabel.text = "Эпизод: \(ProgrammeScreenViewController.programmeData.episodeNumber)"
-        createPlayerView()
+        
         programmeLenghtLabel.text = "Длительность: \(dateFormatter(ProgrammeScreenViewController.programmeData.duration))"
         // set up url from the data source
         self.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + ProgrammeScreenViewController.programmeData.path + NetworkEndpoints.playlistEndpoint
