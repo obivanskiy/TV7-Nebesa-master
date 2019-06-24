@@ -85,11 +85,11 @@ class Player: UIView {
 //                }
 //                if buttonStackView == nil {
 //                    createButtonStackView()
-//                }
+
             
             }
         }
-    }
+
     
     // MARK: - Add Cast Connection Listener
     
@@ -114,7 +114,6 @@ class Player: UIView {
     }
     
     private func castSessionSuspended() {
-        showNativeControls()
 
     }
     
@@ -126,7 +125,6 @@ class Player: UIView {
     
     // MARK: - add an alert here
     private func castSessionFailedToStart() {
-        showNativeControls()
     }
     
     private func castSessionStarted() {
@@ -135,7 +133,6 @@ class Player: UIView {
     }
     
     private func castSessionResumed() {
-        hideNativeControls()
         continueCastPlay()
     }
     
@@ -147,11 +144,9 @@ class Player: UIView {
             playVideo()
         case .playCast:
             playbackState = .pause
-            showNativeControls()
             pauseVideo()
         case .pauseCast:
             playbackState = .play
-            hideNativeControls()
             playVideo()
             
         default: break
@@ -170,12 +165,10 @@ class Player: UIView {
         let castMediaInfo = CastManager.shared.buildMediaInformation(with: mediaItem.name ?? "", with: mediaItem.about ?? "" , with: "TV7-Nebesa", with: duration, with: mediaItem.videoUrl ?? "", with: GCKMediaStreamType.buffered, with: mediaItem.thumbnailUrl ?? "")
         CastManager.shared.startSelectedItemRemotely(castMediaInfo, at: currentTime, completion: { [weak self] done in
             if !done {
-                self?.hideNativeControls()
                 self?.playbackState = .playCast
                 self?.startCastTimer()
             } else {
                 self?.playbackState = .finishedCast
-                self?.showNativeControls()
             }
         })
     }
@@ -183,12 +176,10 @@ class Player: UIView {
     private func continueCastPlay() {
         CastManager.shared.playSelectedItemRemotely(to: nil) { [weak self] done in
             if !done {
-                self?.hideNativeControls()
                 self?.playbackState = .playCast
                 self?.startCastTimer()
             } else {
                 self?.playbackState = .finishedCast
-                self?.showNativeControls()
             }
         }
     }
@@ -229,11 +220,9 @@ class Player: UIView {
         case .pause:
             playNativePlayer()
             stopLocalTimer()
-            changeToPauseButton()
         case .pauseCast:
             pauseVideo()
             startCastPlay()
-            changeToPauseButton()
         default: break
         }
     }
@@ -244,10 +233,8 @@ class Player: UIView {
         switch playbackState {
         case .playCast:
             pauseCastPlay()
-            changeToPlayButton()
         case .play:
             pauseNativePlayer()
-            changeToPlayButton()
         case .finishedCast, .finished:
             stopLocalTimer()
             stopCastTimer()
@@ -329,28 +316,6 @@ class Player: UIView {
         
         let timeToSeek = duration * Double(sender.value)
         
-        player.seek(to: CMTime.init(seconds: timeToSeek, preferredTimescale: CMTimeScale.max))
-        sendChangeToCast(time: timeToSeek)
-    }
-    
-    private func addSliderRecognizers() {
-        let tapSlider = UITapGestureRecognizer(target: self, action: #selector(tapSlider(_:)))
-        slider.addGestureRecognizer(tapSlider)
-    }
-    
-    @objc private func tapSlider(_ recognizer: UIGestureRecognizer) {
-        let pointTapped: CGPoint = recognizer.location(in: self)
-        
-        let positionOfSlider: CGPoint = slider.frame.origin
-        let widthOfSlider: CGFloat = slider.frame.size.width
-        
-        let newValue = ((pointTapped.x - positionOfSlider.x) * CGFloat(slider.maximumValue) / widthOfSlider)
-        
-        slider.setValue(Float(newValue), animated: true)
-        
-        guard let currentItem = player.currentItem else { return }
-        let duration = currentItem.asset.duration.seconds
-        let timeToSeek = duration * Double(slider.value)
         player.seek(to: CMTime.init(seconds: timeToSeek, preferredTimescale: CMTimeScale.max))
         sendChangeToCast(time: timeToSeek)
     }

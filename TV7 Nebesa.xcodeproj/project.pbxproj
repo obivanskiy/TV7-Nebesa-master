@@ -891,7 +891,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh",
 				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.4.2_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
 				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.4.2_static/GoogleCast.framework/GoogleCastUIResources.bundle",
 			);
@@ -902,7 +902,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		37E08AADAF115BE025A663A1 /* [CP] Embed Pods Frameworks */ = {
@@ -911,7 +911,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -924,7 +924,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
