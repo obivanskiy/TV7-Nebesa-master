@@ -55,7 +55,7 @@ class Player: UIView {
             guard let self = `self`, let url = URL(string: self.mediaItem.videoUrl ?? "") else { return }
             
             self.player = AVPlayer(url: url)
-            self.player.addObserver(self, forKeyPath: self.timeObserver, options: [.initial, .new], context: nil)
+
             self.playerViewController.player = self.player
             self.playerViewController.view.frame = self.bounds
             self.playerViewController.entersFullScreenWhenPlaybackBegins = true
