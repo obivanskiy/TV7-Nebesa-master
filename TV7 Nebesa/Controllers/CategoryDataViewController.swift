@@ -12,10 +12,8 @@ import SVProgressHUD
 final class CategoryDataTableViewController: UITableViewController {
 
     // MARK: - Properties
-    private let seriesDataSegue = "SeriesDataSegue"
     private struct Constants {
         static let seriesDataSegue = "SeriesDataSegue"
-        static let programmeSegue = "programmeSegue"
         static let episodeVC = "SearchEpisodeViewController"
         static let programmeStoryboard = "ProgrammeScreen"
     }

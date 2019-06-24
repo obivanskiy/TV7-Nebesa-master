@@ -49,6 +49,10 @@ final class SubCategoriesTableViewController: UITableViewController {
         cell.subCategoryNameLabel.text = subCategoriesData.subCategories[indexPath.row].categoryName
         return cell
     }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

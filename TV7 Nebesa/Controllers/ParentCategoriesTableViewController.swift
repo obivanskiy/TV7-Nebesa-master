@@ -62,6 +62,10 @@ final class ParentCategoriesTableViewController: UITableViewController, Internet
         cell.categoryNameLabel.text = parentCategories.parentCategories[indexPath.row].name
         return cell
     }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
