@@ -30,17 +30,6 @@ class Player: UIView {
     private var playbackState: PlaybackState = .created
     let playerViewController = AVPlayerViewController()
     
-    private var playPauseButton: UIButton!
-    private var spinner: UIActivityIndicatorView!
-    
-    
-    
-    //MARK: - bottom controls
-    private var buttonStackView: UIStackView!
-    private var currentTimeLabel: UILabel!
-    private var totalTimeLabel: UILabel!
-    private var slider: UISlider!
-    
     //MARK: - TIMERS
     private var localTimer: Timer?
     private var castTimer: Timer?
@@ -85,32 +74,19 @@ class Player: UIView {
         playerViewController.player?.play()
     }
     
-    private func createSpinner() {
-        spinner = UIActivityIndicatorView(style: .whiteLarge)
-        spinner.hidesWhenStopped = true
-        spinner.stopAnimating()
-        addSubview(spinner)
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        spinner.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        spinner.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        spinner.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        spinner.startAnimating()
-    }
-    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if object is AVPlayer && keyPath == timeObserver {
             let loadedTimeRanges = player.currentItem?.loadedTimeRanges
             guard let timeRanges = loadedTimeRanges, timeRanges.count > 0, let timeRange = timeRanges[0] as? CMTimeRange else { return }
             let currentBufferDuration = CMTimeGetSeconds(CMTimeAdd(timeRange.start, timeRange.duration))
-            if player.status == AVPlayer.Status.readyToPlay && currentBufferDuration > 2 {
-                if playPauseButton == nil  {
-                    createPlayPauseButton()
-                }
-                if buttonStackView == nil {
-                    createButtonStackView()
-                }
-                //                spinner.stopAnimating()
+//            if player.status == AVPlayer.Status.readyToPlay && currentBufferDuration > 2 {
+//                if playPauseButton == nil  {
+//                    createPlayPauseButton()
+//                }
+//                if buttonStackView == nil {
+//                    createButtonStackView()
+//                }
+            
             }
         }
     }
@@ -180,36 +156,10 @@ class Player: UIView {
             
         default: break
         }
-        //        if playbackState == .createdCast {
-        //                    }
-        //        if playbackState == .playCast {
-        //                    }
-        //
-        //        if playbackState == .pauseCast {
-        //                    }
-    }
+}
     
     //MARK: - Native controls functions
-    private func hideNativeControls() {
-        if let playPauseButton = self.playPauseButton {
-            playPauseButton.isHidden = false
-        }
-        if let buttonStackView = self.buttonStackView {
-            buttonStackView.isHidden = false
-        }
-        playerViewController.showsPlaybackControls = false
-    }
-    
-    private func showNativeControls() {
-        if let playPauseButton = self.playPauseButton {
-            playPauseButton.isHidden = true
-        }
-        if let buttonStackView = self.buttonStackView {
-            buttonStackView.isHidden = true
-        }
-        playerViewController.showsPlaybackControls = true
-    }
-    
+
     private func startCastPlay() {
         guard let currentItem = player.currentItem else { return }
         let currentTime = player.currentTime().seconds
@@ -265,40 +215,12 @@ class Player: UIView {
     // CREATE CUSTOM BUTTONS CLASS
     // MARK: - Play/Pause/Replay Button
     
-    private func createPlayPauseButton() {
-        playPauseButton = UIButton()
-        playPauseButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        playPauseButton.setTitle("", for: .normal)
-        playPauseButton.layer.cornerRadius = 40/2
-        playPauseButton.clipsToBounds = true
-        playPauseButton.backgroundColor = UIColor.black.withAlphaComponent(0.64)
-        addSubview(playPauseButton)
-        playPauseButton.translatesAutoresizingMaskIntoConstraints = false
-        playPauseButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        playPauseButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        playPauseButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        playPauseButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        playPauseButton.isHidden = true
-        changeToPlayButton()
-    }
+
     
     // MARK: Play Button Change
     
-    private func changeToPlayButton() {
-        guard let playPauseButton = playPauseButton else { return }
-        playPauseButton.removeTarget(self, action: nil, for: .allEvents)
-        playPauseButton.setImage(#imageLiteral(resourceName: "icon_play"), for: .normal)
-        playPauseButton.addTarget(self, action: #selector(playVideo), for: .touchUpInside)
-    }
-    
-    // MARK: Pause Button Change
-    
-    private func changeToPauseButton() {
-        guard let playPauseButton = playPauseButton else { return }
-        playPauseButton.removeTarget(self, action: nil, for: .allEvents)
-        playPauseButton.setImage(#imageLiteral(resourceName: "icon_pause"), for: .normal)
-        playPauseButton.addTarget(self, action: #selector(pauseVideo), for: .touchUpInside)
-    }
+
+
     
     // MARK: Start Player
     
@@ -335,63 +257,17 @@ class Player: UIView {
     
     // MARK: - Bottom Controls
     
-    // MARK: Button StackView
-    
-    private func createButtonStackView() {
-        buttonStackView = UIStackView()
-        buttonStackView.axis = .horizontal
-        buttonStackView.alignment = .fill
-        buttonStackView.spacing = 5
-        addSubview(buttonStackView)
-        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        buttonStackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        createcurrentTimeLabel()
-        createSlider()
-        createTotalTimeLabel()
-        buttonStackView.isHidden = true
-    }
+
     
     //     MARK: - Current Time Gradient Label
     
-    private func createcurrentTimeLabel() {
-        currentTimeLabel = UILabel()
-        currentTimeLabel.textAlignment = .right
-        currentTimeLabel.textColor = .white
-        buttonStackView.addArrangedSubview(currentTimeLabel)
-        currentTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        currentTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
-    }
+
     
 
-    //     MARK: - Total Time Gradient Label
-    
-    private func createTotalTimeLabel() {
-        totalTimeLabel = UILabel()
-        totalTimeLabel.textAlignment = .left
-        totalTimeLabel.textColor = .white
-        buttonStackView.addArrangedSubview(totalTimeLabel)
-        totalTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        totalTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
-    }
-    
+
     //     MARK: - Player Slider
     
-    private func createSlider() {
-        slider = UISlider()
-        slider.isContinuous = true
-        slider.isUserInteractionEnabled = true
-        slider.minimumValue = 0
-        slider.maximumValue = 1
-        slider.tintColor = UIColor.nodesColor()
-        slider.value = 0
-        slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
-        addSliderRecognizers()
-        buttonStackView.addArrangedSubview(slider)
-    }
+
     // MARK: - Update slider on Local
     
     private func startLocalTimer() {
@@ -420,16 +296,12 @@ class Player: UIView {
         guard let currentItem = player.currentItem else { return }
         var currentTime = player.currentTime().seconds
         var duration = currentItem.asset.duration.seconds
-        slider.value = Float(currentTime / duration)
         guard (currentTime.isNaN || currentTime.isInfinite && duration.isInfinite || duration.isNaN) else {
             return
         }
         
         currentTime = 0
         duration = 0
-        
-        totalTimeLabel.text = duration.toTimeString() as String
-        currentTimeLabel.text = currentTime.toTimeString() as String
     }
     
     // MARK: - Update slider on Cast
@@ -446,9 +318,6 @@ class Player: UIView {
             }
             duration = 0
             time = 0
-            self.totalTimeLabel.text = duration.toTimeString() as String
-            self.currentTimeLabel.text = time.toTimeString() as String
-            
         }
     }
     
@@ -499,3 +368,4 @@ class Player: UIView {
         }
     }
 }
+
