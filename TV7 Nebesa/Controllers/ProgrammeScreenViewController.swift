@@ -40,7 +40,7 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
     
     override func viewWillAppear(_ animated: Bool) {
         createPlayerView()
-        print(playerView.mediaItem)
+        print(playerView.mediaItem as Any)
     }
     override func viewWillDisappear(_ animated: Bool) {
         playerView.stopPlayback()
@@ -56,7 +56,7 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
 
 
 
-    //MARK: -Set up the UI
+    //MARK: - Private Methods
     private func setUpUI() {
         seriesNameLabel.text = ProgrammeScreenViewController.programmeData.seriesName
         seriesProgrammeName.text = ProgrammeScreenViewController.programmeData.name
@@ -65,7 +65,7 @@ final class ProgrammeScreenViewController: UIViewController, Castable {
         createPlayerView()
         programmeLenghtLabel.text = "Длительность: \(dateFormatter(ProgrammeScreenViewController.programmeData.duration))"
         // set up url from the data source
-        self.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + ProgrammeScreenViewController.programmeData.linkPath + NetworkEndpoints.playlistEndpoint
+        self.videoURLString = NetworkEndpoints.baseURLForVideoPlayback + ProgrammeScreenViewController.programmeData.path + NetworkEndpoints.playlistEndpoint
         self.title = self.screenTitle
         navigationItem.rightBarButtonItem = googleCastButton
         

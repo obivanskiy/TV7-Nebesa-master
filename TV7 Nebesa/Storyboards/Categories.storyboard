@@ -100,7 +100,6 @@
                                 <connections>
                                     <outlet property="categoryVideoNameLabel" destination="745-gb-jEF" id="9Ih-FL-6pP"/>
                                     <outlet property="videoPreviewImageView" destination="LMz-q7-ush" id="wrR-fK-YSh"/>
-                                    <segue destination="SZL-Bl-PiV" kind="show" identifier="SeriesDataSegue" id="iny-o7-yWf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -110,6 +109,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="2kt-X5-mZq"/>
+                    <connections>
+                        <segue destination="aLv-TM-TSi" kind="show" identifier="programmeSegue" id="xiL-Ks-74g"/>
+                        <segue destination="SZL-Bl-PiV" kind="show" identifier="SeriesDataSegue" id="dU7-Ob-heG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e15-2P-kxK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,7 +145,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeriesNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7S-RD-bGo">
-                                                    <rect key="frame" x="125.66666666666667" y="214" width="130.66666666666663" height="20.333333333333343"/>
+                                                    <rect key="frame" x="125.66666666666669" y="214" width="130.66666666666663" height="20.333333333333343"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-MediumItalic" family="SF Pro Display" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -258,15 +261,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="pWB-nK-4gw">
-                                <rect key="frame" x="5" y="348.66666666666669" width="404" height="78.666666666666686"/>
+                                <rect key="frame" x="5" y="313" width="404" height="78.666666666666686"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="SeriesNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emR-dB-bS7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="SeriesNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emR-dB-bS7">
                                         <rect key="frame" x="0.0" y="0.0" width="157" height="24"/>
                                         <fontDescription key="fontDescription" name="SFCompactText-LightItalic" family="SF Compact Text" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" text="EpisodeName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6Z-fV-AFU">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="749" text="EpisodeName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6Z-fV-AFU">
                                         <rect key="frame" x="0.0" y="31" width="98" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -281,10 +284,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="xeX-VD-1Q0">
-                                <rect key="frame" x="5" y="437" width="404" height="43"/>
+                                <rect key="frame" x="5" y="407.66666666666669" width="404" height="42.333333333333314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EpisodeNumberLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pZ-MN-cdx">
-                                        <rect key="frame" x="0.0" y="0.0" width="147" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="147" height="20.333333333333332"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="147" id="Vfy-vL-G9R"/>
                                         </constraints>
@@ -293,7 +296,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LenghtLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Os-o2-dRa">
-                                        <rect key="frame" x="0.0" y="23" width="84" height="20"/>
+                                        <rect key="frame" x="0.0" y="22.333333333333314" width="84" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Nw7-QR-gfv"/>
                                         </constraints>
@@ -304,30 +307,24 @@
                                 </subviews>
                             </stackView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cuT-nd-RyU">
-                                <rect key="frame" x="0.0" y="64" width="414" height="229"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="233"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="cuT-nd-RyU" secondAttribute="height" multiplier="414:229" id="Zy6-TL-CDt"/>
+                                    <constraint firstAttribute="width" secondItem="cuT-nd-RyU" secondAttribute="height" multiplier="16:9" id="Zy6-TL-CDt"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cuT-nd-RyU" firstAttribute="trailing" secondItem="1zM-Oi-ONN" secondAttribute="trailing" id="4Zf-68-bZF"/>
-                            <constraint firstItem="xeX-VD-1Q0" firstAttribute="top" secondItem="s6n-6j-4AS" secondAttribute="top" constant="437" id="5Ka-ff-vav"/>
                             <constraint firstItem="1zM-Oi-ONN" firstAttribute="trailing" secondItem="pWB-nK-4gw" secondAttribute="trailing" constant="5" id="6Dv-38-WqC"/>
-                            <constraint firstItem="pWB-nK-4gw" firstAttribute="top" secondItem="cuT-nd-RyU" secondAttribute="bottom" constant="55.666666666666686" id="8oz-t5-8aK"/>
+                            <constraint firstItem="pWB-nK-4gw" firstAttribute="top" secondItem="cuT-nd-RyU" secondAttribute="bottom" constant="16" id="8oz-t5-8aK"/>
                             <constraint firstItem="cuT-nd-RyU" firstAttribute="trailing" secondItem="1zM-Oi-ONN" secondAttribute="trailing" id="9Z8-0I-k8O"/>
                             <constraint firstItem="pWB-nK-4gw" firstAttribute="leading" secondItem="1zM-Oi-ONN" secondAttribute="leading" constant="5" id="Cr9-2i-4fI"/>
                             <constraint firstItem="cuT-nd-RyU" firstAttribute="leading" secondItem="1zM-Oi-ONN" secondAttribute="leading" id="NsB-z5-6jS"/>
-                            <constraint firstItem="1zM-Oi-ONN" firstAttribute="bottom" secondItem="xeX-VD-1Q0" secondAttribute="bottom" constant="207.00000000000011" id="OtH-Pn-Chi"/>
                             <constraint firstItem="1zM-Oi-ONN" firstAttribute="trailing" secondItem="xeX-VD-1Q0" secondAttribute="trailing" constant="5" id="PVR-wr-IYA"/>
-                            <constraint firstItem="xeX-VD-1Q0" firstAttribute="top" secondItem="pWB-nK-4gw" secondAttribute="bottom" constant="9.6666666666665719" id="XhB-AK-s9E"/>
-                            <constraint firstItem="cuT-nd-RyU" firstAttribute="top" secondItem="1zM-Oi-ONN" secondAttribute="top" id="eVy-N3-ncp"/>
+                            <constraint firstItem="xeX-VD-1Q0" firstAttribute="top" secondItem="pWB-nK-4gw" secondAttribute="bottom" constant="16" id="XhB-AK-s9E"/>
                             <constraint firstItem="xeX-VD-1Q0" firstAttribute="leading" secondItem="1zM-Oi-ONN" secondAttribute="leading" constant="5" id="iFC-1F-uGw"/>
-                            <constraint firstItem="cuT-nd-RyU" firstAttribute="leading" secondItem="1zM-Oi-ONN" secondAttribute="leading" id="s0v-KX-RaN"/>
                             <constraint firstItem="cuT-nd-RyU" firstAttribute="top" secondItem="1zM-Oi-ONN" secondAttribute="top" id="uyy-1t-ceb"/>
-                            <constraint firstItem="cuT-nd-RyU" firstAttribute="centerX" secondItem="s6n-6j-4AS" secondAttribute="centerX" id="zy0-8B-AGX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1zM-Oi-ONN"/>
                     </view>
@@ -344,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbb-qz-pjg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4824.6376811594209" y="2372.2826086956525"/>
+            <point key="canvasLocation" x="3284" y="3172"/>
         </scene>
         <!--АРХИВ-->
         <scene sceneID="Cbc-3d-D3N">
@@ -464,6 +461,7 @@
         <image name="archiveTab" width="30" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8mz-sP-MYK"/>
+        <segue reference="xiL-Ks-74g"/>
+        <segue reference="K9b-GK-uNn"/>
     </inferredMetricsTieBreakers>
 </document>

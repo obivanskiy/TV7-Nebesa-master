@@ -80,6 +80,10 @@ class Player: UIView {
         playerViewController.player?.pause()
  
     }
+
+    func play() {
+        playerViewController.player?.play()
+    }
     
     private func createSpinner() {
         spinner = UIActivityIndicatorView(style: .whiteLarge)

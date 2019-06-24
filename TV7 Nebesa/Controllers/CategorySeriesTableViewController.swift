@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 final class CategorySeriesTableViewController: UITableViewController, Castable {
     
@@ -24,6 +25,7 @@ final class CategorySeriesTableViewController: UITableViewController, Castable {
     var seriesProgrammes: SeriesProgrammes = SeriesProgrammes() {
         didSet {
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 self.tableView.reloadData()
             }
         }
@@ -35,6 +37,7 @@ final class CategorySeriesTableViewController: UITableViewController, Castable {
     //MARK: - View lifecycle functions
     override func viewDidLoad() {
         self.presenter = CategorySeriesPresenter(with: self)
+        SVProgressHUD.show()
         navigationItem.rightBarButtonItem = googleCastButton
     }
     

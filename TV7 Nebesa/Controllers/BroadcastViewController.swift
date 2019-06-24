@@ -7,7 +7,7 @@
 import UIKit
 
 
-final class BroadcastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+final class BroadcastViewController: UIViewController, InternetConnection {
 
     // MARK: - Outlets
     @IBOutlet weak var tvGuideTableView: UITableView!
@@ -49,7 +49,84 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
         super.viewWillAppear(animated)
     }
 
-    // MARK: - Table View Data Source Methods
+    // MARK: - Scroll View Delegate Methods
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if scrollView == tvGuideTableView {
+            self.lastContentOffset = scrollView.contentOffset.y
+        }
+    }
+
+    // Hide DateCollection when scrolling down
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == tvGuideTableView {
+            if (self.lastContentOffset < scrollView.contentOffset.y) {
+                dateStackView.isHidden = true
+                tvGuideTableViewConstraintToTop.constant = 0
+            } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+                dateStackView.isHidden = false
+                tvGuideTableViewConstraintToTop.constant = 36
+            }
+        }
+    }
+
+    // MARK: - Actions
+    @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
+        guard let searchVC = UIStoryboard(name: Constants.programmeScreen, bundle: nil).instantiateViewController(withIdentifier: Constants.searchVC) as? SearchViewController else { return }
+        self.navigationController?.pushViewController(searchVC, animated: true)
+    }
+
+    // MARK: - Private Methods
+    // Formates Unix date to appropriate format
+    private func dateFormatter(_ dateIn: String) -> String {
+        guard let unixDate = Double(dateIn) else { return "" }
+        let date = Date(timeIntervalSince1970: unixDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let newDate = dateFormatter.string(from: date)
+        return newDate
+    }
+
+    private func setupTVGuideTableView() {
+        tvGuideTableView.dataSource = self
+        tvGuideTableView.delegate = self
+        //Register for TVGuideCell.xib
+        tvGuideTableView.register(UINib(nibName: TVGuideCell.identifier, bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
+        tvGuideTableView.rowHeight = UITableView.automaticDimension
+        // Checking for an internet connection
+        checkInternetConnection()
+    }
+
+    private func setupDateCollectionView() {
+        dateCollectionView.dataSource = self
+        dateCollectionView.delegate = self
+        dateCollectionView.allowsSelection = true
+        dateCollectionView.reloadData()
+    }
+
+    // Generate Dates from the current date +/- 15 days for requests to server
+    private func generateDates() {
+        for number in -15...15 {
+            guard let newDate = NSCalendar.current.date(byAdding: .day, value: number, to: Date()) else { continue }
+            arrayOfDates.append(newDate)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM"
+            let formattedDate = dateFormatter.string(from: newDate)
+            arrayOfDatesStrings.append(formattedDate)
+        }
+    }
+
+    // Select and display the current day in DateCollection
+    private func firstAppearSelectedItem() {
+        let firstAppearSelectedItem = arrayOfDatesStrings.count/2
+        let selectedIndexPath = IndexPath(item: firstAppearSelectedItem, section: 0)
+        dateCollectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
+    }
+
+}
+
+
+// MARK: - Table View Data Source Methods
+extension BroadcastViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tvGuideSeries.tvGuideDates.count
     }
@@ -67,8 +144,11 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
         }
         return cell
     }
+}
 
-    // MARK: - Table View Delegate Methods
+
+// MARK: - Table View Delegate Methods
+extension BroadcastViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tvGuideTableView.cellForRow(at: indexPath) as? TVGuideCell else { return }
 
@@ -122,30 +202,11 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
                 scrollToTime = false
             }
         }
-
     }
+}
 
-    // MARK: - Scroll View Delegate Methods
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if scrollView == tvGuideTableView {
-            self.lastContentOffset = scrollView.contentOffset.y
-        }
-    }
-
-    // Hide DateCollection when scrolling down
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == tvGuideTableView {
-            if (self.lastContentOffset < scrollView.contentOffset.y) {
-                dateStackView.isHidden = true
-                tvGuideTableViewConstraintToTop.constant = 0
-            } else if (self.lastContentOffset > scrollView.contentOffset.y) {
-                dateStackView.isHidden = false
-                tvGuideTableViewConstraintToTop.constant = 36
-            }
-        }
-    }
-
-    // MARK: - Collection View Data Source Methods
+// MARK: - Collection View Data Source Methods
+extension BroadcastViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayOfDatesStrings.count
     }
@@ -156,71 +217,15 @@ final class BroadcastViewController: UIViewController, UITableViewDataSource, UI
         cell.dateLabel.text = dates
         return cell
     }
-
-    // MARK: - Collection View Delegate Methods
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter = TVProgramPresenter(with: self, chosenDate: arrayOfDates[indexPath.row])
-        expandedRows.removeAll()
-        tvGuideTableView.reloadData()
-    }
-
-    // MARK: - Actions
-    @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
-        guard let searchVC = UIStoryboard(name: Constants.programmeScreen, bundle: nil).instantiateViewController(withIdentifier: Constants.searchVC) as? SearchViewController else { return }
-        self.navigationController?.pushViewController(searchVC, animated: true)
-    }
-
-    // MARK: - Private Methods
-    // Formates Unix date to appropriate format
-    private func dateFormatter(_ dateIn: String) -> String {
-        guard let unixDate = Double(dateIn) else { return "" }
-        let date = Date(timeIntervalSince1970: unixDate)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        let newDate = dateFormatter.string(from: date)
-        return newDate
-    }
-
-    private func setupTVGuideTableView() {
-        tvGuideTableView.dataSource = self
-        tvGuideTableView.delegate = self
-        //Register for TVGuideCell.xib
-        tvGuideTableView.register(UINib(nibName: TVGuideCell.identifier, bundle: .none), forCellReuseIdentifier: TVGuideCell.identifier)
-        tvGuideTableView.rowHeight = UITableView.automaticDimension
-        // Checking for an internet connection
-        if Reachability.isConnectedToNetwork() {
-            print("Internet Connection Available!")
-        } else {
-            showDefaultAlert(title: "Sorry", message: "You have no internet connection.")
-            print("Internet Connection not Available!")
-        }
-    }
-
-    private func setupDateCollectionView() {
-        dateCollectionView.dataSource = self
-        dateCollectionView.delegate = self
-        dateCollectionView.allowsSelection = true
-        dateCollectionView.reloadData()
-    }
-
-    // Generate Dates from the current date +/- 15 days for requests to server
-    private func generateDates() {
-        for number in -15...15 {
-            guard let newDate = NSCalendar.current.date(byAdding: .day, value: number, to: Date()) else { continue }
-            arrayOfDates.append(newDate)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM"
-            let formattedDate = dateFormatter.string(from: newDate)
-            arrayOfDatesStrings.append(formattedDate)
-        }
-    }
-
-    // Select and display the current day in DateCollection
-    private func firstAppearSelectedItem() {
-        let firstAppearSelectedItem = arrayOfDatesStrings.count/2
-        let selectedIndexPath = IndexPath(item: firstAppearSelectedItem, section: 0)
-        dateCollectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
-    }
-
 }
 
+// MARK: - Collection View Delegate Methods
+extension BroadcastViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        checkInternetConnection()
+        presenter = TVProgramPresenter(with: self, chosenDate: arrayOfDates[indexPath.row])
+        expandedRows.removeAll()
+        tvGuideTableView.setContentOffset(.zero, animated: false)
+        tvGuideTableView.reloadData()
+    }
+}

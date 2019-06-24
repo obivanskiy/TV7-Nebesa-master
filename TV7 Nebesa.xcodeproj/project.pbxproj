@@ -122,7 +122,6 @@
 		15CD9CD8225217FD0014E326 /* ProgrammeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CD7225217FD0014E326 /* ProgrammeScreenViewController.swift */; };
 		15CD9CDE22534BAE0014E326 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CDD22534BAE0014E326 /* String+Extension.swift */; };
 		15CD9CE0225379980014E326 /* WebTVScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CDF225379980014E326 /* WebTVScreenViewController.swift */; };
-		15CD9CE2225380870014E326 /* WebTVDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CE1225380870014E326 /* WebTVDateTableViewCell.swift */; };
 		15CD9CE6225380E70014E326 /* WebTVMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD9CE5225380E70014E326 /* WebTVMainTableViewCell.swift */; };
 		15CE9DC52244DF2F00362B40 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CE9DC42244DF2F00362B40 /* URL+Extension.swift */; };
 		15CF8F732237E03D008424E9 /* ParentCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CF8F722237E03D008424E9 /* ParentCategoriesModel.swift */; };
@@ -146,7 +145,6 @@
 		FA29D6AF2264B79800B39250 /* SearchResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */; };
 		FA29D6B12264C94E00B39250 /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */; };
 		FA4F347D2260A010000508B9 /* TVProgramPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */; };
-		FA51ED1D22A860B300A5A1FB /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA51ED1C22A860B300A5A1FB /* NSObject+Extension.swift */; };
 		FA8A42A3226622E8000F35B5 /* SearchSeriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A42A1226622E8000F35B5 /* SearchSeriesCell.swift */; };
 		FA8A42A4226622E8000F35B5 /* SearchSeriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8A42A2226622E8000F35B5 /* SearchSeriesCell.xib */; };
 		FA8A42A722672BF7000F35B5 /* SearchEpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A42A522672BF7000F35B5 /* SearchEpisodeCell.swift */; };
@@ -284,7 +282,6 @@
 		15CD9CD7225217FD0014E326 /* ProgrammeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammeScreenViewController.swift; sourceTree = "<group>"; };
 		15CD9CDD22534BAE0014E326 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		15CD9CDF225379980014E326 /* WebTVScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTVScreenViewController.swift; sourceTree = "<group>"; };
-		15CD9CE1225380870014E326 /* WebTVDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTVDateTableViewCell.swift; sourceTree = "<group>"; };
 		15CD9CE5225380E70014E326 /* WebTVMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTVMainTableViewCell.swift; sourceTree = "<group>"; };
 		15CE9DC42244DF2F00362B40 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		15CF8F722237E03D008424E9 /* ParentCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCategoriesModel.swift; sourceTree = "<group>"; };
@@ -311,7 +308,6 @@
 		FA29D6AE2264B79800B39250 /* SearchResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsModel.swift; sourceTree = "<group>"; };
 		FA29D6B02264C94E00B39250 /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
 		FA4F347C2260A010000508B9 /* TVProgramPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProgramPresenter.swift; sourceTree = "<group>"; };
-		FA51ED1C22A860B300A5A1FB /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		FA8A42A1226622E8000F35B5 /* SearchSeriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSeriesCell.swift; sourceTree = "<group>"; };
 		FA8A42A2226622E8000F35B5 /* SearchSeriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchSeriesCell.xib; sourceTree = "<group>"; };
 		FA8A42A522672BF7000F35B5 /* SearchEpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEpisodeCell.swift; sourceTree = "<group>"; };
@@ -550,7 +546,6 @@
 				15B08171223A90A200826057 /* CategoryDataTableViewCell.swift */,
 				15D626EB22411C1E00449F8B /* SeriesInfoTableViewCell.swift */,
 				15D626ED22411C2C00449F8B /* EpisodeInfoTableViewCell.swift */,
-				15CD9CE1225380870014E326 /* WebTVDateTableViewCell.swift */,
 				15CD9CE5225380E70014E326 /* WebTVMainTableViewCell.swift */,
 				FA8A42A022662222000F35B5 /* SearchCells */,
 				FAFDE7FD223FC67500006FEE /* TVGuideCell */,
@@ -571,7 +566,6 @@
 				15CD9CDD22534BAE0014E326 /* String+Extension.swift */,
 				154B7F52223ADAE40020A4E4 /* UITableViewCell+Extension.swift */,
 				FA1D633222801DA800C2AA13 /* UIViewController+Extension.swift */,
-				FA51ED1C22A860B300A5A1FB /* NSObject+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -878,15 +872,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-TV7 Nebesa-checkManifestLockResult.txt",
 			);
@@ -900,23 +890,19 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh",
 				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.4.2_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
 				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.4.2_static/GoogleCast.framework/GoogleCastUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastCoreResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastUIResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		37E08AADAF115BE025A663A1 /* [CP] Embed Pods Frameworks */ = {
@@ -924,17 +910,13 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -942,7 +924,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TV7 Nebesa/Pods-TV7 Nebesa-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -975,11 +957,9 @@
 				110F9D952237A6310020BABC /* RootContainerViewController.swift in Sources */,
 				1103F73822721F630016A3C8 /* MenuBar.swift in Sources */,
 				15A60115226DB5EC00E99878 /* CastManager.swift in Sources */,
-				15CD9CE2225380870014E326 /* WebTVDateTableViewCell.swift in Sources */,
 				153406BD226EF4CB002BEB9F /* UIColor+NodeColor.swift in Sources */,
 				1103F69222721D870016A3C8 /* BaseHomeController.swift in Sources */,
 				15E0FD162238F851005A41DD /* ParentCategoryNameTableViewCell.swift in Sources */,
-				FA51ED1D22A860B300A5A1FB /* NSObject+Extension.swift in Sources */,
 				1103F69B22721D880016A3C8 /* HomeScreenNewestProgrammes.swift in Sources */,
 				15D2F12922661827009BE3D3 /* Castable+Extension.swift in Sources */,
 				1103F6A322721D880016A3C8 /* VideoPresenter.swift in Sources */,

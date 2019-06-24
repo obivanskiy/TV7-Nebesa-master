@@ -33,7 +33,6 @@ class TVGuidePresenter {
     private func serializeData(requestData: (Data)) {
         do {
             viewController?.self.webTVProgrammesList  = try JSONDecoder().decode(TVGuideDates.self, from: requestData)
-            print("PRESENTER DATA FETCHED", viewController?.self.webTVProgrammesList)
         } catch {
             print(error.localizedDescription)
         }

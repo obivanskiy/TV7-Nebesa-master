@@ -7,13 +7,10 @@
 //
 
 import UIKit
-import AVFoundation
-import AVKit
 
 class EpisodeCell: UITableViewCell {
 
     // MARK: - Outlets
-    @IBOutlet weak var episodeVideoView: UIView!
     @IBOutlet weak var seriesNameLabel: UILabel! {
         didSet {
             seriesNameLabel.numberOfLines = 2
@@ -28,11 +25,7 @@ class EpisodeCell: UITableViewCell {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var firstBroadcast: UILabel!
 
-    // MARK: - Properties
-    private var videoURL = ""
-    private var player: Player!
-//    var playerViewController = AVPlayerViewController()
-
+    // MARK: - Stored Properties
     var cellModel: SearchEpisodeData? {
         didSet {
             guard let cellModel = cellModel else { return }
@@ -47,13 +40,9 @@ class EpisodeCell: UITableViewCell {
         seriesNameLabel.attributedText = attributedText
         captionLabel.text = cellModel.caption
         episodeNumberLabel.text = "Эпизод: " + cellModel.episodeNumber
-        let duration = Int(cellModel.duration)
-        guard let durationInMinutes = duration else { return }
-        durationLabel.text = "Длительность: " + String(durationInMinutes/1000/60) + " Мин"
+        guard let duration = Int(cellModel.duration) else { return }
+        durationLabel.text = "Длительность: " + String(duration/1000/60) + " Мин"
         firstBroadcast.text = "Первая трансляция: " + dateFormatter(cellModel.visibleOnVodSince)
-        videoURL = NetworkEndpoints.baseURLForVideoPlayback + cellModel.path + NetworkEndpoints.playlistEndpoint
-        createPlayerView()
-        print(videoURL)
     }
 
     private func dateFormatter(_ date: String) -> String {
@@ -65,11 +54,4 @@ class EpisodeCell: UITableViewCell {
         return newDate
     }
 
-    private func createPlayerView() {
-        player = Player(frame: episodeVideoView.bounds)
-        player.mediaItem = MediaItem(name: cellModel?.name, about: cellModel?.caption, videoUrl: videoURL.encodeUrl(), thumbnailUrl: nil)
-        player.initPlayerLayer()
-        episodeVideoView.addSubview(player)
-    }
-    
 }

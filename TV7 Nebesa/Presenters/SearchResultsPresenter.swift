@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SVProgressHUD
 
 class SearchResultsPresenter {
     let viewController: SearchViewController!
@@ -22,7 +22,6 @@ class SearchResultsPresenter {
 
     private func request() {
         NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchSearchResults) { (result) in
-            self.viewController.removeActivityIndicator()
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -41,7 +40,7 @@ class SearchResultsPresenter {
     }
 
     private func fetchSearchResults(_ userText: String) {
-        viewController.showActivityIndicator(onView: viewController.view)
+        SVProgressHUD.show()
         guard let userText = userText.encodeUrl() else { return }
         NetworkService.requestURL[.fetchSearchResults] = NetworkEndpoints.searchBaseURL + NetworkEndpoints.searchResultsURL + userText
     }

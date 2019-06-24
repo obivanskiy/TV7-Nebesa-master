@@ -124,7 +124,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="ПРОГРАММА" image="guideTab" id="sme-fm-DoS"/>
                     <navigationItem key="navigationItem" title="Программа" id="kLl-cx-RGf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="W2B-lD-RpQ">
+                        <barButtonItem key="rightBarButtonItem" image="search_icon" id="W2B-lD-RpQ">
                             <color key="tintColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             <connections>
                                 <action selector="searchButtonPressed:" destination="ccN-Tw-Bu9" id="2O6-KT-34R"/>
@@ -158,7 +158,7 @@
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Поиск" id="8kg-9e-SaH">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="webSearch" returnKeyType="go"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="go"/>
                                     <connections>
                                         <outlet property="delegate" destination="3fv-Ib-RHt" id="vQB-I4-o1Y"/>
                                     </connections>
@@ -209,42 +209,53 @@
         <!--Search Episode View Controller-->
         <scene sceneID="e1T-c3-rX4">
             <objects>
-                <viewController id="688-hz-42c" customClass="SearchEpisodeViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchEpisodeViewController" id="688-hz-42c" customClass="SearchEpisodeViewController" customModule="TV7_Nebesa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DaI-wX-MRy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SAb-kl-wzi">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="203" width="375" height="464"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="episodeCell" id="lFE-MV-2ny">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="episodeCell" rowHeight="54" id="lFE-MV-2ny">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lFE-MV-2ny" id="m4N-Is-eRP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="53.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="71c-YL-i0f">
+                                <rect key="frame" x="0.0" y="20" width="375" height="175"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="GPx-cA-UmT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SAb-kl-wzi" firstAttribute="leading" secondItem="nl5-xf-xOW" secondAttribute="leading" id="DAv-Fw-IRW"/>
+                            <constraint firstItem="71c-YL-i0f" firstAttribute="top" secondItem="nl5-xf-xOW" secondAttribute="top" id="M9M-kH-gHB"/>
+                            <constraint firstItem="SAb-kl-wzi" firstAttribute="top" secondItem="71c-YL-i0f" secondAttribute="bottom" constant="8" id="Ov8-SY-qEN"/>
+                            <constraint firstItem="71c-YL-i0f" firstAttribute="leading" secondItem="nl5-xf-xOW" secondAttribute="leading" id="Xyf-4S-8T6"/>
+                            <constraint firstItem="71c-YL-i0f" firstAttribute="trailing" secondItem="nl5-xf-xOW" secondAttribute="trailing" id="eIH-9c-10E"/>
                             <constraint firstItem="SAb-kl-wzi" firstAttribute="trailing" secondItem="nl5-xf-xOW" secondAttribute="trailing" id="rDq-lW-BPs"/>
-                            <constraint firstItem="SAb-kl-wzi" firstAttribute="top" secondItem="nl5-xf-xOW" secondAttribute="top" id="twj-6D-BmF"/>
                             <constraint firstItem="SAb-kl-wzi" firstAttribute="bottom" secondItem="nl5-xf-xOW" secondAttribute="bottom" id="uNE-eZ-BfO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nl5-xf-xOW"/>
                     </view>
                     <connections>
                         <outlet property="episodeTableView" destination="SAb-kl-wzi" id="XVI-mp-DdC"/>
+                        <outlet property="episodeVideoView" destination="71c-YL-i0f" id="xPg-dG-gXY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9a1-nG-OqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704.8" y="2436.4317841079464"/>
+            <point key="canvasLocation" x="1664.8" y="2435.5322338830588"/>
         </scene>
         <!--Search Series View Controller-->
         <scene sceneID="gkx-Hx-EZt">
@@ -326,6 +337,7 @@
     </scenes>
     <resources>
         <image name="guideTab" width="26" height="24"/>
+        <image name="search_icon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cFI-5G-b0X"/>

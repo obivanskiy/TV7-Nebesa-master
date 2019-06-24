@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SVProgressHUD
 
 class SearchEpisodePresenter {
     let viewController: SearchEpisodeViewController!
@@ -21,7 +22,6 @@ class SearchEpisodePresenter {
 
     private func request() {
         NetworkService.performRequest(requestType: NetworkService.NetworkRequestType.fetchSearchEpisode) { (result) in
-            self.viewController.removeActivityIndicator()
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -34,13 +34,14 @@ class SearchEpisodePresenter {
     private func serializeData(requestData: Data) {
         do {
             viewController.self.searchEpisodeData = try JSONDecoder().decode(SearchEpisode.self, from: requestData)
+            viewController.self.episodeData = try JSONDecoder().decode(SearchEpisodeData.self, from: requestData)
         } catch let error {
             print(error.localizedDescription)
         }
     }
 
     private func fetchSearchEpisode(_ episodeId: String) {
-        viewController.showActivityIndicator(onView: viewController.view)
+        SVProgressHUD.show()
         NetworkService.requestURL[.fetchSearchEpisode] = NetworkEndpoints.baseURL + NetworkEndpoints.searchEpisodeURL + episodeId
     }
 }

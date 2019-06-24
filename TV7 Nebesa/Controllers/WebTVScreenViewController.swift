@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-import  AVKit
+import AVKit
 import GoogleCast
 import SVProgressHUD
 
@@ -20,26 +20,23 @@ enum PlaybackMode: Int {
 
 private var playbackMode = PlaybackMode.none
 
-class WebTVScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GCKSessionManagerListener,
-GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
-    //MARK: - Outlets
+class WebTVScreenViewController: UIViewController, GCKSessionManagerListener, GCKRemoteMediaClientListener, GCKRequestDelegate, Castable, InternetConnection {
+
+    // MARK: - Outlets
     @IBOutlet weak var webTVStreamView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var dateAndTimeZone: UILabel!
     
-    //MARK: - GoogleCast properties
+    // MARK: - GoogleCast properties
     private var castButton: GCKUICastButton!
     private var sessionManager: GCKSessionManager!
     
-    //MARK: - player properties
+    // MARK: - Player Properties
     private var webTVPLayer: AVPlayer!
     private var webTVPlayerViewController = AVPlayerViewController()
-    
     private var presenter: TVGuidePresenter?
     private var ruStreamLink: String = NetworkEndpoints.webTVVideoStreamBaseURL + NetworkEndpoints.webTVStreamRUEndpoint
-    
     private var playerView: Player!
-    
+
     var webTVProgrammesList: TVGuideDates = TVGuideDates() {
         didSet {
             filterDates(programmes: webTVProgrammesList)
@@ -47,7 +44,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
     }
     
     private var currentTimeZone: String!
-    
     private(set) var sortedDates: [TVGuideDatesData] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -61,20 +57,13 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
         super.init(coder: aDecoder)
         sessionManager = GCKCastContext.sharedInstance().sessionManager
     }
-    
+
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        self.title = "ВЕБ-ТВ"
-        self.presenter = TVGuidePresenter(with: self)
-        SVProgressHUD.show()
-        getCurrentTimeZone()
-        self.dateAndTimeZone.text = getCurrentTimeAndDate() + " " + currentTimeZone
-        
+        setupUI()
         //MARK: -Add to extension or func
         navigationItem.rightBarButtonItem = googleCastButton
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,9 +77,9 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
     override func viewWillLayoutSubviews() {
         playerView.playerViewController.view.frame = webTVStreamView.bounds
     }
-    
-    //MARK: - Fetch current date and time zone
-    
+
+    // MARK: - Private Methods
+    //Fetch current date and time zone
     private func getCurrentTimeAndDate() -> String {
         let dateFormatter : DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy  HH:mm"
@@ -117,31 +106,17 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
     private func stopPlayback() {
         webTVPlayerViewController.player?.pause()
     }
-    
-    // MARK: - Table View Data Source
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sortedDates.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WebTVMainTableViewCell", for: indexPath) as? WebTVMainTableViewCell else {
-            return UITableViewCell()
-        }
-//        tableView.estimatedRowHeight = 120
-        
-        // if name in request comes as empty string, use caption instead of it
-        if sortedDates[indexPath.row].name == "" {
-            cell.nameLabel.text = sortedDates[indexPath.row].series
-        } else if sortedDates[indexPath.row].name != "" && sortedDates[indexPath.row].name != "" {
-            cell.nameLabel.text = sortedDates[indexPath.row].series + ": " + sortedDates[indexPath.row].name
-        } else {
-            cell.nameLabel.text = sortedDates[indexPath.row].name
-        }
-        cell.dateLabel.text = dateFormatter(sortedDates[indexPath.row].date)
-        
-        return cell
+
+    private func setupUI() {
+        self.title = "ВЕБ-ТВ"
+        self.presenter = TVGuidePresenter(with: self)
+        SVProgressHUD.show()
+        checkInternetConnection()
+        getCurrentTimeZone()
+
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
     }
     
     private func dateFormatter(_ dateIn: String) -> String {
@@ -154,11 +129,54 @@ GCKRemoteMediaClientListener, GCKRequestDelegate, Castable {
         return newDate
     }
     
-    //MARK: - sort tv guide time
+    // Sort TV Guide Time
     private func filterDates(programmes: TVGuideDates) {
         let currentDate = String(Date().timeIntervalSince1970)
         self.sortedDates = webTVProgrammesList.tvGuideDates.filter {
             return $0.date >= currentDate
         }
+    }
+}
+
+
+// MARK: - Table View Data Source Methods
+extension WebTVScreenViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sortedDates.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WebTVMainTableViewCell", for: indexPath) as? WebTVMainTableViewCell else {
+            return UITableViewCell()
+        }
+
+        // if name in request comes as empty string, use caption instead of it
+        if sortedDates[indexPath.row].name == "" {
+            cell.nameLabel.text = sortedDates[indexPath.row].series
+        } else if sortedDates[indexPath.row].name != "" {
+            cell.nameLabel.text = sortedDates[indexPath.row].series + ": " + sortedDates[indexPath.row].name
+        } else {
+            cell.nameLabel.text = sortedDates[indexPath.row].name
+        }
+        cell.dateLabel.text = dateFormatter(sortedDates[indexPath.row].date)
+
+        return cell
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return getCurrentTimeAndDate() + " " + currentTimeZone
+    }
+
+}
+
+// MARK: - Table View Delegate Methods
+extension WebTVScreenViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
 }
