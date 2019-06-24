@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class BaseHomeController: UIViewController {
+class BaseHomeController: UIViewController, Castable {
 
     private enum Constants {
         static let programmeScreen = "ProgrammeScreen"
@@ -22,7 +22,6 @@ class BaseHomeController: UIViewController {
         setupNavBarButtons()
         setUpStatusBar()
         
-
     }
     
     
@@ -44,12 +43,10 @@ class BaseHomeController: UIViewController {
     
     func setupNavBarButtons() {
 //        _ = UIImage(named: "nav_more_icon")?.withRenderingMode(.alwaysOriginal)
-        let slideBottomMenuButton = UIBarButtonItem(image: UIImage(named: "nav_more_icon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(slideBottomMenu))
         let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
-//        let moreButton = UIBarButtonItem(image: UIImage(named: "tvIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMore))
-        
-        navigationItem.rightBarButtonItems = [slideBottomMenuButton, searchBarButtonItem]
+        navigationItem.rightBarButtonItems = [searchBarButtonItem, googleCastButton]
+
     }
 //    @objc func handleMore() {
 //
